@@ -1,0 +1,26 @@
+[
+    {
+        "business": "safeway",
+        "date": "1/1/2019",
+        "amount": 100,
+        "type": "purchase"
+    },
+    {
+        "business": "safeway",
+        "date": "2/13/2019",
+        "amount": 140,
+        "type": "purchase"
+    },
+    {
+        "business": "encore",
+        "date": "1/1/2019",
+        "amount": 80,
+        "type": "income"
+    },
+    {
+        "business": "encore",
+        "date": "2/1/2019",
+        "amount": 70,
+        "type": "income"
+    }
+]
