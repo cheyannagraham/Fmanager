@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Month from "./Components/Month/Month.js";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import Month from './Components/Month/Month.js';
+import TransactionForm from './Components/TransactionForm/TransactionForm.js'
 
-export default function App() {
-  let [totalTransactions, setTotalTransactions] = useState(["No Transactions"]);
+const App = () => {
+  let [totalTransactions, setTotalTransactions] = useState(['No Transactions']);
 
   useEffect(() => {
-    fetch("./data.JSON")
+    fetch('./data.JSON')
     .then(res => {
       if (res.status !== 200) {
         throw res.status;
@@ -21,8 +22,15 @@ export default function App() {
   },[]);
 
 
-  return <Month transactions = {totalTransactions} />
+  return (
+    <>
+      <Month transactions = {totalTransactions} />
+      <TransactionForm />
+    </>
+  )
+
 }
 
+export default App;
 //TODO: 
 // figure out how to add entries

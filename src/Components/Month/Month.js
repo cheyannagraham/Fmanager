@@ -3,7 +3,7 @@ import { MONTHS } from './Helper';
 import MonthSearch from './MonthSearch';
 import TransactionTable from './TransactionTable';
 
-export default function Month(props) {
+const Month = props => {
   let currentMonth = new Date(Date.now()).getMonth();
   const [month, setMonth] = useState(currentMonth);
 
@@ -25,3 +25,4 @@ export default function Month(props) {
   );
 }
 
+export default Month;

@@ -3,7 +3,7 @@ import React from 'react'
 import {MONTHS} from './Helper'
 
 
-export default function MonthSearch(props){
+const MonthSearch = props => {
 
     const handleClick = (e) => {
         props.setMonth(e.target.value);
@@ -17,3 +17,4 @@ export default function MonthSearch(props){
         
     )
 }
+export default MonthSearch;
