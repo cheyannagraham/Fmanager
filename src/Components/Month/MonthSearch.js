@@ -12,10 +12,8 @@ export default function MonthSearch(props){
     return (
         <select value = {props.month} onChange = {handleClick}>
             {MONTHS.map(mon => (
-                <option key={mon} value={MONTHS.indexOf(mon)}>{mon.toLocaleUpperCase()}</option>))}            
+                <option key={mon} value={MONTHS.indexOf(mon)}>{mon.toUpperCase()}</option>))}            
         </select>
         
     )
 }
-
-//{/* <input value = {value} onChange = {handleClick}></input>  */}

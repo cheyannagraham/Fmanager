@@ -1,6 +1,7 @@
 import React from "react";
 
 const TransactionTable = props => {
+  let total = 0;
   return (
     <table>
       <thead>
@@ -13,15 +14,26 @@ const TransactionTable = props => {
       </thead>
 
       <tbody>
-        {props.monthlyTransactions.map((trans, index) => (
-          <tr key={index}>
-            <td>{trans["date"]}</td>
-            <td>{trans["business"]}</td>
-            <td>{trans["amount"]}</td>
-            <td>{trans["type"]}</td>
-          </tr>
-        ))}
+        {props.monthlyTransactions.map((trans, index) => {
+          trans["type"] === "income"
+            ? (total += trans["amount"])
+            : (total -= trans["amount"]);
+          return (
+            <tr key={index}>
+              <td>{trans["date"]}</td>
+              <td>{trans["business"]}</td>
+              <td>{trans["amount"]}</td>
+              <td>{trans["type"]}</td>
+            </tr>
+          );
+        })}
       </tbody>
+      <tfoot>
+        <tr>
+          <th colSpan='2'>Total</th>
+          <td colSpan='2'>{total}</td>
+        </tr>
+      </tfoot>
     </table>
   );
 };

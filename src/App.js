@@ -25,6 +25,4 @@ export default function App() {
 }
 
 //TODO: 
-// add input to change months,
-// do math to show money spent
 // figure out how to add entries
