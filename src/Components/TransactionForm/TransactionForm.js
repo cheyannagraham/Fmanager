@@ -1,6 +1,32 @@
 import React from 'react';
 
 const TransactionForm = props => {
+    const handleClick = e => {
+        e.preventDefault();
+        submitFormData();
+    }
+    
+    const submitFormData = () => {
+        const formData = new FormData(document.getElementById('transaction-from'));
+    
+        let type = formData.get("type");
+        let business = formData.get("business");
+        let amount = formData.get("amount");
+        let date = formData.get("date");
+
+        props.setTransactions(prevTrans => {
+            prevTrans.push(
+                {type : type,
+                business : business,
+                amount : amount,
+                date : date}
+            );
+                
+            return prevTrans;
+
+        })
+    }
+
     return (
         
         <form id="transaction-from" action="">
@@ -27,19 +53,6 @@ const TransactionForm = props => {
 
 }
 
-const handleClick = e => {
-    e.preventDefault();
-    submitFormData();
-}
 
-const submitFormData = () => {
-    const formData = new FormData(document.getElementById('transaction-from'));
-
-    let type = formData.get("type");
-    let business = formData.get("business");
-    let amount = formData.get("amount");
-    let date = formData.get("date");
-    console.log(type,business,amount,date);
-}
 
 export default TransactionForm;
