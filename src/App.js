@@ -19,15 +19,12 @@ export default function App() {
     .catch(error => error);
 
   },[]);
-  
-  return getMonthlyTransactions(totalTransactions);
+
+
+  return <Month transactions = {totalTransactions} />
 }
 
-const getMonthlyTransactions = (transactions) => {
-  let month = new Date(Date.now()).getMonth();
-  let monthlyTransactions = transactions.filter(
-    transaction => new Date(transaction["date"]).getMonth() === month
-  );
-
-  return <Month transactions={monthlyTransactions} month={month} />;
-}
+//TODO: 
+// add input to change months,
+// do math to show money spent
+// figure out how to add entries
