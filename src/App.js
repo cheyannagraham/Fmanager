@@ -22,6 +22,7 @@ const App = () => {
   },[]);
 
 
+
   return (
     console.log(transactions),
     <>
@@ -35,3 +36,4 @@ const App = () => {
 export default App;
 //TODO: 
 // figure out how to add entries
+//form submit only works once
