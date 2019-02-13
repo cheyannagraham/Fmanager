@@ -24,7 +24,6 @@ const App = () => {
 
 
   return (
-    console.log(transactions),
     <>
       <Month transactions = {transactions} />
       <TransactionForm setTransactions = {setTransactions} />

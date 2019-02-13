@@ -20,7 +20,7 @@ const TransactionTable = props => {
             : (total -= trans["amount"]);
           return (
             <tr key={index}>
-              <td>{trans["date"]}</td>
+              <td>{new Date(trans["date"]).toLocaleDateString()}</td>
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
