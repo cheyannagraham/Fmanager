@@ -22,31 +22,31 @@ const TransactionForm = props => {
   };
 
   return (
-    <form id="transaction-form" action="">
+    <form id="transaction-form" onSubmit = {handleClick}>
       <label>
         Date
-        <input name="date" type="date" />
+        <input name="date" type="date" required />
       </label>
 
       <label>
         Business
-        <input name="business" type="text" placeholder="Target" />
+        <input name="business" type="text" placeholder="Target" required />
       </label>
 
       <label>
         Amount
-        <input name="amount" type="number" placeholder="$37" />
+        <input name="amount" type="number" placeholder="$37" required />
       </label>
 
       <label>
         Type
-        <select name="type">
+        <select name="type" >
           <option value="income">Income</option>
           <option value="purchase">Purchase</option>
         </select>
       </label>
 
-      <button type="submit" onClick={handleClick}>
+      <button type="submit">
         Add
       </button>
     </form>
