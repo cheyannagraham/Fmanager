@@ -8,7 +8,8 @@ const TransactionForm = props => {
   };
 
   const submitFormData = () => {
-    const formData = new FormData(document.getElementById("transaction-form"));
+    const form = document.getElementById("transaction-form");
+    const formData = new FormData(form);
 
     const newTransaction = {
         type : formData.get("type"),
@@ -19,6 +20,7 @@ const TransactionForm = props => {
 
     props.setTransactions(prevTrans =>[...prevTrans,newTransaction]
     );
+    form.reset();
   };
 
   return (

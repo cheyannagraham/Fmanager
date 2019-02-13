@@ -30,6 +30,12 @@ const TransactionTable = props => {
       </tbody>
       <tfoot>
         <tr>
+          <td colSpan = '100%'>
+            <hr></hr>
+          </td>
+          </tr>
+
+          <tr>
           <th colSpan='2'>Total</th>
           <td colSpan='2'>{total}</td>
         </tr>
