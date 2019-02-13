@@ -16,8 +16,8 @@ const TransactionTable = props => {
       <tbody>
         {props.monthlyTransactions.map((trans, index) => {
           trans["type"] === "income"
-            ? (total += trans["amount"])
-            : (total -= trans["amount"]);
+            ? (total += Number( trans["amount"]))
+            : (total -= Number( trans["amount"]));
           return (
             <tr key={index}>
               <td>{new Date(trans["date"]).toLocaleDateString()}</td>
