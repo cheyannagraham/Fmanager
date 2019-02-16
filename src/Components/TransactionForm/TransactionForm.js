@@ -1,8 +1,7 @@
 import React from "react";
-import db from '../../fstore/fmanager';
+import db from "../../fstore/fmanager";
 
 const TransactionForm = props => {
-
   const handleClick = e => {
     e.preventDefault();
     submitFormData();
@@ -13,23 +12,39 @@ const TransactionForm = props => {
     const formData = new FormData(form);
 
     const newTransaction = {
-        type : formData.get("type"),
-        business : formData.get("business"),
-        amount : formData.get("amount"),
-        date : formData.get("date")
-    }
+      type: formData.get("type"),
+      business: formData.get("business"),
+      amount: formData.get("amount"),
+      date: formData.get("date")
+    };
 
-    db.collection('transactions').add(newTransaction)
-    .then(dref => console.log(`Success : ${dref}`))
-    .catch(err => console.log(`Error: ${err}`));
+    //add transaction to dbase
+    db.collection("transactions")
+      .add(newTransaction)
+      .then(dref => {
+        getDoc(dref.id);
+        //on success,add to display
+        console.log(`Success : ${dref.id}`);
+      })
+      .catch(err => console.log(`Error: ${err}`));
 
-    props.setTransactions(prevTrans =>[...prevTrans,newTransaction]
-    );
+    const getDoc = docRef => {
+      //retrieve transation from dbase
+      db.collection("transactions")
+        .doc(docRef)
+        .get()
+        .then(doc =>{
+          doc.exists && console.log(doc.data())
+        })
+        .catch(err => console.log("Error", err));
+    };
+
+    props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
     form.reset();
   };
 
   return (
-    <form id="transaction-form" onSubmit = {handleClick}>
+    <form id="transaction-form" onSubmit={handleClick}>
       <label>
         Date
         <input name="date" type="date" required />
@@ -47,15 +62,13 @@ const TransactionForm = props => {
 
       <label>
         Type
-        <select name="type" >
+        <select name="type">
           <option value="income">Income</option>
           <option value="purchase">Purchase</option>
         </select>
       </label>
 
-      <button type="submit">
-        Add
-      </button>
+      <button type="submit">Add</button>
     </form>
   );
 };
