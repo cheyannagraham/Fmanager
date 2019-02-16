@@ -1,4 +1,5 @@
 import React from "react";
+import db from '../../fstore/fmanager';
 
 const TransactionForm = props => {
 
@@ -17,6 +18,10 @@ const TransactionForm = props => {
         amount : formData.get("amount"),
         date : formData.get("date")
     }
+
+    db.collection('transactions').add(newTransaction)
+    .then(dref => console.log(`Success : ${dref}`))
+    .catch(err => console.log(`Error: ${err}`));
 
     props.setTransactions(prevTrans =>[...prevTrans,newTransaction]
     );
