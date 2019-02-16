@@ -20,7 +20,7 @@ const App = () => {
     .then(results => {
       let tr = [];
       results.forEach(doc => {
-        tr.push(doc.data())
+        tr.push(Object.assign(doc.data(),{"id":doc.id}))
       });
       setTransactions(tr);
     })

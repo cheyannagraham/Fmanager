@@ -1,4 +1,5 @@
 import React from "react";
+import db from '../../fstore/fmanager'
 
 const TransactionTable = props => {
   let total = 0;
@@ -19,11 +20,12 @@ const TransactionTable = props => {
             ? (total += Number( trans["amount"]))
             : (total -= Number( trans["amount"]));
           return (
-            <tr key={index}>
+            <tr key={trans["id"]}>
               <td>{new Date(trans["date"]).toLocaleDateString()}</td>
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
+              <td><button onClick={()=> deleteTransaction(trans['id'])}>X</button></td>
             </tr>
           );
         })}
@@ -44,4 +46,15 @@ const TransactionTable = props => {
   );
 };
 
+const deleteTransaction = id => {
+  console.log(id);
+  db.collection('transactions').doc(id).delete()
+  .then(() => {
+    console.log("Delete Successful!");
+  })
+  .catch(err => console.log(`Could Not Delete: ${err}`));
+}
+
 export default TransactionTable;
+
+// see whats returned from add transaction to see if id is
