@@ -22,25 +22,15 @@ const TransactionForm = props => {
     db.collection("transactions")
       .add(newTransaction)
       .then(dref => {
-        getDoc(dref.id);
-        //on success,add to display
+        //on success, display new transaction
+        props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
+        form.reset();
+
         console.log(`Success : ${dref.id}`);
       })
-      .catch(err => console.log(`Error: ${err}`));
+      .catch(err => console.log(`Error adding Transaction: ${err}`));
 
-    const getDoc = docRef => {
-      //retrieve transation from dbase
-      db.collection("transactions")
-        .doc(docRef)
-        .get()
-        .then(doc =>{
-          doc.exists && console.log(doc.data())
-        })
-        .catch(err => console.log("Error", err));
-    };
 
-    props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
-    form.reset();
   };
 
   return (
