@@ -1,8 +1,8 @@
 import React from "react";
-import db from '../../fstore/fmanager'
 
 const TransactionTable = props => {
   let total = 0;
+
   return (
     <table>
       <thead>
@@ -25,7 +25,7 @@ const TransactionTable = props => {
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
-              <td><button onClick={()=> deleteTransaction(trans['id'])}>X</button></td>
+              <td><button onClick={()=> props.deleteTransaction(trans['id'])}>X</button></td>
             </tr>
           );
         })}
@@ -43,17 +43,10 @@ const TransactionTable = props => {
         </tr>
       </tfoot>
     </table>
+
   );
 };
 
-const deleteTransaction = id => {
-  console.log(id);
-  db.collection('transactions').doc(id).delete()
-  .then(() => {
-    console.log("Delete Successful!");
-  })
-  .catch(err => console.log(`Could Not Delete: ${err}`));
-}
 
 export default TransactionTable;
 

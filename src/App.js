@@ -27,9 +27,11 @@ const App = () => {
     .catch(err => console.log(`Error getting documents ${err}`));
   }
 
+
   return (
+    console.log('ar',transactions),
     <>
-      <Month transactions = {transactions} />
+      <Month getTransactions = {getTransactions} transactions = {transactions} />
       <TransactionForm setTransactions = {setTransactions} />
     </>
   )
