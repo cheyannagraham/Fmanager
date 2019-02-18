@@ -12,12 +12,8 @@ const Month = props => {
   const deleteTransaction = id => {
     db.collection('transactions').doc(id).delete()
     .then(() => {
-      console.log("Delete Successful!");
-      let transactions = props.transactions;
-      let delInx = transactions.findIndex(trans => trans['id'] === id);
-
-      transactions.splice(delInx,1);      
-      props.getTransactions(transactions);
+      console.log("Delete Successful!");   
+      props.getTransactions();
     })
     .catch(err => console.log(`Could Not Delete: ${err}`));
 

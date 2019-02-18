@@ -15,7 +15,7 @@ const App = () => {
   //store in state.
   //use Month component to filer dats
 
-  const getTransactions = tran => {
+  const getTransactions = () => {
       db.collection("transactions")
         .get()
         .then(results => {
