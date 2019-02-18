@@ -3,6 +3,7 @@ import { MONTHS } from './Helper';
 import MonthSearch from './MonthSearch';
 import TransactionTable from './TransactionTable';
 import db from '../../fstore/fmanager'
+import OTB from '../OutstandingBalance/OutstandingBalance'
 
 const Month = props => {
   let currentMonth = new Date(Date.now()).getMonth();
@@ -28,7 +29,7 @@ const Month = props => {
       transaction => 
       new Date(transaction['date']).getMonth() === Number(month)
     );
-    return <TransactionTable monthlyTransactions={mt} deleteTransaction = {deleteTransaction} />;
+    return <TransactionTable transactions={mt} deleteTransaction = {deleteTransaction} />;
   };
 
   return (
@@ -36,6 +37,7 @@ const Month = props => {
         <MonthSearch setMonth={setMonth} month={month} />
         <h2>{MONTHS[month]}</h2>
         {getMonthlyTransactions()}
+        <OTB allTrans = {props.transactions} month = {month} />
       </>
   );
 }

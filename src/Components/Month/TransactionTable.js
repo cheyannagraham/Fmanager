@@ -15,7 +15,7 @@ const TransactionTable = props => {
       </thead>
 
       <tbody>
-        {props.monthlyTransactions.map((trans, index) => {
+        {props.transactions.map((trans, index) => {
           trans["type"] === "income"
             ? (total += Number( trans["amount"]))
             : (total -= Number( trans["amount"]));
