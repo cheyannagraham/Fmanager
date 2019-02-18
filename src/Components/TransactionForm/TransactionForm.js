@@ -22,15 +22,14 @@ const TransactionForm = props => {
     db.collection("transactions")
       .add(newTransaction)
       .then(dref => {
+        //add id to transaction object
+        newTransaction['id'] = dref.id;
+        
         //on success, display new transaction
         props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
         form.reset();
-
-        console.log(`Success : ${dref.id}`);
       })
       .catch(err => console.log(`Error adding Transaction: ${err}`));
-
-
   };
 
   return (

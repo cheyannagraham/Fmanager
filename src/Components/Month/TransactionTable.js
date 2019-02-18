@@ -25,7 +25,7 @@ const TransactionTable = props => {
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
-              <td><button onClick={()=> props.deleteTransaction(trans['id'])}>X</button></td>
+              <td><button onClick={()=>{props.deleteTransaction(trans['id'])}}>X</button></td>
             </tr>
           );
         })}
@@ -49,5 +49,3 @@ const TransactionTable = props => {
 
 
 export default TransactionTable;
-
-// see whats returned from add transaction to see if id is

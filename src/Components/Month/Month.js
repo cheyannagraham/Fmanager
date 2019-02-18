@@ -8,6 +8,20 @@ const Month = props => {
   let currentMonth = new Date(Date.now()).getMonth();
   const [month, setMonth] = useState(currentMonth);
 
+  const deleteTransaction = id => {
+    db.collection('transactions').doc(id).delete()
+    .then(() => {
+      console.log("Delete Successful!");
+      let transactions = props.transactions;
+      let delInx = transactions.findIndex(trans => trans['id'] === id);
+
+      transactions.splice(delInx,1);      
+      props.getTransactions(transactions);
+    })
+    .catch(err => console.log(`Could Not Delete: ${err}`));
+
+  }
+
   const getMonthlyTransactions = () => {
 
     let mt = props.transactions.filter(
@@ -17,23 +31,7 @@ const Month = props => {
     return <TransactionTable monthlyTransactions={mt} deleteTransaction = {deleteTransaction} />;
   };
 
-  const deleteTransaction = id => {
-    db.collection('transactions').doc(id).delete()
-    .then(() => {
-      console.log("Delete Successful!");
-      // let transactions = props.transactions;
-      // let delInx = transactions.findIndex(trans => trans['id'] === id);
-
-      // transactions.splice(delInx,1);
-      
-      //Not working
-      props.getTransactions();
-    })
-    .catch(err => console.log(`Could Not Delete: ${err}`));
-  }
-
   return (
-    console.log(props.transactions,'m'),
       <>
         <MonthSearch setMonth={setMonth} month={month} />
         <h2>{MONTHS[month]}</h2>
