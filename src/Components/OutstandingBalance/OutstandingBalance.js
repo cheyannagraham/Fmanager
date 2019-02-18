@@ -12,7 +12,7 @@ const OutstandingBalance = props => {
 
     return (
         <>
-            <button onClick = {handleClick}>Show OTB</button>
+            <button onClick = {handleClick}>{showOTB ? 'Hide BTD':'Show BTD'}</button>
             {showOTB && <TransactionTable transactions = {transactionsToDate} />}
         </>
     )
