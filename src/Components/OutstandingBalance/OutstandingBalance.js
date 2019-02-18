@@ -7,9 +7,7 @@ const OutstandingBalance = props => {
 
 
     const handleClick = () => {
-        console.log(props.month)
         setShowOTB(state => !state);
-
     }
 
     return (

@@ -25,7 +25,9 @@ const TransactionTable = props => {
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
-              <td><button onClick={()=>{props.deleteTransaction(trans['id'])}}>X</button></td>
+              {props.deleteTransaction && 
+              <td><button onClick={()=>{props.deleteTransaction(trans['id'])}}>X</button></td>}
+              
             </tr>
           );
         })}
