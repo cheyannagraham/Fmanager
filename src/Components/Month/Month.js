@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MONTHS } from './Helper';
 import MonthSearch from './MonthSearch';
-import TransactionTable from './TransactionTable';
+import TransactionTable from '../Transactions/TransactionTable';
 import db from '../../fstore/fmanager'
 import OTB from '../OutstandingBalance/OutstandingBalance'
 

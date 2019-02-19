@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Month from "./Components/Month/Month.js";
-import TransactionForm from "./Components/TransactionForm/TransactionForm.js";
+import TransactionForm from "./Components/Transactions/TransactionForm.js";
 import db from "./fstore/fmanager";
 
 const App = () => {
@@ -37,4 +37,4 @@ const App = () => {
 };
 
 export default App;
-//TODO: add overlapping month balance
+//TODO: see about caching firebase requests

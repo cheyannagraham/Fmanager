@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import TransactionTable from '../Month/TransactionTable'
+import TransactionTable from '../Transactions/TransactionTable'
 
 const OutstandingBalance = props => {
     const [showOTB,setShowOTB] = useState(false);
