@@ -3,6 +3,7 @@ import db from "../../fstore/fmanager";
 
 const TransactionForm = props => {
   const handleClick = e => {
+    console.log('handleClick');
     e.preventDefault();
     submitFormData();
   };
@@ -10,13 +11,30 @@ const TransactionForm = props => {
   const submitFormData = () => {
     const form = document.getElementById("transaction-form");
     const formData = new FormData(form);
+    let newTransaction;
+    
+    //check for get() method on formData
+    if(formData.get){
+      newTransaction = {
+        type: formData.get("type"),
+        business: formData.get("business"),
+        amount: formData.get("amount"),
+        date: formData.get("date")
+      };
+    }
 
-    const newTransaction = {
-      type: formData.get("type"),
-      business: formData.get("business"),
-      amount: formData.get("amount"),
-      date: formData.get("date")
-    };
+    else {
+      //IE EDGE
+      console.log('no FormData.get() method');
+      newTransaction = {
+        type: document.getElementById('transaction-type').value,
+        business: document.getElementById('transaction-business').value,
+        amount: document.getElementById('transaction-amount').value,
+        date: document.getElementById('transaction-date').value
+      };
+    }
+
+    
 
     //add transaction to dbase
     db.collection("transactions")
@@ -36,22 +54,22 @@ const TransactionForm = props => {
     <form id="transaction-form" onSubmit={handleClick}>
       <label>
         Date
-        <input name="date" type="date" required />
+        <input id="transaction-date" name="date" type="date" required />
       </label>
 
       <label>
         Business
-        <input name="business" type="text" placeholder="Target" required />
+        <input id="transaction-business" name="business" type="text" placeholder="Target" required />
       </label>
 
       <label>
         Amount
-        <input name="amount" type="number" placeholder="$37" required />
+        <input id="transaction-amount" name="amount" type="number" placeholder="$37" required />
       </label>
 
       <label>
         Type
-        <select name="type">
+        <select id="transaction-type" name="type">
           <option value="income">Income</option>
           <option value="purchase">Purchase</option>
         </select>
