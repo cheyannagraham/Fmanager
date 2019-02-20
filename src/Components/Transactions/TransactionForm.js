@@ -3,10 +3,28 @@ import db from "../../fstore/fmanager";
 
 const TransactionForm = props => {
   const handleClick = e => {
-    console.log('handleClick');
     e.preventDefault();
-    submitFormData();
+    if(validateDate())
+    {
+      submitFormData();
+    } else {
+      alert('invalid date');
+    }
   };
+
+  const validateDate = () => {
+    const userInput = document.getElementById('transaction-date').value;
+    const date = new Date(userInput);
+    const minDate = new Date('01-01-1900');
+    const maxDate = new Date('12-31-2050');
+    console.log(date < maxDate, date > minDate);
+
+    if(date < maxDate && date > minDate) {
+      return true;
+    }
+    return false;
+
+  }
 
   const submitFormData = () => {
     const form = document.getElementById("transaction-form");
@@ -33,7 +51,6 @@ const TransactionForm = props => {
         date: document.getElementById('transaction-date').value
       };
     }
-
     
 
     //add transaction to dbase
@@ -54,7 +71,7 @@ const TransactionForm = props => {
     <form id="transaction-form" onSubmit={handleClick}>
       <label>
         Date
-        <input id="transaction-date" name="date" type="date" required />
+        <input id="transaction-date" name="date" type="date" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"/>
       </label>
 
       <label>
