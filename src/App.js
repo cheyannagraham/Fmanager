@@ -38,3 +38,7 @@ const App = () => {
 
 export default App;
 //TODO: see about caching firebase requests
+//add better error messages for validation
+//add better validation for mal scripts
+//Maybe add a delete all? 
+//signin features? 

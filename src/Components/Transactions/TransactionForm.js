@@ -15,9 +15,8 @@ const TransactionForm = props => {
   const validateDate = () => {
     const userInput = document.getElementById('transaction-date').value;
     const date = new Date(userInput);
-    const minDate = new Date('01-01-1900');
-    const maxDate = new Date('12-31-2050');
-    console.log(date < maxDate, date > minDate);
+    const minDate = new Date('01/01/1900');
+    const maxDate = new Date('12/31/2050');
 
     if(date < maxDate && date > minDate) {
       return true;
