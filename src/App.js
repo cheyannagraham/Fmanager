@@ -44,5 +44,9 @@ export default App;
 //signin features? 
 //css pseudo classes for valitation
 //popup box over input to show how data should be entered
-//sort transactions on display
 //transactiontable renders even if props don't chanege(month rerenders)
+//consider if anything needs to be done regarding reflecting changes when data is added on different devices
+//add features to show year wehn displaying BTD
+//testing
+//incorrect date display edge?
+//store credentials

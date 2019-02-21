@@ -80,7 +80,7 @@ const TransactionForm = props => {
 
       <label>
         Amount
-        <input id="transaction-amount" name="amount" type="number" placeholder="$37" required />
+        <input id="transaction-amount" name="amount" type="number" placeholder="$37" required step="0.01"/>
       </label>
 
       <label>
