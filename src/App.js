@@ -52,3 +52,4 @@ export default App;
 //store credentials
 //allow to edit transaction w/o deletion and reEntry
 //BUG: wrong Date Entry
+//create production build for basic use

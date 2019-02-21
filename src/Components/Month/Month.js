@@ -6,7 +6,7 @@ import db from '../../fstore/fmanager'
 import OTB from '../OutstandingBalance/OutstandingBalance'
 
 const Month = props => {
-  let currentMonth = new Date(Date.now()).getMonth();
+  let currentMonth = new Date().getMonth();
   const [month, setMonth] = useState(currentMonth);
 
   const deleteTransaction = id => {

@@ -14,7 +14,9 @@ const TransactionForm = props => {
 
   const validateDate = () => {
     const userInput = document.getElementById('transaction-date').value;
+    console.log(userInput,'uidate');
     const date = new Date(userInput);
+    console.log(date,'conv');
     console.log(date.getMonth(),'month');
     console.log(date.getDate(),'date');
     const minDate = new Date('01/01/1900');
