@@ -4,9 +4,11 @@ import MonthSearch from './MonthSearch';
 import TransactionTable from '../Transactions/TransactionTable';
 import db from '../../fstore/fmanager'
 import OTB from '../OutstandingBalance/OutstandingBalance'
+import moment from 'moment';
 
 const Month = props => {
   let currentMonth = new Date().getMonth();
+  console.log(moment().format());
   const [month, setMonth] = useState(currentMonth);
 
   const deleteTransaction = id => {
