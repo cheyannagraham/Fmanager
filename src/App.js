@@ -50,3 +50,5 @@ export default App;
 //testing
 //incorrect date display edge?
 //store credentials
+//allow to edit transaction w/o deletion and reEntry
+//BUG: wrong Date Entry

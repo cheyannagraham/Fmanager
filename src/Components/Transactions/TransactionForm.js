@@ -15,6 +15,8 @@ const TransactionForm = props => {
   const validateDate = () => {
     const userInput = document.getElementById('transaction-date').value;
     const date = new Date(userInput);
+    console.log(date.getMonth(),'month');
+    console.log(date.getDate(),'date');
     const minDate = new Date('01/01/1900');
     const maxDate = new Date('12/31/2050');
 
@@ -47,7 +49,7 @@ const TransactionForm = props => {
         type: document.getElementById('transaction-type').value,
         business: document.getElementById('transaction-business').value,
         amount: document.getElementById('transaction-amount').value,
-        date: document.getElementById('transaction-date').value
+        date: new Date(document.getElementById('transaction-date').value).toLocaleDateString('en',{month:'2-digit',day:'2-digit',year:'numeric'})
       };
     }
     
@@ -62,6 +64,7 @@ const TransactionForm = props => {
         //on success, display new transaction
         props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
         form.reset();
+        document.getElementById('transaction-date').focus();
       })
       .catch(err => console.log(`Error adding Transaction: ${err}`));
   };
