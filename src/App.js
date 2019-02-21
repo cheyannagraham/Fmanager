@@ -42,3 +42,5 @@ export default App;
 //add better validation for mal scripts
 //Maybe add a delete all? 
 //signin features? 
+//css pseudo classes for valitation
+//popup box over input to show how data should be entered

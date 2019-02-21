@@ -70,7 +70,7 @@ const TransactionForm = props => {
     <form id="transaction-form" onSubmit={handleClick}>
       <label>
         Date
-        <input id="transaction-date" name="date" type="date" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"/>
+        <input id="transaction-date" name="date" type="date" placeholder="mm/dd/yyyy" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"/>
       </label>
 
       <label>
