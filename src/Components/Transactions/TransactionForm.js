@@ -36,7 +36,7 @@ const TransactionForm = props => {
         type: formData.get("type"),
         business: formData.get("business"),
         amount: formData.get("amount"),
-        date: formData.get("date")
+        date: new Date(formData.get("date")).toLocaleDateString('en',{month:'2-digit',day:'2-digit',year:'numeric'})
       };
     }
 

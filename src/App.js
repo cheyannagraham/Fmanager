@@ -44,3 +44,4 @@ export default App;
 //signin features? 
 //css pseudo classes for valitation
 //popup box over input to show how data should be entered
+//sort transactions on display
