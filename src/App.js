@@ -45,3 +45,4 @@ export default App;
 //css pseudo classes for valitation
 //popup box over input to show how data should be entered
 //sort transactions on display
+//transactiontable renders even if props don't chanege(month rerenders)

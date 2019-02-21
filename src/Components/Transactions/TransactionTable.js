@@ -2,8 +2,15 @@ import React from "react";
 
 const TransactionTable = props => {
   let total = 0;
+ 
+  const sortTransactions = () => {
+    props.transactions.sort((prev,next) => {
+      return new Date(next.date) - new Date(prev.date);
+    });
+  }
 
   return (
+    sortTransactions(),
     <table>
       <thead>
         <tr>
@@ -15,7 +22,7 @@ const TransactionTable = props => {
       </thead>
 
       <tbody>
-        {props.transactions.map((trans, index) => {
+        {props.transactions.map((trans) => {
           trans["type"] === "income"
             ? (total += Number( trans["amount"]))
             : (total -= Number( trans["amount"]));
