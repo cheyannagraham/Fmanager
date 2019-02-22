@@ -8,7 +8,7 @@ const App = () => {
   let [transactions, setTransactions] = useState([
     {
       id : '23',
-      date : '2019-12-22',
+      date : '2019-02-22',
       amount : 22,
       type : 'income',
       business : 'me'
