@@ -1,7 +1,7 @@
 import React from "react";
 import db from "../../fstore/fmanager";
 import moment from "moment";
-import { DATEF } from "../Month/Helper";
+import { DATEF } from "../Helpers/Helper";
 
 const TransactionForm = props => {
   const handleClick = e => {
@@ -12,6 +12,7 @@ const TransactionForm = props => {
   const validateDate = () => {
     const userInput = document.getElementById("transaction-date").value;
     const date = moment(userInput, DATEF).format('YYYY-MM-DD');
+    console.log(date)
 
     const minDate = moment("1900-01-01");
     const maxDate = moment("2050-12-31");

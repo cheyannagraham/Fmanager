@@ -8,7 +8,7 @@ const App = () => {
   let [transactions, setTransactions] = useState(['No Transactions']);
 
   useEffect(() => {
-    getTransactions();
+    // getTransactions();
   }, []);
 
   //get all transactions at once.

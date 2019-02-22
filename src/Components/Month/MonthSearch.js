@@ -1,6 +1,6 @@
 //dipslay input to search months
 import React from 'react'
-import {MONTHS} from './Helper'
+import {MONTHS} from '../Helpers/Helper'
 
 
 const MonthSearch = props => {
@@ -11,8 +11,8 @@ const MonthSearch = props => {
 
     return (
         <select value = {props.month} onChange = {handleClick}>
-            {MONTHS.map(mon => (
-                <option key={mon} value={MONTHS.indexOf(mon)}>{mon.toUpperCase()}</option>))}            
+            {MONTHS.map(month => (
+                <option key={month} value={MONTHS.indexOf(month) + 1}>{month.toUpperCase()}</option>))}            
         </select>
         
     )
