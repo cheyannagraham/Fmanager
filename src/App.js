@@ -8,7 +8,7 @@ const App = () => {
   let [transactions, setTransactions] = useState([
     {
       id : '23',
-      date : '2019-02-22',
+      date : '2019-12-22',
       amount : 22,
       type : 'income',
       business : 'me'
@@ -16,7 +16,7 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    getTransactions();
+    // getTransactions();
   }, []);
 
   //get all transactions at once.
@@ -61,3 +61,4 @@ export default App;
 //allow to edit transaction w/o deletion and reEntry
 //BUG: wrong Date Entry
 //create production build for basic use
+//fix OTB moment

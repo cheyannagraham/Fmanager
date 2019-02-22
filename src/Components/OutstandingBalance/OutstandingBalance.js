@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const OutstandingBalance = props => {
     const [showOTB,setShowOTB] = useState(false);
-    const transactionsToDate = props.allTrans.filter(tr => moment(tr['date']).format('MM') <= props.month);
+    const transactionsToDate = props.allTrans.filter(tr => Number(moment(tr['date']).format('MM')) <= Number(props.month));
 
 
     const handleClick = () => {
