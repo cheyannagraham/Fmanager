@@ -8,15 +8,14 @@ import moment from 'moment';
 const Month = props => {
   let currentMonth = moment().format('M');
   const [month, setMonth] = useState(currentMonth);
-  console.log(moment().format('M'));
 
   const deleteTransaction = id => {
     db.collection('transactions').doc(id).delete()
     .then(() => {
-      console.log("Delete Successful!");   
+      alert("Delete Successful!");   
       props.getTransactions();
     })
-    .catch(err => console.log(`Could Not Delete: ${err}`));
+    .catch(err => alert(`Could Not Delete: ${err}`));
 
   }
 

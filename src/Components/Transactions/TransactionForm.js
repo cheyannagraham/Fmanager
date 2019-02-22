@@ -11,14 +11,13 @@ const TransactionForm = props => {
 
   const validateDate = () => {
     const userInput = document.getElementById("transaction-date").value;
-    const date = moment(userInput, DATEF).format('YYYY-MM-DD');
-    console.log(date)
+    const date = moment(userInput, DATEF);
 
     const minDate = moment("1900-01-01");
     const maxDate = moment("2050-12-31");
 
     if (date < maxDate && date > minDate) {
-      submitFormData(date);
+      submitFormData(date.format('YYYY-MM-DD'));
     } else {
       alert("invalid date");
     }
