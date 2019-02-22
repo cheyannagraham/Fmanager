@@ -33,7 +33,7 @@ const TransactionForm = props => {
       newTransaction = {
         type: formData.get("type"),
         business: formData.get("business"),
-        amount: formData.get("amount"),
+        amount: Number(formData.get("amount")).toFixed(2),
         date: date
       };
     } else {

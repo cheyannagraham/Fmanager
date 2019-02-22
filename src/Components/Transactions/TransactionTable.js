@@ -31,7 +31,7 @@ const TransactionTable = props => {
             <tr key={trans["id"]}>
               <td>{moment(trans["date"]).format('MM-DD-YY')}</td>
               <td>{trans["business"]}</td>
-              <td>{trans["amount"]}</td>
+              <td><span>$</span>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
               {props.deleteTransaction && 
               <td><button onClick={()=>{props.deleteTransaction(trans['id'])}}>X</button></td>}
