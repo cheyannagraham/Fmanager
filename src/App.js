@@ -16,7 +16,7 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    // getTransactions();
+    getTransactions();
   }, []);
 
   //get all transactions at once.

@@ -29,7 +29,7 @@ const TransactionTable = props => {
             : (total -= Number( trans["amount"]));
           return (
             <tr key={trans["id"]}>
-              <td>{trans["date"]}</td>
+              <td>{moment(trans["date"]).format('MM-DD-YY')}</td>
               <td>{trans["business"]}</td>
               <td>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
