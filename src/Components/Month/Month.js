@@ -7,8 +7,7 @@ import OTB from '../OutstandingBalance/OutstandingBalance'
 import moment from 'moment';
 
 const Month = props => {
-  let currentMonth = new Date().getMonth();
-  console.log(moment().format());
+  let currentMonth = moment().format('MM');
   const [month, setMonth] = useState(currentMonth);
 
   const deleteTransaction = id => {
@@ -25,7 +24,7 @@ const Month = props => {
 
     let mt = props.transactions.filter(
       transaction => 
-      new Date(transaction['date']).getMonth() === Number(month)
+      moment(transaction['date']).format('MM') === Number(month)
     );
     return <TransactionTable transactions={mt} deleteTransaction = {deleteTransaction} />;
   };

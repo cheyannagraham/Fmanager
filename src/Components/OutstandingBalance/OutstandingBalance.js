@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import TransactionTable from '../Transactions/TransactionTable'
+import moment from 'moment';
 
 const OutstandingBalance = props => {
     const [showOTB,setShowOTB] = useState(false);
-    const transactionsToDate = props.allTrans.filter(tr => new Date(tr['date']).getMonth() <= props.month);
+    const transactionsToDate = props.allTrans.filter(tr => moment(tr['date']).format('MM') <= props.month);
 
 
     const handleClick = () => {

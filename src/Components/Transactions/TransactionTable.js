@@ -1,11 +1,12 @@
 import React from "react";
+import moment from 'moment';
 
 const TransactionTable = props => {
   let total = 0;
  
   const sortTransactions = () => {
     props.transactions.sort((prev,next) => {
-      return new Date(next.date) - new Date(prev.date);
+      return moment(next.date) - moment(prev.date);
     });
   }
 
@@ -14,7 +15,7 @@ const TransactionTable = props => {
     <table>
       <thead>
         <tr>
-          <th>Date</th>
+          <th>Date (Format here only)</th>
           <th>Business</th>
           <th>Amount</th>
           <th>Type</th>

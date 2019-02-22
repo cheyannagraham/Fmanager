@@ -1,72 +1,63 @@
 import React from "react";
 import db from "../../fstore/fmanager";
+import moment from "moment";
+import { DATEF } from "../Month/Helper";
 
 const TransactionForm = props => {
   const handleClick = e => {
     e.preventDefault();
-    if(validateDate())
-    {
-      submitFormData();
-    } else {
-      alert('invalid date');
-    }
+    validateDate();
   };
 
   const validateDate = () => {
-    const userInput = document.getElementById('transaction-date').value;
-    console.log(userInput,'uidate');
-    const date = new Date(userInput);
-    console.log(date,'conv');
-    console.log(date.getMonth(),'month');
-    console.log(date.getDate(),'date');
-    const minDate = new Date('01/01/1900');
-    const maxDate = new Date('12/31/2050');
+    const userInput = document.getElementById("transaction-date").value;
+    const date = moment(userInput, DATEF).format('YYYY-MM-DD');
 
-    if(date < maxDate && date > minDate) {
-      return true;
+    const minDate = moment("1900-01-01");
+    const maxDate = moment("2050-12-31");
+
+    if (date < maxDate && date > minDate) {
+      submitFormData(date);
+    } else {
+      alert("invalid date");
     }
-    return false;
+  };
 
-  }
-
-  const submitFormData = () => {
+  const submitFormData = (date) => {
     const form = document.getElementById("transaction-form");
     const formData = new FormData(form);
     let newTransaction;
-    
+
     //check for get() method on formData
-    if(formData.get){
+    if (formData.get) {
       newTransaction = {
         type: formData.get("type"),
         business: formData.get("business"),
         amount: formData.get("amount"),
-        date: new Date(formData.get("date")).toLocaleDateString('en',{month:'2-digit',day:'2-digit',year:'numeric'})
+        date: date
       };
-    }
-
-    else {
+    } else {
       //IE EDGE
-      console.log('no FormData.get() method');
+      console.log("no FormData.get() method");
       newTransaction = {
-        type: document.getElementById('transaction-type').value,
-        business: document.getElementById('transaction-business').value,
-        amount: document.getElementById('transaction-amount').value,
-        date: new Date(document.getElementById('transaction-date').value).toLocaleDateString('en',{month:'2-digit',day:'2-digit',year:'numeric'})
+        type: document.getElementById("transaction-type").value,
+        business: document.getElementById("transaction-business").value,
+        amount: document.getElementById("transaction-amount").value,
+        date: date
       };
     }
-    
 
     //add transaction to dbase
     db.collection("transactions")
       .add(newTransaction)
       .then(dref => {
         //add id to transaction object
-        newTransaction['id'] = dref.id;
-        
+        newTransaction["id"] = dref.id;
+
         //on success, display new transaction
         props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
         form.reset();
-        document.getElementById('transaction-date').focus();
+        document.getElementById("transaction-date").focus();
       })
       .catch(err => console.log(`Error adding Transaction: ${err}`));
   };
@@ -75,17 +66,37 @@ const TransactionForm = props => {
     <form id="transaction-form" onSubmit={handleClick}>
       <label>
         Date
-        <input id="transaction-date" name="date" type="date" placeholder="mm/dd/yyyy" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"/>
+        <input
+          id="transaction-date"
+          name="date"
+          type="date"
+          placeholder="mm/dd/yyyy"
+          required
+          pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"
+        />
       </label>
 
       <label>
         Business
-        <input id="transaction-business" name="business" type="text" placeholder="Target" required />
+        <input
+          id="transaction-business"
+          name="business"
+          type="text"
+          placeholder="Target"
+          required
+        />
       </label>
 
       <label>
         Amount
-        <input id="transaction-amount" name="amount" type="number" placeholder="$37" required step="0.01"/>
+        <input
+          id="transaction-amount"
+          name="amount"
+          type="number"
+          placeholder="$37"
+          required
+          step="0.01"
+        />
       </label>
 
       <label>
