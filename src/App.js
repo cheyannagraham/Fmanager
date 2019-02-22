@@ -5,7 +5,15 @@ import TransactionForm from "./Components/Transactions/TransactionForm.js";
 import db from "./fstore/fmanager";
 
 const App = () => {
-  let [transactions, setTransactions] = useState(['No Transactions']);
+  let [transactions, setTransactions] = useState([
+    {
+      id : '23',
+      date : '2019-02-22',
+      amount : 22,
+      type : 'income',
+      business : 'me'
+    }
+  ]);
 
   useEffect(() => {
     // getTransactions();
