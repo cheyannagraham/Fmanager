@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MONTHS } from '../Helpers/Helper';
 import MonthSearch from './MonthSearch';
 import TransactionTable from '../Transactions/TransactionTable';
 import db from '../../fstore/fmanager'
@@ -33,7 +32,7 @@ const Month = props => {
   return (
       <>
         <MonthSearch setMonth={setMonth} month={month} />
-        <h2>{month}</h2>
+        <h2>{moment(month,'MM').format('MMMM')}</h2>
         {getMonthlyTransactions()}
         <OTB allTrans = {props.transactions} month = {month} />
       </>
