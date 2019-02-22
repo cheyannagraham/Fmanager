@@ -55,6 +55,7 @@ const TransactionForm = props => {
         newTransaction["id"] = dref.id;
 
         //on success, display new transaction
+        alert('Record Added!')
         props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
         form.reset();
         document.getElementById("transaction-date").focus();
