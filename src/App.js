@@ -16,7 +16,7 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    // getTransactions();
+    getTransactions();
   }, []);
 
   //get all transactions at once.
@@ -33,7 +33,7 @@ const App = () => {
           });
           setTransactions(tr);
         })
-        .catch(err => console.log(`Error getting documents ${err}`));
+        .catch(err => alert(`Error getting documents ${err}`));
   };
 
   return (

@@ -38,7 +38,7 @@ const TransactionForm = props => {
       };
     } else {
       //IE EDGE
-      console.log("no FormData.get() method");
+      alert("no FormData.get() method");
       newTransaction = {
         type: document.getElementById("transaction-type").value,
         business: document.getElementById("transaction-business").value,
@@ -59,7 +59,7 @@ const TransactionForm = props => {
         form.reset();
         document.getElementById("transaction-date").focus();
       })
-      .catch(err => console.log(`Error adding Transaction: ${err}`));
+      .catch(err => alert(`Error adding Transaction: ${err}`));
   };
 
   return (
