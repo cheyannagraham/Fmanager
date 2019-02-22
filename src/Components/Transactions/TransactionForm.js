@@ -25,27 +25,13 @@ const TransactionForm = props => {
 
   const submitFormData = (date) => {
     const form = document.getElementById("transaction-form");
-    const formData = new FormData(form);
-    let newTransaction;
 
-    //check for get() method on formData
-    if (formData.get) {
-      newTransaction = {
-        type: formData.get("type"),
-        business: formData.get("business"),
-        amount: Number(formData.get("amount")).toFixed(2),
-        date: date
-      };
-    } else {
-      //IE EDGE
-      alert("no FormData.get() method");
-      newTransaction = {
+      const newTransaction = {
         type: document.getElementById("transaction-type").value,
         business: document.getElementById("transaction-business").value,
-        amount: document.getElementById("transaction-amount").value,
+        amount: Number(document.getElementById("transaction-amount").value).toFixed(2),
         date: date
       };
-    }
 
     //add transaction to dbase
     db.collection("transactions")
