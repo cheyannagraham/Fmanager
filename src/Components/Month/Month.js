@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import MonthSearch from './MonthSearch';
 import TransactionTable from '../Transactions/TransactionTable';
-import db from '../../fstore/fmanager'
 import OTB from '../OutstandingBalance/OutstandingBalance'
 import moment from 'moment';
 
@@ -9,23 +8,11 @@ const Month = props => {
   let currentMonth = moment().format('M');
   const [month, setMonth] = useState(currentMonth);
 
-  const deleteTransaction = id => {
-    db.collection('transactions').doc(id).delete()
-    .then(() => {
-      alert("Delete Successful!");   
-      props.getTransactions();
-    })
-    .catch(err => alert(`Could Not Delete: ${err}`));
-
-  }
-
-  const getMonthlyTransactions = () => {
-   
+  const getMonthlyTransactions = () => {   
     let mt = props.transactions.filter(
       transaction => moment(transaction['date']).format('M') === month
     )
-
-    return <TransactionTable transactions={mt} deleteTransaction = {deleteTransaction} />;
+    return <TransactionTable transactions={mt} setTransactions = {props.setTransactions} />;
   };
 
   return (

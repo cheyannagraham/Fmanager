@@ -1,5 +1,7 @@
 import React from "react";
 import moment from 'moment';
+import {deleteTransaction} from '../Helpers/DB';
+
 
 const TransactionTable = props => {
   let total = 0;
@@ -8,6 +10,17 @@ const TransactionTable = props => {
     props.transactions.sort((prev,next) => {
       return moment(next.date) - moment(prev.date);
     });
+  }
+
+  const handleDelete = id => {
+    deleteTransaction(id);
+    //remove from local to prevent another read from firestore
+    const trans = props.transactions;
+    trans.splice(
+      trans.findIndex( trs => trs.id === id),      
+    1);
+
+    props.setTransactions(trans)
   }
 
   return (
@@ -33,8 +46,7 @@ const TransactionTable = props => {
               <td>{trans["business"]}</td>
               <td><span>$</span>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
-              {props.deleteTransaction && 
-              <td><button onClick={()=>{props.deleteTransaction(trans['id'])}}>X</button></td>}
+              {props.setTransactions && <td><button onClick={() => handleDelete(trans['id'])}>X</button></td>}
               
             </tr>
           );

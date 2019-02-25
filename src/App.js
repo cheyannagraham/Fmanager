@@ -21,26 +21,9 @@ const App = () => {
     
   }, []);
 
-  //get all transactions at once.
-  //store in state.
-  //use Month component to filer dats
-
-  // const getTransactions = () => {
-  //     db.collection("transactions")
-  //       .get()
-  //       .then(results => {
-  //         let tr = [];
-  //         results.forEach(doc => {
-  //           tr.push(Object.assign(doc.data(), { id: doc.id }));
-  //         });
-  //         setTransactions(tr);
-  //       })
-  //       .catch(err => alert(`Error getting documents ${err}`));
-  // };
-
   return (
     <>
-      <Month getTransactions={getTransactions} transactions={transactions} />
+      <Month setTransactions={setTransactions} transactions={transactions} />
       <TransactionForm setTransactions={setTransactions} />
     </>
   );
