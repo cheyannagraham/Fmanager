@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Month from "./Components/Month/Month.js";
 import TransactionForm from "./Components/Transactions/TransactionForm.js";
-import db from "./fstore/fmanager";
+import {getTransactions} from './Components/Helpers/DB';
 
 const App = () => {
   let [transactions, setTransactions] = useState([
@@ -16,25 +16,27 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    getTransactions();
+    getTransactions()
+    .then(r => setTransactions(r));
+    
   }, []);
 
   //get all transactions at once.
   //store in state.
   //use Month component to filer dats
 
-  const getTransactions = () => {
-      db.collection("transactions")
-        .get()
-        .then(results => {
-          let tr = [];
-          results.forEach(doc => {
-            tr.push(Object.assign(doc.data(), { id: doc.id }));
-          });
-          setTransactions(tr);
-        })
-        .catch(err => alert(`Error getting documents ${err}`));
-  };
+  // const getTransactions = () => {
+  //     db.collection("transactions")
+  //       .get()
+  //       .then(results => {
+  //         let tr = [];
+  //         results.forEach(doc => {
+  //           tr.push(Object.assign(doc.data(), { id: doc.id }));
+  //         });
+  //         setTransactions(tr);
+  //       })
+  //       .catch(err => alert(`Error getting documents ${err}`));
+  // };
 
   return (
     <>
@@ -62,3 +64,7 @@ export default App;
 //BUG: wrong Date Entry
 //create production build for basic use
 //fix OTB moment
+
+//================================
+//REFACTOR
+//DB methods
