@@ -51,3 +51,4 @@ export default App;
 //================================
 //REFACTOR
 //DB methods
+//return thens & catch errors to app

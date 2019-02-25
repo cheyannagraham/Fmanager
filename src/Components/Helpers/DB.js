@@ -1,7 +1,6 @@
 import db from '../../fstore/fmanager';
 
-//get all transactions from database
-  
+//Retrieve all transactions  
 export const getTransactions = () => {
     return db.collection("transactions")
       .get()
@@ -15,7 +14,7 @@ export const getTransactions = () => {
       .catch(err => alert(`Error getting documents ${err}`));
 };
 
-
+//Delete Transaction
 export const deleteTransaction = id => {
   db.collection('transactions').doc(id).delete()
   .then(() => {
@@ -24,3 +23,19 @@ export const deleteTransaction = id => {
   .catch(err => alert(`Could Not Delete: ${err}`));
 
 }
+
+ //Add Transaction
+export const addTransaction = trans => {
+  return db.collection("transactions")
+  .add(trans)
+  .then(dref => {
+    //add id to transaction object
+    trans["id"] = dref.id;
+
+    //on success, display new transaction
+    alert('Record Added!')
+    return trans;
+
+  })
+  .catch(err => `Error adding Transaction: ${err}`);
+}    

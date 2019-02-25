@@ -1,5 +1,5 @@
 import React from "react";
-import db from "../../fstore/fmanager";
+import {addTransaction} from '../Helpers/DB';
 import moment from "moment";
 import { DATEF } from "../Helpers/Helper";
 
@@ -33,20 +33,28 @@ const TransactionForm = props => {
         date: date
       };
 
-    //add transaction to dbase
-    db.collection("transactions")
-      .add(newTransaction)
-      .then(dref => {
-        //add id to transaction object
-        newTransaction["id"] = dref.id;
-
-        //on success, display new transaction
-        alert('Record Added!')
-        props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
+      addTransaction(newTransaction)
+      .then(newTrans => {
+        props.setTransactions(prevTrans => [...prevTrans, newTrans]);
         form.reset();
         document.getElementById("transaction-date").focus();
       })
-      .catch(err => alert(`Error adding Transaction: ${err}`));
+      .catch(err => alert(err));
+
+    // //add transaction to dbase
+    // db.collection("transactions")
+    //   .add(newTransaction)
+    //   .then(dref => {
+    //     //add id to transaction object
+    //     newTransaction["id"] = dref.id;
+
+    //     //on success, display new transaction
+    //     alert('Record Added!')
+    //     props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
+    //     form.reset();
+    //     document.getElementById("transaction-date").focus();
+    //   })
+    //   .catch(err => alert(`Error adding Transaction: ${err}`));
   };
 
   return (
