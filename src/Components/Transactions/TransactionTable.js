@@ -13,14 +13,19 @@ const TransactionTable = props => {
   }
 
   const handleDelete = id => {
-    deleteTransaction(id);
-    //remove from local to prevent another read from firestore
-    const trans = props.transactions;
-    trans.splice(
-      trans.findIndex( trs => trs.id === id),      
-    1);
+    deleteTransaction(id)
+    .then(() => {
+      alert('Delete Sucessful!');
+      
+      //remove from local to prevent another read from firestore
+      const trans = props.transactions;
+      trans.splice(
+        trans.findIndex( trs => trs.id === id),      
+      1);
 
-    props.setTransactions(trans)
+      props.setTransactions(trans)
+    })
+    .catch(err => alert(err))  
   }
 
   return (

@@ -38,6 +38,7 @@ const TransactionForm = props => {
         props.setTransactions(prevTrans => [...prevTrans, newTrans]);
         form.reset();
         document.getElementById("transaction-date").focus();
+        alert('Transaction Added!')
       })
       .catch(err => alert(err));
 

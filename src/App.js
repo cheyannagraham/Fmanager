@@ -17,7 +17,8 @@ const App = () => {
 
   useEffect(() => {
     getTransactions()
-    .then(r => setTransactions(r));
+    .then(r => setTransactions(r))
+    .catch(err => alert(err));
     
   }, []);
 
@@ -52,3 +53,4 @@ export default App;
 //REFACTOR
 //DB methods
 //return thens & catch errors to app
+//bug in delete trans when show BTD
