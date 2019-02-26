@@ -10,19 +10,6 @@ const TransactionForm = props => {
     validDate ? submitFormData(validDate) : alert('Invalid Date');
   };
 
-  // const validateDate = () => {
-  //   const userInput = document.getElementById("transaction-date").value;
-  //   const date = moment(userInput, DATEF);
-
-  //   const minDate = moment("1900-01-01");
-  //   const maxDate = moment("2050-12-31");
-
-  //   if (date < maxDate && date > minDate) {
-  //     submitFormData(date.format('YYYY-MM-DD'));
-  //   } else {
-  //     alert("invalid date");
-  //   }
-  // };
  
   const submitFormData = (date) => {
     const form = document.getElementById("transaction-form");

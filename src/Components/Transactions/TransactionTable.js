@@ -68,7 +68,7 @@ const TransactionTable = props => {
 
           <tr>
           <th colSpan='2'>Total</th>
-          <td colSpan='2'>{total}</td>
+          <td colSpan='2'>${Number(total).toFixed(2)}</td>
         </tr>
       </tfoot>
     </table>
