@@ -43,27 +43,6 @@ const TransactionForm = props => {
       
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' />
 
-
-      {/* <label>
-        Amount
-        <input
-          id="transaction-amount"
-          name="amount"
-          type="number"
-          placeholder="$37"
-          required
-          step="0.01"
-        />
-      </label>
-
-      <label>
-        Type
-        <select id="transaction-type" name="type">
-          <option value="income">Income</option>
-          <option value="purchase">Purchase</option>
-        </select>
-      </label> */}
-
       <button type="submit">Add</button>
     </form>
   );
