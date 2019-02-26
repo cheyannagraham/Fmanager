@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Month from "./Components/Month/Month.js";
 import TransactionForm from "./Components/Transactions/TransactionForm.js";
-import {getTransactions} from './Components/Helpers/DB';
+import {getTransactions} from './Components/Helpers/DBHelper';
 
 const App = () => {
   let [transactions, setTransactions] = useState([
@@ -51,6 +51,6 @@ export default App;
 
 //================================
 //REFACTOR
-//DB methods
-//return thens & catch errors to app
 //bug in delete trans when show BTD
+//validateDate()
+//extract input components

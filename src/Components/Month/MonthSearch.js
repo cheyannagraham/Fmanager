@@ -1,6 +1,6 @@
 //dipslay input to search months
 import React from 'react'
-import {MONTHS} from '../Helpers/Helper'
+import {MONTHS} from '../Helpers/DateHelper'
 
 
 const MonthSearch = props => {

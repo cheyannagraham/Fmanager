@@ -1,6 +1,6 @@
 import React from "react";
 import moment from 'moment';
-import {deleteTransaction} from '../Helpers/DB';
+import {deleteTransaction} from '../Helpers/DBHelper';
 
 
 const TransactionTable = props => {
@@ -19,11 +19,13 @@ const TransactionTable = props => {
       
       //remove from local to prevent another read from firestore
       const trans = props.transactions;
-      trans.splice(
-        trans.findIndex( trs => trs.id === id),      
-      1);
+      console.log(trans.length)
+      const deletedTrans = trans.findIndex( trs => trs.id === id)
+      trans.splice(deletedTrans,1);
+      console.log(trans.length)
 
       props.setTransactions(trans)
+
     })
     .catch(err => alert(err))  
   }

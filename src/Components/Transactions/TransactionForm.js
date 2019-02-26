@@ -1,28 +1,29 @@
 import React from "react";
-import {addTransaction} from '../Helpers/DB';
-import moment from "moment";
-import { DATEF } from "../Helpers/Helper";
+import {addTransaction} from '../Helpers/DBHelper';
+import {validateDate} from "../Helpers/DateHelper";
 
 const TransactionForm = props => {
   const handleClick = e => {
     e.preventDefault();
-    validateDate();
+    const userInput = document.getElementById('transaction-date').value;
+    const validDate = validateDate(userInput);
+    validDate ? submitFormData(validDate) : alert('Invalid Date');
   };
 
-  const validateDate = () => {
-    const userInput = document.getElementById("transaction-date").value;
-    const date = moment(userInput, DATEF);
+  // const validateDate = () => {
+  //   const userInput = document.getElementById("transaction-date").value;
+  //   const date = moment(userInput, DATEF);
 
-    const minDate = moment("1900-01-01");
-    const maxDate = moment("2050-12-31");
+  //   const minDate = moment("1900-01-01");
+  //   const maxDate = moment("2050-12-31");
 
-    if (date < maxDate && date > minDate) {
-      submitFormData(date.format('YYYY-MM-DD'));
-    } else {
-      alert("invalid date");
-    }
-  };
-
+  //   if (date < maxDate && date > minDate) {
+  //     submitFormData(date.format('YYYY-MM-DD'));
+  //   } else {
+  //     alert("invalid date");
+  //   }
+  // };
+ 
   const submitFormData = (date) => {
     const form = document.getElementById("transaction-form");
 
@@ -41,21 +42,6 @@ const TransactionForm = props => {
         alert('Transaction Added!')
       })
       .catch(err => alert(err));
-
-    // //add transaction to dbase
-    // db.collection("transactions")
-    //   .add(newTransaction)
-    //   .then(dref => {
-    //     //add id to transaction object
-    //     newTransaction["id"] = dref.id;
-
-    //     //on success, display new transaction
-    //     alert('Record Added!')
-    //     props.setTransactions(prevTrans => [...prevTrans, newTransaction]);
-    //     form.reset();
-    //     document.getElementById("transaction-date").focus();
-    //   })
-    //   .catch(err => alert(`Error adding Transaction: ${err}`));
   };
 
   return (
