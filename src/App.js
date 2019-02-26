@@ -54,3 +54,4 @@ export default App;
 //bug in delete trans when show BTD
 //validateDate()
 //extract input components
+//fix id's & classNames for formInputs

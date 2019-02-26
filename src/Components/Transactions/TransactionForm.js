@@ -1,6 +1,7 @@
 import React from "react";
 import {addTransaction} from '../Helpers/DBHelper';
 import {validateDate} from "../Helpers/DateHelper";
+import * as FormInputs from '../FormInputs/FormInputs';
 
 const TransactionForm = props => {
   const handleClick = e => {
@@ -33,30 +34,17 @@ const TransactionForm = props => {
 
   return (
     <form id="transaction-form" onSubmit={handleClick}>
-      <label>
-        Date
-        <input
-          id="transaction-date"
-          name="date"
-          type="date"
-          placeholder="mm/dd/yyyy"
-          required
-          pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"
-        />
-      </label>
 
-      <label>
-        Business
-        <input
-          id="transaction-business"
-          name="business"
-          type="text"
-          placeholder="Target"
-          required
-        />
-      </label>
+      <FormInputs.DateInput label='Date' id='transaction-date' />
+      
+      <FormInputs.BusinessInput label='Business' id='transaction-business' />
+      
+      <FormInputs.AmountInput label='Amount' id='transaction-amount' />
+      
+      <FormInputs.TransactionTypeInput label='Type' id='transaction-type' />
 
-      <label>
+
+      {/* <label>
         Amount
         <input
           id="transaction-amount"
@@ -74,7 +62,7 @@ const TransactionForm = props => {
           <option value="income">Income</option>
           <option value="purchase">Purchase</option>
         </select>
-      </label>
+      </label> */}
 
       <button type="submit">Add</button>
     </form>
