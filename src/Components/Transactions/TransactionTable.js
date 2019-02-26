@@ -1,13 +1,13 @@
 import React from "react";
 import moment from 'moment';
-import {deleteTransaction} from '../Helpers/DBHelper';
+import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 
 
 const TransactionTable = props => {
   let total = 0;
  
   const sortTransactions = () => {
-    props.transactions.sort((prev,next) => {
+    props.MonthlyTransactions.sort((prev,next) => {
       return moment(next.date) - moment(prev.date);
     });
   }
@@ -16,15 +16,25 @@ const TransactionTable = props => {
     deleteTransaction(id)
     .then(() => {
       alert('Delete Sucessful!');
+
+     getTransactions()
+     .then(results => props.setTransactions(results))
+     .catch(err => alert(err));
+
+     
       
       //remove from local to prevent another read from firestore
-      const trans = props.transactions;
-      console.log(trans.length)
-      const deletedTrans = trans.findIndex( trs => trs.id === id)
-      trans.splice(deletedTrans,1);
-      console.log(trans.length)
+      //ERROR: only updating monthly transactions, not entire list so does not work without access totoal transactions
+      //       {
+      //       // const trans = props.MonthlyTransactions;
+      //       // console.log(trans.length)
+      //       // const deletedTrans = trans.findIndex( trs => trs.id === id)
+      //       // trans.splice(deletedTrans,1);
+      //       // console.log(trans.length)
 
-      props.setTransactions(trans)
+      //       // props.setTransactions(trans)
+      //        }
+      
 
     })
     .catch(err => alert(err))  
@@ -43,7 +53,7 @@ const TransactionTable = props => {
       </thead>
 
       <tbody>
-        {props.transactions.map((trans) => {
+        {props.MonthlyTransactions.map((trans) => {
           trans["type"] === "income"
             ? (total += Number( trans["amount"]))
             : (total -= Number( trans["amount"]));
