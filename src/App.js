@@ -3,9 +3,14 @@ import "./App.css";
 import Month from "./Components/Month/Month.js";
 import TransactionForm from "./Components/Transactions/TransactionForm.js";
 import {getTransactions} from './Components/Helpers/DBHelper';
+import Modal from './Components/Modal/Modal'
+
+export const ModalContext = React.createContext(false);
+
 
 const App = () => {
-  let [transactions, setTransactions] = useState([
+  const [showModal,setShowModal] = useState(false);
+  const [transactions, setTransactions] = useState([
     {
       id : '23',
       date : '2019-02-22',
@@ -23,10 +28,11 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <ModalContext.Provider value = {{setShowModal}}>
+      {showModal && <Modal content = {showModal} /> }
       <Month setTransactions={setTransactions} transactions={transactions} />
       <TransactionForm setTransactions={setTransactions} />
-    </>
+    </ModalContext.Provider>
   );
 };
 

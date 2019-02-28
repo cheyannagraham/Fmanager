@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Modal = props => {
-    console.log('yom')
-    return (props.data)
+    return props.content
 }
 
 export default Modal;

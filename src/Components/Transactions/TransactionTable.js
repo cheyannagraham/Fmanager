@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
+import { ModalContext } from "../../App";
 
 
 const TransactionTable = props => {
   let total = 0;
+  const showModal = useContext(ModalContext).setShowModal;
  
   const sortTransactions = () => {
     props.MonthlyTransactions.sort((prev,next) => {
@@ -17,6 +19,11 @@ const TransactionTable = props => {
     .then(() => {
       alert('Delete Sucessful!');
 
+      showModal(
+      <div id = 'alert-modal'>
+        <h1>Delete Successfull!!</h1>
+        <button onClick={()=> showModal(false)}>Close</button>
+      </div>);
      getTransactions()
      .then(results => props.setTransactions(results))
      .catch(err => alert(err));
