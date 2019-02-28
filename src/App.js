@@ -61,3 +61,8 @@ export default App;
 //validateDate()
 //extract input components
 //fix id's & classNames for formInputs
+//===========================
+//MODAL
+//show Modal on errors & successes
+//add confirm for deletions
+//perhaps add modal types => succes, delete, update, edit for easy reuse and readability

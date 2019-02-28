@@ -4,6 +4,7 @@ import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 import { ModalContext } from "../../App";
 
 
+
 const TransactionTable = props => {
   let total = 0;
   const showModal = useContext(ModalContext).setShowModal;
