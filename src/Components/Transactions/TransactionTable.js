@@ -2,6 +2,8 @@ import React,{useContext} from "react";
 import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 import { ModalContext } from "../../App";
+import TransactionForm from "./TransactionForm";
+
 
 
 
@@ -24,8 +26,16 @@ const TransactionTable = props => {
     .then(() => {
       showModal({show:true, status:'sucess',type:'alert',content: 'Delete Sucessful!'});
      getTransactions()
-     .then(results => props.setTransactions(results))      
-      .catch(err => showModal({show:true, status:'error',type:'alert',content: err}));
+      .then(results => props.setTransactions(results));  
+    })
+    .catch(err => showModal({show:true, status:'error',type:'alert',content: err}));
+  } 
+  
+  //possible effect
+  const handleEdit = (transaction) => {
+
+    showModal({show:true, status:'update',type:'update',content: <TransactionForm/> });
+  }
 
      
       
@@ -42,13 +52,11 @@ const TransactionTable = props => {
       //        }
       
 
-    })
-    .catch(err => alert(err))  
-  }
+
 
   return (
     sortTransactions(),
-    <table>
+    <table id='transaction-table'>
       <thead>
         <tr>
           <th>Date</th>
@@ -65,6 +73,7 @@ const TransactionTable = props => {
             : (total -= Number( trans["amount"]));
           return (
             <tr key={trans["id"]}>
+              <td><button onClick = {()=>handleEdit(trans)}>edit</button></td>
               <td>{moment(trans["date"]).format('MMM D YYYY')}</td>
               <td>{trans["business"]}</td>
               <td><span>$</span>{trans["amount"]}</td>

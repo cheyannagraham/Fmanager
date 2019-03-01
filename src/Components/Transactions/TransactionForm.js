@@ -11,7 +11,7 @@ const TransactionForm = props => {
     e.preventDefault();
     const userInput = document.getElementById('transaction-date').value;
     const validDate = validateDate(userInput);
-    validDate ? submitFormData(validDate) : alert('Invalid Date');
+    validDate ? submitFormData(validDate) : showModal({show:true, status:'error',type:'alert',content:'Invalid Date. please enter a date between 1-1-1900 and 12-31-2050'});;
   };
 
  
