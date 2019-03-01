@@ -29,9 +29,9 @@ const TransactionForm = props => {
         props.setTransactions(prevTrans => [...prevTrans, newTrans]);
         form.reset();
         document.getElementById("transaction-date").focus();
-        showModal({show:true, type:'alert',content:'Transaction Added!'});
+        showModal({show:true, status:'success',type:'alert',content:'Transaction Added!'});
       })
-      .catch(err => alert(err));
+      .catch(err => showModal({show:true, status:'error',type:'alert',content:err}));
   };
 
   return (

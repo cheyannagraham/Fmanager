@@ -1,41 +1,28 @@
-import React, {useContext} from 'react';
-import '../../CSS/modal.css'
+import React, { useContext } from "react";
+import "../../CSS/modal.css";
 import { ModalContext } from "../../App";
-
 
 const Modal = props => {
   const showModal = useContext(ModalContext).setShowModal;
 
-    //Prop Type Alert w Ok
-    return (
-        props.content.type === 'alert' ? 
-        
-        (<div className = 'modal' id = 'modal-alert'>
-            <h3>Alert</h3>
-            <p>{props.content.content}</p>
-            <button onClick={()=> showModal(false)}>Close</button>
-         </div>
-        ) :
-        props.content.type === 'confirm' ?
-        //Prop Type Confirm with Ok & Cancel
-        
-        (<div className = 'modal' id = 'modal-confirm'>
-            <h3>Confirm</h3>
-            <p>{props.content.content}</p>
-            <button onClick={()=> {props.content.callback();showModal(false)}}>Delete</button>
-            <button onClick={()=> {showModal(false)}}>Close</button>
-        </div>
-
-        ) :
-        //prop Type Update
-        (<div className = 'modal' >
-            <h3>Notice</h3>
-            <p>props.content.content</p>
-            <button onClick={()=> showModal(false)}>Close</button>
-        </div>
-        )
-    )
-    // return props.content
-}
+  //Render OK button with confirm Modal. send callback to Modal to invoke on confirmation
+  //Use status in class Name to display different Styles on success & failures
+  return (
+    <div id="modal" className={`${props.content.type} ${props.content.status}`}>
+      <h3>{props.content.status}</h3>
+      <p>{props.content.content}</p>
+      {props.content.type === "confirm" && (
+        <button onClick={() => {
+            props.content.callback();
+            showModal(false);
+          }}
+        >
+          Delete
+        </button>
+      )}
+      <button onClick={() => showModal(false)}>Close</button>
+    </div>
+  );
+};
 
 export default Modal;

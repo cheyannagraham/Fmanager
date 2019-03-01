@@ -16,16 +16,16 @@ const TransactionTable = props => {
   }
 
   const confirmDelete = (id) => {
-    showModal({show:true,type:'confirm',callback:()=>handleDelete(id),content:'Are you sure you want to delete this transaction?'});    
+    showModal({show:true, status:'confirm',type:'confirm',callback:()=>handleDelete(id),content:'Are you sure you want to delete this transaction?'});    
   }
 
   const handleDelete = id => {
     deleteTransaction(id)
     .then(() => {
-      showModal({show:true, type:'alert',content: 'Delete Sucessful!'});
+      showModal({show:true, status:'sucess',type:'alert',content: 'Delete Sucessful!'});
      getTransactions()
      .then(results => props.setTransactions(results))      
-      .catch(err => showModal({show:true, type:'alert',content: err}));
+      .catch(err => showModal({show:true, status:'error',type:'alert',content: err}));
 
      
       
