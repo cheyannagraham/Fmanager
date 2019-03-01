@@ -13,7 +13,7 @@ const App = () => {
   const [transactions, setTransactions] = useState([
     {
       id : '23',
-      date : '2019-02-22',
+      date : '2019-03-22',
       amount : 22,
       type : 'income',
       business : 'me'
@@ -21,9 +21,9 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    getTransactions()
-    .then(r => setTransactions(r))
-    .catch(err => alert(err));
+    // getTransactions()
+    // .then(r => setTransactions(r))
+    // .catch(err => alert(err));
     
   }, []);
 
@@ -58,11 +58,10 @@ export default App;
 //================================
 //REFACTOR
 //bug in delete trans when show BTD
-//validateDate()
 //extract input components
 //fix id's & classNames for formInputs
 //===========================
 //MODAL
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
 //add id modal to code for accessiblity stuff and class for targeting styles
-//
+//show recent transactions, then onclick, show all transactions. 
