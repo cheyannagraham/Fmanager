@@ -31,4 +31,11 @@ export const addTransaction = trans => {
     return trans;
   })
   .catch(err => `Error adding Transaction: ${err}`);
-}    
+} 
+
+export const updateTransaction = trans => {
+  console.log('ut',trans)
+  return db.collection('transactions').doc(trans.id).set(trans)
+  .then(() => "Update Successful!")
+  .catch(err => `Could Not Update: ${err}`);
+}

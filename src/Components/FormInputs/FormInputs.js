@@ -1,6 +1,7 @@
 import React from "react";
 
 export const DateInput = props => {
+
   return (
     <>
       <label htmlFor={props.id}>
@@ -11,6 +12,7 @@ export const DateInput = props => {
           name="date"
           type="date"
           placeholder="mm/dd/yyyy"
+          defaultValue = {props.value || '' }
           required
           pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"
         />
@@ -29,6 +31,7 @@ export const BusinessInput = props => {
           name="business"
           type="text"
           placeholder="Target"
+          defaultValue = {props.value || ''}
           required
         />
       </label>
@@ -46,6 +49,7 @@ export const AmountInput = props => {
           name="amount"
           type="number"
           placeholder="$37.19"
+          defaultValue = {props.value || ''}
           required
           step="0.01"
         />
@@ -62,7 +66,8 @@ export const TransactionTypeInput = props => {
         {props.label}
         <select 
           id={props.id}
-          name="type">
+          name="type"
+          defaultValue = {props.value || ''}>          
           <option value="income">Income</option>
           <option value="purchase">Purchase</option>
         </select>
