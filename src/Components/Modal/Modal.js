@@ -10,15 +10,16 @@ const Modal = props => {
     return (
         props.content.type === 'alert' ? 
         
-        (<div className = 'modal-alert'>
+        (<div className = 'modal' id = 'modal-alert'>
             <h3>Alert</h3>
             <p>{props.content.content}</p>
             <button onClick={()=> showModal(false)}>Close</button>
          </div>
         ) :
         props.content.type === 'confirm' ?
+        //Prop Type Confirm with Ok & Cancel
         
-        (<div className = 'modal-confirm'>
+        (<div className = 'modal' id = 'modal-confirm'>
             <h3>Confirm</h3>
             <p>{props.content.content}</p>
             <button onClick={()=> {props.content.callback();showModal(false)}}>Delete</button>
@@ -26,15 +27,14 @@ const Modal = props => {
         </div>
 
         ) :
-        (<div className = 'modal'>
+        //prop Type Update
+        (<div className = 'modal' >
             <h3>Notice</h3>
             <p>props.content.content</p>
             <button onClick={()=> showModal(false)}>Close</button>
         </div>
         )
     )
-    //Prop Type Confirm with Ok & Cancel
-    //prop Type Update
     // return props.content
 }
 
