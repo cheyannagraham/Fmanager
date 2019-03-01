@@ -15,6 +15,10 @@ const TransactionTable = props => {
     });
   }
 
+  const confirmDelete = (id) => {
+    showModal({show:true,type:'confirm',callback:()=>handleDelete(id),content:'Are you sure you want to delete this transaction?'});    
+  }
+
   const handleDelete = id => {
     deleteTransaction(id)
     .then(() => {
@@ -65,7 +69,7 @@ const TransactionTable = props => {
               <td>{trans["business"]}</td>
               <td><span>$</span>{trans["amount"]}</td>
               <td>{trans["type"]}</td>
-              {props.setTransactions && <td><button onClick={() => handleDelete(trans['id'])}>X</button></td>}
+              {props.setTransactions && <td><button onClick={() => confirmDelete(trans['id'])}>X</button></td>}
               
             </tr>
           );

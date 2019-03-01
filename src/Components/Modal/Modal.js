@@ -20,8 +20,9 @@ const Modal = props => {
         
         (<div className = 'modal-confirm'>
             <h3>Confirm</h3>
-            <p>props.content.content</p>
-            <button onClick={()=> showModal(false)}>Close</button>
+            <p>{props.content.content}</p>
+            <button onClick={()=> {props.content.callback();showModal(false)}}>Delete</button>
+            <button onClick={()=> {showModal(false)}}>Close</button>
         </div>
 
         ) :
