@@ -54,6 +54,8 @@ export default App;
 //BUG: wrong Date Entry
 //create production build for basic use
 //fix OTB moment
+//show recent transactions, then onclick, show all transactions. 
+
 
 //================================
 //REFACTOR
@@ -64,4 +66,3 @@ export default App;
 //MODAL
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
 //add id modal to code for accessiblity stuff and class for targeting styles
-//show recent transactions, then onclick, show all transactions. 
