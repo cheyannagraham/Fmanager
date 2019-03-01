@@ -9,7 +9,7 @@ export const ModalContext = React.createContext(false);
 
 
 const App = () => {
-  const [showModal,setShowModal] = useState(false);
+  const [showModal,setShowModal] = useState({show: false});
   const [transactions, setTransactions] = useState([
     {
       id : '23',
@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <ModalContext.Provider value = {{setShowModal}}>
-      {showModal && <Modal content = {showModal} /> }
+      {showModal.show && <Modal content = {showModal} /> }
       <Month setTransactions={setTransactions} transactions={transactions} />
       <TransactionForm setTransactions={setTransactions} />
     </ModalContext.Provider>
@@ -66,3 +66,4 @@ export default App;
 //show Modal on errors & successes
 //add confirm for deletions
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
+//add id modal to code for accessiblity stuff and class for targeting styles

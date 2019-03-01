@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import {addTransaction} from '../Helpers/DBHelper';
 import {validateDate} from "../Helpers/DateHelper";
 import * as FormInputs from '../FormInputs/FormInputs';
+import { ModalContext } from "../../App";
 
 const TransactionForm = props => {
+  const showModal = useContext(ModalContext).setShowModal;
+
   const handleClick = e => {
     e.preventDefault();
     const userInput = document.getElementById('transaction-date').value;
@@ -14,7 +17,6 @@ const TransactionForm = props => {
  
   const submitFormData = (date) => {
     const form = document.getElementById("transaction-form");
-
       const newTransaction = {
         type: document.getElementById("transaction-type").value,
         business: document.getElementById("transaction-business").value,
@@ -27,7 +29,7 @@ const TransactionForm = props => {
         props.setTransactions(prevTrans => [...prevTrans, newTrans]);
         form.reset();
         document.getElementById("transaction-date").focus();
-        alert('Transaction Added!')
+        showModal({show:true, type:'alert',content:'Transaction Added!'});
       })
       .catch(err => alert(err));
   };

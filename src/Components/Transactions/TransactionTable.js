@@ -18,16 +18,10 @@ const TransactionTable = props => {
   const handleDelete = id => {
     deleteTransaction(id)
     .then(() => {
-      alert('Delete Sucessful!');
-
-      showModal(
-      <div id = 'alert-modal'>
-        <h1>Delete Successfull!!</h1>
-        <button onClick={()=> showModal(false)}>Close</button>
-      </div>);
+      showModal({show:true, type:'alert',content: 'Delete Sucessful!'});
      getTransactions()
-     .then(results => props.setTransactions(results))
-     .catch(err => alert(err));
+     .then(results => props.setTransactions(results))      
+      .catch(err => showModal({show:true, type:'alert',content: err}));
 
      
       
