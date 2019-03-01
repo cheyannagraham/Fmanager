@@ -8,7 +8,7 @@ const OutstandingBalance = props => {
     const filterTransactions = () => {
         const transactionsToDate = props.allTrans.filter(tr => Number(moment(tr['date']).format('MM')) <= Number(props.month));
         
-        return <TransactionTable transactions = {transactionsToDate} />
+        return <TransactionTable MonthlyTransactions = {transactionsToDate} />
     }
 
 
