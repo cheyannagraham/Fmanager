@@ -19,6 +19,15 @@ const App = () => {
     }
   ]);
 
+  const showAddForm = () => {
+    setShowModal(
+      {
+        show:true,
+        status:'add', 
+        type:'add', 
+        content: <TransactionForm setTransactions ={setTransactions} type = 'add' /> });
+  }
+
   useEffect(() => {
     getTransactions()
     .then(r => setTransactions(r))
@@ -30,7 +39,7 @@ const App = () => {
     <ModalContext.Provider value = {{setShowModal}}>
       {showModal.show && <Modal content = {showModal} /> }
       <Month setTransactions={setTransactions} transactions={transactions} />
-      <TransactionForm type='add' setTransactions = {setTransactions} />
+      <button onClick = {showAddForm}>add Transaction</button>
     </ModalContext.Provider>
   );
 };
@@ -67,3 +76,4 @@ export default App;
 //add id modal to code for accessiblity stuff and class for targeting styles
 //Form
 // Optimize extra renders in Form.js
+//div inside p react warning

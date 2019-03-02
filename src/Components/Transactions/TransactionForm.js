@@ -69,7 +69,7 @@ const TransactionForm = props => {
       
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
 
-      <button type="submit">Update</button>
+      <button type="submit">{props.type}</button>
     </form>
   );
 };

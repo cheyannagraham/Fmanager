@@ -2,8 +2,7 @@ import React,{useContext} from "react";
 import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 import { ModalContext } from "../../App";
-import Form from './TransactionForm';
-
+import TransactionForm from './TransactionForm';
 
 
 
@@ -18,7 +17,15 @@ const TransactionTable = props => {
   }
 
   const confirmDelete = (id) => {
-    showModal({show:true, status:'confirm',type:'confirm',callback:()=>handleDelete(id),content:'Are you sure you want to delete this transaction?'});    
+    showModal(
+      {
+        show:true,
+        status:'confirm',
+        type:'confirm',
+        callback:() => handleDelete(id),
+        content:'Are you sure you want to delete this transaction?'
+      }
+    );    
   }
 
   const handleDelete = id => {
@@ -33,21 +40,15 @@ const TransactionTable = props => {
   
   //possible effect
   const updateTransaction = (transaction) => {
-    showModal({show:true, status:'update',type:'update',content: <Form setTransactions ={props.setTransactions} type = 'update' currentTransaction = {transaction} /> });
+    showModal(
+      {
+        show:true,
+        status:'update',
+        type:'update',
+        content: <TransactionForm setTransactions ={props.setTransactions} type = 'update' currentTransaction = {transaction} />
+      }
+    );
   }
-      
-      //remove from local to prevent another read from firestore
-      //ERROR: only updating monthly transactions, not entire list so does not work without access totoal transactions
-      //       {
-      //       // const trans = props.MonthlyTransactions;
-      //       // console.log(trans.length)
-      //       // const deletedTrans = trans.findIndex( trs => trs.id === id)
-      //       // trans.splice(deletedTrans,1);
-      //       // console.log(trans.length)
-
-      //       // props.setTransactions(trans)
-      //        }
-      
 
   return (
     sortTransactions(),
@@ -100,3 +101,17 @@ const TransactionTable = props => {
 
 
 export default TransactionTable;
+
+
+      
+      //remove from local to prevent another read from firestore
+      //ERROR: only updating monthly transactions, not entire list so does not work without access totoal transactions
+      //       {
+      //       // const trans = props.MonthlyTransactions;
+      //       // console.log(trans.length)
+      //       // const deletedTrans = trans.findIndex( trs => trs.id === id)
+      //       // trans.splice(deletedTrans,1);
+      //       // console.log(trans.length)
+
+      //       // props.setTransactions(trans)
+      //        }
