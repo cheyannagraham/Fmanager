@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 import { ModalContext } from "../../App";
-import UpdateTransactionForm from "./UpdateTransactionForm";
+import Form from './TransactionForm';
 
 
 
@@ -32,12 +32,9 @@ const TransactionTable = props => {
   } 
   
   //possible effect
-  const handleEdit = (transaction) => {
-
-    showModal({show:true, status:'update',type:'update',content: <UpdateTransactionForm setTransactions ={props.setTransactions} currentTransaction = {transaction} /> });
+  const updateTransaction = (transaction) => {
+    showModal({show:true, status:'update',type:'update',content: <Form setTransactions ={props.setTransactions} type = 'update' currentTransaction = {transaction} /> });
   }
-
-     
       
       //remove from local to prevent another read from firestore
       //ERROR: only updating monthly transactions, not entire list so does not work without access totoal transactions
@@ -51,8 +48,6 @@ const TransactionTable = props => {
       //       // props.setTransactions(trans)
       //        }
       
-
-
 
   return (
     sortTransactions(),
@@ -73,7 +68,7 @@ const TransactionTable = props => {
             : (total -= Number( trans["amount"]));
           return (
             <tr key={trans["id"]}>
-              {props.setTransactions && <td><button onClick = {()=>handleEdit(trans)}>edit</button></td>}
+              {props.setTransactions && <td><button onClick = {()=>updateTransaction(trans)}>edit</button></td>}
 
               <td>{moment(trans["date"]).format('MMM D YYYY')}</td>
               <td>{trans["business"]}</td>

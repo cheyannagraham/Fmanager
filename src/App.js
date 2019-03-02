@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Month from "./Components/Month/Month.js";
-import TransactionForm from "./Components/Transactions/TransactionForm.js";
 import {getTransactions} from './Components/Helpers/DBHelper';
 import Modal from './Components/Modal/Modal'
-
+import TransactionForm from './Components/Transactions/TransactionForm';
 export const ModalContext = React.createContext(false);
 
 
@@ -31,7 +30,7 @@ const App = () => {
     <ModalContext.Provider value = {{setShowModal}}>
       {showModal.show && <Modal content = {showModal} /> }
       <Month setTransactions={setTransactions} transactions={transactions} />
-      <TransactionForm setTransactions={setTransactions} />
+      <TransactionForm type='add' setTransactions = {setTransactions} />
     </ModalContext.Provider>
   );
 };
@@ -66,3 +65,5 @@ export default App;
 //MODAL
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
 //add id modal to code for accessiblity stuff and class for targeting styles
+//Form
+// Optimize extra renders in Form.js
