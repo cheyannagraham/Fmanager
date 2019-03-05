@@ -10,7 +10,7 @@ const Modal = props => {
   return (
     <div id="modal" className={`${props.content.type} ${props.content.status}`}>
       <h3>{props.content.status}</h3>
-      <p>{props.content.content}</p>
+      {typeof props.content.content === String ? <p>{props.content.content}</p> : props.content.content}
       
       {props.content.type === "confirm" && (
         <button onClick={() => {props.content.callback();showModal(false)}}>Confirm</button>
