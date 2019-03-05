@@ -50,7 +50,7 @@ export default App;
 //add better validation for mal scripts
 //Maybe add a delete all? 
 //signin features? 
-//css pseudo classes for valitation
+//css pseudo classes for validation
 //popup box over input to show how data should be entered
 //transactiontable renders even if props don't chanege(month rerenders)
 //consider if anything needs to be done regarding reflecting changes when data is added on different devices
@@ -58,13 +58,10 @@ export default App;
 //testing
 //incorrect date display edge?
 //store credentials
-//allow to edit transaction w/o deletion and reEntry
 //BUG: wrong Date Entry
-//create production build for basic use
 //fix OTB moment
 //show recent transactions, then onclick, show all transactions. 
-
-
+//no zero transaction values
 //================================
 //REFACTOR
 //bug in delete trans when show BTD
@@ -75,5 +72,4 @@ export default App;
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
 //add id modal to code for accessiblity stuff and class for targeting styles
 //Form
-// Optimize extra renders in Form.js
-//div inside p react warning
+// Optimize extra renders in Form.js...Maybe
