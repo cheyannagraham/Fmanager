@@ -9,6 +9,7 @@ export const ModalContext = React.createContext(false);
 
 const App = () => {
   const [showModal,setShowModal] = useState({show: false});
+  const [runningTotal,setRunningTotal] = useState(0);
   const [transactions, setTransactions] = useState([
     {
       id : '23',
@@ -28,6 +29,15 @@ const App = () => {
         content: <TransactionForm setTransactions ={setTransactions} type = 'add' /> });
   }
 
+  const calcRunningTotal = () => {
+    let rt = 0;
+    transactions.forEach(trans => {
+      rt += Number(trans.amount);
+    });
+
+    setRunningTotal(rt);
+  }
+
   useEffect(() => {
     getTransactions()
     .then(r => setTransactions(r))
@@ -35,11 +45,23 @@ const App = () => {
       {show:true,status:'error',content:err,type:'alert'}))    
   }, []);
 
+
+  useEffect(() => {
+    calcRunningTotal();
+  },[transactions]);
+
   return (
     <ModalContext.Provider value = {{setShowModal}}>
       {showModal.show && <Modal content = {showModal} /> }
+      
       <Month setTransactions={setTransactions} transactions={transactions} />
+      
+      <div id = 'running-total'>
+        <span>Total:$ {runningTotal} </span> 
+      </div>
+      
       <button onClick = {showAddForm}>add Transaction</button>
+    
     </ModalContext.Provider>
   );
 };

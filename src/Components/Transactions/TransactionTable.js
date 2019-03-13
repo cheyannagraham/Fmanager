@@ -90,8 +90,8 @@ const TransactionTable = props => {
           </tr>
 
           <tr>
-          <th colSpan='2'>Total</th>
-          <td colSpan='2'>${Number(total).toFixed(2)}</td>
+          <th colSpan='3'>Monthly Balance:</th>
+          <td colSpan='3'>${Number(total).toFixed(2)}</td>
         </tr>
       </tfoot>
     </table>
