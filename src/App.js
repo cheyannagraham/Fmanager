@@ -32,6 +32,7 @@ const App = () => {
   const calcRunningTotal = () => {
     let rt = 0;
     transactions.forEach(trans => {
+      console.log(trans.amount);
       rt += Number(trans.amount);
     });
 

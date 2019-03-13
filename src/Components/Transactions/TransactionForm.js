@@ -23,14 +23,17 @@ const TransactionForm = props => {
   };
 
   const createTransaction = date => {
+    const type = document.getElementById("transaction-type").value; 
+    const amount = Math.abs(document.getElementById("transaction-amount").value); 
     
     const newTrans =  {
-        type: document.getElementById("transaction-type").value,
+        type: type,
         business: document.getElementById("transaction-business").value,
-        amount: Number(document.getElementById("transaction-amount").value).toFixed(2),
+        amount: type === 'income' ? Number(amount).toFixed(2) : Number(-amount).toFixed(2),
         date: date,
         id: (currTrans && currTrans.id) || ''
     };
+    console.log(newTrans);
     
     //add transaction or updateTraction. either, way, set transaction needs to run
     if(props.type === 'add') {
