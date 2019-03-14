@@ -55,10 +55,9 @@ const TransactionTable = props => {
     <table id='transaction-table'>
       <thead>
         <tr>
-          <th>Date</th>
+          <th colSpan = '2'>Date</th>
           <th>Business</th>
-          <th>Amount</th>
-          <th>Type</th>
+          <th colSpan = '2'>Amount</th>
         </tr>
       </thead>
 
@@ -73,7 +72,6 @@ const TransactionTable = props => {
               <td>{moment(trans.date).format('MMM D YYYY')}</td>
               <td>{trans.business}</td>
               <td><span>$</span>{trans.amount}</td>
-              <td>{trans.type}</td>
               
               {props.setTransactions && <td><button onClick={() => confirmDelete(trans.id)}>X</button></td>}
               
