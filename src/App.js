@@ -57,7 +57,7 @@ const App = () => {
       <Month setTransactions={setTransactions} transactions={transactions} />
       
       <div id = 'running-total'>
-        <span>Total:$ {runningTotal} </span> 
+        <span>Total:$ {runningTotal.toFixed(2)} </span> 
       </div>
       
       <button onClick = {showAddForm}>add Transaction</button>
