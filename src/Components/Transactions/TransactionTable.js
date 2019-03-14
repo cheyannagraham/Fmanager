@@ -64,9 +64,8 @@ const TransactionTable = props => {
 
       <tbody>
         {props.MonthlyTransactions.map((trans) => {
-          trans["type"] === "income"
-            ? (total += Number( trans["amount"]))
-            : (total -= Number( trans["amount"]));
+
+          total += Number(trans.amount);
           return (
             <tr key={trans["id"]}>
               {props.setTransactions && <td><button onClick = {()=>updateTransaction(trans)}>edit</button></td>}
