@@ -32,7 +32,6 @@ const App = () => {
   const calcRunningTotal = () => {
     let rt = 0;
     transactions.forEach(trans => {
-      console.log(trans.amount);
       rt += Number(trans.amount);
     });
 
@@ -96,3 +95,5 @@ export default App;
 //add id modal to code for accessiblity stuff and class for targeting styles
 //Form
 // Optimize extra renders in Form.js...Maybe
+
+//show BTD can be show more once less view is implemented

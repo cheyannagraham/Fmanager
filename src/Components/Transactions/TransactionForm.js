@@ -33,7 +33,6 @@ const TransactionForm = props => {
         date: date,
         id: (currTrans && currTrans.id) || ''
     };
-    console.log(newTrans);
     
     //add transaction or updateTraction. either, way, set transaction needs to run
     if(props.type === 'add') {
