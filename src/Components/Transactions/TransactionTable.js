@@ -1,7 +1,7 @@
-import React,{useContext} from "react";
+import React,{useContext} from 'react';
 import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
-import { ModalContext } from "../../App";
+import { ModalContext } from '../../App';
 import TransactionForm from './TransactionForm';
 
 
@@ -67,15 +67,15 @@ const TransactionTable = props => {
 
           total += Number(trans.amount);
           return (
-            <tr key={trans["id"]}>
+            <tr key={trans.id}>
               {props.setTransactions && <td><button onClick = {()=>updateTransaction(trans)}>edit</button></td>}
 
-              <td>{moment(trans["date"]).format('MMM D YYYY')}</td>
-              <td>{trans["business"]}</td>
-              <td><span>$</span>{trans["amount"]}</td>
-              <td>{trans["type"]}</td>
+              <td>{moment(trans.date).format('MMM D YYYY')}</td>
+              <td>{trans.business}</td>
+              <td><span>$</span>{trans.amount}</td>
+              <td>{trans.type}</td>
               
-              {props.setTransactions && <td><button onClick={() => confirmDelete(trans['id'])}>X</button></td>}
+              {props.setTransactions && <td><button onClick={() => confirmDelete(trans.id)}>X</button></td>}
               
             </tr>
           );

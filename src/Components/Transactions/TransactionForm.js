@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
+import React, {useContext} from 'react';
 import {updateTransaction,getTransactions, addTransaction} from '../Helpers/DBHelper';
-import {validateDate} from "../Helpers/DateHelper";
+import {validateDate} from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
-import { ModalContext } from "../../App";
+import { ModalContext } from '../../App';
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -23,12 +23,12 @@ const TransactionForm = props => {
   };
 
   const createTransaction = date => {
-    const type = document.getElementById("transaction-type").value; 
-    const amount = Math.abs(document.getElementById("transaction-amount").value); 
+    const type = document.getElementById('transaction-type').value; 
+    const amount = Math.abs(document.getElementById('transaction-amount').value); 
     
     const newTrans =  {
         type: type,
-        business: document.getElementById("transaction-business").value,
+        business: document.getElementById('transaction-business').value,
         amount: type === 'income' ? Number(amount).toFixed(2) : Number(-amount).toFixed(2),
         date: date,
         id: (currTrans && currTrans.id) || ''
@@ -61,7 +61,7 @@ const TransactionForm = props => {
 
 
   return (
-    <form id="transaction-form" onSubmit={handleClick}>
+    <form id='transaction-form' onSubmit={handleClick}>
 
       <FormInputs.DateInput label='Date' id='transaction-date' value={currTrans && currTrans.date} />
       
@@ -71,7 +71,7 @@ const TransactionForm = props => {
       
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
 
-      <button type="submit">{props.type}</button>
+      <button type='submit'>{props.type}</button>
     </form>
   );
 };

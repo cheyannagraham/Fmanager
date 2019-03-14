@@ -10,7 +10,7 @@ const Month = props => {
 
   const getMonthlyTransactions = () => {   
     let mt = props.transactions.filter(
-      transaction => moment(transaction['date']).format('M') === month
+      transaction => moment(transaction.date).format('M') === month
     )
     return <TransactionTable MonthlyTransactions={mt} setTransactions = {props.setTransactions} />;
   };

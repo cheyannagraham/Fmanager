@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Month from "./Components/Month/Month.js";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import Month from './Components/Month/Month.js';
 import {getTransactions} from './Components/Helpers/DBHelper';
 import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
