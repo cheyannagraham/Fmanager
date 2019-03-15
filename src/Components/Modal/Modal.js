@@ -12,16 +12,15 @@ const Modal = props => {
     <div id="modal" className = {`${style.modal} ${style[props.content.type]} ${style[props.content.status]}`}>
       
       <h3 className = {style.header}>{props.content.status}</h3>
-
-      {typeof props.content.content === String ? 
-        (<p className={style.p}>
+      {typeof props.content.content === 'string' ? 
+        (<p className = {style.p}>
           {props.content.content}
         </p>) :
        (props.content.content)
       }
 
-      <div className = {style['buttons-container']}>
-        
+      {/* <div className = {style['buttons-container']}> */}
+        {/*delete confirmation*/}
         {props.content.type === "confirm" &&
         (<button className = {style.button} onClick={() => {
               props.content.callback();
@@ -32,7 +31,7 @@ const Modal = props => {
         )}
 
         <button className = {style.button} onClick={() => showModal(false)}>Close</button>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
