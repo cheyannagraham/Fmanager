@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Month from './Components/Month/Month.js';
 import {getTransactions} from './Components/Helpers/DBHelper';
 import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
+import style from './CSS/app.module.css';
 export const ModalContext = React.createContext(false);
 
 
@@ -40,10 +40,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    getTransactions()
-    .then(r => setTransactions(r))
-    .catch(err => setShowModal(
-      {show:true,status:'error',content:err,type:'alert'}))    
+    // getTransactions()
+    // .then(r => setTransactions(r))
+    // .catch(err => setShowModal(
+    //   {show:true,status:'error',content:err,type:'alert'}))    
   }, []);
 
 
@@ -52,17 +52,20 @@ const App = () => {
   },[transactions]);
 
   return (
-    <ModalContext.Provider value = {{setShowModal}}>
+    <div id = {style['app-div']}>
+      <ModalContext.Provider value = {{setShowModal}}>
+        
+        {showModal.show && <Modal content = {showModal} /> }
+        
+        <Month setTransactions={setTransactions} transactions={transactions} />
+        
+        <RunningTotal total = {runningTotal} />
+        
+        <button onClick = {showAddForm}>add Transaction</button>
       
-      {showModal.show && <Modal content = {showModal} /> }
-      
-      <Month setTransactions={setTransactions} transactions={transactions} />
-      
-      <RunningTotal total = {runningTotal} />
-      
-      <button onClick = {showAddForm}>add Transaction</button>
+      </ModalContext.Provider>
+    </div>
     
-    </ModalContext.Provider>
   );
 };
 
@@ -96,4 +99,4 @@ export default App;
 //Form
 // Optimize extra renders in Form.js...Maybe
 
-//show BTD can be show more once less view is implemented
+//show BTD can be show more once less view is implemented=> maybe add a scroll in styling
