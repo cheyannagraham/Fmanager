@@ -4,6 +4,7 @@ import Month from './Components/Month/Month.js';
 import {getTransactions} from './Components/Helpers/DBHelper';
 import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
+import RunningTotal from './Components/RunningTotal/RunningTotal';
 export const ModalContext = React.createContext(false);
 
 
@@ -52,13 +53,12 @@ const App = () => {
 
   return (
     <ModalContext.Provider value = {{setShowModal}}>
+      
       {showModal.show && <Modal content = {showModal} /> }
       
       <Month setTransactions={setTransactions} transactions={transactions} />
       
-      <div id = 'running-total'>
-        <span>Total:$ {runningTotal.toFixed(2)} </span> 
-      </div>
+      <RunningTotal total = {runningTotal} />
       
       <button onClick = {showAddForm}>add Transaction</button>
     
