@@ -5,11 +5,11 @@ import style from '../../CSS/transactionform.module.css';
 export const DateInput = props => {
 
   return (
-      <label htmlFor={props.id}>
+      <label className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input
+        <input className = {style.input}
         //maybe delete classname?
-          className = 'transaction-date'
+         /* { className = 'transaction-date' }*/
           id={props.id}
           name='date'
           type='date'
@@ -24,9 +24,9 @@ export const DateInput = props => {
 
 export const BusinessInput = props => {
   return (
-      <label htmlFor={props.id}>
+      <label className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input
+        <input className = {style.input}
           id={props.id}
           name='business'
           type='text'
@@ -40,9 +40,9 @@ export const BusinessInput = props => {
 
 export const AmountInput = props => {
   return (
-      <label htmlFor={props.id}>
+      <label className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input
+        <input className = {style.input}
           id={props.id}
           name='amount'
           type='number'
@@ -58,9 +58,9 @@ export const AmountInput = props => {
 
 export const TransactionTypeInput = props => {
   return (
-      <label htmlFor={props.id}>
+      <label className = {style.label} htmlFor={props.id}>
         {props.label}
-        <select 
+        <select className = {style.select}
           id={props.id}
           name='type'
           defaultValue = {props.value || ''}>          

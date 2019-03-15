@@ -56,9 +56,9 @@ const TransactionTable = props => {
     <table id='transaction-table' className = {style.table}>
       <thead>
         <tr>
-          <th colSpan = '2'>Date</th>
-          <th>Business</th>
-          <th colSpan = '2'>Amount</th>
+          <th className = {style.th} colSpan = '2'>Date</th>
+          <th className = {style.th} >Business</th>
+          <th className = {style.th} colSpan = '2' >Amount</th>
         </tr>
       </thead>
 
@@ -68,13 +68,13 @@ const TransactionTable = props => {
           total += Number(trans.amount);
           return (
             <tr key={trans.id}>
-              {props.setTransactions && <td><button onClick = {()=>updateTransaction(trans)}>edit</button></td>}
+              {props.setTransactions && <td className = {style.td} ><button onClick = {()=>updateTransaction(trans)}>edit</button></td>}
 
-              <td>{moment(trans.date).format('MMM D YYYY')}</td>
-              <td>{trans.business}</td>
-              <td><span>$</span>{trans.amount}</td>
+              <td className = {style.td} >{moment(trans.date).format('MMM D YYYY')}</td>
+              <td className = {style.td} >{trans.business}</td>
+              <td className = {style.td} ><span>$</span>{trans.amount}</td>
               
-              {props.setTransactions && <td><button onClick={() => confirmDelete(trans.id)}>X</button></td>}
+              {props.setTransactions && <td className = {style.td} ><button onClick={() => confirmDelete(trans.id)}>X</button></td>}
               
             </tr>
           );
@@ -82,14 +82,14 @@ const TransactionTable = props => {
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan = '100%'>
+          <td className = {style.td}  colSpan = '100%'>
             <hr></hr>
           </td>
           </tr>
 
           <tr>
-          <th colSpan='3'>Monthly Balance:</th>
-          <td colSpan='3'>${Number(total).toFixed(2)}</td>
+          <th className = {style.th} colSpan='3'>Monthly Balance:</th>
+          <td className = {style.td}  colSpan='3'>${Number(total).toFixed(2)}</td>
         </tr>
       </tfoot>
     </table>

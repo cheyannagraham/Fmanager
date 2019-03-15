@@ -2,14 +2,14 @@
     width: 100%;
 }
 
-input,select {
+.input,.select {
     margin: 5px;
     padding: 5px;
     border: .5px solid inset gray;
     border-radius: 3px;
 }
 
-label {
+.label {
     display: block;
 }
 
