@@ -3,6 +3,7 @@ import moment from 'moment';
 import {deleteTransaction,getTransactions} from '../Helpers/DBHelper';
 import { ModalContext } from '../../App';
 import TransactionForm from './TransactionForm';
+import style from '../../CSS/transactiontable.module.css';
 
 
 
@@ -52,7 +53,7 @@ const TransactionTable = props => {
 
   return (
     sortTransactions(),
-    <table id='transaction-table'>
+    <table id='transaction-table' className = {style.table}>
       <thead>
         <tr>
           <th colSpan = '2'>Date</th>
