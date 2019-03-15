@@ -1,13 +1,15 @@
 import React from 'react';
+import style from '../../CSS/transactionform.module.css';
+
 
 export const DateInput = props => {
 
   return (
-    <>
       <label htmlFor={props.id}>
         {props.label}
         <input
-          className='transaction-date'
+        //maybe delete classname?
+          className = 'transaction-date'
           id={props.id}
           name='date'
           type='date'
@@ -17,13 +19,11 @@ export const DateInput = props => {
           pattern='[0-9]{2}/[0-9]{2}/[0-9]{4}'
         />
       </label>
-    </>
   );
 };
 
 export const BusinessInput = props => {
   return (
-    <>
       <label htmlFor={props.id}>
         {props.label}
         <input
@@ -35,13 +35,11 @@ export const BusinessInput = props => {
           required
         />
       </label>
-    </>
   );
 };
 
 export const AmountInput = props => {
   return (
-    <>
       <label htmlFor={props.id}>
         {props.label}
         <input
@@ -54,14 +52,12 @@ export const AmountInput = props => {
           step='0.01'
         />
       </label>
-    </>
   );
 };
 
 
 export const TransactionTypeInput = props => {
   return (
-    <>
       <label htmlFor={props.id}>
         {props.label}
         <select 
@@ -72,6 +68,5 @@ export const TransactionTypeInput = props => {
           <option value='purchase'>Purchase</option>
         </select>
       </label>
-    </>
   );
 };

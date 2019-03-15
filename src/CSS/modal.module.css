@@ -55,6 +55,7 @@
     border-radius: 3px;
     font-weight: bold;
     cursor: pointer;
+    text-transform: Capitalize;
 }
 
 

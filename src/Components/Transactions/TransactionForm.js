@@ -3,6 +3,9 @@ import {updateTransaction,getTransactions, addTransaction} from '../Helpers/DBHe
 import {validateDate} from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
 import { ModalContext } from '../../App';
+import style from '../../CSS/transactionform.module.css';
+
+
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -61,7 +64,7 @@ const TransactionForm = props => {
 
 
   return (
-    <form id='transaction-form' onSubmit={handleClick}>
+    <form id='transaction-form' className = {style.form} onSubmit={handleClick}>
 
       <FormInputs.DateInput label='Date' id='transaction-date' value={currTrans && currTrans.date} />
       
@@ -71,7 +74,7 @@ const TransactionForm = props => {
       
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
 
-      <button type='submit'>{props.type}</button>
+      <button className = {style.button} type='submit'>{props.type}</button>
     </form>
   );
 };
