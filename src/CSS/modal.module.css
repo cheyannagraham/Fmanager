@@ -14,6 +14,24 @@
     --theme-color: #404e60;
 }
 
+.success {
+    --theme-color: #1664b7;
+    color: white;
+    background: #1664b7;
+}
+
+.add {
+    --theme-color: #ffab05;
+    background: var(--theme-color);
+    color: black;
+}
+
+.update {
+    --theme-color: #7a49aa;
+    background: var(--theme-color);
+    color:white;
+}
+
 .header {
     padding: 5px;
     text-transform: uppercase;
@@ -39,9 +57,7 @@
     cursor: pointer;
 }
 
-/* .success {
-    color:
-} */
+
 
 
 

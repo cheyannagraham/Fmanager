@@ -31,7 +31,7 @@ const TransactionTable = props => {
   const handleDelete = id => {
     deleteTransaction(id)
     .then(() => {
-      showModal({show:true, status:'sucess',type:'alert',content: 'Delete Sucessful!'});
+      showModal({show:true, status:'success',type:'alert',content: 'Delete Successful!'});
      getTransactions()
       .then(results => props.setTransactions(results));  
     })
