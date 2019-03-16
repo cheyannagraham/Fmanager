@@ -1,5 +1,12 @@
 #app-div {
     width: 100%;
-    height: 100%;
-    background: #e8edf4;
+    height: 100vh;
+    display:flex;
+}
+
+.main {
+    margin: auto;
+    padding: 20px;
+    border-radius: 3px;
+    background: burlywood;
 }

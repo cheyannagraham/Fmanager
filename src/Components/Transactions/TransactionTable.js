@@ -58,7 +58,7 @@ const TransactionTable = props => {
         <tr>
           <th className = {style.th} colSpan = '2'>Date</th>
           <th className = {style.th} >Business</th>
-          <th className = {style.th} colSpan = '2' >Amount</th>
+          <th className = {style.th} colSpan = '2'>Amount</th>
         </tr>
       </thead>
 
@@ -69,22 +69,18 @@ const TransactionTable = props => {
           return (
             <tr key={trans.id}>
               {props.setTransactions && 
-              <td className = {style.td} >
                 <button className = {style.button} onClick = {()=>updateTransaction(trans)}>
                   <i className = {`material-icons ${style.icon}`}> edit </i>
-                </button>
-              </td>}
+                </button>}
 
               <td className = {style.td} >{moment(trans.date).format('MMM D YYYY')}</td>
               <td className = {style.td} >{trans.business}</td>
               <td className = {style.td} ><span>$</span>{trans.amount}</td>
               
               {props.setTransactions && 
-              <td className = {style.td} >
                 <button className = {style.button} onClick={() => confirmDelete(trans.id)}>
                   <i className = {`material-icons ${style.icon}`}> delete </i>
-                </button>
-              </td>}
+                </button>}
               
             </tr>
           );

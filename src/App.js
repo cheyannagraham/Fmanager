@@ -57,11 +57,13 @@ const App = () => {
         
         {showModal.show && <Modal content = {showModal} /> }
         
-        <Month setTransactions={setTransactions} transactions={transactions} />
+        <div className = {style.main}>
+          <Month setTransactions={setTransactions} transactions={transactions} />
         
-        <RunningTotal total = {runningTotal} />
-        
-        <button onClick = {showAddForm}>add Transaction</button>
+          <RunningTotal total = {runningTotal} />
+          
+          <button onClick = {showAddForm}>add Transaction</button>
+        </div>
       
       </ModalContext.Provider>
     </div>
