@@ -20,9 +20,10 @@ const Month = props => {
         <MonthSearch setMonth={setMonth} month={month} />
         <h2>{moment(month,'MM').format('MMMM')}</h2>
         {getMonthlyTransactions()}
-        <OTB allTrans = {props.transactions} month = {month} />
       </>
   );
 }
 
 export default Month;
+
+//<OTB allTrans = {props.transactions} month = {month} />

@@ -9,6 +9,7 @@
     font-size: 1.08em;
 }
 
+
 .button {
     composes: button from './modal.module.css';
     background: none;

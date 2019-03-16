@@ -5,6 +5,8 @@ import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
 import style from './CSS/app.module.css';
+import OTB from './Components/OutstandingBalance/OutstandingBalance';
+
 export const ModalContext = React.createContext(false);
 
 
@@ -63,6 +65,7 @@ const App = () => {
           <RunningTotal total = {runningTotal} />
           
           <button onClick = {showAddForm}>add Transaction</button>
+          <OTB allTrans = {transactions} month = {''} />
         </div>
       
       </ModalContext.Provider>
