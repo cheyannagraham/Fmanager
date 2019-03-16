@@ -64,8 +64,11 @@ const App = () => {
         
           <RunningTotal total = {runningTotal} />
           
-          <button onClick = {showAddForm}>add Transaction</button>
+          <button onClick = {showAddForm}>
+            <i className = 'material-icons'>add</i>
+          </button>
           <OTB allTrans = {transactions} month = {''} />
+        
         </div>
       
       </ModalContext.Provider>
