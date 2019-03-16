@@ -5,6 +5,8 @@
 }
 
 .main {
+    min-width: 300px;
+    min-height: 300px;
     margin: auto;
     padding: 20px;
     border-radius: 3px;
