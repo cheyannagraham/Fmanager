@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import MonthSearch from './MonthSearch';
 import TransactionTable from '../Transactions/TransactionTable';
-import OTB from '../OutstandingBalance/OutstandingBalance'
+// import OTB from '../OutstandingBalance/OutstandingBalance'
+import style from '../../CSS/month.module.css';
 import moment from 'moment';
 
 const Month = props => {
@@ -18,7 +19,7 @@ const Month = props => {
   return (
       <>
         <MonthSearch setMonth={setMonth} month={month} />
-        <h2>{moment(month,'MM').format('MMMM')}</h2>
+        <h2 className = {style.header}>{moment(month,'MM').format('MMMM')}</h2>
         {getMonthlyTransactions()}
       </>
   );
