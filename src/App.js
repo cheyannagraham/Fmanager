@@ -61,6 +61,7 @@ const App = () => {
         {showModal.show && <Modal content = {showModal} /> }
         
         <div className = {style.main}>
+          
           <Month setTransactions={setTransactions} transactions={transactions} />
         
           <RunningTotal total = {runningTotal} />
@@ -114,3 +115,5 @@ export default App;
 // Optimize extra renders in Form.js...Maybe
 
 //show BTD can be show more once less view is implemented=> maybe add a scroll in styling
+
+// add click animations to buttons

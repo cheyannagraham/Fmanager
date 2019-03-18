@@ -1,11 +1,18 @@
+/* add media queries for modal */
+
 .modal {
     position: absolute;
-    top:40%;
+    width:60%;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin: auto;
     text-align:center;
     padding: 15px;
     border-radius: 3px;
     background:white;
     box-shadow: 0px 13px 46px -18px rgba(0,0,0,0.75);
+    z-index: 1;
 }
 
 .confirm {
@@ -56,6 +63,8 @@
     font-weight: bold;
     cursor: pointer;
     text-transform: Capitalize;
+    /* box shadow not working on buttons */
+    box-shadow: 0px 13px 46px -18px rgba(0,0,0,0.75);
 }
 
 
