@@ -1,17 +1,17 @@
 #running-total {
     width: 100%;
     display: flex; 
-    justify-content: space-between;
-    padding: 5px;
+    padding: 10px;
     font-style: italic;
     font-weight: bold;
     padding-bottom: 50px;
 }
 
 .title {
-    padding-left: 35px;
+    padding-left: 20px;
 }
 
 .value {
-    margin-right: 20px;
+    padding-left: 20px;
+
 }

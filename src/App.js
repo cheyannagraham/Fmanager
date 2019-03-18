@@ -117,3 +117,4 @@ export default App;
 //show BTD can be show more once less view is implemented=> maybe add a scroll in styling
 
 // add click animations to buttons
+//add pure components
