@@ -118,3 +118,4 @@ export default App;
 
 // add click animations to buttons
 //add pure components
+//Delete month header component. Make month component, 1 width for the view, not the transactions
