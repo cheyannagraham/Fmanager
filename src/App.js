@@ -62,7 +62,7 @@ const App = () => {
         
         <div className = {style.main}>
           
-          <Month setTransactions={setTransactions} transactions={transactions} />
+          <Month setTransactions = {setTransactions} transactions={transactions} />
         
           <RunningTotal total = {runningTotal} />
 
