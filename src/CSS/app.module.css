@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     display:flex;
+    background:blue;
 }
 
 .main {
@@ -11,4 +12,18 @@
     padding: 20px;
     border-radius: 3px;
     background: burlywood;
+    position: relative;
+}
+
+.button {
+    composes : button from './modal.module.css';
+}
+
+.main-menu {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    display:flex;
+    justify-content: space-between;
 }

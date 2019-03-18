@@ -52,6 +52,7 @@ const App = () => {
   useEffect(() => {
     calcRunningTotal();
   },[transactions]);
+  //Fix mixture. Some have buttons that render, others render with state to show content. 
 
   return (
     <div id = {style['app-div']}>
@@ -63,11 +64,16 @@ const App = () => {
           <Month setTransactions={setTransactions} transactions={transactions} />
         
           <RunningTotal total = {runningTotal} />
+
           
-          <button onClick = {showAddForm}>
-            <i className = 'material-icons'>add</i>
-          </button>
-          <OTB allTrans = {transactions} month = {''} />
+          <div className = {style['main-menu']}>
+            <button className = {style.button} onClick = {showAddForm}>
+              <i className = 'material-icons'>add</i>
+            </button>
+
+            <OTB allTrans = {transactions} month = {''} />
+          </div>
+          
         
         </div>
       
