@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../CSS/runningBalance.module.css';
+import style from '../../CSS/runningbalance.module.css';
 
 const RunningTotal = props => {
     return (
