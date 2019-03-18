@@ -1,0 +1,16 @@
+#running-total {
+    width: 100%;
+    display: flex; 
+    justify-content: space-between;
+    padding: 5px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.title {
+    padding-left: 35px;
+}
+
+.value {
+    margin-right: 20px;
+}
