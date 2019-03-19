@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import MonthHeader from './MonthHeader';
+import React, { useState, useEffect } from 'react';
 import TransactionTable from '../Transactions/TransactionTable';
 // import OTB from '../OutstandingBalance/OutstandingBalance'
 import style from '../../CSS/month.module.css';
@@ -8,20 +7,26 @@ import moment from 'moment';
 const Month = props => {
   let currentMonth = moment().format('M');
   const [month, setMonth] = useState(currentMonth);
+  const [monthlyTransactions,setMonthlyTransactions] = useState([]);
 
-  const getMonthlyTransactions = () => {  
-
+  const getMonthlyTransactions = (newMonth) => {
     let mt = props.transactions.filter(
-      transaction => moment(transaction.date).format('M') === String(month)
+      transaction => moment(transaction.date).format('M') === String(newMonth)
     )
-    return <TransactionTable MonthlyTransactions={mt} setTransactions = {props.setTransactions} />;
+
+    setMonthlyTransactions(mt);
+    setMonth(newMonth);
   };
+
+  useEffect(() => {
+    getMonthlyTransactions(month);
+  },[]);
 
   const handleClick = (e) => {
     getMonth(e);
-}
+  }
 
-const getMonth = val => {
+  const getMonth = val => {
     const monthVal = Number(month) + val;
     const newMonth = monthVal === 0 ?
     12 :
@@ -29,8 +34,8 @@ const getMonth = val => {
     1 :
     monthVal;
     
-    setMonth(newMonth);
-}
+    getMonthlyTransactions(newMonth);
+  }
 
 
   return (
@@ -48,7 +53,7 @@ const getMonth = val => {
           </button>
 
         </div>
-        {getMonthlyTransactions()}
+        <TransactionTable MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />;
       </>
   );
 }
