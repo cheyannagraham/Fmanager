@@ -15,6 +15,6 @@
 }
 
 .icon {
-    composes: icon from './transactiontable.module.css';
+    composes: icon from './transactionlist.module.css';
     font-size: 3em;
 }

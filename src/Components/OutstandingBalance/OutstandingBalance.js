@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import TransactionTable from '../Transactions/TransactionTable'
+import TransactionList from '../Transactions/TransactionList'
 import moment from 'moment';
 
 const OutstandingBalance = props => {
@@ -8,7 +8,7 @@ const OutstandingBalance = props => {
     const filterTransactions = () => {
         const transactionsToDate = props.allTrans.filter(tr => Number(moment(tr.date).format('MM')) <= Number(props.month));
         
-        return <TransactionTable MonthlyTransactions = {transactionsToDate} />
+        return <TransactionList MonthlyTransactions = {transactionsToDate} />
     }
 
 

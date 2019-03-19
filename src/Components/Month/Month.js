@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TransactionTable from '../Transactions/TransactionTable';
+import TransactionList from '../Transactions/TransactionList';
 // import OTB from '../OutstandingBalance/OutstandingBalance'
 import style from '../../CSS/month.module.css';
 import moment from 'moment';
@@ -53,7 +53,7 @@ const Month = props => {
           </button>
 
         </div>
-        <TransactionTable MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />;
+        <TransactionList MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />;
       </>
   );
 }

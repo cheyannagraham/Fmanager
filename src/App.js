@@ -92,7 +92,7 @@ export default App;
 //signin features? 
 //css pseudo classes for validation
 //popup box over input to show how data should be entered
-//transactiontable renders even if props don't chanege(month rerenders)
+//transactionlist renders even if props don't chanege(month rerenders)
 //consider if anything needs to be done regarding reflecting changes when data is added on different devices
 //add features to show year wehn displaying BTD
 //testing

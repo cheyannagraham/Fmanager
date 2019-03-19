@@ -1,21 +1,26 @@
-.table {
+.list {
     width: 100%;
-    max-width: 500px;
-    border-collapse: collapse;
     text-align: center;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    padding: 0;
 }
 
-.th {
-    font-size: 1.08em;
+.li{
+    padding: 5px;
 }
 
 
 .button {
     composes: button from './modal.module.css';
     background: none;
+    padding: 0;
 }
 
 .icon {
     font-size: 1.3em;
     color: #2e4468;
+    padding-right:15px;
+
 }
