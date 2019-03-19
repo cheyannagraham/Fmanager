@@ -67,25 +67,28 @@ const TransactionTable = props => {
         total += Number(trans.amount);
 
         return (
-          <ul key={trans.id} className={style.list}>
+          <>
+            <ul key={trans.id} className={style.list}>
 
-            <li>{props.setTransactions &&
-              <button className={style.button} onClick={() => updateTransaction(trans)}>
-                <i className={`material-icons ${style.icon}`}> edit </i>
-              </button>}
-            </li>
+              <li>{props.setTransactions &&
+                <button className={style.button} onClick={() => updateTransaction(trans)}>
+                  <i className={`material-icons ${style.icon}`}> edit </i>
+                </button>}
+              </li>
 
-            <li className={style.li} >{moment(trans.date).format('MMM D YYYY')}</li>
-            <li className={style.li} >{trans.business}</li>
-            <li className={style.li} ><span>$</span>{trans.amount}</li>
+              <li className={style.li} >{moment(trans.date).format('MMM D YYYY')}</li>
+              <li className={style.li} >{trans.business}</li>
+              <li className={style.li} ><span>$</span>{trans.amount}</li>
 
-            <li>{props.setTransactions &&
-              <button className={style.button} onClick={() => confirmDelete(trans.id)}>
-                <i className={`material-icons ${style.icon}`}> delete </i>
-              </button>}
-            </li>
+              <li>{props.setTransactions &&
+                <button className={style.button} onClick={() => confirmDelete(trans.id)}>
+                  <i className={`material-icons ${style.icon}`}> delete </i>
+                </button>}
+              </li>
 
-          </ul>
+            </ul>
+            <hr className = {style.hr}></hr>
+          </>
         )
       })}
 
