@@ -1,3 +1,20 @@
 .header {
     text-align: center;
+    width: 100%;
+}
+
+.button {
+    composes: button from './modal.module.css';
+    background: none;
+    box-shadow: none;
+}
+
+#month-header {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    composes: icon from './transactiontable.module.css';
+    font-size: 3em;
 }
