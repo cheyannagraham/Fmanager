@@ -70,7 +70,7 @@ const App = () => {
 
 
 
-          
+
 
           
           <div className = {style['main-menu']}>
@@ -127,4 +127,3 @@ export default App;
 //width for the view, not the transactions
 //use list for running balance, consider breaking transactionlist into smaller component
 //make list title bold
-//bugfix : transaction list doesnt update when add, delete, update

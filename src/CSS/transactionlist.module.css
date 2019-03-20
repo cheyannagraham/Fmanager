@@ -36,3 +36,7 @@
     border: 1px solid black;
     opacity: 0.1;
 }
+
+.list-title {
+    font-weight: bold;
+}

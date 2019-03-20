@@ -56,11 +56,11 @@ const TransactionList = props => {
     <>
       <ul id='transaction-list' className={style.list}>
 
-        <li className={style.li} ></li>
-        <li className={style.li} >Date</li>
-        <li className={style.li} >Business</li>
-        <li className={style.li} >Amount</li>
-        <li className={style.li} ></li>
+        <li className={`${style.li} ${style['list-title']}`} ></li>
+        <li className={`${style.li} ${style['list-title']}`} >Date</li>
+        <li className={`${style.li} ${style['list-title']}`} >Business</li>
+        <li className={`${style.li} ${style['list-title']}`} >Amount</li>
+        <li className={`${style.li} ${style['list-title']}`} ></li>
       </ul>
 
       {props.MonthlyTransactions.map(trans => {
