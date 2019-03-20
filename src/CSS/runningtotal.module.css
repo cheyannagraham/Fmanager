@@ -1,0 +1,9 @@
+.li {
+    composes:  li from './transactionlist.module.css';
+}
+
+.total {
+    composes: total from './transactionlist.module.css';
+    font-style: italic;
+    font-size: 1.1em;
+}

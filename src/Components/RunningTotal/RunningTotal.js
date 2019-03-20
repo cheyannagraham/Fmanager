@@ -1,16 +1,16 @@
 import React from 'react';
-import style from '../../CSS/runningbalance.module.css';
+import style from '../../CSS/runningtotal.module.css';
 
 const RunningTotal = props => {
     return (
-        <div id = {style['running-total']}>
-            <span className = {style.title}>
+        <ul className = {style.total}>
+            <li className = {style.li}>
                 Total :
-            </span>
-            <span className = {style.value}>
-                 ${props.total.toFixed(2)}
-           </span> 
-        </div>
+            </li>
+            <li className = {style.li}>
+                ${props.total.toFixed(2)}
+            </li> 
+        </ul>
     )
 }
 

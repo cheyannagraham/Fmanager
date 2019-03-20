@@ -11,7 +11,7 @@
     padding: 5px;
 }
 
-#total {
+.total {
     width: 100%;
     list-style-type: none;
     font-weight: bold;

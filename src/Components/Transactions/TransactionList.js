@@ -92,7 +92,7 @@ const TransactionList = props => {
         )
       })}
 
-      <ul id = {style.total}>
+      <ul className = {style.total}>
         <li className={style.li} colSpan='3'>Monthly Balance:</li>
         <li className={style.li} colSpan='3'>${Number(total).toFixed(2)}</li>
       </ul>

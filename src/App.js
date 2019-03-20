@@ -65,13 +65,6 @@ const App = () => {
           <Month setTransactions = {setTransactions} transactions={transactions} />
         
           <RunningTotal total = {runningTotal} />
-
-
-
-
-
-
-
           
           <div className = {style['main-menu']}>
             <button className = {style.button} onClick = {showAddForm}>
