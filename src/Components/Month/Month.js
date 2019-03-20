@@ -20,7 +20,7 @@ const Month = props => {
 
   useEffect(() => {
     getMonthlyTransactions(month);
-  },[]);
+  },[props.transactions]);
 
   const handleClick = (e) => {
     getMonth(e);
@@ -53,7 +53,7 @@ const Month = props => {
           </button>
 
         </div>
-        <TransactionList MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />;
+        <TransactionList MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />
       </>
   );
 }

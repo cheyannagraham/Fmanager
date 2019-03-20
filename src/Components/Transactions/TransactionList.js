@@ -7,7 +7,7 @@ import style from '../../CSS/transactionlist.module.css';
 
 
 
-const TransactionTable = props => {
+const TransactionList = props => {
   let total = 0;
   const showModal = useContext(ModalContext).setShowModal;
 
@@ -92,7 +92,7 @@ const TransactionTable = props => {
         )
       })}
 
-      <ul>
+      <ul id = {style.total}>
         <li className={style.li} colSpan='3'>Monthly Balance:</li>
         <li className={style.li} colSpan='3'>${Number(total).toFixed(2)}</li>
       </ul>
@@ -102,7 +102,7 @@ const TransactionTable = props => {
 }
 
 
-export default TransactionTable;
+export default TransactionList;
 
 
 

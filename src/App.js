@@ -66,6 +66,12 @@ const App = () => {
         
           <RunningTotal total = {runningTotal} />
 
+
+
+
+
+          
+
           
           <div className = {style['main-menu']}>
             <button className = {style.button} onClick = {showAddForm}>
@@ -118,4 +124,7 @@ export default App;
 
 // add click animations to buttons
 //add pure components
-//Delete month header component. Make month component, 1 width for the view, not the transactions
+//width for the view, not the transactions
+//use list for running balance, consider breaking transactionlist into smaller component
+//make list title bold
+//bugfix : transaction list doesnt update when add, delete, update
