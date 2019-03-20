@@ -4,6 +4,7 @@ import { deleteTransaction, getTransactions } from '../Helpers/DBHelper';
 import { ModalContext } from '../../App';
 import TransactionForm from './TransactionForm';
 import style from '../../CSS/transactionlist.module.css';
+import TransactionItem from './TransactionItem';
 
 
 
@@ -55,7 +56,6 @@ const TransactionList = props => {
     sortTransactions(),
     <>
       <ul id='transaction-list' className={style.list}>
-
         <li className={`${style.li} ${style['list-title']}`} ></li>
         <li className={`${style.li} ${style['list-title']}`} >Date</li>
         <li className={`${style.li} ${style['list-title']}`} >Business</li>
@@ -64,32 +64,9 @@ const TransactionList = props => {
       </ul>
 
       {props.MonthlyTransactions.map(trans => {
-        total += Number(trans.amount);
+        total += Number(trans.amount);        
 
-        return (
-          <>
-            <ul key={trans.id} className={style.list}>
-
-              <li>{props.setTransactions &&
-                <button className={style.button} onClick={() => updateTransaction(trans)}>
-                  <i className={`material-icons ${style.icon}`}> edit </i>
-                </button>}
-              </li>
-
-              <li className={style.li} >{moment(trans.date).format('MMM D YYYY')}</li>
-              <li className={style.li} >{trans.business}</li>
-              <li className={style.li} ><span>$</span>{trans.amount}</li>
-
-              <li>{props.setTransactions &&
-                <button className={style.button} onClick={() => confirmDelete(trans.id)}>
-                  <i className={`material-icons ${style.icon}`}> delete </i>
-                </button>}
-              </li>
-
-            </ul>
-            <hr className = {style.hr}></hr>
-          </>
-        )
+        return <TransactionItem confirmDelete = {confirmDelete} updateTransaction = {updateTransaction} trans = {trans} key = {trans.id} /> 
       })}
 
       <ul className = {style.total}>

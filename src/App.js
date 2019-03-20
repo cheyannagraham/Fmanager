@@ -42,10 +42,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    // getTransactions()
-    // .then(r => setTransactions(r))
-    // .catch(err => setShowModal(
-    //   {show:true,status:'error',content:err,type:'alert'}))    
+    getTransactions()
+    .then(r => setTransactions(r))
+    .catch(err => setShowModal(
+      {show:true,status:'error',content:err,type:'alert'}))    
   }, []);
 
 
