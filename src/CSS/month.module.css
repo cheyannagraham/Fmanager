@@ -18,3 +18,9 @@
     composes: icon from './transactionlist.module.css';
     font-size: 3em;
 }
+
+#month-content-div {
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+}

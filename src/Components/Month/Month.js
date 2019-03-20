@@ -39,22 +39,22 @@ const Month = props => {
 
 
   return (
-      <>
-        <div id = {style['month-header']} >
+    <div id= {style['month-content-div']}>
+      <div id = {style['month-header']} >
 
-          <button className = {style.button} onClick = {() => {handleClick(-1)}}>
-            <i className = {`material-icons ${style.icon}`}>arrow_left</i>
-          </button>
+        <button className = {style.button} onClick = {() => {handleClick(-1)}}>
+          <i className = {`material-icons ${style.icon}`}>arrow_left</i>
+        </button>
 
-          <h2 className = {style.header}>{moment(month,'MM').format('MMMM')}</h2>
+        <h2 className = {style.header}>{moment(month,'MM').format('MMMM')}</h2>
 
-          <button className = {style.button} onClick = {() => {handleClick(1)}}>
-            <i className = {`material-icons ${style.icon}`}>arrow_right</i>
-          </button>
+        <button className = {style.button} onClick = {() => {handleClick(1)}}>
+          <i className = {`material-icons ${style.icon}`}>arrow_right</i>
+        </button>
 
-        </div>
-        <TransactionList MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />
-      </>
+      </div>
+      <TransactionList MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />
+    </div>
   );
 }
 

@@ -61,12 +61,13 @@ const App = () => {
         {showModal.show && <Modal content = {showModal} /> }
         
         <div className = {style.main}>
-          
+
           <Month setTransactions = {setTransactions} transactions={transactions} />
-        
+
           <RunningTotal total = {runningTotal} />
+        
           
-          <div className = {style['main-menu']}>
+          <div id = {style['menu-div']}>
             <button className = {style.button} onClick = {showAddForm}>
               <i className = 'material-icons'>add</i>
             </button>
