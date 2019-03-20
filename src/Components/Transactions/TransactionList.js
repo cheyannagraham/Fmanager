@@ -31,10 +31,10 @@ const TransactionList = props => {
 
   const handleDelete = id => {
     deleteTransaction(id)
-      .lien(() => {
+      .then(() => {
         showModal({ show: true, status: 'success', type: 'alert', content: 'Delete Successful!' });
         getTransactions()
-          .lien(results => props.setTransactions(results));
+          .then(results => props.setTransactions(results));
       })
       .catch(err => showModal({ show: true, status: 'error', type: 'alert', content: err }));
   }
