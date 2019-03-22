@@ -13,6 +13,7 @@ export const ModalContext = React.createContext(false);
 const App = () => {
   const [showModal,setShowModal] = useState({show: false});
   const [runningTotal,setRunningTotal] = useState(0);
+  const [monthlyBalance,setMonthlyBalance] = useState(0);
   const [transactions, setTransactions] = useState([
     {
       id : '23',
@@ -62,9 +63,11 @@ const App = () => {
         
         <div className = {style.main}>
 
-          <Month setTransactions = {setTransactions} transactions={transactions} />
+          <Month setMonthlyBalance = {setMonthlyBalance} setTransactions = {setTransactions} transactions={transactions} />
 
-          <RunningTotal total = {runningTotal} />
+          <RunningTotal total = {runningTotal} monthlyBalance = {monthlyBalance}/>
+
+
         
           
           <div id = {style['menu-div']}>
@@ -119,5 +122,6 @@ export default App;
 // add click animations to buttons
 //add pure components
 //width for the view, not the transactions
-//use list for running balance, consider breaking transactionlist into smaller component
-//make list title bold
+//Move monthly balance to bottom of div
+//add media quires for app width
+//fix month header and month total so only actual transaction list scrolls. 

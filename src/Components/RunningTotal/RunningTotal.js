@@ -13,6 +13,17 @@ const RunningTotal = props => {
                     ${props.total.toFixed(2)}
                 </li>
             </ul>
+            
+            <ul className={style.total}>
+                <li className={style.li}>
+                    Monthly Balance :
+                </li>
+                <li className={style.li}>
+                    ${props.monthlyBalance.toFixed(2)}
+                </li>
+            </ul>
+
+
         </div>
 
     )
