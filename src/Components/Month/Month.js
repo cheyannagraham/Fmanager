@@ -53,8 +53,8 @@ const Month = props => {
         </button>
 
       </div>
-      
-      <TransactionList setMonthlyBalance = {props.setMonthlyBalance} MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />
+
+      <TransactionList setMonthlyTotal = {props.setMonthlyTotal} MonthlyTransactions={monthlyTransactions} setTransactions = {props.setTransactions} />
     </div>
   );
 }

@@ -69,7 +69,7 @@ const TransactionList = props => {
         return <TransactionItem confirmDelete = {confirmDelete} updateTransaction = {updateTransaction} trans = {trans} key = {trans.id} /> 
       })}
 
-      {props.setMonthlyBalance(total)}
+      {props.setMonthlyTotal(total)}
 
     </>
   )

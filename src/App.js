@@ -13,7 +13,7 @@ export const ModalContext = React.createContext(false);
 const App = () => {
   const [showModal,setShowModal] = useState({show: false});
   const [runningTotal,setRunningTotal] = useState(0);
-  const [monthlyBalance,setMonthlyBalance] = useState(0);
+  const [monthlyTotal,setMonthlyTotal] = useState(0);
   const [transactions, setTransactions] = useState([
     {
       id : '23',
@@ -63,9 +63,9 @@ const App = () => {
         
         <div className = {style.main}>
 
-          <Month setMonthlyBalance = {setMonthlyBalance} setTransactions = {setTransactions} transactions={transactions} />
+          <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
 
-          <RunningTotal total = {runningTotal} monthlyBalance = {monthlyBalance}/>
+          <RunningTotal total = {runningTotal} monthlyTotal = {monthlyTotal}/>
 
 
         

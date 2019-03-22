@@ -1,7 +1,7 @@
 import React from 'react';
-import style from '../../CSS/runningtotal.module.css';
+import style from '../../CSS/Total.module.css';
 
-const RunningTotal = props => {
+const Total = props => {
     return (
 
         <div id={style["running-total-div"]}>
@@ -29,4 +29,4 @@ const RunningTotal = props => {
     )
 }
 
-export default RunningTotal;
+export default Total;
