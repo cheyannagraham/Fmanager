@@ -28,7 +28,7 @@
 
 .icon {
     font-size: 1.3em;
-    color: #2e4468;
+    color: darkcyan;
 }
 
 .hr {
@@ -38,4 +38,6 @@
 
 .list-title {
     font-weight: bold;
+    padding-bottom: 15px;
+    font-size: 1.2em;
 }
