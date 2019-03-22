@@ -5,7 +5,7 @@ import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
 import style from './CSS/app.module.css';
-import OTB from './Components/OutstandingBalance/OutstandingBalance';
+//import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
 export const ModalContext = React.createContext(false);
 
@@ -112,7 +112,5 @@ export default App;
 
 // add click animations to buttons
 //add pure components
-//width for the view, not the transactions
-//Move monthly balance to bottom of div
 //add media quires for app width
-//fix month header and month total so only actual transaction list scrolls. 
+//work on modal styling

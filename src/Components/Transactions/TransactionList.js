@@ -65,7 +65,7 @@ const TransactionList = props => {
 
       <hr className = {style.hr} />
 
-      {props.MonthlyTransactions.length > 1 ? 
+      {props.MonthlyTransactions.length > 0 ? 
       props.MonthlyTransactions.map(trans => {
         total += Number(trans.amount)    
 
