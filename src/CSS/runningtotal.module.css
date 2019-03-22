@@ -4,13 +4,18 @@
 
 .total {
     composes: total from './transactionlist.module.css';
-    font-style: italic;
     font-size: 1.1em;
     margin: 0;
-
+    padding: 0;
+    width: 100%;
 }
 
 #running-total-div {
     width: 100%;
-    height: 10%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center; 
+
+
 }

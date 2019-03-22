@@ -56,33 +56,24 @@ const App = () => {
   //Fix mixture. Some have buttons that render, others render with state to show content. 
 
   return (
-    <div id = {style['app-div']}>
-      <ModalContext.Provider value = {{setShowModal}}>
-        
-        {showModal.show && <Modal content = {showModal} /> }
-        
-        <div className = {style.main}>
-
-          <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
-
-          <RunningTotal total = {runningTotal} monthlyTotal = {monthlyTotal}/>
-
-
-        
-          
-          <div id = {style['menu-div']}>
-            <button className = {style.button} onClick = {showAddForm}>
-              <i className = 'material-icons'>add</i>
-            </button>
-
-            <OTB allTrans = {transactions} month = {''} />
-          </div>
-          
-        
-        </div>
+    <ModalContext.Provider value = {{setShowModal}}>
       
-      </ModalContext.Provider>
-    </div>
+      {showModal.show && <Modal content = {showModal} /> }
+
+      <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
+
+      <div id = {style.footer}>
+
+        <RunningTotal total = {runningTotal} monthlyTotal = {monthlyTotal}/>
+
+        <button className = {style.button} onClick = {showAddForm}>
+          <i className = {`material-icons ${style.icon}`}>add</i>
+        </button>
+
+        {/* <OTB allTrans = {transactions} month = {''} /> */}
+      </div>
+        
+    </ModalContext.Provider>
     
   );
 };
