@@ -7,19 +7,19 @@ const RunningTotal = props => {
         <div id={style["running-total-div"]}>
             <ul className={style.total}>
                 <li className={style.li}>
-                    Total :
+                    Monthly Total :
                 </li>
                 <li className={style.li}>
-                    ${props.total.toFixed(2)}
+                    ${props.monthlyTotal.toFixed(2)}
                 </li>
             </ul>
             
             <ul className={style.total}>
                 <li className={style.li}>
-                    Monthly Balance :
+                    Running Total :
                 </li>
                 <li className={style.li}>
-                    ${props.monthlyTotal.toFixed(2)}
+                    ${props.runningTotal.toFixed(2)}
                 </li>
             </ul>
 

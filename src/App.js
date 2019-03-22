@@ -64,7 +64,7 @@ const App = () => {
 
       <div id = {style.footer}>
 
-        <RunningTotal total = {runningTotal} monthlyTotal = {monthlyTotal}/>
+        <RunningTotal runningTotal = {runningTotal} monthlyTotal = {monthlyTotal}/>
 
         <button className = {style.button} onClick = {showAddForm}>
           <i className = {`material-icons ${style.icon}`}>add</i>
