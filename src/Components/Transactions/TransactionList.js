@@ -63,11 +63,18 @@ const TransactionList = props => {
         <li className={`${style.li} ${style['list-title']}`} ></li>
       </ul>
 
-      {props.MonthlyTransactions.map(trans => {
-        total += Number(trans.amount);        
+      <hr/>
+
+      {props.MonthlyTransactions.length > 1 ? 
+      props.MonthlyTransactions.map(trans => {
+        total += Number(trans.amount)    
 
         return <TransactionItem confirmDelete = {confirmDelete} updateTransaction = {updateTransaction} trans = {trans} key = {trans.id} /> 
-      })}
+      }):
+        <div id = {style.empty}>
+          <p>No Transactations</p>
+        </div>
+      }
 
       {props.setMonthlyTotal(total)}
 

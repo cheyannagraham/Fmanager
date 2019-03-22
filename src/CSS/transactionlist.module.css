@@ -41,3 +41,10 @@
     padding-bottom: 15px;
     font-size: 1.2em;
 }
+
+#empty {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+}
