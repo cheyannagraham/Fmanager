@@ -63,7 +63,7 @@ const TransactionList = props => {
         <li className={`${style.li} ${style['list-title']}`} ></li>
       </ul>
 
-      <hr/>
+      <hr className = {style.hr} />
 
       {props.MonthlyTransactions.length > 1 ? 
       props.MonthlyTransactions.map(trans => {
