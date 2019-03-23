@@ -92,15 +92,11 @@ export default App;
 //testing
 //incorrect date display edge?
 //store credentials
-//BUG: wrong Date Entry
 //fix OTB moment
 //show recent transactions, then onclick, show all transactions. 
-//no zero transaction values
 //================================
 //REFACTOR
 //bug in delete trans when show BTD
-//extract input components
-//fix id's & classNames for formInputs
 //===========================
 //MODAL
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
@@ -110,9 +106,11 @@ export default App;
 
 //show BTD can be show more once less view is implemented=> maybe add a scroll in styling
 
-// add click animations to buttons
+// add click/hover animations to buttons
 //add pure components
-//work on modal styling
 //add titles to modals...maybe
 
 //test for failed conditions
+//add year func
+// typing firebase fields
+// add credentials and attribution footer
