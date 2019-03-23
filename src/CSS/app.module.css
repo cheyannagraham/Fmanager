@@ -7,7 +7,7 @@
     left: 0px;
     display:flex;
     background: darkcyan;
-    color: #720645;
+    color: white;
 }
 
 .button {
@@ -19,9 +19,6 @@
 
 .icon {
     font-size: 4em;
+    border-radius: 50%;
+    background: #720645;
 }
-
-
-
-
-

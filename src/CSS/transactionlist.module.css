@@ -32,8 +32,8 @@
 }
 
 .hr {
-    border: 1px solid black;
-    opacity: 0.1;
+    border: 1px solid darkcyan;
+    opacity: 0.2;
 }
 
 .list-title {
@@ -47,4 +47,11 @@
     text-align: center;
     padding: 10px 0;
     font-weight: bold;
+}
+
+.trans-list-item {
+    color: darkcyan;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bolder;
 }

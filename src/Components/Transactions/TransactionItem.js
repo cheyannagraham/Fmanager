@@ -16,9 +16,9 @@ const TransactionItem = props => {
           </button>
         </li>
 
-        <li className={style.li} >{moment(props.trans.date).format('MMM D YYYY')}</li>
-        <li className={style.li} >{props.trans.business}</li>
-        <li className={style.li} ><span>$</span>{props.trans.amount}</li>
+        <li className={`${style.li}, ${style['trans-list-item']}`} >{moment(props.trans.date).format('MMM D YYYY')}</li>
+        <li className={`${style.li}, ${style['trans-list-item']}`} >{props.trans.business}</li>
+        <li className={`${style.li}, ${style['trans-list-item']}`} ><span>$</span>{props.trans.amount}</li>
 
         <li>
           <button className={style.button} onClick={() => props.confirmDelete(props.trans.id)}>
