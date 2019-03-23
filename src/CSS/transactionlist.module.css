@@ -37,7 +37,6 @@
 }
 
 .list-title {
-    font-weight: bold;
     padding-bottom: 15px;
     font-size: 1.2em;
 }
@@ -46,12 +45,10 @@
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    font-weight: bold;
 }
 
 .trans-list-item {
     color: darkcyan;
     text-transform: uppercase;
     font-style: italic;
-    font-weight: bolder;
 }
