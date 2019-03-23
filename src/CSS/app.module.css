@@ -6,20 +6,19 @@
     width: 100%;
     left: 0px;
     display:flex;
-    justify-content: space-between;
     background: darkcyan;
     color: #720645;
 }
 
 .button {
     composes : button from './modal.module.css';
-    padding: 0;
+    padding-right: 25px;
     background: none;
     box-shadow: 0 0 0 0;
 }
 
 .icon {
-    font-size: 24px;
+    font-size: 4em;
 }
 
 
