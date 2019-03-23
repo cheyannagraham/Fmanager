@@ -1,6 +1,6 @@
 
 #footer {
-    height: 17%;
+    min-height: 17%;
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -18,7 +18,20 @@
 }
 
 .icon {
-    font-size: 4em;
+    font-size: 2.5em;
     border-radius: 50%;
     background: #720645;
+}
+
+@media screen and (min-width: 500px) and (max-width: 650px) {
+    .icon {
+        font-size: 3em;
+    }
+}
+
+
+@media screen and (min-width: 651px) {
+    .icon {
+        font-size: 4em;
+    }
 }
