@@ -112,5 +112,7 @@ export default App;
 
 // add click animations to buttons
 //add pure components
-//add media quires for app width
 //work on modal styling
+//add titles to modals...maybe
+
+//test for failed conditions

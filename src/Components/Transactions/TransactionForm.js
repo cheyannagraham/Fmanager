@@ -4,6 +4,7 @@ import {validateDate} from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
 import { ModalContext } from '../../App';
 import style from '../../CSS/transactionform.module.css';
+import {CloseModalButton} from '../Modal/Modal';
 
 
 
@@ -75,6 +76,7 @@ const TransactionForm = props => {
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
 
       <button className = {style.button} type='submit'>{props.type}</button>
+      <CloseModalButton />
     </form>
   );
 };
