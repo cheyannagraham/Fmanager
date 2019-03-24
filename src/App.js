@@ -121,4 +121,4 @@ export default App;
 //test for failed conditions
 //add year func
 // typing firebase fields
-// add credentials and attribution footer
+// add footer links
