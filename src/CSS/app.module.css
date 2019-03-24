@@ -1,5 +1,5 @@
 
-#footer {
+#totals {
     min-height: 17%;
     position: absolute;
     bottom: 0px;
@@ -8,6 +8,13 @@
     display:flex;
     background: darkcyan;
     color: white;
+}
+
+#main {
+    width: 100%;
+    height: 100vh;
+    display:flex;
+    position: relative;
 }
 
 .button {

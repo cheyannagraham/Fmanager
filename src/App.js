@@ -5,6 +5,7 @@ import Modal from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
 import style from './CSS/app.module.css';
+import Footer from './Components/Footer/Footer';
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
 export const ModalContext = React.createContext(false);
@@ -57,23 +58,30 @@ const App = () => {
 
   return (
     <ModalContext.Provider value = {{setShowModal}}>
+      <div id = {style.main}>
       
-      {showModal.show && <Modal content = {showModal} /> }
+        {showModal.show && <Modal content = {showModal} /> }
 
-      <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
+        <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
 
-      <div id = {style.footer}>
+        <div id = {style.totals}>
 
-        <RunningTotal runningTotal = {runningTotal} monthlyTotal = {monthlyTotal}/>
+          <RunningTotal runningTotal = {runningTotal} monthlyTotal = {monthlyTotal}/>
 
-          <button className = {style.button} onClick = {showAddForm}>
-            <i className = {`material-icons ${style.icon}`}>add</i>
-          </button>
+            <button className = {style.button} onClick = {showAddForm}>
+              <i className = {`material-icons ${style.icon}`}>add</i>
+            </button>
 
         {/* <OTB allTrans = {transactions} month = {''} /> */}
-      </div>
-        
+        </div>
+
+
+      </div>  
+      
+      <Footer />
+
     </ModalContext.Provider>
+
     
   );
 };
