@@ -67,7 +67,7 @@ const Month = props => {
           <i className = {`material-icons ${style.icon}`}>arrow_left</i>
         </button>
 
-        <h2 className = {style.header}>{moment(month,'MM').format('MMMM')}</h2>
+        <h2 className = {style.header}>{`${moment(month,'MM').format('MMMM')} ${year}`}</h2>
 
         <button className = {style.button} onClick = {() => {handleClick(1)}}>
           <i className = {`material-icons ${style.icon}`}>arrow_right</i>
