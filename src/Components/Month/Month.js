@@ -59,7 +59,6 @@ const Month = props => {
 
 
   return (
-    console.log('year',year),
     <div id= {style['month-content-div']}>
       <div id = {style['month-header']} >
 

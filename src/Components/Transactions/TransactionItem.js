@@ -16,7 +16,7 @@ const TransactionItem = props => {
           </button>
         </li>
 
-        <li className={`${style.li}, ${style['trans-list-item']}`} >{moment(props.trans.date).format('MMM D YYYY')}</li>
+        <li className={`${style.li}, ${style['trans-list-item']}`} >{moment(props.trans.date).format('D MMM')}</li>
         <li className={`${style.li}, ${style['trans-list-item']}`} >{props.trans.business}</li>
         <li className={`${style.li}, ${style['trans-list-item']}`} ><span>$</span>{props.trans.amount}</li>
 
