@@ -119,6 +119,8 @@ export default App;
 //add titles to modals...maybe
 
 //test for failed conditions
-//add year func
 // typing firebase fields
-// add footer links
+
+//++++++++++++++++++++FEATURES++++++++++++++++++++
+//show list of years and months onclick for faster scrolling.
+//show all transactions for a year
