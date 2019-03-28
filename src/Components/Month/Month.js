@@ -6,12 +6,16 @@ import moment from 'moment';
 
 const Month = props => {
   let currentMonth = moment().format('M');
+  let currentYear = moment().format('YYYY');
   const [month, setMonth] = useState(currentMonth);
+  const [year, setYear] = useState(currentYear);
   const [monthlyTransactions,setMonthlyTransactions] = useState([]);
 
   const getMonthlyTransactions = (newMonth) => {
     let mt = props.transactions.filter(
-      transaction => moment(transaction.date).format('M') === String(newMonth)
+      transaction => {
+        return moment(transaction.date).format('YYYY') === String(year) && moment(transaction.date).format('M') === String(newMonth)
+      }
     )
 
     setMonthlyTransactions(mt);
@@ -28,17 +32,34 @@ const Month = props => {
 
   const getMonth = val => {
     const monthVal = Number(month) + val;
-    const newMonth = monthVal === 0 ?
-    12 :
-    monthVal === 13 ?
-    1 :
-    monthVal;
+    let newMonth;
+    let newYear;
+
+    if(monthVal === 0) {
+      newYear = year - 1;
+      setYear(newYear);
+      newMonth = 12;
+    
+    } else if( monthVal === 13) {
+      newYear = year + 1;
+      setYear(newYear);
+      newMonth = 1;
+    
+    } else {
+      newMonth = monthVal;
+    }
+    // const newMonth = monthVal === 0 ?
+    // 12 :
+    // monthVal === 13 ?
+    // 1 :
+    // monthVal;
     
     getMonthlyTransactions(newMonth);
   }
 
 
   return (
+    console.log('year',year),
     <div id= {style['month-content-div']}>
       <div id = {style['month-header']} >
 
