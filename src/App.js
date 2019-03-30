@@ -93,10 +93,8 @@ export default App;
 //Maybe add a delete all? 
 //signin features? 
 //css pseudo classes for validation
-//popup box over input to show how data should be entered
 //transactionlist renders even if props don't chanege(month rerenders)
 //consider if anything needs to be done regarding reflecting changes when data is added on different devices
-//add features to show year wehn displaying BTD
 //testing
 //incorrect date display edge?
 //store credentials
@@ -120,7 +118,14 @@ export default App;
 
 //test for failed conditions
 // typing firebase fields
+//use form[id] to get values 
 
 //++++++++++++++++++++FEATURES++++++++++++++++++++
 //show list of years and months onclick for faster scrolling.
 //show all transactions for a year
+
+//============== AUTENTICATION NOTES=====================
+//login & sign up forms
+// what to show without an account => landing page
+//Redirect to app page
+//same email address?
