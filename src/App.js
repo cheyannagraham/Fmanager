@@ -123,6 +123,7 @@ export default App;
 //++++++++++++++++++++FEATURES++++++++++++++++++++
 //show list of years and months onclick for faster scrolling.
 //show all transactions for a year
+// add add button to transaction completed to add another without going to main screen
 
 //============== AUTENTICATION NOTES=====================
 //login & sign up forms
