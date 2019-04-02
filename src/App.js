@@ -124,9 +124,14 @@ export default App;
 //show list of years and months onclick for faster scrolling.
 //show all transactions for a year
 // add add button to transaction completed to add another without going to main screen
+// show stats: total income/spent per month & year => maybe graph spending
 
 //============== AUTENTICATION NOTES=====================
 //login & sign up forms
 // what to show without an account => landing page
 //Redirect to app page
 //same email address?
+
+//===============Firestore===================
+//Security Rules
+//ID's empty in transaction??
