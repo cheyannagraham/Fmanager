@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import style from "../../CSS/modal.module.css";
 import { ModalContext } from "../../App";
 
+//possible props
+//type,status,cotent,show,callback
+
+//consider passing callbacks in buttons onClick method and avoid confirm for delete
 
 
 const Modal = props => {
