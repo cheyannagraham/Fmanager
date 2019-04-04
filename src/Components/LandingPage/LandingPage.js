@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import Modal, { CloseModalButton } from '../Modal/Modal';
 import { Email, Password, Username } from './Credentials/CredentialComponents';
-import { auth } from '../../fstore/fmanager';
+import { auth } from '../../fb/fb';
 
 
 const LandingPage = props => {
 
+    const [user,setUser] = useState(null);
     const [showModal,setShowModal] = useState(false);
+
+
+    auth.onAuthStateChanged(user => {
+        setUser(user);
+    })
+
     
     const handleLogin = () => {
         
@@ -31,6 +38,7 @@ const LandingPage = props => {
     }
     
     const handleSignup = () => {
+        console.log('hsu')
         setShowModal({
             show:true,
             type: 'signup',
@@ -70,16 +78,34 @@ const LandingPage = props => {
         return [form['email'].value,form['pwd'].value];
     }
 
-    return (
-        <div>
-            <h1>LandingPage</h1>
-            <div>
-                <button onClick = {handleLogin}>Login</button>
-                <button onClick = {handleSignup}>SignUp</button>
-            </div>
-            {showModal && <Modal content = {showModal} />}
-        </div>
+    const signout = () => {
+        auth.signOut()
+        .catch(err => setShowModal({show:true,type:'error',status:'error',content:err}));
+    }
+
+    return (console.log(user),
+
+        user ?
+            (<div>
+                <h1>HI USER</h1>
+                <button onClick={signout}>Signout</button>
+                {showModal && <Modal content = {showModal} />}
+            </div>)
+            :
+            (<div>
+                <h1>LandingPage</h1>
+                <div>
+                    <button onClick={handleLogin}>Login</button>
+                    <button onClick={handleSignup}>SignUp</button>
+                    {showModal && <Modal content = {showModal} />}
+                </div>
+            </div>)      
+
     )
 }
 
 export default LandingPage;
+
+//Add login and logout features
+//render app upon login
+//security rules

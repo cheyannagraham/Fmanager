@@ -1,4 +1,4 @@
-import db from '../../fstore/fmanager';
+import db from '../../fb/fb';
 
 //Retrieve all transactions  
 export const getTransactions = () => {
