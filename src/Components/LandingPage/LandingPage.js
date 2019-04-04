@@ -27,7 +27,18 @@ const LandingPage = props => {
                 <button onClick = { 
                     e => {
                             e.preventDefault();
-                            alert('login!');
+                            const [email,pwd] = getCreds();
+                            auth.signInWithEmailAndPassword(email,pwd)
+                            .catch(err => setShowModal({
+                                type:'error',
+                                status:'error',
+                                content:
+                                <>
+                                    <p><b>{err.code}</b></p>
+                                    <p>{err.message}</p>
+                                    <button onClick={() => setShowModal(false)}>Close</button>
+                                </>
+                            }))
                             setShowModal(false);
                         }
                     }>
@@ -38,7 +49,6 @@ const LandingPage = props => {
     }
     
     const handleSignup = () => {
-        console.log('hsu')
         setShowModal({
             show:true,
             type: 'signup',
@@ -51,7 +61,6 @@ const LandingPage = props => {
                     e => {
                             e.preventDefault();
                             const [email,pwd] = getCreds();
-                            console.log(email,pwd);
                             auth.createUserWithEmailAndPassword(email,pwd)
                             .catch(err => setShowModal({
                                 type:'error',
@@ -83,8 +92,7 @@ const LandingPage = props => {
         .catch(err => setShowModal({show:true,type:'error',status:'error',content:err}));
     }
 
-    return (console.log(user),
-
+    return (
         user ?
             (<div>
                 <h1>HI USER</h1>
