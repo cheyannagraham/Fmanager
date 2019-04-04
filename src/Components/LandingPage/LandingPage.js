@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import Modal, { CloseModalButton } from '../Modal/Modal';
 import { Email, Password, Username } from './Credentials/CredentialComponents';
 import { auth } from '../../fb/fb';
+import App from '../../App';
 
 
 const LandingPage = props => {
 
     const [user,setUser] = useState(null);
     const [showModal,setShowModal] = useState(false);
-
 
     auth.onAuthStateChanged(user => {
         setUser(user);
@@ -84,7 +84,7 @@ const LandingPage = props => {
     const getCreds = () => {
         //should be one form open at a time
         const form = document.querySelector('form');
-        return [form['email'].value,form['pwd'].value];
+        return [form['email'].value, form['pwd'].value];
     }
 
     const signout = () => {
@@ -95,9 +95,10 @@ const LandingPage = props => {
     return (
         user ?
             (<div>
-                <h1>HI USER</h1>
+                <h1>HI {auth.currentUser.displayName}</h1>
                 <button onClick={signout}>Signout</button>
                 {showModal && <Modal content = {showModal} />}
+                <App />
             </div>)
             :
             (<div>
@@ -114,6 +115,4 @@ const LandingPage = props => {
 
 export default LandingPage;
 
-//Add login and logout features
-//render app upon login
 //security rules

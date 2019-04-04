@@ -34,6 +34,7 @@ export const Username = props => {
             <input 
             name='Username'
             type='text'
+            id='username'
             //{/* required */}
             />
         </label>
