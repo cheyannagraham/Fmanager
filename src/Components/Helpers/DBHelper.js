@@ -5,7 +5,7 @@ const user = () => auth.currentUser.uid;
 
 //Retrieve all transactions  
 export const getTransactions = () => {
-  return db.collection(user())
+  return db.collection(`user_trans/${user()}/transactions`)
     .get()
     .then(results => {
       let tr = [];
@@ -19,14 +19,14 @@ export const getTransactions = () => {
 
 //Delete Transaction
 export const deleteTransaction = id => {
-  return db.collection(user()).doc(id).delete()
+  return db.collection(`user_trans/${user()}/transactions`).doc(id).delete()
   .then(() => 'Delete Successful!')
   .catch(err => `Could Not Delete: ${err}`);
 }
 
  //Add Transaction
 export const addTransaction = trans => {
-  return db.collection(user())
+  return db.collection(`user_trans/${user()}/transactions`)
   .add(trans)
   .then(dref => {
     //add id to transaction object
@@ -37,7 +37,7 @@ export const addTransaction = trans => {
 } 
 //Update Transaction
 export const updateTransaction = trans => {
-  return db.collection(user()).doc(trans.id).set(trans)
+  return db.collection(`user_trans/${user()}/transactions`).doc(trans.id).set(trans)
   .then(() => 'Update Successful!')
   .catch(err => `Could Not Update: ${err}`);
 }
