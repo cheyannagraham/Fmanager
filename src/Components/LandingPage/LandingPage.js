@@ -12,7 +12,9 @@ const LandingPage = props => {
 
     auth.onAuthStateChanged(user => {
         setUser(user);
-    })
+    });
+
+    console.log('user');
 
     
     const handleLogin = () => {
