@@ -116,3 +116,6 @@ const LandingPage = props => {
 export default LandingPage;
 
 //security rules
+//cloud functions
+//create collection for user to store transactions
+//add dname when user creates account
