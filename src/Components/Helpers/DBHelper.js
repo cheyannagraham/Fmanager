@@ -1,8 +1,11 @@
 import db from '../../fb/fb';
+import { auth } from '../../fb/fb';
+
+const user = () => auth.currentUser.uid;
 
 //Retrieve all transactions  
 export const getTransactions = () => {
-  return db.collection('transactions')
+  return db.collection(user())
     .get()
     .then(results => {
       let tr = [];
@@ -16,14 +19,14 @@ export const getTransactions = () => {
 
 //Delete Transaction
 export const deleteTransaction = id => {
-  return db.collection('transactions').doc(id).delete()
+  return db.collection(user()).doc(id).delete()
   .then(() => 'Delete Successful!')
   .catch(err => `Could Not Delete: ${err}`);
 }
 
  //Add Transaction
 export const addTransaction = trans => {
-  return db.collection('transactions')
+  return db.collection(user())
   .add(trans)
   .then(dref => {
     //add id to transaction object
@@ -34,7 +37,7 @@ export const addTransaction = trans => {
 } 
 //Update Transaction
 export const updateTransaction = trans => {
-  return db.collection('transactions').doc(trans.id).set(trans)
+  return db.collection(user()).doc(trans.id).set(trans)
   .then(() => 'Update Successful!')
   .catch(err => `Could Not Update: ${err}`);
 }
