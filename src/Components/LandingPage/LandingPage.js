@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Modal, { CloseModalButton } from '../Modal/Modal';
+import Modal from '../Modal/Modal';
 import { Email, Password, Username } from './Credentials/CredentialComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
@@ -121,7 +121,5 @@ const LandingPage = props => {
 
 export default LandingPage;
 
-//security rules
-//cloud functions
-//create collection for user to store transactions
-//add dname when user creates account
+//style with tailwind / material design
+//research plaid
