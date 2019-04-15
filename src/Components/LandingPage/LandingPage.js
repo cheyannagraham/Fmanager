@@ -9,14 +9,13 @@ const LandingPage = props => {
 
     const [user,setUser] = useState(null);
     const [showModal,setShowModal] = useState(false);
+    const [displayName,setDisplayName] = useState(user ? user.displayName : '');
 
     auth.onAuthStateChanged(user => {
         setUser(user);
+        user && setDisplayName(user.displayName);
     });
 
-    console.log('user');
-
-    
     const handleLogin = () => {
         
         setShowModal({
@@ -61,9 +60,14 @@ const LandingPage = props => {
                 <Password />
                 <button onClick = { 
                     e => {
+                            const dName = document.getElementById('username').value;
                             e.preventDefault();
                             const [email,pwd] = getCreds();
                             auth.createUserWithEmailAndPassword(email,pwd)
+                            .then(() => {
+                                setDisplayName(dName);
+                                auth.currentUser.updateProfile({displayName:dName});
+                            })
                             .catch(err => setShowModal({
                                 type:'error',
                                 status:'error',
@@ -97,7 +101,7 @@ const LandingPage = props => {
     return (
         user ?
             (<div>
-                <h1>HI {auth.currentUser.displayName}</h1>
+                <h1>HI {displayName}</h1>
                 <button onClick={signout}>Signout</button>
                 {showModal && <Modal content = {showModal} />}
                 <App />
