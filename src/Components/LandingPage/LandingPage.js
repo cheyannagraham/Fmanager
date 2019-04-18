@@ -13,7 +13,6 @@ const LandingPage = props => {
 
     auth.onAuthStateChanged(user => {
         setUser(user);
-        //on sign in
         user && setDisplayName(user.displayName);
     });
 
@@ -61,15 +60,16 @@ const LandingPage = props => {
                 <Password />
                 <button onClick = { 
                     e => {
-                            const dName = document.getElementById('username').value;
+                            const uName = document.getElementById('username').value;
+                            const dName = (uName[0].toUpperCase()+ uName.slice(1)).trim();
                             e.preventDefault();
                             const [email,pwd] = getCreds();
                             auth.createUserWithEmailAndPassword(email,pwd)
                             .then(() => {
-                                {/* setDisplayName(dName); */}
-                                {/* console.log(displayName,'dn'); */}
+                                //add username to profile
                                 auth.currentUser.updateProfile({displayName:dName})
                                 .then(() => {
+                                    //display username after it's added to profile
                                     setDisplayName(dName);                                    
                                 });
                             })
@@ -103,10 +103,10 @@ const LandingPage = props => {
         .catch(err => setShowModal({show:true,type:'error',status:'error',content:err}));
     }
 
-    return (console.log('render',displayName),
+    return (
         user ?
             (<div>
-                <h1>HI {displayName}</h1>
+                <h1>HI {displayName}!</h1>
                 <button onClick={signout}>Signout</button>
                 {showModal && <Modal content = {showModal} />}
                 <App />
@@ -128,4 +128,3 @@ export default LandingPage;
 
 //style with tailwind / material design
 //research plaid
-//dname not working on sing up
