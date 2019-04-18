@@ -9,10 +9,11 @@ const LandingPage = props => {
 
     const [user,setUser] = useState(null);
     const [showModal,setShowModal] = useState(false);
-    const [displayName,setDisplayName] = useState(user ? user.displayName : '');
+    const [displayName,setDisplayName] = useState(user && user.displayName);
 
     auth.onAuthStateChanged(user => {
         setUser(user);
+        //on sign in
         user && setDisplayName(user.displayName);
     });
 
@@ -65,8 +66,12 @@ const LandingPage = props => {
                             const [email,pwd] = getCreds();
                             auth.createUserWithEmailAndPassword(email,pwd)
                             .then(() => {
-                                setDisplayName(dName);
-                                auth.currentUser.updateProfile({displayName:dName});
+                                {/* setDisplayName(dName); */}
+                                {/* console.log(displayName,'dn'); */}
+                                auth.currentUser.updateProfile({displayName:dName})
+                                .then(() => {
+                                    setDisplayName(dName);                                    
+                                });
                             })
                             .catch(err => setShowModal({
                                 type:'error',
@@ -98,7 +103,7 @@ const LandingPage = props => {
         .catch(err => setShowModal({show:true,type:'error',status:'error',content:err}));
     }
 
-    return (
+    return (console.log('render',displayName),
         user ?
             (<div>
                 <h1>HI {displayName}</h1>
@@ -123,3 +128,4 @@ export default LandingPage;
 
 //style with tailwind / material design
 //research plaid
+//dname not working on sing up
