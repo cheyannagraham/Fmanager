@@ -3,6 +3,7 @@ import Modal from '../Modal/Modal';
 import { Email, Password, Username } from './Credentials/CredentialComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
+import LoginPage from './LoginPage/LoginPage';
 
 
 const LandingPage = props => {
@@ -112,14 +113,14 @@ const LandingPage = props => {
                 <App />
             </div>)
             :
-            (<div>
-                <h1>LandingPage</h1>
-                <div>
-                    <button onClick={handleLogin}>Login</button>
-                    <button onClick={handleSignup}>SignUp</button>
-                    {showModal && <Modal content = {showModal} />}
-                </div>
-            </div>)      
+
+            <>
+                <LoginPage handleLogin = {handleLogin} handleSignup = {handleSignup} />
+
+                {showModal && <Modal content = {showModal} />}
+            </>
+
+                  
 
     )
 }
