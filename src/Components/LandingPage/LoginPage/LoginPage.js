@@ -1,30 +1,36 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import styles from './loginpage.module.css';
+import styles from './style.loginpage';
+import { withStyles } from '@material-ui/core/styles';
 
 
 const LoginPage = props => {
 
     return (
-    <div id = {styles['login-page-container']}>
-        <header>
-            <Typography variant = "h1" color = 'primary' align = "center">
-                FManager
-            </Typography>
-        </header>
-        
-        <main className = {styles.main}> 
-            <div id = {styles['button-container']}>
-                <Button size = 'large' onClick={props.handleLogin} color = "primary" variant = "contained">Login</Button>
+        <div className = {props.classes['login-page-container']}>
+            <header className={props.classes['header-section']}>
                 
-                <Button size = 'large' onClick={props.handleSignup} color = "secondary" variant = "contained">SignUp</Button>
-            </div>
-        </main>
-    </div>)
+                <Typography className={props.classes.header} variant="h1" color='primary' align="center">
+                    FManager
+                </Typography>
+
+            </header>
+
+            <main className = {props.classes.main}>
+                
+                <div className = {props.classes['button-container']}>
+                    
+                    <Button className = {props.classes['login-button']} size='large' onClick={props.handleLogin} color="secondary" variant="contained">Login</Button>
+                    <Button size='large' onClick={props.handleSignup} color="primary" variant="contained">SignUp</Button>
+
+                </div>
+
+            </main>
+        </div>)
 
 
 }
 
 
-export default LoginPage;
+export default withStyles(styles)(LoginPage);

@@ -1,45 +1,24 @@
 import blueGrey from '@material-ui/core/colors/blueGrey'
 import orange from '@material-ui/core/colors/orange'
+import blue from '@material-ui/core/colors/lightBlue'
 
 
 const myPalatte = {
     overrides: {
         MuiButton : {
             root : {
-                margin: '10px'
+                margin: '15px'
             }
         }
     },
     palette : {
-        primary: blueGrey,
-        secondary: orange
+        primary: orange,
+        secondary: blueGrey,
+        third: blue
     },
     typography: {
         useNextVariants: true
     }
 }
-
-// const myPalatte = {
-//     overrides: {
-//         MuiButtonBase: {
-//             root: {
-//                 padding: '15px',
-//                 margin: '10px'
-//             }
-//         },
-//         MuiButton: {
-//             label: {
-//                 background:orange,
-//                 color: blueGrey,
-//             },
-//             contained: {
-//                 background: 'yellow'
-//             }
-//         }
-//     },
-//         typography: {
-//         useNextVariants: true
-//     }
-// }
 
 export default myPalatte;
