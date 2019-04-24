@@ -6,22 +6,23 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 const LoginPage = props => {
+    const {classes} = props;
 
     return (
-        <div className = {props.classes['login-page-container']}>
-            <header className={props.classes['header-section']}>
+        <div className = {classes['login-page-container']}>
+            <header className={classes['header-section']}>
                 
-                <Typography className={props.classes.header} variant="h1" color='primary' align="center">
+                <Typography className={classes.header} variant="h1" color='primary' align="center">
                     FManager
                 </Typography>
 
             </header>
 
-            <main className = {props.classes.main}>
+            <main className = {classes.main}>
                 
-                <div className = {props.classes['button-container']}>
+                <div className = {classes['button-container']}>
                     
-                    <Button className = {props.classes['login-button']} size='large' onClick={props.handleLogin} color="secondary" variant="contained">Login</Button>
+                    <Button className = {classes['login-button']} size='large' onClick={props.handleLogin} color="secondary" variant="contained">Login</Button>
                     <Button size='large' onClick={props.handleSignup} color="primary" variant="contained">SignUp</Button>
 
                 </div>

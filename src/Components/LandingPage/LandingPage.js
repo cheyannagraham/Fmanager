@@ -105,21 +105,21 @@ const LandingPage = props => {
     }
 
     return (
-        user ?
-            (<div>
-                <h1>HI {displayName}!</h1>
-                <button onClick={signout}>Signout</button>
-                {showModal && <Modal content = {showModal} />}
-                <App />
-            </div>)
+        <>
+            {showModal && <Modal content={showModal} />}
+            
+            {user ?
+                (<div>
+                    <h1>HI {displayName}!</h1>
+                    <button onClick={signout}>Signout</button>
+                    <App />
+                </div>)
             :
-            <>
-                <LoginPage handleLogin = {handleLogin} handleSignup = {handleSignup} />
-                {showModal && <Modal content = {showModal} />}
-            </>
-
-                  
-
+                (<>
+                    <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
+                </>)
+            }
+        </>
     )
 }
 
