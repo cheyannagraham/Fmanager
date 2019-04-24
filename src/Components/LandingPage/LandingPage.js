@@ -113,10 +113,8 @@ const LandingPage = props => {
                 <App />
             </div>)
             :
-
             <>
                 <LoginPage handleLogin = {handleLogin} handleSignup = {handleSignup} />
-
                 {showModal && <Modal content = {showModal} />}
             </>
 
