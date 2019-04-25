@@ -4,6 +4,7 @@ import { Email, Password, Username } from './Credentials/LoginSignupComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
 import LoginPage from './LoginPage/LoginPage';
+import Button from '@material-ui/core/Button';
 
 
 const LandingPage = props => {
@@ -27,26 +28,27 @@ const LandingPage = props => {
             <form id = 'login'>
                 <Email variant = {variant} />
                 <Password variant = {variant} />
-                <button onClick = { 
+                <Button onClick = { 
                     e => {
                             e.preventDefault();
                             const [email,pwd] = getCreds();
                             auth.signInWithEmailAndPassword(email,pwd)
                             .catch(err => setShowModal({
+                                show: true,
                                 type:'error',
                                 status:'error',
                                 content:
                                 <>
                                     <p><b>{err.code}</b></p>
                                     <p>{err.message}</p>
-                                    <button onClick={() => setShowModal(false)}>Close</button>
+                                    <Button onClick={() => setShowModal(false)}>Close</Button>
                                 </>
                             }))
                             setShowModal(false);
                         }
                     }>
-                Login </button>
-                <button onClick={() => setShowModal(false)}>Close</button>
+                Login </Button>
+                <Button onClick={() => setShowModal(false)}>Close</Button>
             </form>
         });
     }
@@ -63,7 +65,7 @@ const LandingPage = props => {
                 <Username variant = {variant} />
                 <Email variant = {variant} />
                 <Password variant = {variant} />
-                <button onClick = { 
+                <Button onClick = { 
                     e => {
                             const uName = document.getElementById('username').value;
                             const dName = (uName[0].toUpperCase()+ uName.slice(1)).trim();
@@ -79,20 +81,21 @@ const LandingPage = props => {
                                 });
                             })
                             .catch(err => setShowModal({
+                                show: 'true',
                                 type:'error',
                                 status:'error',
                                 content:
                                 <>
                                     <p><b>{err.code}</b></p>
                                     <p>{err.message}</p>
-                                    <button onClick={() => setShowModal(false)}>Close</button>
+                                    <Button onClick={() => setShowModal(false)}>Close</Button>
                                 </>
                             }))
                             setShowModal(false);
                         }
                     }>
-                Signup </button>
-                <button onClick={() => setShowModal(false)}>Close</button>
+                Signup </Button>
+                <Button onClick={() => setShowModal(false)}>Close</Button>
             </form>
         })
     }
@@ -115,7 +118,7 @@ const LandingPage = props => {
             {user ?
                 (<div>
                     <h1>HI {displayName}!</h1>
-                    <button onClick={signout}>Signout</button>
+                    <Button onClick={signout}>Signout</Button>
                     <App />
                 </div>)
             :
