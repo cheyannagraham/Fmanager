@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Modal from '../Modal/Modal';
-import { Email, Password, Username } from './Credentials/CredentialComponents';
+import { Email, Password, Username } from './Credentials/LoginSignupComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
 import LoginPage from './LoginPage/LoginPage';
@@ -18,14 +18,15 @@ const LandingPage = props => {
     });
 
     const handleLogin = () => {
+        const variant = 'outlined'
         
         setShowModal({
             show:true,
             type: 'login',
             content: 
             <form id = 'login'>
-                <Email />
-                <Password />
+                <Email variant = {variant} />
+                <Password variant = {variant} />
                 <button onClick = { 
                     e => {
                             e.preventDefault();
@@ -51,14 +52,17 @@ const LandingPage = props => {
     }
     
     const handleSignup = () => {
+        //for styling form
+        //put in .js later
+        const variant = "filled"
         setShowModal({
             show:true,
             type: 'signup',
             content: 
             <form id = 'signup'>
-                <Username />
-                <Email />
-                <Password />
+                <Username variant = {variant} />
+                <Email variant = {variant} />
+                <Password variant = {variant} />
                 <button onClick = { 
                     e => {
                             const uName = document.getElementById('username').value;

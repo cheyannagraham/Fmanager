@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import style from "../../CSS/modal.module.css";
 import { ModalContext } from "../../App";
 import Dialog from '@material-ui/core/Dialog'
@@ -18,15 +18,13 @@ const Modal = props => {
 
   
   return (
-    <Dialog open = {props.content.show} >
+    <Dialog open = {props.content.show} color = 'primary'>
       <DialogTitle>
         {props.content.type}
       </DialogTitle>
       
       <DialogContent>
-        <DialogContentText>
           {props.content.content}
-        </DialogContentText>
       </DialogContent>
 
 
