@@ -14,15 +14,7 @@ const AppContent = () => {
   const showModal = useContext(ModalContext).setShowModal;
   const [runningTotal, setRunningTotal] = useState(0);
   const [monthlyTotal, setMonthlyTotal] = useState(0);
-  const [transactions, setTransactions] = useState([
-    {
-      id: '23',
-      date: '2019-03-22',
-      amount: 22,
-      type: 'income',
-      business: 'me'
-    }
-  ]);
+  const [transactions, setTransactions] = useState([]);
 
   const showAddForm = () => {
     showModal({

@@ -6,7 +6,27 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
+
+const useInputState = (def = '') => {
+  //set initital value as default if provided
+  const [value,setValue] = useState(def);
+
+  const handleChange = e => {
+    setValue(e.target.value);
+  }
+
+  return {
+    value: value,
+    setValue : setValue,
+    handleChange: handleChange
+  }
+    
+}
+
 export const DateInput = props => {
+
+  const {value, handleChange} = useInputState(props.value);
+
 
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
@@ -19,10 +39,11 @@ export const DateInput = props => {
             id: props.id,
             name: 'date'
           }}
+          value = {value}
+          onChange = {handleChange}
           type='date'
           //older browsers
           placeholder='mm/dd/yyyy'
-          defaultValue = {props.value || '' }
           required
         />
       </InputLabel>
@@ -30,6 +51,8 @@ export const DateInput = props => {
 };
 
 export const BusinessInput = props => {
+  const {value, handleChange} = useInputState(props.value);
+
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
@@ -38,9 +61,10 @@ export const BusinessInput = props => {
             id:props.id,
             name:'business'
           }}
+          value = {value}
+          onChange = {handleChange}
           type='text'
           placeholder='Target'
-          defaultValue = {props.value || ''}
           required
         />
       </InputLabel>
@@ -48,18 +72,22 @@ export const BusinessInput = props => {
 };
 
 export const AmountInput = props => {
+  const {value, handleChange} = useInputState(props.value);
+
+
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
         <Input className = {style.input}
           inputProps = {{
-            step:'0.01',
-            id:props.id,
-            name:'amount'
+            id: props.id,
+            name: 'amount',
+            step: 0.01
           }}
+          value = {value}
+          onChange = {handleChange}
           type='number'
           placeholder='$37.19'
-          defaultValue = {props.value || ''}
           required
         />
       </InputLabel>
@@ -68,11 +96,7 @@ export const AmountInput = props => {
 
 
 export const TransactionTypeInput = props => {
-  const [value,setValue] = useState(props.value || '');
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  }
+  const {value, handleChange} = useInputState(props.value);
 
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
@@ -81,7 +105,7 @@ export const TransactionTypeInput = props => {
           className = {style.select}
           inputProps = {{
             id: props.id,
-            name: 'type'
+            name: 'type',
           }}
           value = {value}
           onChange = {handleChange}>
