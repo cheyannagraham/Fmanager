@@ -1,7 +1,7 @@
 import React from 'react';
-import { Email, Password} from '../../FormInputs/FormInputs';
+import { Email, Password} from '../FormInputs/FormInputs';
 import Button from '@material-ui/core/Button';
-import { CloseModalButton } from '../../Modal/Modal';
+import { CloseModalButton } from '../Modal/Modal';
 
 //remove event listeners
 //define error conditions for the form

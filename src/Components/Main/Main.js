@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Month from './Components/Month/Month.js';
-import { getTransactions } from './Components/Helpers/DBHelper';
-import { CloseModalButton } from './Components/Modal/Modal'
-import TransactionForm from './Components/Transactions/TransactionForm';
-import RunningTotal from './Components/RunningTotal/RunningTotal';
-import style from './CSS/app.module.css';
-import Footer from './Components/Footer/Footer';
-import { ModalContext } from './App';
+import Month from '../../Components/Month/Month.js';
+import { getTransactions } from '../../Components/Helpers/DBHelper';
+import { CloseModalButton } from '../../Components/Modal/Modal'
+import TransactionForm from '../../Components/Transactions/TransactionForm';
+import RunningTotal from '../../Components/RunningTotal/RunningTotal';
+import style from '../../CSS/app.module.css';
+import Footer from '../../Components/Footer/Footer';
+import { ModalContext } from '../../App';
 
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
-const AppContent = () => {
+const Main = () => {
   const showModal = useContext(ModalContext).setShowModal;
   const [runningTotal, setRunningTotal] = useState(0);
   const [monthlyTotal, setMonthlyTotal] = useState(0);
@@ -74,7 +74,7 @@ const AppContent = () => {
   );
 };
 
-export default AppContent;
+export default Main;
 //TODO: see about caching firebase requests
 //add better error messages for validation
 //add better validation for mal scripts

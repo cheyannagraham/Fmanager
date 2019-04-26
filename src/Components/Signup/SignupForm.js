@@ -1,5 +1,5 @@
 import React from 'react';
-import { Email, Password, Username } from '../../FormInputs/FormInputs';
+import { Email, Password, Username } from '../FormInputs/FormInputs';
 import Button from '@material-ui/core/Button';
 
 

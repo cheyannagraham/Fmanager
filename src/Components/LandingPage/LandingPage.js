@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react';
 import { CloseModalButton } from '../Modal/Modal';
 import { ModalContext } from '../../App';
 import { auth } from '../../fb/fb';
-import LoginPage from './LoginPage/LoginPage';
-import LoginForm from './LoginPage/LoginForm';
-import SignupForm from './Signup/SignupForm';
-import Home from './Signup/Home';
+import LoginPage from '../LoginPage/LoginPage';
+import LoginForm from '../LoginPage/LoginForm';
+import SignupForm from '../Signup/SignupForm';
+import Home from '../Home/Home';
 
 
 
