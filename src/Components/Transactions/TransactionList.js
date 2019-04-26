@@ -5,6 +5,8 @@ import { ModalContext } from '../../App';
 import TransactionForm from './TransactionForm';
 import style from '../../CSS/transactionlist.module.css';
 import TransactionItem from './TransactionItem';
+import Button from '@material-ui/core/Button';
+import { CloseModalButton} from '../Modal/Modal';
 
 
 
@@ -22,10 +24,13 @@ const TransactionList = props => {
     showModal(
       {
         show: true,
-        status: 'confirm',
-        type: 'confirm',
-        callback: () => handleDelete(id),
-        content: 'Are you sure you want to delete this transaction?'
+        title: 'confirm',
+        text: 'Are you sure you want to delete this transaction?',
+        content: 
+        <>
+          <Button color='primary' variant= 'contained' onClick = {() => handleDelete(id)} > Confirm </Button>
+          <CloseModalButton onClick = {() => handleDelete(id)} > Confirm </CloseModalButton>
+        </>
       }
     );
   }
