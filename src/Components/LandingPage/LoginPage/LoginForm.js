@@ -5,8 +5,6 @@ import Button from '@material-ui/core/Button';
 //remove event listeners
 //define error conditions for the form
 
-
-
 const LoginForm = props => {
     const variant = 'outlined';
 
@@ -31,15 +29,13 @@ const LoginForm = props => {
                 </>
             }))
         props.setShowModal(false);
-    }
-
-    
+    }  
     
     return (
         <form id = 'login'>
             <Email variant = {variant} />
             <Password variant = {variant} />
-            <Button>Login </Button>
+            <Button type = 'submit'> Login </Button>
             <Button onClick={() => props.setShowModal(false)}>Close</Button>
         </form>
         )

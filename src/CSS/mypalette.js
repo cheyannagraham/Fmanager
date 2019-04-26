@@ -10,6 +10,11 @@ const myPalatte = {
                 margin: '15px',
                 cursor: 'pointer'
             }
+        },
+        MuiFormControl : {
+            root: {
+                margin: '10px;'
+            }
         }
     },
     palette : {

@@ -31,7 +31,6 @@ const LandingPage = (props) => {
             show:true,
             type: 'login',
             content: <LoginForm {...props} /> 
-            
         });
     }
     
