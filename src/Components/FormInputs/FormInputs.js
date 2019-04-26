@@ -68,6 +68,12 @@ export const AmountInput = props => {
 
 
 export const TransactionTypeInput = props => {
+  const [value,setValue] = useState(props.value || '');
+
+  const handleChange = e => {
+    setValue(e.target.value);
+  }
+
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
@@ -77,7 +83,8 @@ export const TransactionTypeInput = props => {
             id: props.id,
             name: 'type'
           }}
-          value = {props.value || ''}>
+          value = {value}
+          onChange = {handleChange}>
           <MenuItem value='income'>Income</MenuItem>
           <MenuItem value='purchase'>Purchase</MenuItem>
         </Select>
