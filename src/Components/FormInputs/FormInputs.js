@@ -1,8 +1,9 @@
 import React from 'react';
 import style from '../../CSS/transactionform.module.css';
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 export const DateInput = props => {
@@ -63,13 +64,13 @@ export const TransactionTypeInput = props => {
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
-        <select className = {style.select}
+        <Select className = {style.select}
           id={props.id}
           name='type'
           defaultValue = {props.value || ''}>          
-          <option value='income'>Income</option>
-          <option value='purchase'>Purchase</option>
-        </select>
+          <MenuItem value='income'>Income</MenuItem>
+          <MenuItem value='purchase'>Purchase</MenuItem>
+        </Select>
       </InputLabel>
   );
 };
