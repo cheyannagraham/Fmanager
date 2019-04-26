@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import Modal from '../Modal/Modal';
 import { auth } from '../../fb/fb';
-import App from '../../App';
 import LoginPage from './LoginPage/LoginPage';
 import LoginForm from './LoginPage/LoginForm';
-import Button from '@material-ui/core/Button';
 import SignupForm from './Signup/SignupForm';
+import Home from './Signup/Home';
 
 
 
@@ -56,16 +55,12 @@ const LandingPage = (props) => {
         .catch(err => setShowModal({show:true,type:'error',title:'error',text:err}));
     }
 
-    return ( console.log("lp"),
+    return (
         <>
             {showModal && <Modal content={showModal} />}
             
-            {user ?
-                (<div>
-                    <h1>HI {displayName}!</h1>
-                    <Button onClick={signout}>Signout</Button>
-                    <App />
-                </div>)
+            {user ? 
+                <Home displayName = {displayName} signout = {signout} />
             :
                 <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
             }
@@ -75,5 +70,4 @@ const LandingPage = (props) => {
 
 export default LandingPage;
 
-//style with tailwind / material design
 //research plaid

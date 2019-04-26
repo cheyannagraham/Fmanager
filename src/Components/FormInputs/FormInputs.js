@@ -1,13 +1,16 @@
 import React from 'react';
 import style from '../../CSS/transactionform.module.css';
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 
 
 export const DateInput = props => {
 
   return (
-      <label className = {style.label} htmlFor={props.id}>
+      <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input className = {style.input}
+        <Input className = {style.input}
         //maybe delete classname?
          /* { className = 'transaction-date' }*/
           id={props.id}
@@ -18,15 +21,15 @@ export const DateInput = props => {
           required
           pattern='[0-9]{2}/[0-9]{2}/[0-9]{4}'
         />
-      </label>
+      </InputLabel>
   );
 };
 
 export const BusinessInput = props => {
   return (
-      <label className = {style.label} htmlFor={props.id}>
+      <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input className = {style.input}
+        <Input className = {style.input}
           id={props.id}
           name='business'
           type='text'
@@ -34,15 +37,15 @@ export const BusinessInput = props => {
           defaultValue = {props.value || ''}
           required
         />
-      </label>
+      </InputLabel>
   );
 };
 
 export const AmountInput = props => {
   return (
-      <label className = {style.label} htmlFor={props.id}>
+      <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
-        <input className = {style.input}
+        <Input className = {style.input}
           id={props.id}
           name='amount'
           type='number'
@@ -51,14 +54,14 @@ export const AmountInput = props => {
           required
           step='0.01'
         />
-      </label>
+      </InputLabel>
   );
 };
 
 
 export const TransactionTypeInput = props => {
   return (
-      <label className = {style.label} htmlFor={props.id}>
+      <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
         <select className = {style.select}
           id={props.id}
@@ -67,6 +70,6 @@ export const TransactionTypeInput = props => {
           <option value='income'>Income</option>
           <option value='purchase'>Purchase</option>
         </select>
-      </label>
+      </InputLabel>
   );
 };

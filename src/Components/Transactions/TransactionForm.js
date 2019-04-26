@@ -5,6 +5,7 @@ import * as FormInputs from '../FormInputs/FormInputs';
 import { ModalContext } from '../../App';
 import style from '../../CSS/transactionform.module.css';
 import {CloseModalButton} from '../Modal/Modal';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -22,7 +23,7 @@ const TransactionForm = props => {
     if(validDate) {
         createTransaction(validDate);
     } else {
-        showModal({show:true, status:'error',type:'alert',content:'Invalid Date. please enter a date between 1-1-1900 and 12-31-2050'});
+        showModal({show:true, title:'error',type:'error',text:'Invalid Date. please enter a date between 1-1-1900 and 12-31-2050',content:<CloseModalButton /> });
     }
   };
 
@@ -75,7 +76,7 @@ const TransactionForm = props => {
       
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
 
-      <button className = {style.button} type='submit'>{props.type}</button>
+      <Button className = {style.button} type='submit'>{props.type}</Button>
       <CloseModalButton />
     </form>
   );

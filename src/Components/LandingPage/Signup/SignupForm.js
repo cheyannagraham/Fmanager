@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Email, Password, Username } from '../Credentials/LoginSignupComponents';
 import Button from '@material-ui/core/Button';
 
@@ -7,11 +7,6 @@ import Button from '@material-ui/core/Button';
 const SignupForm = props => {
     //for styling form
     //put in .js later
-
-    useEffect(() => {
-        const form = document.querySelector('#signup');
-        form.addEventListener('submit', handleSignup);
-    },[])
 
     const handleSignup = e => {
         e.preventDefault();
@@ -47,8 +42,8 @@ const SignupForm = props => {
 
     const variant = "filled";
 
-    return (console.log("render"),
-        <form id='signup'>
+    return (
+        <form id='signup' onSubmit = {handleSignup}>
             <Username variant={variant} />
             <Email variant={variant} />
             <Password variant={variant} />

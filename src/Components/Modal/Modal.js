@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import style from "../../CSS/modal.module.css";
 import { ModalContext } from "../../App";
+import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle  from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -14,8 +15,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 
 const Modal = props => {
-  console.log(props.content)
-  const showModal = useContext(ModalContext).setShowModal;
+
+  // const showModal = useContext(ModalContext).setShowModal;
   
   return (
     <Dialog open = {props.content.show} color = 'primary'>
@@ -74,7 +75,7 @@ const Modal = props => {
 
 const CloseModalButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
-  return <button className={style.button} onClick={() => showModal(false)}>Close</button>
+  return <Button color = "secondary" variant = "outlined" className={style.button} onClick={() => showModal(false)}>Close </Button>
 }
 
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Email, Password} from '../Credentials/LoginSignupComponents';
 import Button from '@material-ui/core/Button';
 
@@ -8,12 +8,7 @@ import Button from '@material-ui/core/Button';
 const LoginForm = props => {
     const variant = 'outlined';
 
-    useEffect(() => {
-        const form = document.querySelector('#login');
-        form.addEventListener('submit', handleSubmit);
-    },[])
-
-    const handleSubmit = e => {
+    const handleLogin = e => {
         e.preventDefault();
         const [email,pwd] = props.getCreds();
         props.auth.signInWithEmailAndPassword(email,pwd)
@@ -33,8 +28,8 @@ const LoginForm = props => {
         props.setShowModal(false);
     }  
     
-    return (console.log("lf"),
-        <form id = 'login'>
+    return (
+        <form id = 'login' onSubmit = {handleLogin}>
             <Email variant = {variant} />
             <Password variant = {variant} />
             <div>
