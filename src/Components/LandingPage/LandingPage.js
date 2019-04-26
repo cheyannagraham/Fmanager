@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Modal from '../Modal/Modal';
+import { ModalContext } from '../../App';
+
 import { auth } from '../../fb/fb';
 import LoginPage from './LoginPage/LoginPage';
 import LoginForm from './LoginPage/LoginForm';
@@ -11,7 +13,8 @@ import Home from './Signup/Home';
 const LandingPage = (props) => {
 
     const [user,setUser] = useState(null);
-    const [showModal,setShowModal] = useState(false);
+    //const [showModal,setShowModal] = useState(false);
+    const showModal = useContext(ModalContext).setShowModal;
     const [displayName,setDisplayName] = useState(user && user.displayName);
 
     auth.onAuthStateChanged(user => {
@@ -28,12 +31,12 @@ const LandingPage = (props) => {
     const prop = {
         auth: auth,
         getCreds: getCreds,
-        setShowModal: setShowModal
+        setShowModal: showModal
     }
 
     const handleLogin = () => {
         
-        setShowModal({
+        showModal({
             show:true,
             'title': 'login',
             content: <LoginForm {...prop} /> 
@@ -42,7 +45,7 @@ const LandingPage = (props) => {
     
     const handleSignup = () => {
 
-        setShowModal({
+        showModal({
             show:true,
             title: 'signup',
             content: <SignupForm {...Object.assign({},prop,{setDisplayName: setDisplayName})} />
@@ -52,7 +55,7 @@ const LandingPage = (props) => {
 
     const signout = () => {
         auth.signOut()
-        .catch(err => setShowModal({show:true,type:'error',title:'error',text:err}));
+        .catch(err => showModal({show:true,type:'error',title:'error',text:err}));
     }
 
     return (
