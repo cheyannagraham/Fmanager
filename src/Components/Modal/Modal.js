@@ -5,6 +5,7 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogTitle  from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from '@material-ui/core/DialogActions';
 
 //possible props
 //type,status,cotent,show,callback
@@ -15,18 +16,25 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 const Modal = props => {
   console.log(props.content)
   const showModal = useContext(ModalContext).setShowModal;
-
   
   return (
     <Dialog open = {props.content.show} color = 'primary'>
+      
       <DialogTitle>
-        {props.content.type}
+        {props.content.title}
       </DialogTitle>
+
+      <DialogContentText>
+        {props.content.text}
+      </DialogContentText>
       
       <DialogContent>
           {props.content.content}
       </DialogContent>
 
+      <DialogActions>
+        {props.content.actions}
+      </DialogActions>  
 
     </Dialog>
   )

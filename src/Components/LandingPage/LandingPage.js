@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import Modal from '../Modal/Modal';
-import { Email, Password, Username } from './Credentials/LoginSignupComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
 import LoginPage from './LoginPage/LoginPage';
 import LoginForm from './LoginPage/LoginForm';
 import Button from '@material-ui/core/Button';
+import SignupForm from './Signup/SignupForm';
 
 
 
@@ -19,77 +19,41 @@ const LandingPage = (props) => {
         setUser(user);
         user && setDisplayName(user.displayName);
     });
-
-    const handleLogin = () => {
-        const props = {
-            auth: auth,
-            getCreds: getCreds,
-            setShowModal: setShowModal
-        }
-        
-        setShowModal({
-            show:true,
-            type: 'login',
-            content: <LoginForm {...props} /> 
-        });
-    }
     
-    const handleSignup = () => {
-        //for styling form
-        //put in .js later
-        const variant = "filled"
-        setShowModal({
-            show:true,
-            type: 'signup',
-            content: 
-            <form id = 'signup'>
-                <Username variant = {variant} />
-                <Email variant = {variant} />
-                <Password variant = {variant} />
-                <Button onClick = { 
-                    e => {
-                            const uName = document.getElementById('username').value;
-                            const dName = uName ? (uName[0].toUpperCase()+ uName.slice(1)).trim() : '';
-                            e.preventDefault();
-                            const [email,pwd] = getCreds();
-                            auth.createUserWithEmailAndPassword(email,pwd)
-                            .then(() => {
-                                //add username to profile
-                                auth.currentUser.updateProfile({displayName:dName})
-                                .then(() => {
-                                    //display username after it's added to profile
-                                    setDisplayName(dName);                                    
-                                });
-                            })
-                            .catch(err => setShowModal({
-                                show: 'true',
-                                type:'error',
-                                status:'error',
-                                content:
-                                <>
-                                    <p><b>{err.code}</b></p>
-                                    <p>{err.message}</p>
-                                    <Button onClick={() => setShowModal(false)}>Close</Button>
-                                </>
-                            }))
-                            setShowModal(false);
-                        }
-                    }>
-                Signup </Button>
-                <Button onClick={() => setShowModal(false)}>Close</Button>
-            </form>
-        })
-    }
-
     const getCreds = () => {
         //should be one form open at a time
         const form = document.querySelector('form');
         return [form['email'].value, form['pwd'].value];
     }
 
+    const prop = {
+        auth: auth,
+        getCreds: getCreds,
+        setShowModal: setShowModal
+    }
+
+    const handleLogin = () => {
+        
+        setShowModal({
+            show:true,
+            'title': 'login',
+            content: <LoginForm {...prop} /> 
+        });
+    }
+    
+    const handleSignup = () => {
+
+        setShowModal({
+            show:true,
+            title: 'signup',
+            content: <SignupForm {...Object.assign({},prop,{setDisplayName: setDisplayName})} />
+        })
+    }
+
+
     const signout = () => {
         auth.signOut()
-        .catch(err => setShowModal({show:true,type:'error',status:'error',content:err}));
+        .catch(err => setShowModal({show:true,type:'error',title:'error',text:err}));
     }
 
     return (
@@ -103,9 +67,7 @@ const LandingPage = (props) => {
                     <App />
                 </div>)
             :
-                (<>
-                    <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
-                </>)
+                <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
             }
         </>
     )

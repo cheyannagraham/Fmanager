@@ -19,14 +19,16 @@ const LoginForm = props => {
         props.auth.signInWithEmailAndPassword(email,pwd)
             .catch(err => props.setShowModal({
                 show: true,
+                title:'error',
                 type:'error',
-                status:'error',
                 content:
                 <>
                     <p><b>{err.code}</b></p>
                     <p>{err.message}</p>
-                    <Button onClick={() => props.setShowModal(false)}>Close</Button>
-                </>
+                    <div>
+                        <Button onClick={() => props.setShowModal(false)}>Close</Button>
+                    </div>
+                </> 
             }))
         props.setShowModal(false);
     }  
@@ -35,8 +37,10 @@ const LoginForm = props => {
         <form id = 'login'>
             <Email variant = {variant} />
             <Password variant = {variant} />
-            <Button type = 'submit'> Login </Button>
-            <Button onClick={() => props.setShowModal(false)}>Close</Button>
+            <div>
+                <Button type = 'submit'> Login </Button>
+                <Button onClick={() => props.setShowModal(false)}>Close</Button>
+            </div>
         </form>
         )
 }

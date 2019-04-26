@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField'
 
 export const Email = props => {
     return (
-//Placeholders arent showing bc labels are. Perhaps style diff to show placeholders
         <TextField 
             label = 'email'
             id='email'
@@ -32,6 +31,7 @@ export const Username = props => {
             name='Username'
             type='text'
             id='username'
+            placeholder ='GrayG123'
             required
             variant = {props.variant} />
     );
