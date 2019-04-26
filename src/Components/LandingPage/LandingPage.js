@@ -4,10 +4,12 @@ import { Email, Password, Username } from './Credentials/LoginSignupComponents';
 import { auth } from '../../fb/fb';
 import App from '../../App';
 import LoginPage from './LoginPage/LoginPage';
+import LoginForm from './LoginPage/LoginForm';
 import Button from '@material-ui/core/Button';
 
 
-const LandingPage = props => {
+
+const LandingPage = (props) => {
 
     const [user,setUser] = useState(null);
     const [showModal,setShowModal] = useState(false);
@@ -19,37 +21,17 @@ const LandingPage = props => {
     });
 
     const handleLogin = () => {
-        const variant = 'outlined'
+        const props = {
+            auth: auth,
+            getCreds: getCreds,
+            setShowModal: setShowModal
+        }
         
         setShowModal({
             show:true,
             type: 'login',
-            content: 
-            <form id = 'login'>
-                <Email variant = {variant} />
-                <Password variant = {variant} />
-                <Button onClick = { 
-                    e => {
-                            e.preventDefault();
-                            const [email,pwd] = getCreds();
-                            auth.signInWithEmailAndPassword(email,pwd)
-                            .catch(err => setShowModal({
-                                show: true,
-                                type:'error',
-                                status:'error',
-                                content:
-                                <>
-                                    <p><b>{err.code}</b></p>
-                                    <p>{err.message}</p>
-                                    <Button onClick={() => setShowModal(false)}>Close</Button>
-                                </>
-                            }))
-                            setShowModal(false);
-                        }
-                    }>
-                Login </Button>
-                <Button onClick={() => setShowModal(false)}>Close</Button>
-            </form>
+            content: <LoginForm {...props} /> 
+            
         });
     }
     
@@ -68,7 +50,7 @@ const LandingPage = props => {
                 <Button onClick = { 
                     e => {
                             const uName = document.getElementById('username').value;
-                            const dName = (uName[0].toUpperCase()+ uName.slice(1)).trim();
+                            const dName = uName ? (uName[0].toUpperCase()+ uName.slice(1)).trim() : '';
                             e.preventDefault();
                             const [email,pwd] = getCreds();
                             auth.createUserWithEmailAndPassword(email,pwd)
