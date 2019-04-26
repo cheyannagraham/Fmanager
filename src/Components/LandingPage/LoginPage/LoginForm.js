@@ -1,5 +1,5 @@
 import React from 'react';
-import { Email, Password} from '../Credentials/LoginSignupComponents';
+import { Email, Password} from '../../FormInputs/FormInputs';
 import Button from '@material-ui/core/Button';
 import { CloseModalButton } from '../../Modal/Modal';
 

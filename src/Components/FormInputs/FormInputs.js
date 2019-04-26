@@ -4,8 +4,11 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField'
 
 
+
+//hook to add & manage input state
 
 const useInputState = (def = '') => {
   //set initital value as default if provided
@@ -22,6 +25,9 @@ const useInputState = (def = '') => {
   }
     
 }
+
+// -------------------- TRANSACTION  ----------------------
+
 
 export const DateInput = props => {
 
@@ -115,3 +121,54 @@ export const TransactionTypeInput = props => {
       </InputLabel>
   );
 };
+
+// -------------------- LOGIN & SIGNUP ----------------------
+
+export const Email = props => {
+  const {value, handleChange} = useInputState(props.value);
+
+  return (
+      <TextField 
+          label = 'email'
+          id='email'
+          name='email'
+          type='email'
+          value = {value}
+          onChange = {handleChange}
+          placeholder='user@fmanager.com'
+          required
+          variant = {props.variant} />
+  );
+}
+export const Password = props => {
+  const {value, handleChange} = useInputState(props.value);
+
+  return (
+      <TextField 
+          label='password'
+          id='pwd'
+          name='pwd'
+          type='password'
+          value = {value}
+          onChange = {handleChange}
+          required 
+          variant = {props.variant}/>
+  );
+}
+export const Username = props => {
+  const {value, handleChange} = useInputState(props.value);
+
+  return (
+      <TextField
+          label='Username'
+          name='Username'
+          type='text'
+          id='username'
+          value = {value}
+          onChange = {handleChange}
+          placeholder ='GrayG123'
+          required
+          variant = {props.variant} />
+  );
+}
+
