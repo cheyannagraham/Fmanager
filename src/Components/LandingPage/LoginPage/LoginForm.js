@@ -33,7 +33,7 @@ const LoginForm = props => {
         props.setShowModal(false);
     }  
     
-    return (
+    return (console.log("lf"),
         <form id = 'login'>
             <Email variant = {variant} />
             <Password variant = {variant} />

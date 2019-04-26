@@ -56,7 +56,7 @@ const LandingPage = (props) => {
         .catch(err => setShowModal({show:true,type:'error',title:'error',text:err}));
     }
 
-    return (
+    return ( console.log("lp"),
         <>
             {showModal && <Modal content={showModal} />}
             

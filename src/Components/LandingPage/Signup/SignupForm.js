@@ -11,11 +11,11 @@ const SignupForm = props => {
     useEffect(() => {
         const form = document.querySelector('#signup');
         form.addEventListener('submit', handleSignup);
-    })
+    },[])
 
     const handleSignup = e => {
         e.preventDefault();
-        const uName = document.getElementById('username').value;
+        const uName = document.querySelector('#username').value;
         const dName = uName ? (uName[0].toUpperCase() + uName.slice(1)).trim() : '';
         const [email, pwd] = props.getCreds();
 
@@ -47,7 +47,7 @@ const SignupForm = props => {
 
     const variant = "filled";
 
-    return (
+    return (console.log("render"),
         <form id='signup'>
             <Username variant={variant} />
             <Email variant={variant} />
