@@ -64,7 +64,7 @@ export const TransactionTypeInput = props => {
   return (
       <InputLabel className = {style.label} htmlFor={props.id}>
         {props.label}
-        <Select className = {style.select}
+        <Select autoWidth = {true} className = {style.select}
           id={props.id}
           name='type'
           defaultValue = {props.value || ''}>          

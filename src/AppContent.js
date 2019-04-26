@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Month from './Components/Month/Month.js';
 import { getTransactions } from './Components/Helpers/DBHelper';
-import Modal, { CloseModalButton } from './Components/Modal/Modal'
+import { CloseModalButton } from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
 import style from './CSS/app.module.css';
