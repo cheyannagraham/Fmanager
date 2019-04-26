@@ -14,14 +14,14 @@ export const getTransactions = () => {
       });
       return tr;
     })
-    .catch(err => `Error getting documents ${err}`);
+    .catch(err => err);
 };
 
 //Delete Transaction
 export const deleteTransaction = id => {
   return db.collection(`user_trans/${user()}/transactions`).doc(id).delete()
-  .then(() => 'Delete Successful!')
-  .catch(err => `Could Not Delete: ${err}`);
+  .then(() => 'Transaction has been deleted from your records.')
+  .catch(err => err);
 }
 
  //Add Transaction
@@ -33,11 +33,11 @@ export const addTransaction = trans => {
     trans.id = dref.id;
     return trans;
   })
-  .catch(err => `Error adding Transaction: ${err}`);
+  .catch(err => err);
 } 
 //Update Transaction
 export const updateTransaction = trans => {
   return db.collection(`user_trans/${user()}/transactions`).doc(trans.id).set(trans)
-  .then(() => 'Update Successful!')
-  .catch(err => `Could Not Update: ${err}`);
+  .then(() => 'Transaction record has been updated.')
+  .catch(err => err);
 }

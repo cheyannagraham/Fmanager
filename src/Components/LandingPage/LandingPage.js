@@ -1,7 +1,6 @@
-import React, {useState, useContext} from 'react';
-import Modal from '../Modal/Modal';
+import React, { useState, useContext } from 'react';
+import { CloseModalButton } from '../Modal/Modal';
 import { ModalContext } from '../../App';
-
 import { auth } from '../../fb/fb';
 import LoginPage from './LoginPage/LoginPage';
 import LoginForm from './LoginPage/LoginForm';
@@ -12,16 +11,15 @@ import Home from './Signup/Home';
 
 const LandingPage = (props) => {
 
-    const [user,setUser] = useState(null);
-    //const [showModal,setShowModal] = useState(false);
+    const [user, setUser] = useState(null);
     const showModal = useContext(ModalContext).setShowModal;
-    const [displayName,setDisplayName] = useState(user && user.displayName);
+    const [displayName, setDisplayName] = useState(user && user.displayName);
 
     auth.onAuthStateChanged(user => {
         setUser(user);
         user && setDisplayName(user.displayName);
     });
-    
+
     const getCreds = () => {
         //should be one form open at a time
         const form = document.querySelector('form');
@@ -35,36 +33,41 @@ const LandingPage = (props) => {
     }
 
     const handleLogin = () => {
-        
         showModal({
-            show:true,
-            'title': 'login',
-            content: <LoginForm {...prop} /> 
+            show: true,
+            type: 'login',
+            'title': 'Login To Your Account',
+            content: <LoginForm {...prop} />
         });
     }
-    
-    const handleSignup = () => {
 
+    const handleSignup = () => {
         showModal({
-            show:true,
-            title: 'signup',
-            content: <SignupForm {...Object.assign({},prop,{setDisplayName: setDisplayName})} />
+            show: true,
+            type: 'signup',
+            title: 'Create An Account',
+            content: <SignupForm {...Object.assign({}, prop, { setDisplayName: setDisplayName })} />
         })
     }
 
-
     const signout = () => {
         auth.signOut()
-        .catch(err => showModal({show:true,type:'error',title:'error',text:err}));
+            .catch(err => showModal({
+                show: true,
+                type: 'error',
+                title: 'Error Signing Out!',
+                text: err,
+                actions: <CloseModalButton />
+            })
+        );
     }
 
     return (
         <>
-            {showModal && <Modal content={showModal} />}
-            
-            {user ? 
-                <Home displayName = {displayName} signout = {signout} />
-            :
+
+            {user ?
+                <Home displayName={displayName} signout={signout} />
+                :
                 <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
             }
         </>

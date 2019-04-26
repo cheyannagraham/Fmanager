@@ -1,6 +1,7 @@
 import React from 'react';
 import { Email, Password} from '../Credentials/LoginSignupComponents';
 import Button from '@material-ui/core/Button';
+import { CloseModalButton } from '../../Modal/Modal';
 
 //remove event listeners
 //define error conditions for the form
@@ -14,17 +15,16 @@ const LoginForm = props => {
         props.auth.signInWithEmailAndPassword(email,pwd)
             .catch(err => props.setShowModal({
                 show: true,
-                title:'error',
+                title:'Login Error!',
                 type:'error',
                 content:
-                <>
-                    <p><b>{err.code}</b></p>
-                    <p>{err.message}</p>
-                    <div>
-                        <Button onClick={() => props.setShowModal(false)}>Close</Button>
-                    </div>
-                </> 
-            }))
+                    <>
+                        <p><b>{err.code}</b></p>
+                        <p>{err.message}</p>
+                    </> ,
+                actions: <CloseModalButton />
+            }));
+        //close Modal after logging in
         props.setShowModal(false);
     }  
     

@@ -24,9 +24,10 @@ const TransactionList = props => {
     showModal(
       {
         show: true,
-        title: 'confirm',
+        title: 'Confirm Delete',
         text: 'Are you sure you want to delete this transaction?',
-        content: 
+        type: 'confirm',
+        actions: 
         <>
           <Button color='primary' variant= 'contained' onClick = {() => handleDelete(id)} > Confirm </Button>
           <CloseModalButton onClick = {() => handleDelete(id)} > Confirm </CloseModalButton>
@@ -37,12 +38,24 @@ const TransactionList = props => {
 
   const handleDelete = id => {
     deleteTransaction(id)
-      .then(() => {
-        showModal({ show: true, status: 'success', type: 'alert', content: 'Delete Successful!' });
+      .then((res) => {
+        showModal({
+          show: true, 
+          title: 'Delete Successful!',
+          type: 'success', 
+          text: res,
+          actions : <CloseModalButton />
+        });
         getTransactions()
           .then(results => props.setTransactions(results));
       })
-      .catch(err => showModal({ show: true, status: 'error', type: 'alert', content: err }));
+      .catch(err => showModal({
+        show: true,
+        type: 'error',
+        title:'Delete Error!',
+        text: err,
+        actions: <CloseModalButton />
+      }));
   }
 
   //possible effect
@@ -50,9 +63,9 @@ const TransactionList = props => {
     showModal(
       {
         show: true,
-        status: 'update',
+        title: 'Change Transaction',
         type: 'update',
-        content: <TransactionForm setTransactions={props.setTransactions} type='update' currentTransaction={transaction} />
+        content: <TransactionForm setTransactions={props.setTransactions} currentTransaction={transaction} type = 'update' />
       }
     );
   }

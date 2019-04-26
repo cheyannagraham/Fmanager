@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Month from './Components/Month/Month.js';
-import {getTransactions} from './Components/Helpers/DBHelper';
-import Modal from './Components/Modal/Modal'
+import { getTransactions } from './Components/Helpers/DBHelper';
+import Modal, { CloseModalButton } from './Components/Modal/Modal'
 import TransactionForm from './Components/Transactions/TransactionForm';
 import RunningTotal from './Components/RunningTotal/RunningTotal';
 import style from './CSS/app.module.css';
@@ -10,31 +10,27 @@ import { ModalContext } from './App';
 
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
-// export const ModalContext = React.createContext(false);
-
-
 const AppContent = () => {
-  //const [showModal,setShowModal] = useState({show: false});
   const showModal = useContext(ModalContext).setShowModal;
-  const [runningTotal,setRunningTotal] = useState(0);
-  const [monthlyTotal,setMonthlyTotal] = useState(0);
+  const [runningTotal, setRunningTotal] = useState(0);
+  const [monthlyTotal, setMonthlyTotal] = useState(0);
   const [transactions, setTransactions] = useState([
     {
-      id : '23',
-      date : '2019-03-22',
-      amount : 22,
-      type : 'income',
-      business : 'me'
+      id: '23',
+      date: '2019-03-22',
+      amount: 22,
+      type: 'income',
+      business: 'me'
     }
   ]);
 
   const showAddForm = () => {
-    showModal(
-      {
-        show:true,
-        status:'add', 
-        type:'add', 
-        content: <TransactionForm setTransactions ={setTransactions} type = 'add' /> });
+    showModal({
+      show: true,
+      type: 'add',
+      title: 'New Transaction',
+      content: <TransactionForm setTransactions={setTransactions} type='add' />
+    });
   }
 
   const calcRunningTotal = () => {
@@ -48,46 +44,41 @@ const AppContent = () => {
 
   useEffect(() => {
     getTransactions()
-    .then(r => setTransactions(r))
-    .catch(err => showModal(
-      {show:true,type:'error',text:err,title:'error'}))    
+      .then(r => setTransactions(r))
+      .catch(err => showModal({
+        show: true,
+        type: 'error',
+        text: err,
+        title: 'Error Fetching Transactions!',
+        content: <CloseModalButton />
+      }))
   }, []);
 
 
   useEffect(() => {
     calcRunningTotal();
-  },[transactions]);
+  }, [transactions]);
   //Fix mixture. Some have buttons that render, others render with state to show content. 
 
   return (
-    //<ModalContext.Provider value = {{showModal}}>
     <>
-      <div id = {style.main}>
-      
-        {showModal.show && <Modal content = {showModal} /> }
+      <div id={style.main}>
 
-        <Month setMonthlyTotal = {setMonthlyTotal} setTransactions = {setTransactions} transactions={transactions} />
+        <Month setMonthlyTotal={setMonthlyTotal} setTransactions={setTransactions} transactions={transactions} />
 
-        <div id = {style.totals}>
+        <div id={style.totals}>
 
-          <RunningTotal runningTotal = {runningTotal} monthlyTotal = {monthlyTotal}/>
+          <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
 
-            <button className = {style.button} onClick = {showAddForm}>
-              <i className = {`material-icons ${style.icon}`}>add</i>
-            </button>
+          <button className={style.button} onClick={showAddForm}>
+            <i className={`material-icons ${style.icon}`}>add</i>
+          </button>
 
-        {/* <OTB allTrans = {transactions} month = {''} /> */}
+          {/* <OTB allTrans = {transactions} month = {''} /> */}
         </div>
-
-
-      </div>  
-      
+      </div>
       <Footer />
-      </>
-
-    //</ModalContext.Provider>
-
-    
+    </>
   );
 };
 
