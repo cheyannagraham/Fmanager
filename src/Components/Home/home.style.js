@@ -6,13 +6,14 @@ const styles = {
     'user-info' : {
         display: 'flex',
         'flex-grow': 2,
-        margin: '10px'
+    },
+    avatar : {
+        'margin-right': '15px'
     },
     icon : {
-        'font-size': '3em',
-        color: 'darkcyan',
-        'margin-right': '15px'
+        'font-size': '2.5em',
     }
+
 }
 
 export default styles;

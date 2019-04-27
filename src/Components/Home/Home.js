@@ -1,45 +1,40 @@
-import React from 'react';
-import Main from '../Main/Main';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import styles from './home.style.js';
-import Grid from '@material-ui/core/Grid';
-
-
+import React from "react";
+import Main from "../Main/Main";
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import styles from "./home.style.js";
+import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
+import Face from "@material-ui/icons/Face";
+import Footer from "../Footer/Footer";
 
 const Home = props => {
+  const { classes } = props;
 
-	const { classes } = props;
+  return (
+    <Grid className={classes.home}>
+      <AppBar position='relative'>
+        <Toolbar>
+          <Grid className={classes["user-info"]}>
+            
+            <Avatar color = 'secondary' className={classes.avatar}>
+              <Face className = {classes.icon} />
+            </Avatar>
 
-	return (
-		<Grid container className = {classes.home}>
+            <Typography variant="h5">HI {props.displayName}!</Typography>
+          </Grid>
 
-				<AppBar>
-					<Toolbar>
-							<Grid className = {classes['user-info']}>
-									<i className = {`material-icons ${classes.icon}`}>
-										face
-									</i>
+          <Button onClick={props.signout}>Signout</Button>
+        </Toolbar>
+      </AppBar>
 
-									<Typography variant='h4'>
-										HI {props.displayName}!
-									</Typography>
-
-							</Grid>
-
-							<Button onClick={props.signout}>Signout</Button>
-					</Toolbar>
-
-				</AppBar>
-
-				<Main />
-
-		</Grid>
-
-	)
-}
+      <Main />
+      <Footer />
+    </Grid>
+  );
+};
 
 export default withStyles(styles)(Home);

@@ -1,34 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Month from '../../Components/Month/Month.js';
-import { getTransactions } from '../../Components/Helpers/DBHelper';
-import { CloseModalButton } from '../../Components/Modal/Modal'
-import TransactionForm from '../../Components/Transactions/TransactionForm';
-import RunningTotal from '../../Components/RunningTotal/RunningTotal';
-import style from '../../CSS/app.module.css';
-import Footer from '../../Components/Footer/Footer';
-import { ModalContext } from '../../App';
-import Grid from '@material-ui/core/Grid';
-import styles from './style.main';
-import { withStyles } from '@material-ui/core/styles'
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab'
+import React, { useState, useEffect, useContext } from "react";
+import Month from "../../Components/Month/Month.js";
+import { getTransactions } from "../../Components/Helpers/DBHelper";
+import { CloseModalButton } from "../../Components/Modal/Modal";
+import TransactionForm from "../../Components/Transactions/TransactionForm";
+import RunningTotal from "../../Components/RunningTotal/RunningTotal";
+import { ModalContext } from "../../App";
+import Grid from "@material-ui/core/Grid";
+import styles from "./style.main";
+import { withStyles } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
 
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
-const Main = () => {
+const Main = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [runningTotal, setRunningTotal] = useState(0);
   const [monthlyTotal, setMonthlyTotal] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  const { classes } = props;
 
   const showAddForm = () => {
     showModal({
       show: true,
-      type: 'add',
-      title: 'New Transaction',
-      content: <TransactionForm setTransactions={setTransactions} type='add' />
+      type: "add",
+      title: "New Transaction",
+      content: <TransactionForm setTransactions={setTransactions} type="add" />
     });
-  }
+  };
 
   const calcRunningTotal = () => {
     let rt = 0;
@@ -37,53 +36,60 @@ const Main = () => {
     });
 
     setRunningTotal(rt);
-  }
+  };
 
   useEffect(() => {
-    // getTransactions()
-    //   .then(r => setTransactions(r))
-    //   .catch(err => showModal({
-    //     show: true,
-    //     type: 'error',
-    //     text: err,
-    //     title: 'Error Fetching Transactions!',
-    //     content: <CloseModalButton />
-    //   }))
+    getTransactions()
+      .then(r => setTransactions(r))
+      .catch(err => showModal({
+        show: true,
+        type: 'error',
+        text: err,
+        title: 'Error Fetching Transactions!',
+        content: <CloseModalButton />
+      }))
   }, []);
-
 
   useEffect(() => {
     calcRunningTotal();
   }, [transactions]);
-  //Fix mixture. Some have buttons that render, others render with state to show content. 
+  //Fix mixture. Some have buttons that render, others render with state to show content.
 
   return (
     <>
-      <Grid component = 'main' id={style.main}>
+      <Grid component="main" className={classes.main}>
+        <Month
+          setMonthlyTotal={setMonthlyTotal}
+          setTransactions={setTransactions}
+          transactions={transactions}
+        />
 
-        <Month setMonthlyTotal={setMonthlyTotal} setTransactions={setTransactions} transactions={transactions} />
+        <Grid>
+          <RunningTotal
+            runningTotal={runningTotal}
+            monthlyTotal={monthlyTotal}
+          />
 
-        <Grid id={style.totals}>
-
-          <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
-
-          <Fab className={style.button} size = 'small' color = 'primary' aria-label='add' onClick={showAddForm}>
+          <Fab
+            size="small"
+            color="primary"
+            aria-label="add"
+            onClick={showAddForm}
+          >
             <AddIcon />
           </Fab>
-
-          {/* <OTB allTrans = {transactions} month = {''} /> */}
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default Main;
+export default withStyles(styles)(Main);
 //TODO: see about caching firebase requests
 //add better error messages for validation
 //add better validation for mal scripts
-//Maybe add a delete all? 
-//signin features? 
+//Maybe add a delete all?
+//signin features?
 //css pseudo classes for validation
 //transactionlist renders even if props don't chanege(month rerenders)
 //consider if anything needs to be done regarding reflecting changes when data is added on different devices
@@ -91,7 +97,7 @@ export default Main;
 //incorrect date display edge?
 //store credentials
 //fix OTB moment
-//show recent transactions, then onclick, show all transactions. 
+//show recent transactions, then onclick, show all transactions.
 //================================
 //REFACTOR
 //bug in delete trans when show BTD
@@ -110,7 +116,7 @@ export default Main;
 
 //test for failed conditions
 // typing firebase fields
-//use form[id] to get values 
+//use form[id] to get values
 
 //++++++++++++++++++++FEATURES++++++++++++++++++++
 //show list of years and months onclick for faster scrolling.
