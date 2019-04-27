@@ -8,6 +8,10 @@ import style from '../../CSS/app.module.css';
 import Footer from '../../Components/Footer/Footer';
 import { ModalContext } from '../../App';
 import Grid from '@material-ui/core/Grid';
+import styles from './style.main';
+import { withStyles } from '@material-ui/core/styles'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab'
 
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
@@ -59,18 +63,17 @@ const Main = () => {
 
         <Month setMonthlyTotal={setMonthlyTotal} setTransactions={setTransactions} transactions={transactions} />
 
-        <div id={style.totals}>
+        <Grid id={style.totals}>
 
           <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
 
-          <button className={style.button} onClick={showAddForm}>
-            <i className={`material-icons ${style.icon}`}>add</i>
-          </button>
+          <Fab className={style.button} size = 'small' color = 'primary' aria-label='add' onClick={showAddForm}>
+            <AddIcon />
+          </Fab>
 
           {/* <OTB allTrans = {transactions} month = {''} /> */}
-        </div>
+        </Grid>
       </Grid>
-      <Footer />
     </>
   );
 };

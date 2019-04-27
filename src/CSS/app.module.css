@@ -1,44 +1,44 @@
 
 #totals {
-    min-height: 17%;
+    /* min-height: 17%;
     position: absolute;
     bottom: 0px;
     width: 100%;
     left: 0px;
     display:flex;
     background: darkcyan;
-    color: white;
+    color: white; */
 }
 
 #main {
-    width: 100%;
+    /* width: 100%;
     height: 100vh;
     display:flex;
-    position: relative;
+    position: relative; */
 }
 
 .button {
-    composes : button from './modal.module.css';
+    /* composes : button from './modal.module.css';
     padding-right: 25px;
     background: none;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0 0; */
 }
 
 .icon {
-    font-size: 2.5em;
+    /* font-size: 2.5em;
     border-radius: 50%;
-    background: #720645;
+    background: #720645; */
 }
 
 @media screen and (min-width: 500px) and (max-width: 650px) {
-    .icon {
+    /* .icon {
         font-size: 3em;
-    }
+    } */
 }
 
 
 @media screen and (min-width: 651px) {
-    .icon {
+    /* .icon {
         font-size: 4em;
-    }
+    } */
 }
