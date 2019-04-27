@@ -7,6 +7,7 @@ import RunningTotal from '../../Components/RunningTotal/RunningTotal';
 import style from '../../CSS/app.module.css';
 import Footer from '../../Components/Footer/Footer';
 import { ModalContext } from '../../App';
+import Grid from '@material-ui/core/Grid';
 
 //import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
@@ -35,15 +36,15 @@ const Main = () => {
   }
 
   useEffect(() => {
-    getTransactions()
-      .then(r => setTransactions(r))
-      .catch(err => showModal({
-        show: true,
-        type: 'error',
-        text: err,
-        title: 'Error Fetching Transactions!',
-        content: <CloseModalButton />
-      }))
+    // getTransactions()
+    //   .then(r => setTransactions(r))
+    //   .catch(err => showModal({
+    //     show: true,
+    //     type: 'error',
+    //     text: err,
+    //     title: 'Error Fetching Transactions!',
+    //     content: <CloseModalButton />
+    //   }))
   }, []);
 
 
@@ -54,7 +55,7 @@ const Main = () => {
 
   return (
     <>
-      <div id={style.main}>
+      <Grid component = 'main' id={style.main}>
 
         <Month setMonthlyTotal={setMonthlyTotal} setTransactions={setTransactions} transactions={transactions} />
 
@@ -68,7 +69,7 @@ const Main = () => {
 
           {/* <OTB allTrans = {transactions} month = {''} /> */}
         </div>
-      </div>
+      </Grid>
       <Footer />
     </>
   );

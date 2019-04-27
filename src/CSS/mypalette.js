@@ -1,6 +1,6 @@
-import blueGrey from '@material-ui/core/colors/blueGrey'
-import orange from '@material-ui/core/colors/orange'
-import blue from '@material-ui/core/colors/lightBlue'
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import orange from '@material-ui/core/colors/orange';
+import blue from '@material-ui/core/colors/lightBlue';
 
 //global styles
 const myPalatte = {
@@ -20,7 +20,7 @@ const myPalatte = {
     palette : {
         primary: orange,
         secondary: blueGrey,
-        third: blue
+        textPrimary: blue
     },
     typography: {
         useNextVariants: true
