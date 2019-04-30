@@ -6,7 +6,7 @@ const styles = {
   'month-header': {
     'display': 'flex',
     'align-items': 'center',
-    'margin': '25px 15px 15px 15px'
+    'margin-top': '25px'
   },
   'month-title': {},
   'icon': {

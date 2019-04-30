@@ -60,13 +60,13 @@ const Month = props => {
 
   return (
     <Grid className={classes["month-container"]}>
-      <Grid justify ="center" className={classes["month-header"]}>
+      <Grid container justify = "center" className={classes["month-header"]}>
 
         <IconButton color='primary' size='large' onClick={() => { handleClick(-1); }}>
           <ArrowLeft className = {classes.icon} />
         </IconButton>
 
-        <Typography variant = 'h4' className={classes['month-title']}>{`${moment(month, "MM").format(
+        <Typography color="secondary" variant = 'h4' className={classes['month-title']}>{`${moment(month, "MM").format(
           "MMMM"
         )} ${year}`}
         </Typography>
