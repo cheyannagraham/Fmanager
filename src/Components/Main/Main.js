@@ -39,15 +39,15 @@ const Main = props => {
   };
 
   useEffect(() => {
-    getTransactions()
-      .then(r => setTransactions(r))
-      .catch(err => showModal({
-        show: true,
-        type: 'error',
-        text: err,
-        title: 'Error Fetching Transactions!',
-        content: <CloseModalButton />
-      }))
+    // getTransactions()
+    //   .then(r => setTransactions(r))
+    //   .catch(err => showModal({
+    //     show: true,
+    //     type: 'error',
+    //     text: err,
+    //     title: 'Error Fetching Transactions!',
+    //     content: <CloseModalButton />
+    //   }))
   }, []);
 
   useEffect(() => {
