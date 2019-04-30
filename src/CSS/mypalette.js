@@ -20,7 +20,7 @@ const myPalatte = {
     palette : {
         primary: orange,
         secondary: blueGrey,
-        textPrimary: blue
+        textPrimary: 'blue'
     },
     typography: {
         useNextVariants: true

@@ -13,6 +13,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.transactionlist";
@@ -41,11 +46,9 @@ const TransactionList = props => {
             variant="contained"
             onClick={() => handleDelete(id)}
           >
-            
             Confirm
           </Button>
           <CloseModalButton onClick={() => handleDelete(id)}>
-            
             Confirm
           </CloseModalButton>
         </>
@@ -92,60 +95,59 @@ const TransactionList = props => {
     });
   };
 
-  const typProps = {
-    variant: "h6",
-    align: "center",
-    color: "secondary"
-  };
-
   return (
     sortTransactions(),
     (
-      <Paper className = {classes.paper}>
-        <List id="transaction-list" className={classes["trans-list"]}>
-          {/* intentionally empty */}
-          <ListItem> </ListItem>
+      <Paper className={classes.paper}>
+        <Table id="transaction-list" className={classes["table"]}>
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes["thead-cell"]} align="center">
+                {" "}
+              </TableCell>
 
-          <ListItem>
-            <ListItemText primaryTypographyProps={typProps} primary="Date" />
-          </ListItem>
+              <TableCell className={classes["thead-cell"]} align="center">
+                Date
+              </TableCell>
 
-          <ListItem>
-            <ListItemText
-              primaryTypographyProps={typProps}
-              primary="Business"
-            />
-          </ListItem>
+              <TableCell className={classes["thead-cell"]} align="center">
+                Business
+              </TableCell>
 
-          <ListItem>
-            <ListItemText primaryTypographyProps={typProps} primary="Amount" />
-          </ListItem>
+              <TableCell className={classes["thead-cell"]} align="center">
+                Amount
+              </TableCell>
 
-          <ListItem> </ListItem>
-        </List>
+              <TableCell className={classes["thead-cell"]} align="center">
+                {" "}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {/* <Divider /> */}
 
-        <Divider />
+            {props.MonthlyTransactions.length > 0 ? (
+              props.MonthlyTransactions.map(trans => {
+                total += Number(trans.amount);
 
-        {props.MonthlyTransactions.length > 0 ? (
-          props.MonthlyTransactions.map(trans => {
-            total += Number(trans.amount);
+                return (
+                  <TransactionItem
+                    confirmDelete={confirmDelete}
+                    updateTransaction={updateTransaction}
+                    trans={trans}
+                    key={trans.id}
+                  />
+                );
+              })
+            ) : (
+              <TableCell className = {classes['tcell-no-trans']} colSpan = '100%'  align = 'center'>
+                  No Transactions
+              </TableCell>
+            )}
 
-            return (
-              <TransactionItem
-                confirmDelete={confirmDelete}
-                updateTransaction={updateTransaction}
-                trans={trans}
-                key={trans.id}
-              />
-            );
-          })
-        ) : (
-            <Grid id={style.empty}>
-              <Typography variant='body1' color="secondary" align='center'>No Transactations</Typography>
-            </Grid>
-          )}
-
-        {props.setMonthlyTotal(total)}
+            {props.setMonthlyTotal(total)}
+          </TableBody>
+        </Table>
       </Paper>
     )
   );
