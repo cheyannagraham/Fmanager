@@ -15,6 +15,11 @@ const myPalatte = {
             root: {
                 margin: '10px;'
             }
+        },
+        MuiTableCell : {
+            root : {
+                padding: 'none',
+            }
         }
     },
     palette : {

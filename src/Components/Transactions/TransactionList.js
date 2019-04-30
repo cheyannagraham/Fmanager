@@ -3,22 +3,15 @@ import moment from "moment";
 import { deleteTransaction, getTransactions } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App";
 import TransactionForm from "./TransactionForm";
-import style from "../../CSS/transactionlist.module.css";
 import TransactionItem from "./TransactionItem";
 import Button from "@material-ui/core/Button";
 import { CloseModalButton } from "../Modal/Modal";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.transactionlist";
 
@@ -102,8 +95,8 @@ const TransactionList = props => {
         <Table id="transaction-list" className={classes["table"]}>
           <TableHead>
             <TableRow>
-              <TableCell className={classes["thead-cell"]} align="center">
-                {" "}
+              <TableCell padding = 'none'>
+                {/* Intentionally blank */}
               </TableCell>
 
               <TableCell className={classes["thead-cell"]} align="center">
@@ -118,13 +111,12 @@ const TransactionList = props => {
                 Amount
               </TableCell>
 
-              <TableCell className={classes["thead-cell"]} align="center">
-                {" "}
+              <TableCell padding = 'none'>
+                {/* Intentionally blank */}
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* <Divider /> */}
 
             {props.MonthlyTransactions.length > 0 ? (
               props.MonthlyTransactions.map(trans => {
@@ -140,9 +132,11 @@ const TransactionList = props => {
                 );
               })
             ) : (
-              <TableCell className = {classes['tcell-no-trans']} colSpan = '100%'  align = 'center'>
-                  No Transactions
-              </TableCell>
+              <TableRow>
+                <TableCell className = {classes['tcell-no-trans']} colSpan = '100%'  align = 'center'>
+                    No Transactions
+                </TableCell>
+              </TableRow>
             )}
 
             {props.setMonthlyTotal(total)}

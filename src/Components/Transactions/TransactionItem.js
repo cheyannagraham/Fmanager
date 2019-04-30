@@ -1,36 +1,46 @@
-import React from 'react';
-import style from '../../CSS/transactionlist.module.css';
-import moment from 'moment';
-
-
+import React from "react";
+import moment from "moment";
+import styles from './styles.transactionlist'
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import IconButton from "@material-ui/core/IconButton";
+import Edit from "@material-ui/icons/Edit";
+import Delete from "@material-ui/icons/Delete";
+import {withStyles} from '@material-ui/core/styles';
+import { updateTransaction } from "../Helpers/DBHelper";
 
 const TransactionItem = props => {
+  const { classes } = props;
 
   return (
-    <>
-      <ul className={style.list}>
+      <TableRow className={classes.trow}>
+        
+        <TableCell padding = 'none' align = 'right'>
+          <IconButton onClick = { () => {props.updateTransaction(props.trans)}}>
+            <Edit className = {classes.icon} />
+          </IconButton>
+        </TableCell>
 
-        <li>
-          <button className={style.button} onClick={() => props.updateTransaction(props.trans)}>
-            <i className={`material-icons ${style.icon}`}> edit </i>
-          </button>
-        </li>
+        <TableCell align = 'center' className={classes.tcell}>
+          {moment(props.trans.date).format("D MMM")}
+        </TableCell>
 
-        <li className={`${style.li}, ${style['trans-list-item']}`} >{moment(props.trans.date).format('D MMM')}</li>
-        <li className={`${style.li}, ${style['trans-list-item']}`} >{props.trans.business}</li>
-        <li className={`${style.li}, ${style['trans-list-item']}`} ><span>$</span>{props.trans.amount}</li>
+        <TableCell align = 'center' className={classes.tcell}>
+          {props.trans.business}
+          </TableCell>
 
-        <li>
-          <button className={style.button} onClick={() => props.confirmDelete(props.trans.id)}>
-            <i className={`material-icons ${style.icon}`}> delete </i>
-          </button>
-        </li>
+        <TableCell align = 'center' className={classes.tcell}>
+          ${props.trans.amount}
+        </TableCell>
 
-      </ul>
+        <TableCell padding = 'none' align = 'left'>
+          <IconButton>
+            <Delete className = {classes.icon} onClick = {props.confirmDelete} />
+          </IconButton>
+        </TableCell>
+        
+      </TableRow>
+  );
+};
 
-      <hr className={style.hr}></hr>
-    </>
-  )
-}
-
-export default TransactionItem;
+export default withStyles(styles)(TransactionItem);
