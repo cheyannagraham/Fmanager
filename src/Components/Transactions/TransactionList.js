@@ -12,6 +12,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.transactionlist";
@@ -100,7 +101,7 @@ const TransactionList = props => {
   return (
     sortTransactions(),
     (
-      <>
+      <Paper className = {classes.paper}>
         <List id="transaction-list" className={classes["trans-list"]}>
           {/* intentionally empty */}
           <ListItem> </ListItem>
@@ -145,7 +146,7 @@ const TransactionList = props => {
           )}
 
         {props.setMonthlyTotal(total)}
-      </>
+      </Paper>
     )
   );
 };

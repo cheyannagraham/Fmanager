@@ -60,6 +60,7 @@ const Month = props => {
 
   return (
     <Grid className={classes["month-container"]}>
+      
       <Grid container justify = "center" className={classes["month-header"]}>
 
         <IconButton color='primary' size='large' onClick={() => { handleClick(-1); }}>
