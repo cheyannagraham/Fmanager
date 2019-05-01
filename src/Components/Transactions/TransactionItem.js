@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 import Delete from "@material-ui/icons/Delete";
 import {withStyles} from '@material-ui/core/styles';
-import { updateTransaction } from "../Helpers/DBHelper";
 
 const TransactionItem = props => {
   const { classes } = props;
@@ -15,27 +14,24 @@ const TransactionItem = props => {
   return (
       <TableRow className={classes.trow}>
         
-        <TableCell padding = 'none' align = 'right'>
-          <IconButton onClick = { () => {props.updateTransaction(props.trans)}}>
+        <TableCell colSpan = {2} align = 'center' className={classes.tcell}>
+
+          <IconButton title = 'Edit Transaction' onClick = { () => {props.updateTransaction(props.trans)}}>
             <Edit className = {classes.icon} />
           </IconButton>
-        </TableCell>
 
-        <TableCell align = 'center' className={classes.tcell}>
           {moment(props.trans.date).format("D MMM")}
         </TableCell>
 
         <TableCell align = 'center' className={classes.tcell}>
           {props.trans.business}
-          </TableCell>
-
-        <TableCell align = 'center' className={classes.tcell}>
-          ${props.trans.amount}
         </TableCell>
 
-        <TableCell padding = 'none' align = 'left'>
-          <IconButton>
-            <Delete className = {classes.icon} onClick = {props.confirmDelete} />
+        <TableCell colSpan = {2} align = 'center' className={classes.tcell}>
+          ${props.trans.amount}
+
+          <IconButton title = 'Delete Transaction' onClick = {props.confirmDelete}>
+            <Delete className = {classes.icon}  />
           </IconButton>
         </TableCell>
         

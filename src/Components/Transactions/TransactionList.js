@@ -92,14 +92,11 @@ const TransactionList = props => {
     sortTransactions(),
     (
       <Paper className={classes.paper}>
-        <Table id="transaction-list" className={classes["table"]}>
+        <Table padding = 'dense' id="transaction-list" className={classes["table"]}>
           <TableHead>
             <TableRow>
-              <TableCell padding = 'none'>
-                {/* Intentionally blank */}
-              </TableCell>
-
-              <TableCell className={classes["thead-cell"]} align="center">
+   
+              <TableCell colSpan = {2} className={classes["thead-cell"]} align="center">
                 Date
               </TableCell>
 
@@ -107,13 +104,10 @@ const TransactionList = props => {
                 Business
               </TableCell>
 
-              <TableCell className={classes["thead-cell"]} align="center">
+              <TableCell colSpan = {2} className={classes["thead-cell"]} align="center">
                 Amount
               </TableCell>
 
-              <TableCell padding = 'none'>
-                {/* Intentionally blank */}
-              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

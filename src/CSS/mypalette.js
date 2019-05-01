@@ -16,16 +16,11 @@ const myPalatte = {
                 margin: '10px;'
             }
         },
-        MuiTableCell : {
-            root : {
-                padding: 'none',
-            }
-        }
     },
     palette : {
         primary: orange,
         secondary: blueGrey,
-        textPrimary: 'blue'
+        textPrimary: blue
     },
     typography: {
         useNextVariants: true

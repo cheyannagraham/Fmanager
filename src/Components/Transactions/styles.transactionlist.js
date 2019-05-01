@@ -9,7 +9,6 @@ const styles = {
     'thead-cell' : {
         'font-size' : '1.28em',
         color: myPalatte.palette.secondary[400],
-        padding: 'none'
 
     },
     'tcell' : {
@@ -24,10 +23,9 @@ const styles = {
         padding: '15px'        
     },
     icon : {
-        'font-size': '0.7em',
-        padding: 'none'
+        'font-size': '0.58em',
     },
-
+    
 }
 
 export default styles;
