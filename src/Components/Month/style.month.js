@@ -6,11 +6,23 @@ const styles = {
   'month-header': {
     'display': 'flex',
     'align-items': 'center',
-    'margin': '25px 0'
+    'margin': '15px 0 0 0',
+    padding: '0'
   },
-  'month-title': {},
+  'month-title': {
+    'font-size' : '3em'
+  },
   'icon': {
-    'font-size': '2.3em'
+    'font-size': '2.5em'
+  },
+  'fab-container' : {
+    width: '100%',
+    'max-width' : '1000px',
+    margin: '0 auto 15px auto',
+  },
+  'fab' : {
+    'margin-right': '25px'
+    
   }
 };
 

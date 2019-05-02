@@ -8,10 +8,7 @@ import { ModalContext } from "../../App";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
 
-//import OTB from './Components/OutstandingBalance/OutstandingBalance';
 
 const Main = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -53,7 +50,6 @@ const Main = props => {
   useEffect(() => {
     calcRunningTotal();
   }, [transactions]);
-  //Fix mixture. Some have buttons that render, others render with state to show content.
 
   return (
     <>
@@ -62,6 +58,7 @@ const Main = props => {
           setMonthlyTotal={setMonthlyTotal}
           setTransactions={setTransactions}
           transactions={transactions}
+          showAddForm={showAddForm}
         />
 
         <Grid>
@@ -70,14 +67,6 @@ const Main = props => {
             monthlyTotal={monthlyTotal}
           />
 
-          <Fab
-            size="small"
-            color="primary"
-            aria-label="add"
-            onClick={showAddForm}
-          >
-            <AddIcon />
-          </Fab>
         </Grid>
       </Grid>
     </>
