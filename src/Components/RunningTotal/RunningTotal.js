@@ -1,32 +1,33 @@
-import React from 'react';
-import style from '../../CSS/runningtotal.module.css';
+import React from "react";
+import Table from "@material-ui/core/Table";
+import TableRow from "@material-ui/core/TableRow";
+import TableBody from "@material-ui/core/TableHead";
+import TableCell from "@material-ui/core/TableCell";
+import Grid from "@material-ui/core/Grid";
+import styles from './style.runningtotal';
+import {withStyles} from '@material-ui/core/styles';
 
 const RunningTotal = props => {
-    return (
+	const {classes} = props;
+	
 
-        <div id={style["running-total-div"]}>
-            <ul className={style.total}>
-                <li className={style.li}>
-                    Monthly Total :
-                </li>
-                <li className={style.li}>
-                    ${props.monthlyTotal.toFixed(2)}
-                </li>
-            </ul>
-            
-            <ul className={style.total}>
-                <li className={style.li}>
-                    Running Total :
-                </li>
-                <li className={style.li}>
-                    ${props.runningTotal.toFixed(2)}
-                </li>
-            </ul>
+  return (
+    <Table className = {classes.table}>
 
+      <TableBody>
+        <TableRow >
+					<TableCell className = {classes.row} rowSpan = {2} />
+          <TableCell className = {classes.tcell} padding = 'none' align = 'center'> Monthly Total :</TableCell>
+          <TableCell className = {classes.tcell} padding = 'none' align = 'center'> ${props.monthlyTotal.toFixed(2)}</TableCell>
+        </TableRow>
 
-        </div>
+        <TableRow >
+          <TableCell className = {classes.tcell} padding = 'none' align = 'center'> Running Total :</TableCell>
+          <TableCell className = {classes.tcell} padding = 'none' align = 'center'> ${props.runningTotal.toFixed(2)}</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+};
 
-    )
-}
-
-export default RunningTotal;
+export default withStyles(styles)(RunningTotal);

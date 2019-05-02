@@ -92,11 +92,18 @@ const TransactionList = props => {
     sortTransactions(),
     (
       <Paper className={classes.paper}>
-        <Table padding = 'dense' id="transaction-list" className={classes["table"]}>
+        <Table
+          padding="dense"
+          id="transaction-list"
+          className={classes["table"]}
+        >
           <TableHead>
             <TableRow>
-   
-              <TableCell colSpan = {2} className={classes["thead-cell"]} align="center">
+              <TableCell
+                colSpan={2}
+                className={classes["thead-cell"]}
+                align="center"
+              >
                 Date
               </TableCell>
 
@@ -104,14 +111,16 @@ const TransactionList = props => {
                 Business
               </TableCell>
 
-              <TableCell colSpan = {2} className={classes["thead-cell"]} align="center">
+              <TableCell
+                colSpan={2}
+                className={classes["thead-cell"]}
+                align="center"
+              >
                 Amount
               </TableCell>
-
             </TableRow>
           </TableHead>
           <TableBody>
-
             {props.MonthlyTransactions.length > 0 ? (
               props.MonthlyTransactions.map(trans => {
                 total += Number(trans.amount);
@@ -127,8 +136,12 @@ const TransactionList = props => {
               })
             ) : (
               <TableRow>
-                <TableCell className = {classes['tcell-no-trans']} colSpan = '100%'  align = 'center'>
-                    No Transactions
+                <TableCell
+                  className={classes["tcell-no-trans"]}
+                  colSpan="100%"
+                  align="center"
+                >
+                  No Transactions
                 </TableCell>
               </TableRow>
             )}

@@ -3,7 +3,7 @@ import myPalatte from "../../CSS/mypalette";
 const styles = {
     'paper' : {
         'max-width' : '1000px',
-        'min-height' : '300px',
+        'min-height' : '60vh',
         'margin' : 'auto',
     },
     'thead-cell' : {
