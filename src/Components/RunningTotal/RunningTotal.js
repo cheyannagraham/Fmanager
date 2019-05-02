@@ -12,6 +12,7 @@ const RunningTotal = props => {
 	
 
   return (
+    <Grid>
     <Table className = {classes.table}>
 
       <TableBody>
@@ -27,6 +28,7 @@ const RunningTotal = props => {
         </TableRow>
       </TableBody>
     </Table>
+      </Grid>
   );
 };
 
