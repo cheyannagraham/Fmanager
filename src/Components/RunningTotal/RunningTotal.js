@@ -12,7 +12,7 @@ const RunningTotal = props => {
 	
 
   return (
-    <Grid>
+    <Grid className = {classes.container}>
     <Table className = {classes.table}>
 
       <TableBody>
