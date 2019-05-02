@@ -6,12 +6,16 @@ import { ModalContext } from '../../App';
 import style from '../../CSS/transactionform.module.css';
 import { CloseModalButton } from '../Modal/Modal';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles.transactionform';
 
 
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const currTrans = props.currentTransaction;
+  const {classes} = props;
 
 
   const handleClick = e => {
@@ -107,11 +111,13 @@ const TransactionForm = props => {
       <FormInputs.AmountInput label='Amount' id='transaction-amount' value={currTrans && currTrans.amount} />
 
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
-
-      <Button className={style.button} type='submit'>{props.type}</Button>
-      <CloseModalButton />
+      
+      <Grid container justify = 'flex-end' className = {classes['button-container']}>
+        <Button variant = 'contained' className={style.button} color = 'primary' type='submit'>{props.type}</Button>
+        <CloseModalButton />
+      </Grid>
     </form>
   );
 };
 
-export default TransactionForm;
+export default withStyles(styles)(TransactionForm);
