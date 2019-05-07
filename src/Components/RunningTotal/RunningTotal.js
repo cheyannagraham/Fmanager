@@ -24,7 +24,7 @@ const RunningTotal = props => {
 
         <TableRow >
           <TableCell className = {classes.tcell} padding = 'none' align = 'center'> Running Total :</TableCell>
-          <TableCell className = {classes.tcell} padding = 'none' align = 'center'> ${props.runningTotal.toFixed(2)}</TableCell>
+          <TableCell className = {classes.tcell}  padding = 'none' align = 'center'> ${props.runningTotal.toFixed(2)}</TableCell>
         </TableRow>
       </TableBody>
     </Table>

@@ -5,19 +5,15 @@ const styles = {
         width : '100%',
         'max-width' : tstyles.paper['max-width'],
         'margin' : 'auto',
-        padding : '5px 0 100px 0'
-    },
-    'table': {
-
+        padding : '5px 0 100px 0',
     },
     'row' : {
         border: 'none'
     },
     'tcell' : {
-        'font-size': '1em',
-        'font-weight' : 'bold',
+        'font-size': '1.2em',
         padding : 'none'
-    }
+    },
 }
 
 export default styles
