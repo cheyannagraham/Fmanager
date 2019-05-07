@@ -7,7 +7,6 @@ import { CloseModalButton } from '../Modal/Modal';
 //define error conditions for the form
 
 const LoginForm = props => {
-    const variant = 'outlined';
 
     const handleLogin = e => {
         e.preventDefault();
@@ -27,14 +26,16 @@ const LoginForm = props => {
         //close Modal after logging in
         props.setShowModal(false);
     }  
+    const variant = 'outlined';
+
     
     return (
         <form id = 'login' onSubmit = {handleLogin}>
             <Email variant = {variant} />
             <Password variant = {variant} />
             <div>
-                <Button type = 'submit'> Login </Button>
-                <Button onClick={() => props.setShowModal(false)}>Close</Button>
+                <Button variant = 'contained' color = 'primary' type = 'submit'> Login </Button>
+                <Button variant = 'outlined' color = 'secondary' onClick={() => props.setShowModal(false)}>Close</Button>
             </div>
         </form>
         )

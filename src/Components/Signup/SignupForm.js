@@ -48,8 +48,8 @@ const SignupForm = props => {
             <Email variant={variant} />
             <Password variant={variant} />
             <div>
-                <Button type='submit'> Signup </Button>
-                <Button onClick={() => props.setShowModal(false)}>Close</Button>
+                <Button variant = 'contained' color = 'primary' type='submit'> Signup </Button>
+                <Button variant = 'outlined' color = 'secondary' onClick={() => props.setShowModal(false)}>Close</Button>
             </div>
         </form>
 
