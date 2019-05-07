@@ -1,6 +1,6 @@
 const styles = {
     'lp-content' : {
-        'min-height': '90vh',
+        'min-height': '93vh',
     }
 }
 
