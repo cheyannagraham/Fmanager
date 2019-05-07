@@ -6,10 +6,15 @@ import LoginPage from '../LoginPage/LoginPage';
 import LoginForm from '../LoginPage/LoginForm';
 import SignupForm from '../Signup/SignupForm';
 import Home from '../Home/Home';
+import Grid from '@material-ui/core/Grid';
+import Footer from '../Footer/Footer';
+import { withStyles} from '@material-ui/core/styles';
+import styles from './styles.landingpage'
 
 
 
 const LandingPage = (props) => {
+    const { classes } = props;
 
     const [user, setUser] = useState(null);
     const showModal = useContext(ModalContext).setShowModal;
@@ -64,16 +69,21 @@ const LandingPage = (props) => {
 
     return (
         <>
+            <Grid container className = {classes['lp-content']}>
+                
 
-            {user ?
-                <Home displayName={displayName} signout={signout} />
-                :
-                <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
-            }
+                {user ?
+                    <Home displayName={displayName} signout={signout} />
+                    :
+                    <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
+                }
+            </Grid>
+
+            <Footer />
         </>
     )
 }
 
-export default LandingPage;
+export default withStyles(styles)(LandingPage);
 
 //research plaid

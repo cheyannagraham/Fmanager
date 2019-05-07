@@ -9,7 +9,6 @@ import styles from "./home.style.js";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Face from "@material-ui/icons/Face";
-import Footer from "../Footer/Footer";
 
 const Home = props => {
   const { classes } = props;
@@ -32,7 +31,6 @@ const Home = props => {
       </AppBar>
 
       <Main />
-      <Footer />
     </Grid>
   );
 };
