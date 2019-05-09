@@ -87,3 +87,10 @@ const LandingPage = (props) => {
 export default withStyles(styles)(LandingPage);
 
 //research plaid
+//delete trans error
+// add another trans after before closing
+//autoselect when close when success message shows
+//color balances red/green
+//add calculator app
+//add notes filed in trans form
+//maybe change select to radio
