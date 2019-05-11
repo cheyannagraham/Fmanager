@@ -30,7 +30,7 @@ const TransactionItem = props => {
         <TableCell colSpan = {2} align = 'center' className={classes.tcell}>
           ${props.trans.amount}
 
-          <IconButton title = 'Delete Transaction' onClick = {props.confirmDelete}>
+          <IconButton title = 'Delete Transaction' onClick = {() => props.confirmDelete(props.trans.id)}>
             <Delete className = {classes.icon}  />
           </IconButton>
         </TableCell>

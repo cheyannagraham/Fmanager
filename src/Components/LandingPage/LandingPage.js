@@ -90,7 +90,11 @@ export default withStyles(styles)(LandingPage);
 //delete trans error
 // add another trans after before closing
 //autoselect when close when success message shows
+//autofocus modal buttons
 //color balances red/green
 //add calculator app
 //add notes filed in trans form
 //maybe change select to radio
+//add account options => delete, change info
+//on add trans form prefill date with currrent date
+//add a timestamp for adding/updating

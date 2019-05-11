@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import style from "../../CSS/transactionform.module.css";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
