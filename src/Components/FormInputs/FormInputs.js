@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.forminputs';
+import moment from 'moment';
 
 
 //hook to add & manage input state
@@ -43,11 +44,9 @@ export const DateInput = withStyles(styles)(props => {
           name: "date"
         }}
         autoFocus
-        value={value}
+        value={value || moment().format('YYYY-MM-DD')}
         onChange={handleChange}
         type="date"
-        //older browsers
-        placeholder="mm/dd/yyyy"
         required
       />
     </InputLabel>
