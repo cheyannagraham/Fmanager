@@ -16,12 +16,14 @@ const LoginForm = props => {
                 show: true,
                 title:'Login Error!',
                 type:'error',
-                content:
+                text:
                     <>
-                        <p><b>{err.code}</b></p>
-                        <p>{err.message}</p>
+                        <strong>{err.code} :</strong>
+                        
+                        <br></br>
+                        {err.message}
                     </> ,
-                actions: <CloseModalButton />
+                actions: <CloseModalButton variant = 'contained' autofocus = {true} />
             }));
         //close Modal after logging in
         props.setShowModal(false);

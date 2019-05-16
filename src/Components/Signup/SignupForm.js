@@ -1,6 +1,7 @@
 import React from 'react';
 import { Email, Password, Username } from '../FormInputs/FormInputs';
 import Button from '@material-ui/core/Button';
+import { CloseModalButton } from '../Modal/Modal';
 
 
 
@@ -25,17 +26,17 @@ const SignupForm = props => {
                 );
             })
             .catch(err => props.setShowModal({
-                show: 'true',
+                show: true,
                 type: 'error',
-                title: 'error',
-                content:
+                title: 'Signup Error!',
+                text:
                     <>
-                        <p><b>{err.code}</b></p>
-                        <p>{err.message}</p>
-                        <div>
-                            <Button onClick={() => props.setShowModal(false)}>Close</Button>
-                        </div>
-                    </>
+                        <strong>{err.code} :</strong>
+                        
+                        <br></br>
+                        {err.message}
+                    </> ,
+                actions: <CloseModalButton variant = 'contained' autofocus = {true} />
             }))
         props.setShowModal(false);
     }

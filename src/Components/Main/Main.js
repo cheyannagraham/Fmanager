@@ -78,10 +78,8 @@ export default withStyles(styles)(Main);
 //add better error messages for validation
 //add better validation for mal scripts
 //Maybe add a delete all?
-//signin features?
 //css pseudo classes for validation
 //transactionlist renders even if props don't chanege(month rerenders)
-//consider if anything needs to be done regarding reflecting changes when data is added on different devices
 //testing
 //incorrect date display edge?
 //store credentials
@@ -99,18 +97,15 @@ export default withStyles(styles)(Main);
 
 //show BTD can be show more once less view is implemented=> maybe add a scroll in styling
 
-// add click/hover animations to buttons
 //add pure components
 //add titles to modals...maybe
 
 //test for failed conditions
 // typing firebase fields
-//use form[id] to get values
 
 //++++++++++++++++++++FEATURES++++++++++++++++++++
 //show list of years and months onclick for faster scrolling.
 //show all transactions for a year
-// add add button to transaction completed to add another without going to main screen
 // show stats: total income/spent per month & year => maybe graph spending
 
 //============== AUTENTICATION NOTES=====================

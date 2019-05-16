@@ -69,8 +69,7 @@ const LandingPage = (props) => {
 
     return (
         <>
-            <Grid container className = {classes['lp-content']}>
-                
+            <Grid container className = {classes['lp-content']}>                
 
                 {user ?
                     <Home displayName={displayName} signout={signout} />
