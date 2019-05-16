@@ -41,9 +41,7 @@ const TransactionList = props => {
           >
             Confirm
           </Button>
-          <CloseModalButton onClick={() => handleDelete(id)}>
-            Confirm
-          </CloseModalButton>
+          <CloseModalButton />
         </>
       )
     });
@@ -57,7 +55,7 @@ const TransactionList = props => {
           title: "Delete Successful!",
           type: "success",
           text: res,
-          actions: <CloseModalButton />
+          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
         });
         getTransactions().then(results => props.setTransactions(results));
       })
@@ -67,7 +65,7 @@ const TransactionList = props => {
           type: "error",
           title: "Delete Error!",
           text: err,
-          actions: <CloseModalButton />
+          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
         })
       );
   };

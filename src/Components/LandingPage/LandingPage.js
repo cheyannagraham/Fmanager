@@ -62,7 +62,7 @@ const LandingPage = (props) => {
                 type: 'error',
                 title: 'Error Signing Out!',
                 text: err,
-                actions: <CloseModalButton />
+                actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
             })
         );
     }

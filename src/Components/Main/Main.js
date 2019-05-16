@@ -43,7 +43,7 @@ const Main = props => {
         type: 'error',
         text: err,
         title: 'Error Fetching Transactions!',
-        content: <CloseModalButton />
+        content: <CloseModalButton autofocus = {true} variant = 'contained'/>
       }))
   }, []);
 
@@ -92,13 +92,13 @@ export default withStyles(styles)(Main);
 //MODAL
 //perhaps add modal types => succes, delete, update, edit for easy reuse and readability
 //add id modal to code for accessiblity stuff and class for targeting styles
+
 //Form
 // Optimize extra renders in Form.js...Maybe
 
 //show BTD can be show more once less view is implemented=> maybe add a scroll in styling
 
 //add pure components
-//add titles to modals...maybe
 
 //test for failed conditions
 // typing firebase fields
@@ -108,12 +108,6 @@ export default withStyles(styles)(Main);
 //show all transactions for a year
 // show stats: total income/spent per month & year => maybe graph spending
 
-//============== AUTENTICATION NOTES=====================
-//login & sign up forms
-// what to show without an account => landing page
-//Redirect to app page
-//same email address?
 
 //===============Firestore===================
-//Security Rules
 //ID's empty in transaction??
