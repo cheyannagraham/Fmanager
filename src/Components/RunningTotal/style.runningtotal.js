@@ -14,6 +14,13 @@ const styles = {
         'font-size': '1.2em',
         padding : 'none'
     },
+    'total-value': {
+        color: 'green',
+        'font-weight' : 'bold'
+    },
+    'neg' : {
+        color: 'red'
+    }
 }
 
 export default styles
