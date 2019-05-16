@@ -3,7 +3,6 @@ import { updateTransaction, getTransactions, addTransaction } from '../Helpers/D
 import { validateDate } from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
 import { ModalContext } from '../../App';
-import style from '../../CSS/transactionform.module.css';
 import { CloseModalButton } from '../Modal/Modal';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -106,7 +105,7 @@ const TransactionForm = props => {
 
 
   return (
-    <form id='transaction-form' className={style.form} onSubmit={handleClick}>
+    <form id='transaction-form'  onSubmit={handleClick}>
 
       <FormInputs.DateInput label='Date' id='transaction-date' value={currTrans && currTrans.date} />
 
@@ -117,7 +116,7 @@ const TransactionForm = props => {
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
       
       <Grid container justify = 'flex-end' className = {classes['button-container']}>
-        <Button variant = 'contained' className={style.button} color = 'primary' type='submit'>{props.type}</Button>
+        <Button variant = 'contained' color = 'primary' type='submit'>{props.type}</Button>
         <CloseModalButton />
       </Grid>
     </form>

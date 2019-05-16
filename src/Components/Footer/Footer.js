@@ -1,5 +1,4 @@
 import React from "react";
-import style from "../../CSS/footer.module.css";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style.footer";
@@ -12,7 +11,6 @@ const Footer = props => {
     <Grid
       container
       justify="center"
-      id={style.footer}
       color="primary"
       className={classes.footer}
     >
