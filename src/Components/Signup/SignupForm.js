@@ -34,6 +34,8 @@ const SignupForm = props => {
                         <strong>{err.code} :</strong>
                         
                         <br></br>
+                        <br></br>
+                        
                         {err.message}
                     </> ,
                 actions: <CloseModalButton variant = 'contained' autofocus = {true} />
@@ -50,7 +52,7 @@ const SignupForm = props => {
             <Password variant={variant} />
             <div>
                 <Button variant = 'contained' color = 'primary' type='submit'> Signup </Button>
-                <Button variant = 'outlined' color = 'secondary' onClick={() => props.setShowModal(false)}>Close</Button>
+                <CloseModalButton />
             </div>
         </form>
 
