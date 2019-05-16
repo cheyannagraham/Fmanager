@@ -22,7 +22,7 @@ const Main = props => {
       show: true,
       type: "add",
       title: "New Transaction",
-      content: <TransactionForm setTransactions={setTransactions} type="add" />
+      content: <TransactionForm saf = {showAddForm} setTransactions={setTransactions} type="add" />
     });
   };
 

@@ -87,7 +87,7 @@ const LandingPage = (props) => {
 export default withStyles(styles)(LandingPage);
 
 //research plaid
-//delete trans error
+
 // add another trans after before closing
 //autoselect when close when success message shows
 //autofocus modal buttons
@@ -98,3 +98,5 @@ export default withStyles(styles)(LandingPage);
 //add account options => delete, change info
 //on add trans form prefill date with currrent date
 //add a timestamp for adding/updating
+//add autocomplete filled with previous entries
+//add max view and scroll transactions

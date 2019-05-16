@@ -23,7 +23,7 @@ const Modal = props => {
 
   return (
     <Dialog
-      open={props.content.show}
+      open={props.content.show} id="modal-dialog"
     >
 
       <Grid className={classes.dialog}>

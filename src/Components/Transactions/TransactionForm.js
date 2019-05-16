@@ -62,7 +62,11 @@ const TransactionForm = props => {
             title: 'Success',
             type: 'success',
             text: 'New Transaction Added',
-            actions: <CloseModalButton />
+            actions: 
+            <>
+              <Button color="primary" variant="contained" onClick={props.saf()}>Add Another </Button>
+              <CloseModalButton />
+            </>
           });
         })
         .catch(err => showModal({
