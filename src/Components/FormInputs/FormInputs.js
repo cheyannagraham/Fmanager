@@ -146,6 +146,7 @@ export const Email = withStyles(styles)(props => {
       value={value}
       onChange={handleChange}
       placeholder="user@fmanager.com"
+      autoFocus = {props.autofocus}
       required
       variant={props.variant}
     />
@@ -185,6 +186,7 @@ export const Username = withStyles(styles)(props => {
       id="username"
       value={value}
       onChange={handleChange}
+      autoFocus = {props.autofocus}
       placeholder="GrayG123"
       required
       variant={props.variant}

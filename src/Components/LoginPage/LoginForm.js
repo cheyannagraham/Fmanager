@@ -31,7 +31,7 @@ const LoginForm = props => {
     
     return (
         <form id = 'login' onSubmit = {handleLogin}>
-            <Email variant = {variant} />
+            <Email autofocus = {true} variant = {variant} />
             <Password variant = {variant} />
             <div>
                 <Button variant = 'contained' color = 'primary' type = 'submit'> Login </Button>

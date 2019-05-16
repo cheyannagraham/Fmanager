@@ -44,7 +44,7 @@ const SignupForm = props => {
 
     return (
         <form id='signup' onSubmit = {handleSignup}>
-            <Username variant={variant} />
+            <Username autofocus = {true} variant={variant} />
             <Email variant={variant} />
             <Password variant={variant} />
             <div>

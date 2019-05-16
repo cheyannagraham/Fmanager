@@ -94,7 +94,6 @@ export default withStyles(styles)(LandingPage);
 //add notes filed in trans form
 //maybe change select to radio
 //add account options => delete, change info
-//on add trans form prefill date with currrent date
 //add a timestamp for adding/updating
 //add autocomplete filled with previous entries
 //add max view and scroll transactions
