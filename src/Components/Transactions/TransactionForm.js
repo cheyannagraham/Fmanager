@@ -64,7 +64,7 @@ const TransactionForm = props => {
             text: 'New Transaction Added',
             actions: 
             <>
-              <Button color="primary" variant="contained" onClick={props.saf()}>Add Another </Button>
+              <Button color="primary" variant="contained" onClick={props.saf}>Add Another </Button>
               <CloseModalButton />
             </>
           });

@@ -89,7 +89,6 @@ export default withStyles(styles)(LandingPage);
 //research plaid
 //autoselect when close when success message shows
 //autofocus modal buttons
-//color balances red/green
 //add calculator app
 //add notes filed in trans form
 //maybe change select to radio
