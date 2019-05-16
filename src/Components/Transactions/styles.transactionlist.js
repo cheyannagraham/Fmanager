@@ -3,8 +3,9 @@ import myPalatte from "../../CSS/mypalette";
 const styles = {
     'paper' : {
         'max-width' : '1000px',
-        'min-height' : '60vh',
+        'height' : '65vh',
         'margin' : 'auto',
+        'overflow': 'auto'
     },
     'thead-cell' : {
         'font-size' : '1.28em',

@@ -96,4 +96,3 @@ export default withStyles(styles)(LandingPage);
 //add account options => delete, change info
 //add a timestamp for adding/updating
 //add autocomplete filled with previous entries
-//add max view and scroll transactions
