@@ -87,8 +87,6 @@ const LandingPage = (props) => {
 export default withStyles(styles)(LandingPage);
 
 //research plaid
-
-// add another trans after before closing
 //autoselect when close when success message shows
 //autofocus modal buttons
 //color balances red/green

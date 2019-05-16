@@ -42,6 +42,7 @@ export const DateInput = withStyles(styles)(props => {
           id: props.id,
           name: "date"
         }}
+        autoFocus
         value={value}
         onChange={handleChange}
         type="date"
