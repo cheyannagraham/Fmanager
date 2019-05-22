@@ -8,12 +8,12 @@ const styles = {
         'overflow': 'auto'
     },
     'thead-cell' : {
-        'font-size' : '1.28em',
+        'font-size' : '1em',
         color: myPalatte.palette.secondary[400],
 
     },
     'tcell' : {
-        'font-size' : '1em',
+        'font-size' : '0.98em',
         'font-style' : 'italic',
         'color' : myPalatte.palette.secondary[600],
     },
@@ -26,6 +26,10 @@ const styles = {
     icon : {
         'font-size': '0.58em',
     },
+    'icon-button' : {
+        'display': 'none',
+    }
+
     
 }
 

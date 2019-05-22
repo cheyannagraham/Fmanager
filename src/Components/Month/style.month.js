@@ -10,18 +10,19 @@ const styles = {
     padding: '0'
   },
   'month-title': {
-    'font-size' : '3em'
+    'font-size' : '1.4em'
   },
   'icon': {
-    'font-size': '2.5em'
+    'font-size': '1.6em'
   },
   'fab-container' : {
+    display:'none',
     width: '100%',
     'max-width' : '1000px',
     margin: '0 auto 15px auto',
   },
   'fab' : {
-    'margin-right': '25px'
+    'margin-right': '25px',
     
   }
 };

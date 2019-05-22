@@ -94,3 +94,5 @@ export default withStyles(styles)(LandingPage);
 //add account options => delete, change info
 //add a timestamp for adding/updating
 //add autocomplete filled with previous entries
+//show update/delete buttons in popup/popover in small viewport
+//move add transaction to menu button in appbar on small viewport
