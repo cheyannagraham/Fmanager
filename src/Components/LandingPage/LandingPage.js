@@ -94,3 +94,4 @@ export default withStyles(styles)(LandingPage);
 //add account options => delete, change info
 //add a timestamp for adding/updating
 //add autocomplete filled with previous entries
+//show procesing when firebase responds slow to prevent multiple transaction entries
