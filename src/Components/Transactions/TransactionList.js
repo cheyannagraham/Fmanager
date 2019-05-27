@@ -7,8 +7,9 @@ import TransactionItem from "./TransactionItem";
 import Button from "@material-ui/core/Button";
 import { CloseModalButton } from "../Modal/Modal";
 import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
@@ -20,9 +21,22 @@ const TransactionList = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const { classes } = props;
 
-  const sortTransactions = () => {
-    props.MonthlyTransactions.sort((prev, next) => {
-      return moment(next.date) - moment(prev.date);
+  const getDates = () => {
+    const dates = {};
+    props.MonthlyTransactions.forEach(trans => {
+      if (dates[trans.date]) {
+        dates[trans.date].push(trans)
+      }
+      else {
+        dates[trans.date] = [trans];
+      }
+    });
+    return dates;
+  };
+
+  const sortDates = dates => {
+    return dates.sort((prev, next) => {
+      return moment(next) - moment(prev);
     });
   };
 
@@ -55,7 +69,7 @@ const TransactionList = props => {
           title: "Delete Successful!",
           type: "success",
           text: res,
-          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
+          actions: <CloseModalButton autofocus={true} variant="contained" />
         });
         getTransactions().then(results => props.setTransactions(results));
       })
@@ -65,7 +79,7 @@ const TransactionList = props => {
           type: "error",
           title: "Delete Error!",
           text: err,
-          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
+          actions: <CloseModalButton autofocus={true} variant="contained" />
         })
       );
   };
@@ -86,70 +100,44 @@ const TransactionList = props => {
     });
   };
 
+  const displayData = () => {
+    const transObj = getDates();
+
+    return (
+      sortDates(Object.keys(transObj)).map(date => (
+        <Paper className={classes["trans-paper"]} key={date}>
+          <Grid className={classes["trans-date"]}>
+            <Typography variant="body1" className={classes.date}>
+              {moment(date).format("MMM DD")}
+            </Typography>
+          </Grid>
+
+          {transObj[date].map(trans => {
+            //calculate monthly total
+            total += Number(trans.amount);
+
+            return (
+              <TransactionItem
+                confirmDelete={confirmDelete}
+                updateTransaction={updateTransaction}
+                trans={trans}
+                key={trans.id}
+              />
+            );
+          })}
+          {props.setMonthlyTotal(total)}
+        </Paper>
+      )))
+  }
+
   return (
-    sortTransactions(),
-    (
-      <Paper className={classes.paper}>
-        <Table
-          padding="dense"
-          id="transaction-list"
-          className={classes["table"]}
-        >
-          <TableHead>
-            <TableRow>
-              <TableCell
-                colSpan={2}
-                className={classes["thead-cell"]}
-                align="center"
-              >
-                Date
-              </TableCell>
-
-              <TableCell className={classes["thead-cell"]} align="center">
-                Business
-              </TableCell>
-
-              <TableCell
-                colSpan={2}
-                className={classes["thead-cell"]}
-                align="center"
-              >
-                Amount
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {props.MonthlyTransactions.length > 0 ? (
-              props.MonthlyTransactions.map(trans => {
-                total += Number(trans.amount);
-
-                return (
-                  <TransactionItem
-                    confirmDelete={confirmDelete}
-                    updateTransaction={updateTransaction}
-                    trans={trans}
-                    key={trans.id}
-                  />
-                );
-              })
-            ) : (
-              <TableRow>
-                <TableCell
-                  className={classes["tcell-no-trans"]}
-                  colSpan="100%"
-                  align="center"
-                >
-                  No Transactions
-                </TableCell>
-              </TableRow>
-            )}
-
-            {props.setMonthlyTotal(total)}
-          </TableBody>
-        </Table>
-      </Paper>
-    )
+    props.MonthlyTransactions.length > 0
+      ?
+      displayData()
+      :
+      <p>No Transactions</p>
   );
 };
 
 export default withStyles(styles)(TransactionList);
+  //consider tables for accessiblity.

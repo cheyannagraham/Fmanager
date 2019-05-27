@@ -1,11 +1,33 @@
 import myPalatte from "../../CSS/mypalette";
 
 const styles = {
+    'trans-paper' : {
+        'margin': '15px auto 15px auto',
+        'width': '80vw',
+        'max-width': '600px',
+    },
+    //used by running total => FIX
     'paper' : {
         'max-width' : '1000px',
         'height' : '65vh',
         'margin' : 'auto',
         'overflow': 'auto'
+    },
+    'trans-date' : {
+        background: myPalatte.palette.secondary[100],
+        padding: '5px'
+    },
+    bus : {
+        flex: 3,
+        padding: '10px',
+    },
+    'amt' : {
+        flex: '1',
+        'text-align':'right',
+        padding: '10px',
+    },
+    'trans-info-container' : {
+        'display' : 'flex',
     },
     'thead-cell' : {
         'font-size' : '1em',
@@ -25,12 +47,7 @@ const styles = {
     },
     icon : {
         'font-size': '0.58em',
-    },
-    'icon-button' : {
-        'display': 'none',
-    }
-
-    
+    }    
 }
 
 export default styles;
