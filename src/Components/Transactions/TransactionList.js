@@ -7,12 +7,8 @@ import TransactionItem from "./TransactionItem";
 import Button from "@material-ui/core/Button";
 import { CloseModalButton } from "../Modal/Modal";
 import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.transactionlist";
 
@@ -140,4 +136,4 @@ const TransactionList = props => {
 };
 
 export default withStyles(styles)(TransactionList);
-  //consider tables for accessiblity.
+  //consider tables or lists for accessiblity.

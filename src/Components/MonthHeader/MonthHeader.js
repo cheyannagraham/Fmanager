@@ -12,35 +12,35 @@ const AddButton = (props) => {
     const { classes } = props;
 
     return (
-           <Grid container justify="center" className={classes["month-header"]}>
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            props.handleClick(-1);
-          }}
-        >
-          <ArrowLeft className={classes.icon} />
-        </IconButton>
+        <Grid container justify="center" className={classes["month-header"]}>
+            <IconButton
+                color="primary"
+                size="large"
+                onClick={() => {
+                    props.handleClick(-1);
+                }}
+            >
+                <ArrowLeft className={classes.icon} />
+            </IconButton>
 
-        <Typography
-          color="secondary"
-          variant="h4"
-          className={classes["month-title"]}
-        >
-          {`${moment(props.month, "MM").format("MMMM")} ${props.year}`}
-        </Typography>
+            <Typography
+                color="secondary"
+                variant="h4"
+                className={classes["month-title"]}
+            >
+                {`${moment(props.month, "MM").format("MMMM")} ${props.year}`}
+            </Typography>
 
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            props.handleClick(1);
-          }}
-        >
-          <ArrowRight className={classes.icon} />
-        </IconButton>
-      </Grid>
+            <IconButton
+                color="primary"
+                size="large"
+                onClick={() => {
+                    props.handleClick(1);
+                }}
+            >
+                <ArrowRight className={classes.icon} />
+            </IconButton>
+        </Grid>
     )
 
 

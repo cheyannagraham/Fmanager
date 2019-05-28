@@ -8,6 +8,7 @@ import { ModalContext } from "../../App";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
+import AddButton from "../AddButton/AddButton.js";
 
 
 const Main = props => {
@@ -52,13 +53,11 @@ const Main = props => {
   }, [transactions]);
 
   return (
-    <>
       <Grid component="main" className={classes.main}>
         <Month
           setMonthlyTotal={setMonthlyTotal}
           setTransactions={setTransactions}
           transactions={transactions}
-          showAddForm={showAddForm}
         />
 
         <Grid>
@@ -68,8 +67,8 @@ const Main = props => {
           />
 
         </Grid>
+        <AddButton showAddForm = {showAddForm} />
       </Grid>
-    </>
   );
 };
 

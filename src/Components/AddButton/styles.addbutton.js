@@ -3,9 +3,11 @@ const styles = {
         width: '100%',
         'max-width': '1000px',
         margin: '0 auto 15px auto',
+        'position': 'sticky',
+        'bottom' : '0px',
     },
     'fab': {
-        'margin-right': '25px',
+        'margin': '25px',
 
     }
 };

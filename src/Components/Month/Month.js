@@ -4,13 +4,8 @@ import moment from "moment";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.month";
 import { withStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import ArrowRight from "@material-ui/icons/ArrowRight";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import Typography from "@material-ui/core/Typography";
 import MonthHeader from '../MonthHeader/MonthHeader'
 
-import AddButton from "../AddButton/AddButton";
 
 const Month = props => {
   let currentMonth = moment().format("M");
@@ -69,8 +64,6 @@ const Month = props => {
         MonthlyTransactions={monthlyTransactions}
         setTransactions={props.setTransactions}
       />
-
-      <AddButton showAddForm = {props.showAddForm} />
 
     </Grid>
 

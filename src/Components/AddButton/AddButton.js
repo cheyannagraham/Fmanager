@@ -9,7 +9,7 @@ const AddButton = (props) => {
     const { classes } = props;
 
     return (
-        <Grid className={classes['fab-container']} container justify='flex-end'>
+        <Grid className={classes['fab-container']} container justify='flex-start'>
             <Fab className={classes.fab}
                 size="small"
                 color="primary"
