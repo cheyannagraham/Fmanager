@@ -19,6 +19,7 @@ const AddButton = (props) => {
                 onClick={() => {
                     props.handleClick(-1);
                 }}
+                className = {classes.ibutton}
             >
                 <ArrowLeft className={classes.icon} />
             </IconButton>
@@ -37,6 +38,8 @@ const AddButton = (props) => {
                 onClick={() => {
                     props.handleClick(1);
                 }}
+                className = {classes.ibutton}
+
             >
                 <ArrowRight className={classes.icon} />
             </IconButton>
