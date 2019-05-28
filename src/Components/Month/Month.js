@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import Typography from "@material-ui/core/Typography";
+import MonthHeader from '../MonthHeader/MonthHeader'
 
 import AddButton from "../AddButton/AddButton";
 
@@ -61,43 +62,16 @@ const Month = props => {
 
   return (
     <Grid className={classes["month-container"]}>
-      <Grid container justify="center" className={classes["month-header"]}>
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            handleClick(-1);
-          }}
-        >
-          <ArrowLeft className={classes.icon} />
-        </IconButton>
-
-        <Typography
-          color="secondary"
-          variant="h4"
-          className={classes["month-title"]}
-        >
-          {`${moment(month, "MM").format("MMMM")} ${year}`}
-        </Typography>
-
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            handleClick(1);
-          }}
-        >
-          <ArrowRight className={classes.icon} />
-        </IconButton>
-      </Grid>
-
-      <AddButton showAddForm = {props.showAddForm} />
+      <MonthHeader handleClick = {handleClick} month = {month} year = {year} />
 
       <TransactionList
         setMonthlyTotal={props.setMonthlyTotal}
         MonthlyTransactions={monthlyTransactions}
         setTransactions={props.setTransactions}
       />
+
+      <AddButton showAddForm = {props.showAddForm} />
+
     </Grid>
 
   );
