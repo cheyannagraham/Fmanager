@@ -20,6 +20,9 @@ const styles = {
     bus : {
         flex: 3,
         padding: '10px',
+        'white-space': 'nowrap',
+        'overflow': 'hidden',
+        'text-overflow': 'ellipsis'
     },
     'amt' : {
         flex: '1',
