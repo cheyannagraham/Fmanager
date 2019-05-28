@@ -8,8 +8,8 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import Typography from "@material-ui/core/Typography";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+
+import AddButton from "../AddButton/AddButton";
 
 const Month = props => {
   let currentMonth = moment().format("M");
@@ -91,16 +91,7 @@ const Month = props => {
         </IconButton>
       </Grid>
 
-      <Grid className={classes['fab-container']} container justify = 'flex-end'>
-        <Fab className = {classes.fab}
-          size="medium"
-          color="primary"
-          aria-label="add"
-          onClick={props.showAddForm}
-        >
-          <AddIcon />
-        </Fab>
-      </Grid>
+      <AddButton showAddForm = {props.showAddForm} />
 
       <TransactionList
         setMonthlyTotal={props.setMonthlyTotal}
@@ -108,6 +99,7 @@ const Month = props => {
         setTransactions={props.setTransactions}
       />
     </Grid>
+
   );
 };
 
