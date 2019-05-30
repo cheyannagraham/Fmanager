@@ -1,12 +1,10 @@
-import tstyles from '../Transactions/styles.transactionlist';
 import myPalatte from '../../CSS/mypalette';
 
 
 const styles = {
     container : {
-        'max-width' : tstyles['trans-paper']['max-width'],
-        'margin' : tstyles['trans-paper']['margin'],
-        'width' : tstyles['trans-paper']['width'],
+        'width': '100%',
+        'margin': '15px auto'
     },
     'total-head' : {
         'padding': '12px',

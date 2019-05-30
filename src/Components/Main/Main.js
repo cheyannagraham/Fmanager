@@ -10,7 +10,6 @@ import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
 import AddButton from "../AddButton/AddButton.js";
 
-
 const Main = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [runningTotal, setRunningTotal] = useState(0);
@@ -23,7 +22,13 @@ const Main = props => {
       show: true,
       type: "add",
       title: "New Transaction",
-      content: <TransactionForm saf = {showAddForm} setTransactions={setTransactions} type="add" />
+      content: (
+        <TransactionForm
+          saf={showAddForm}
+          setTransactions={setTransactions}
+          type="add"
+        />
+      )
     });
   };
 
@@ -39,13 +44,15 @@ const Main = props => {
   useEffect(() => {
     getTransactions()
       .then(r => setTransactions(r))
-      .catch(err => showModal({
-        show: true,
-        type: 'error',
-        text: err,
-        title: 'Error Fetching Transactions!',
-        content: <CloseModalButton autofocus = {true} variant = 'contained'/>
-      }))
+      .catch(err =>
+        showModal({
+          show: true,
+          type: "error",
+          text: err,
+          title: "Error Fetching Transactions!",
+          content: <CloseModalButton autofocus={true} variant="contained" />
+        })
+      );
   }, []);
 
   useEffect(() => {
@@ -53,22 +60,20 @@ const Main = props => {
   }, [transactions]);
 
   return (
-      <Grid component="main" className={classes.main}>
+    <Grid component="main" container className={classes.main}>
+      <Grid container className={classes.top}>
         <Month
           setMonthlyTotal={setMonthlyTotal}
           setTransactions={setTransactions}
           transactions={transactions}
         />
 
-        <Grid>
-          <RunningTotal
-            runningTotal={runningTotal}
-            monthlyTotal={monthlyTotal}
-          />
-
-        </Grid>
-        <AddButton showAddForm = {showAddForm} />
+        <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
       </Grid>
+
+        <AddButton showAddForm={showAddForm} />
+        
+    </Grid>
   );
 };
 
@@ -106,7 +111,6 @@ export default withStyles(styles)(Main);
 //show list of years and months onclick for faster scrolling.
 //show all transactions for a year
 // show stats: total income/spent per month & year => maybe graph spending
-
 
 //===============Firestore===================
 //ID's empty in transaction??

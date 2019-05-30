@@ -1,13 +1,10 @@
 const styles = {
     'fab-container': {
-        width: '100%',
-        'max-width': '1000px',
-        margin: '0 auto 15px auto',
-        'position': 'sticky',
-        'bottom' : '0px',
+        // 'margin': '5px'
+
     },
     'fab': {
-        'margin': '25px',
+        // 'margin': '5px 0'
 
     }
 };

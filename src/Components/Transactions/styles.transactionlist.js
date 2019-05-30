@@ -2,17 +2,9 @@ import myPalatte from "../../CSS/mypalette";
 
 const styles = {
     'trans-paper' : {
-        'margin': '15px auto 15px auto',
-        'width': '80vw',
-        'max-width': '600px',
+        'margin': '20px auto',
+
     },
-    // //used by running total => FIX
-    // 'paper' : {
-    //     'max-width' : '1000px',
-    //     'height' : '65vh',
-    //     'margin' : 'auto',
-    //     'overflow': 'auto'
-    // },
     'trans-date' : {
         background: myPalatte.palette.secondary[100],
         padding: '5px'
