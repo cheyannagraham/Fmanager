@@ -6,13 +6,13 @@ const styles = {
         'width': '80vw',
         'max-width': '600px',
     },
-    //used by running total => FIX
-    'paper' : {
-        'max-width' : '1000px',
-        'height' : '65vh',
-        'margin' : 'auto',
-        'overflow': 'auto'
-    },
+    // //used by running total => FIX
+    // 'paper' : {
+    //     'max-width' : '1000px',
+    //     'height' : '65vh',
+    //     'margin' : 'auto',
+    //     'overflow': 'auto'
+    // },
     'trans-date' : {
         background: myPalatte.palette.secondary[100],
         padding: '5px'
