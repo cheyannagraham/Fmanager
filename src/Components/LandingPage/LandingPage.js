@@ -93,13 +93,5 @@ export default withStyles(styles)(LandingPage);
 //maybe change select to radio
 //add account options => delete, change info
 //add a timestamp for adding/updating
-<<<<<<< HEAD
 //add autocomplete filled with previous entries
 //show procesing when firebase responds slow to prevent multiple transaction entries
-||||||| merged common ancestors
-//add autocomplete filled with previous entries
-=======
-//add autocomplete filled with previous entries
-//show update/delete buttons in popup/popover in small viewport
-//move add transaction to menu button in appbar on small viewport
->>>>>>> responsive
