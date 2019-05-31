@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import './CSS/main.css';
 import LandingPage from './Components/LandingPage/LandingPage';
 import { MuiThemeProvider,createMuiTheme } from '@material-ui/core/styles';
 import myPalette from './CSS/mypalette'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Modal from './Components/Modal/Modal'
+import './CSS/html.css';
+
 
 
 export const ModalContext = React.createContext(false);

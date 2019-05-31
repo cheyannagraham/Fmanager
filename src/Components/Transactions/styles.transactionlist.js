@@ -1,19 +1,36 @@
 import myPalatte from "../../CSS/mypalette";
 
 const styles = {
-    'paper' : {
-        'max-width' : '1000px',
-        'height' : '65vh',
-        'margin' : 'auto',
-        'overflow': 'auto'
+    'trans-paper' : {
+        'margin': '20px auto',
+
+    },
+    'trans-date' : {
+        background: myPalatte.palette.secondary[100],
+        padding: '5px'
+    },
+    bus : {
+        flex: 3,
+        padding: '10px',
+        'white-space': 'nowrap',
+        'overflow': 'hidden',
+        'text-overflow': 'ellipsis'
+    },
+    'amt' : {
+        flex: '1',
+        'text-align':'right',
+        padding: '10px',
+    },
+    'trans-info-container' : {
+        'display' : 'flex',
     },
     'thead-cell' : {
-        'font-size' : '1.28em',
+        'font-size' : '1em',
         color: myPalatte.palette.secondary[400],
 
     },
     'tcell' : {
-        'font-size' : '1em',
+        'font-size' : '0.98em',
         'font-style' : 'italic',
         'color' : myPalatte.palette.secondary[600],
     },
@@ -25,8 +42,7 @@ const styles = {
     },
     icon : {
         'font-size': '0.58em',
-    },
-    
+    }    
 }
 
 export default styles;

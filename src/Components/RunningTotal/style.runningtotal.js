@@ -1,18 +1,17 @@
-import tstyles from '../Transactions/styles.transactionlist'
+import myPalatte from '../../CSS/mypalette';
+
 
 const styles = {
     container : {
-        width : '100%',
-        'max-width' : tstyles.paper['max-width'],
-        'margin' : 'auto',
-        padding : '5px 0 100px 0',
+        'width': '100%',
+        'margin': '15px auto'
     },
-    'row' : {
-        border: 'none'
+    'total-head' : {
+        'padding': '12px',
+        background: myPalatte.palette.secondary[800],
     },
-    'tcell' : {
-        'font-size': '1.2em',
-        padding : 'none'
+    'total' : {
+        padding: '15px'
     },
     'total-value': {
         color: 'green',

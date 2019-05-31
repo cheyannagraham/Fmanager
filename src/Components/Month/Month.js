@@ -4,12 +4,8 @@ import moment from "moment";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.month";
 import { withStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import ArrowRight from "@material-ui/icons/ArrowRight";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import Typography from "@material-ui/core/Typography";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import MonthHeader from '../MonthHeader/MonthHeader'
+
 
 const Month = props => {
   let currentMonth = moment().format("M");
@@ -61,53 +57,16 @@ const Month = props => {
 
   return (
     <Grid className={classes["month-container"]}>
-      <Grid container justify="center" className={classes["month-header"]}>
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            handleClick(-1);
-          }}
-        >
-          <ArrowLeft className={classes.icon} />
-        </IconButton>
-
-        <Typography
-          color="secondary"
-          variant="h4"
-          className={classes["month-title"]}
-        >
-          {`${moment(month, "MM").format("MMMM")} ${year}`}
-        </Typography>
-
-        <IconButton
-          color="primary"
-          size="large"
-          onClick={() => {
-            handleClick(1);
-          }}
-        >
-          <ArrowRight className={classes.icon} />
-        </IconButton>
-      </Grid>
-
-      <Grid className={classes['fab-container']} container justify = 'flex-end'>
-        <Fab className = {classes.fab}
-          size="medium"
-          color="primary"
-          aria-label="add"
-          onClick={props.showAddForm}
-        >
-          <AddIcon />
-        </Fab>
-      </Grid>
+      <MonthHeader handleClick = {handleClick} month = {month} year = {year} />
 
       <TransactionList
         setMonthlyTotal={props.setMonthlyTotal}
         MonthlyTransactions={monthlyTransactions}
         setTransactions={props.setTransactions}
       />
+
     </Grid>
+
   );
 };
 

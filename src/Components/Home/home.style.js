@@ -1,7 +1,7 @@
 const styles = {
     home : {
         width: '100%',
-        height: '100%'
+        height: '100vh'
     },
     'user-info' : {
         display: 'flex',
