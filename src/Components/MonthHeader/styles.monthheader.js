@@ -2,8 +2,7 @@ const styles = {
     'month-header': {
         'display': 'flex',
         'align-items': 'center',
-        'margin': '25px 0',
-        'padding': '10px 0'
+        'margin':'15px auto 10px',
     },
     'month-title': {
         'font-size': '1.7em'

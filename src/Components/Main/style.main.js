@@ -1,17 +1,14 @@
 const styles = {
     main: {
         'width': '95vw',
-        'max-width': '700px',
-        'margin': 'auto',
         'height' : '100%',
-        'min-height': '90vh',
+        'margin': 'auto',
+        'max-width': '700px',
         'max-height' : '90vh'
     },
     'top' : {
         'width': '100%',
-        'height' : '100%',
-        'min-height': '73vh',
-        'max-height': '73vh',
+        'height' : '80vh',
         'overflow': 'auto'
     },
 }
