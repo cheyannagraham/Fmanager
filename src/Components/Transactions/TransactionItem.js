@@ -13,25 +13,31 @@ const TransactionItem = props => {
 
   return (
     <>
-      <Grid className={classes["trans-info-container"]}>
-        <Grid className={classes.bus}>
+      <Grid container spacing={1} alignItems="center">
+        <Grid item fluid xs={2}>
           <IconButton
-            className={classes["icon-button"]}
-            title="Edit Transaction"
-            onClick={() => {
-              props.updateTransaction(props.trans);
-            }}>
+          className={classes["icon-button"]}
+          title="Edit Transaction"
+          onClick={() => {
+            props.updateTransaction(props.trans);
+          }}>
             <Edit className={classes.icon} />
           </IconButton>
-          <Typography variant="body1" inline>
+        </Grid>
+          
+        <Grid container item xs={6}>
+          <Typography variant="body1" block noWrap>
             {props.trans.business}
           </Typography>
         </Grid>
 
-        <Grid className={classes.amt}>
-          <Typography variant="body1" inline>
-            ${props.trans.amount}
+        <Grid container item xs={2}>
+          <Typography variant="body1" block>
+            <small>$</small>{props.trans.amount}
           </Typography>
+        </Grid>
+        
+        <Grid item xs={2}>
           <IconButton
             className={classes["icon-button"]}
             title="Delete Transaction"

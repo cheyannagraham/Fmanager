@@ -56,7 +56,7 @@ const Month = props => {
   };
 
   return (
-    <Grid className={classes["month-container"]}>
+    <Grid container>
       <MonthHeader handleClick = {handleClick} month = {month} year = {year} />
 
       <TransactionList

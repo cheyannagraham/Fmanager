@@ -127,12 +127,14 @@ const TransactionList = props => {
   }
 
   return (
-    props.MonthlyTransactions.length > 0
-      ?
-      displayData()
-      :
-      <p>No Transactions</p>
-  );
+      <Grid className={classes['trans-content']}>
+        {props.MonthlyTransactions.length > 0
+        ?
+        displayData()
+        :
+        <p>No Transactions</p>}
+      </Grid>
+    )
 };
 
 export default withStyles(styles)(TransactionList);
