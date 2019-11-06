@@ -1,6 +1,6 @@
 const styles = {
     'fab-container': {
-        // 'margin': '5px'
+        'margin': '5px'
 
     },
     'fab': {

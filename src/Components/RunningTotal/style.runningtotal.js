@@ -3,7 +3,6 @@ import myPalatte from '../../CSS/mypalette';
 
 const styles = {
     container : {
-        'width': '100%',
         'margin': '15px auto'
     },
     'total-head' : {

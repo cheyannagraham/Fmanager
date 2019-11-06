@@ -1,6 +1,5 @@
 const styles = { 
     margin: {
-        width: '100%',
         'margin-bottom': '40px'
     },
     label : {

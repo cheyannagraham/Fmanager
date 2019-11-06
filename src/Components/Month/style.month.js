@@ -1,7 +1,4 @@
 const styles = {
-  'month-container': {
-    'width': '100%',
-  },
 
 };
 

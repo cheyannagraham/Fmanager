@@ -1,13 +1,12 @@
 html {
     font-size: 1em;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 
 @media screen and (min-width: 400px) {
     html {
         font-size: 1.2em;
-    }
-    .month-title {
-        /* font-size: 2em; */
     }
 }

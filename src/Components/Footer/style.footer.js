@@ -3,6 +3,7 @@ import palette from '../../CSS/mypalette';
 const styles = {
     footer : {
         padding : '30px 0',
+        'margin-top': '5px',
         background: palette.palette.secondary[400],
     },
     p : {

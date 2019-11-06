@@ -1,12 +1,10 @@
 const styles = {
     'login-page-container' : {
-        width: '100%',
-        height: '100%',
+        margin: 'auto',
         padding: '25px' 
     },
     main : {
         display: 'flex',
-        height: '300px'
     },
     'button-container' : {
         margin: 'auto',
