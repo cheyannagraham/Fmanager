@@ -3,11 +3,12 @@ import myPalatte from '../../CSS/mypalette';
 
 const styles = {
     container : {
-        'margin': '15px auto'
+        'margin': '15px auto',
+        'width': '100%'
     },
     'total-head' : {
         'padding': '12px',
-        background: myPalatte.palette.secondary[800],
+        'background': myPalatte.palette.secondary[800],
     },
     'total' : {
         padding: '15px'

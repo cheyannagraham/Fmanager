@@ -22,44 +22,41 @@ const RunningTotal = props => {
   return (
     <Paper className={classes.container}>
       <Grid className={classes["trans-date"]}>
-        <Typography
-          variant="body1"
-          color="primary"
-          className={classes["total-head"]}
-        >
+        <Typography color="primary" className={classes["total-head"]}>
           Total
         </Typography>
       </Grid>
 
-      <Grid container className={classes.total} justify="space-between">
-        <Typography variant="body1" inline>
-          Monthly Total
-        </Typography>
+      <Grid container spacing={1} className={classes.total}>
+        
+        <Grid item xs={9}>
+          <Typography align="left">
+            Monthly Total
+          </Typography>
+        </Grid>
 
-        <Typography
-          id="monthly-total"
-          variant="body1"
-          inline
-          className={classes["total-value"]}
-        >
-          ${props.monthlyTotal.toFixed(2)}
-        </Typography>
+        <Grid item xs={3}>
+          <Typography id="monthly-total" className={classes["total-value"]}>
+            ${props.monthlyTotal.toFixed(2)}
+          </Typography>
+        </Grid>
       </Grid>
+      
       <Divider />
 
-      <Grid container justify="space-between" className={classes.total}>
-        <Typography variant="body1" inline>
-          Running Total
-        </Typography>
+      <Grid container spacing={1} className={classes.total}>
+        
+        <Grid item xs={9}>
+          <Typography align="left">
+            Running Total
+          </Typography>
+        </Grid>
 
-        <Typography
-          id="run-total"
-          variant="body1"
-          inline
-          className={classes["total-value"]}
-        >
-          ${props.runningTotal.toFixed(2)}
-        </Typography>
+        <Grid item xs={3}>
+          <Typography id="run-total"  className={classes["total-value"]}>
+            ${props.runningTotal.toFixed(2)}
+          </Typography>
+        </Grid>
       </Grid>
     </Paper>
   );
