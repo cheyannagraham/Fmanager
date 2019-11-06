@@ -11,7 +11,8 @@ const styles = {
         'background': myPalatte.palette.secondary[800],
     },
     'total' : {
-        padding: '15px'
+        padding: '15px',
+        
     },
     'total-value': {
         color: 'green',
