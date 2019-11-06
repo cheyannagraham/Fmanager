@@ -1,20 +1,18 @@
 const styles = {
     'login-page-container' : {
-        margin: ' 0 auto 0 auto',
-        padding: '25px' 
+        margin: ' 0 auto',
     },
     main : {
-        display: 'flex',
-        'margin': 'auto',
-        'min-height' : '50%'
+        'display':'flex',
+        'min-height' : '55%'
     },
     'button-container' : {
         margin: 'auto',
     },
     header : {
         'font-weight': '400',
-        'font-size': '5em',
-        'margin': '5px'
+        'font-size': '3.7rem',
+        'margin-top': '15px'
     }
 }
 

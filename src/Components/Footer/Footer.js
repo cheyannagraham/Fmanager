@@ -11,7 +11,6 @@ const Footer = props => {
     <Grid
       container
       justify="center"
-      color="primary"
       className={classes.footer}
     >
       <Typography variant="body1" className={classes.p}>

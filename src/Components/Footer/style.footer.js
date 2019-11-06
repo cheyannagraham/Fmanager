@@ -7,9 +7,9 @@ const styles = {
         'font-style': 'italic',
     },
     p : {
-        color: palette.palette.secondary[800],
+        color: palette.palette.secondary[600],
         margin : '5px',
-        'font-size': '.78em',
+        'font-size': '.73em',
     }
 
 }

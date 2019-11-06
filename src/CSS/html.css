@@ -8,8 +8,14 @@ html {
 }
 
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 550px) {
     html {
         font-size: 1.2em;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 1.5em;
     }
 }
