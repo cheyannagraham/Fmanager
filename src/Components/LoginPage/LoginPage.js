@@ -14,7 +14,7 @@ const LoginPage = props => {
             <Grid component = 'header' className={classes['header-section']}>
                 
                 <Typography className={classes.header} variant="h1" color='primary' align="center">
-                    FManager
+                    FMananger
                 </Typography>
 
             </Grid>
@@ -24,6 +24,7 @@ const LoginPage = props => {
                 <Grid className = {classes['button-container']}>
                     
                     <Button className = {classes['login-button']} size='large' onClick={props.handleLogin} color="secondary" variant="contained">Login</Button>
+                    
                     <Button size='large' onClick={props.handleSignup} color="primary" variant="contained">SignUp</Button>
 
                 </Grid>

@@ -4,11 +4,12 @@ const styles = {
     footer : {
         padding : '30px 0',
         'margin-top': '5px',
-        background: palette.palette.secondary[400],
+        'font-style': 'italic',
     },
     p : {
-        color: 'white',
-        margin : '0 20px'
+        color: palette.palette.secondary[800],
+        margin : '5px',
+        'font-size': '.78em',
     }
 
 }
