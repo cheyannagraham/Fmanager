@@ -4,8 +4,8 @@ const styles = {
     'trans-paper' : {
         'margin': '20px auto',
     },
-    'trans-date' : {
-        background: myPalatte.palette.secondary.lightest,
+    'date' : {
+        background: myPalatte.palette.secondary.light,
         padding: '5px'
     },
     icon : {

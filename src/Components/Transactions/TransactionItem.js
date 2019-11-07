@@ -15,7 +15,7 @@ const TransactionItem = props => {
     <>
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={2}>
-          <IconButton className={classes["icon-button"]} title="Edit Transaction" color="secondary" onClick={() => {
+          <IconButton className={classes["icon-button"]} title="Edit Transaction" color="primary" onClick={() => {
             props.updateTransaction(props.trans);
           }}>
             <Edit className={classes.icon} />
@@ -23,19 +23,19 @@ const TransactionItem = props => {
         </Grid>
           
         <Grid container item xs={6}>
-          <Typography color="secondary" block noWrap>
+          <Typography color="primary" block noWrap>
             {props.trans.business}
           </Typography>
         </Grid>
 
         <Grid container  item xs={2} >
-          <Typography block color="secondary">
+          <Typography block color="primary">
             <small>$</small>{props.trans.amount}
           </Typography>
         </Grid>
         
         <Grid container item  xs={2}>
-          <IconButton className={classes["icon-button"]} color="secondary" title="Delete Transaction" onClick={() => props.confirmDelete(props.trans.id)}>
+          <IconButton className={classes["icon-button"]} color="primary" title="Delete Transaction" onClick={() => props.confirmDelete(props.trans.id)}>
             <Delete className={classes.icon} />
           </IconButton>
         </Grid>

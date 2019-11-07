@@ -25,7 +25,7 @@ const LoginForm = props => {
 
                         {err.message}
                     </> ,
-                actions: <CloseModalButton variant = 'contained' autofocus = {true} />
+                actions: <CloseModalButton variant='contained' autofocus = {true} />
             }));
         //close Modal after logging in
         props.setShowModal(false);
@@ -38,7 +38,7 @@ const LoginForm = props => {
             <Email autofocus = {true} variant = {variant} />
             <Password variant = {variant} />
             <div>
-                <Button variant = 'contained' color = 'primary' type = 'submit'> Login </Button>
+                <Button variant='contained' color='primary' type='submit'> Login </Button>
                 <CloseModalButton />
             </div>
         </form>

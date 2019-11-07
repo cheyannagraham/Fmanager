@@ -8,7 +8,8 @@ const styles = {
     },
     'total-head' : {
         'padding': '12px',
-        'background': myPalatte.palette.secondary.main,
+        'background': myPalatte.palette.primary.light,
+        'color': myPalatte.palette.secondary.light
     },
     'total' : {
         padding: '15px',

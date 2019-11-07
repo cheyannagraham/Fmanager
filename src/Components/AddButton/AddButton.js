@@ -10,7 +10,7 @@ const AddButton = (props) => {
 
     return (
         <Grid className={classes['fab-container']} container justify='flex-end'>
-            <Fab className={classes.fab} size="small" color="primary"  aria-label="add"
+            <Fab className={classes.fab} size="small" color="secondary"  aria-label="add"
                 onClick={props.showAddForm}>
                 <AddIcon />
             </Fab>

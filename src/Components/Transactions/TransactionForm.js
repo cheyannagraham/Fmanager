@@ -32,7 +32,7 @@ const TransactionForm = props => {
         title: 'Validation Error!',
         type: 'error',
         text: 'Invalid Date. please enter a date between 1-1-1900 and 12-31-2050',
-        actions: <CloseModalButton  autofocus = {true} variant = 'contained' />
+        actions: <CloseModalButton  autofocus={true} />
       });
     }
   };
@@ -72,7 +72,7 @@ const TransactionForm = props => {
           show: true,
           title: 'Error Adding New Transaction!',
           type: 'error',
-          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>,
+          actions: <CloseModalButton autofocus={true} />,
           text: err
         }));
     }
@@ -89,14 +89,14 @@ const TransactionForm = props => {
                 type: 'success',              
                 title: 'Update Successful!',
                 text: res,
-                actions: <CloseModalButton autofocus = {true} variant = 'contained'/>
+                actions: <CloseModalButton autofocus={true} />
               });
             })
         })
         .catch(err => showModal({
           show: true,
           title: 'Update Failed! :( ',
-          actions: <CloseModalButton autofocus = {true} variant = 'contained'/>,
+          actions: <CloseModalButton autofocus={true} />,
           text: err,
           type : 'error',
         }));
@@ -115,8 +115,8 @@ const TransactionForm = props => {
 
       <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
       
-      <Grid container justify = 'flex-end' className = {classes['button-container']}>
-        <Button variant = 'contained' color = 'primary' type='submit'>{props.type}</Button>
+      <Grid container justify='flex-end' className={classes['button-container']}>
+        <Button variant='contained' color='primary' type='submit'>{props.type}</Button>
         <CloseModalButton />
       </Grid>
     </form>

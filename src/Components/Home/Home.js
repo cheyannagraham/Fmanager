@@ -14,7 +14,7 @@ const Home = props => {
   const { classes } = props;
 
   return (
-    <Grid container >
+    <Grid container>
       <AppBar position="static">
         <Toolbar disableGutters>
           <Grid container alignItems="center">

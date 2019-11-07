@@ -41,7 +41,7 @@ const CloseModalButton = props => {
   return (
     <Button
       color="secondary"
-      variant={props.variant || "outlined"}
+      variant={props.variant || "contained"}
       autoFocus = {props.autofocus}
       onClick={() => showModal(false)}
     >

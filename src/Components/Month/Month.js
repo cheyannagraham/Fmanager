@@ -14,6 +14,7 @@ const Month = props => {
   const [year, setYear] = useState(currentYear);
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
   const { classes } = props;
+  //styles empty-delete
 
   const getMonthlyTransactions = newMonth => {
     let mt = props.transactions.filter(transaction => {

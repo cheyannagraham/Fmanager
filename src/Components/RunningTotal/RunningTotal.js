@@ -21,8 +21,8 @@ const RunningTotal = props => {
 
   return (
     <Paper className={classes.container}>
-      <Grid className={classes["trans-date"]} fill="secondary">
-        <Typography color="primary" className={classes["total-head"]}>
+      <Grid className={classes["trans-date"]}>
+        <Typography color="secondary" className={classes["total-head"]}>
           Total
         </Typography>
       </Grid>
@@ -30,7 +30,7 @@ const RunningTotal = props => {
       <Grid container spacing={1} className={classes.total}>
         
         <Grid item xs={9}>
-          <Typography align="left" color="secondary">
+          <Typography align="left" color="primary">
             Monthly Total
           </Typography>
         </Grid>
@@ -47,7 +47,7 @@ const RunningTotal = props => {
       <Grid container spacing={1} className={classes.total}>
         
         <Grid item xs={9}>
-          <Typography align="left" color="secondary">
+          <Typography align="left" color="primary">
             Running Total
           </Typography>
         </Grid>

@@ -44,11 +44,8 @@ const TransactionList = props => {
       type: "confirm",
       actions: (
         <>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => handleDelete(id)}
-          >
+          <Button color="primary" variant="contained"
+            onClick={() => handleDelete(id)}>
             Confirm
           </Button>
           <CloseModalButton />
@@ -75,7 +72,7 @@ const TransactionList = props => {
           type: "error",
           title: "Delete Error!",
           text: err,
-          actions: <CloseModalButton autofocus={true} variant="contained" />
+          actions: <CloseModalButton autofocus={true} />
         })
       );
   };
@@ -102,11 +99,11 @@ const TransactionList = props => {
     return (
       sortDates(Object.keys(transObj)).map(date => (
         <Paper className={classes["trans-paper"]} key={date}>
-          <Grid className={classes["trans-date"]}>
-            <Typography color="secondary" className={classes.date}>
+          {/* <Grid> */}
+            <Typography color="primary" className={classes.date}>
               {moment(date).format("MMM DD")}
             </Typography>
-          </Grid>
+          {/* </Grid> */}
 
           {transObj[date].map(trans => {
             //calculate monthly total
@@ -127,12 +124,14 @@ const TransactionList = props => {
   }
 
   return (
-      <Grid color="secondary" className={classes['trans-content']}>
+      <Grid className={classes['trans-content']}>
         {props.MonthlyTransactions.length > 0
         ?
         displayData()
         :
-        <p>No Transactions</p>}
+        <Typography color="primary">
+          No Transactions
+        </Typography>}
       </Grid>
     )
 };
