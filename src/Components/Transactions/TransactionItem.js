@@ -22,13 +22,13 @@ const TransactionItem = props => {
           </IconButton>
         </Grid>
           
-        <Grid container item xs={6}>
+        <Grid container item xs={5}>
           <Typography color="primary" block noWrap>
             {props.trans.business}
           </Typography>
         </Grid>
 
-        <Grid container  item xs={2} >
+        <Grid container  item xs={3} >
           <Typography block color="primary">
             <small>$</small>{props.trans.amount}
           </Typography>
