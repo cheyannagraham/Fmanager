@@ -19,7 +19,7 @@ const myPalatte = {
     },
     palette : {
         primary: orange,
-        secondary: blueGrey,
+        secondary: {'main':'#37474f'},
         textPrimary: blue
     },
     typography: {

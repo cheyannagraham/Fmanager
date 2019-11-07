@@ -1,11 +1,10 @@
+
 const styles = {
     'month-header': {
-        'display': 'flex',
-        'align-items': 'center',
         'margin':'15px auto 10px',
     },
     'month-title': {
-        'font-size': '1.7em'
+        'font-size': '1.5em',
     },
     'icon': {
         'font-size': '2em',
