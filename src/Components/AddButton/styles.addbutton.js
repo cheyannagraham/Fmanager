@@ -3,10 +3,6 @@ const styles = {
         'margin': '5px'
 
     },
-    'fab': {
-        // 'margin': '5px 0'
-
-    }
 };
 
 export default styles;

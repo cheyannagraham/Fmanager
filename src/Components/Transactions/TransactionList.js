@@ -103,7 +103,7 @@ const TransactionList = props => {
       sortDates(Object.keys(transObj)).map(date => (
         <Paper className={classes["trans-paper"]} key={date}>
           <Grid className={classes["trans-date"]}>
-            <Typography variant="body1" className={classes.date}>
+            <Typography color="secondary" className={classes.date}>
               {moment(date).format("MMM DD")}
             </Typography>
           </Grid>
@@ -127,7 +127,7 @@ const TransactionList = props => {
   }
 
   return (
-      <Grid className={classes['trans-content']}>
+      <Grid color="secondary" className={classes['trans-content']}>
         {props.MonthlyTransactions.length > 0
         ?
         displayData()

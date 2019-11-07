@@ -20,13 +20,13 @@ const Home = props => {
           <Grid container alignItems="center">
             
             <Avatar className={classes.avatar}>
-              <Face fontSize="large" className={classes.dark}/>
+              <Face fontSize="large" color="secondary"/>
             </Avatar>
 
-            <Typography variant="h6" className={classes.dark}>{props.displayName}</Typography>
+            <Typography variant="h6" color="secondary">{props.displayName}</Typography>
           </Grid>
 
-          <Button onClick={props.signout} className={classes.dark}>Signout</Button>
+          <Button onClick={props.signout} color="secondary">Signout</Button>
         </Toolbar>
       </AppBar>
 

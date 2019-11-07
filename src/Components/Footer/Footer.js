@@ -8,17 +8,13 @@ const Footer = props => {
   const { classes } = props;
 
   return (
-    <Grid
-      container
-      justify="center"
-      className={classes.footer}
-    >
-      <Typography variant="body1" className={classes.p}>
-        Website By Cheyanna Graham
+    <Grid container justify="center" color="primary" className={classes.footer}>
+      <Typography className={classes.p} >
+        Cheyanna Graham
       </Typography>
 
-      <Typography variant="body1" className={classes.p}>
-        Icons By Material Designs
+      <Typography className={classes.p}>
+        Material UI
       </Typography>
     </Grid>
   );

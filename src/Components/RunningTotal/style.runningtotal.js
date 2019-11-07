@@ -8,15 +8,15 @@ const styles = {
     },
     'total-head' : {
         'padding': '12px',
-        'background': myPalatte.palette.secondary[800],
+        'background': myPalatte.palette.secondary.main,
     },
     'total' : {
         padding: '15px',
         
     },
     'total-value': {
+        'font-weight' : 'bold',
         color: 'green',
-        'font-weight' : 'bold'
     },
     'neg' : {
         color: 'red'

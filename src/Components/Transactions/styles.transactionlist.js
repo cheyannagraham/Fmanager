@@ -5,7 +5,7 @@ const styles = {
         'margin': '20px auto',
     },
     'trans-date' : {
-        background: myPalatte.palette.secondary[100],
+        background: myPalatte.palette.secondary.lightest,
         padding: '5px'
     },
     icon : {
@@ -14,7 +14,6 @@ const styles = {
     'trans-content': {
         'width': '100%',
         'font-style': 'italic',
-        'color': myPalatte.palette.secondary[600],
         'max-height': '85vh',
         'overflow-y':'scroll',
         'overflow-x': 'hidden'

@@ -1,6 +1,3 @@
-import blueGrey from '@material-ui/core/colors/blueGrey';
-import orange from '@material-ui/core/colors/orange';
-import blue from '@material-ui/core/colors/lightBlue';
 
 //global styles
 const myPalatte = {
@@ -18,9 +15,17 @@ const myPalatte = {
         },
     },
     palette : {
-        primary: orange,
-        secondary: {'main':'#37474f'},
-        textPrimary: blue
+        'primary': {
+            'main':'#37474f',
+            'light': '#607d8b',
+            'lighter': '#90a4ae',
+            'lightest':'#cfd8dc'
+        },
+        'secondary': {
+            'main': '#ffccbc',
+            'dark': '#ff7043',
+            'darker': '#e64a19',
+        }
     },
     typography: {
         useNextVariants: true
