@@ -26,3 +26,4 @@ const App = props => {
 }
 
 export default App;
+// add more to palate

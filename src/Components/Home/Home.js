@@ -14,19 +14,19 @@ const Home = props => {
   const { classes } = props;
 
   return (
-    <Grid className={classes.home}>
-      <AppBar position='relative'>
-        <Toolbar>
-          <Grid className={classes["user-info"]}>
+    <Grid container >
+      <AppBar position="static">
+        <Toolbar disableGutters>
+          <Grid container alignItems="center">
             
-            <Avatar color = 'secondary' className={classes.avatar}>
-              <Face className = {classes.icon} />
+            <Avatar className={classes.avatar}>
+              <Face fontSize="large" className={classes.dark}/>
             </Avatar>
 
-            <Typography variant="h5">HI {props.displayName}!</Typography>
+            <Typography variant="h6" className={classes.dark}>{props.displayName}</Typography>
           </Grid>
 
-          <Button onClick={props.signout}>Signout</Button>
+          <Button onClick={props.signout} className={classes.dark}>Signout</Button>
         </Toolbar>
       </AppBar>
 
