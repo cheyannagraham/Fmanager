@@ -107,13 +107,13 @@ const TransactionForm = props => {
   return (
     <form id='transaction-form'  onSubmit={handleClick}>
 
-      <FormInputs.DateInput label='Date' id='transaction-date' value={currTrans && currTrans.date} />
+      <FormInputs.DateInput variant='standard' label='Date' id='transaction-date' value={currTrans && currTrans.date} autofocus={true} />
 
-      <FormInputs.BusinessInput label='Business' id='transaction-business' value={currTrans && currTrans.business} />
+      <FormInputs.BusinessInput variant='standard' label='Business' id='transaction-business' value={currTrans && currTrans.business} />
 
-      <FormInputs.AmountInput label='Amount' id='transaction-amount' value={currTrans && currTrans.amount} />
+      <FormInputs.AmountInput variant="standard" label='Amount' id='transaction-amount' value={currTrans && currTrans.amount} />
 
-      <FormInputs.TransactionTypeInput label='Type' id='transaction-type' value={currTrans && currTrans.type} />
+      <FormInputs.TransactionTypeInput variant="standard" label='Type' id='transaction-type' value={currTrans && currTrans.type} />
       
       <Grid container justify='flex-end' className={classes['button-container']}>
         <Button variant='contained' color='primary' type='submit'>{props.type}</Button>

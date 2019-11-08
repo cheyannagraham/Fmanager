@@ -1,9 +1,11 @@
 const styles = { 
     margin: {
-        'margin-bottom': '40px'
+        // 'margin-bottom': '40px'
     },
     label : {
-        'margin-top': '30px',
+        'margin': '0',
+        'padding': '0',
+        'width':'50px'
     }
 }
 

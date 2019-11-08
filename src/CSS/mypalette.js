@@ -13,6 +13,16 @@ const myPalatte = {
                 margin: '10px;'
             }
         },
+        'MuiDialogContent' : {
+            root: {
+                'padding': '5px'
+            }
+        },
+        'MuiDialogContentText': {
+            'root' : {
+                'margin-bottom': '0'
+            }
+        }
     },
     palette : {
         'primary': {

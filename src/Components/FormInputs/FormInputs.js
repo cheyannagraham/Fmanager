@@ -31,101 +31,91 @@ const useInputState = (def = "") => {
 
 export const DateInput = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
 
   return (
-    <InputLabel className={classes.label} htmlFor={props.id}>
-      {props.label}
-      <Input
-      className={classes.margin}
-        inputProps={{
-          pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}",
-          id: props.id,
-          name: "date"
-        }}
-        autoFocus
-        value={value || moment().format('YYYY-MM-DD')}
-        onChange={handleChange}
-        type="date"
-        required
-      />
-    </InputLabel>
+    <TextField
+      label={props.label}
+      id={props.id}
+      name="date"
+      type="date"
+      value={value|| moment().format('YYYY-MM-DD')}
+      onChange={handleChange}
+      placeholder="user@fmanager.com"
+      inputProps={{
+        pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
+      }}
+      autoFocus = {props.autofocus}
+      required
+      variant={props.variant}
+    />
   );
 });
 
 
 export const BusinessInput = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <InputLabel className={classes.label} htmlFor={props.id}>
-      {props.label}
-      <Input
-      className={classes.margin}
-        inputProps={{
-          id: props.id,
-          name: "business"
-        }}
-        value={value}
-        onChange={handleChange}
-        type="text"
-        placeholder="Target"
-        required
-      />
-    </InputLabel>
+    <TextField
+      label={props.label}
+      id={props.id}
+      name="business"
+      type="text"
+      value={value}
+      onChange={handleChange}
+      placeholder="Target"
+      required
+      autoFocus = {props.autofocus}
+      variant={props.variant}
+    />
   );
 });
 
 
 export const AmountInput = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <InputLabel className={classes.label} htmlFor={props.id}>
-      {props.label}
-      <Input
-        className={classes.margin}
-        inputProps={{
-          id: props.id,
-          name: "amount",
-          step: 0.01
-        }}
-        value={value}
-        onChange={handleChange}
-        type="number"
-        placeholder="$37.19"
-        required
-      />
-    </InputLabel>
+    <TextField
+      label={props.label}
+      id={props.id}
+      name="amount"
+      type="number"
+      inputProps={{
+        step: 0.01
+      }}
+      value={value}
+      onChange={handleChange}
+      placeholder="$37.19"
+      autoFocus = {props.autofocus}
+      variant={props.variant}
+      required
+    />
   );
 });
 
 
 export const TransactionTypeInput = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <InputLabel className={classes.label} htmlFor={props.id}>
-      {props.label}
-      <Select
-      className={classes.margin}
-        inputProps={{
-          id: props.id,
-          name: "type"
-        }}
-        value={value}
-        onChange={handleChange}
+    <TextField
+      select
+      InputLabelProps={{
+        shrink:true,
+        margin:'dense'
+      }}
+      id={props.id}
+      label={props.label}
+      name="type"
+      value={value}
+      onChange={handleChange}
+      variant={props.variant}
+      required
       >
-        <MenuItem value="income">Income</MenuItem>
-        <MenuItem value="purchase">Purchase</MenuItem>
-      </Select>
-    </InputLabel>
+        <MenuItem key="income" value="income">Income</MenuItem>
+        <MenuItem key="purchase" value="purchase">Purchase</MenuItem>
+    </TextField>
   );
 });
 
