@@ -6,7 +6,7 @@ const styles = {
     },
     p : {
         margin : '5px',
-        'font-size': '.73em',
+        'font-size': '.83rem',
     }
 
 }

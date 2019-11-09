@@ -12,23 +12,16 @@ const LoginPage = props => {
     return (
         <Grid className = {classes['login-page-container']}>
             <Grid component = 'header'>
-                
                 <Typography className={classes.header} variant="h1" color='primary' align="center">
                     FManager
                 </Typography>
-
             </Grid>
 
             <Grid component = 'main' className = {classes.main}>
-                
                 <Grid className = {classes['button-container']}>
-                    
                     <Button size='medium' onClick={props.handleLogin} color="secondary" variant="contained">Login</Button>
-                    
                     <Button size='medium' onClick={props.handleSignup} color="primary" variant="contained">SignUp</Button>
-
                 </Grid>
-
             </Grid>
         </Grid>)
 
