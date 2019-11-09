@@ -7,6 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import styles from "./home.style.js";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Avatar from "@material-ui/core/Avatar";
 import Face from "@material-ui/icons/Face";
 
@@ -30,7 +31,9 @@ const Home = props => {
         </Toolbar>
       </AppBar>
 
-      <Main />
+      <Container maxWidth='md'>
+        <Main />
+      </Container>
     </Grid>
   );
 };
