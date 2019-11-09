@@ -99,11 +99,9 @@ const TransactionList = props => {
     return (
       sortDates(Object.keys(transObj)).map(date => (
         <Paper className={classes["trans-paper"]} key={date}>
-          {/* <Grid> */}
-            <Typography color="primary" className={classes.date}>
-              {moment(date).format("MMM DD")}
-            </Typography>
-          {/* </Grid> */}
+          <Typography color="primary" className={classes.date}>
+            {moment(date).format("MMM DD")}
+          </Typography>
 
           {transObj[date].map(trans => {
             //calculate monthly total

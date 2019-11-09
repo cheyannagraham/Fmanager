@@ -2,7 +2,7 @@ import myPalatte from "../../CSS/mypalette";
 
 const styles = {
     'trans-paper' : {
-        'margin': '20px auto',
+        'margin': '25px auto',
     },
     'date' : {
         background: myPalatte.palette.secondary.light,
@@ -15,9 +15,12 @@ const styles = {
         'width': '100%',
         'font-style': 'italic',
         'max-height': '85vh',
-        'overflow-y':'scroll',
+        'overflow-y':'auto',
         'overflow-x': 'hidden'
     },
+    'right': {
+        'text-align':'right'
+    }
 }
 
 export default styles;

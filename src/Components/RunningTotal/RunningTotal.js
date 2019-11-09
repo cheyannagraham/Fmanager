@@ -30,7 +30,7 @@ const RunningTotal = props => {
       <Grid container spacing={1} className={classes.total}>
         
         <Grid item xs={9}>
-          <Typography align="left" color="primary">
+          <Typography color="primary">
             Monthly Total
           </Typography>
         </Grid>
@@ -47,7 +47,7 @@ const RunningTotal = props => {
       <Grid container spacing={1} className={classes.total}>
         
         <Grid item xs={9}>
-          <Typography align="left" color="primary">
+          <Typography color="primary">
             Running Total
           </Typography>
         </Grid>
