@@ -36,7 +36,7 @@ const RunningTotal = props => {
         </Grid>
 
         <Grid item xs={3}>
-          <Typography id="monthly-total" className={classes["total-value"]}>
+          <Typography id="monthly-total" align="right" className={classes["total-value"]}>
             ${props.monthlyTotal.toFixed(2)}
           </Typography>
         </Grid>
@@ -53,7 +53,7 @@ const RunningTotal = props => {
         </Grid>
 
         <Grid item xs={3}>
-          <Typography id="run-total"  className={classes["total-value"]}>
+          <Typography id="run-total"  align="right" className={classes["total-value"]}>
             ${props.runningTotal.toFixed(2)}
           </Typography>
         </Grid>
