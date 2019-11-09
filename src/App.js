@@ -6,8 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Modal from './Components/Modal/Modal'
 import './CSS/html.css';
 
-
-
 export const ModalContext = React.createContext(false);
 const theme = createMuiTheme(myPalette);
 
@@ -26,4 +24,3 @@ const App = props => {
 }
 
 export default App;
-// add more to palate

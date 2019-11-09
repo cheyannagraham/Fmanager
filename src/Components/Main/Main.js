@@ -78,39 +78,3 @@ const Main = props => {
 };
 
 export default withStyles(styles)(Main);
-//TODO: see about caching firebase requests
-//add better error messages for validation
-//add better validation for mal scripts
-//Maybe add a delete all?
-//css pseudo classes for validation
-//transactionlist renders even if props don't chanege(month rerenders)
-//testing
-//incorrect date display edge?
-//store credentials
-//fix OTB moment
-//show recent transactions, then onclick, show all transactions.
-//================================
-//REFACTOR
-//bug in delete trans when show BTD
-//===========================
-//MODAL
-//perhaps add modal types => succes, delete, update, edit for easy reuse and readability
-//add id modal to code for accessiblity stuff and class for targeting styles
-
-//Form
-// Optimize extra renders in Form.js...Maybe
-
-//show BTD can be show more once less view is implemented=> maybe add a scroll in styling
-
-//add pure components
-
-//test for failed conditions
-// typing firebase fields
-
-//++++++++++++++++++++FEATURES++++++++++++++++++++
-//show list of years and months onclick for faster scrolling.
-//show all transactions for a year
-// show stats: total income/spent per month & year => maybe graph spending
-
-//===============Firestore===================
-//ID's empty in transaction??

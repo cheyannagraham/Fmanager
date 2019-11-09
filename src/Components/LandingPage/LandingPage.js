@@ -26,7 +26,6 @@ const LandingPage = (props) => {
     });
 
     const getCreds = () => {
-        //should be one form open at a time
         const form = document.querySelector('form');
         return [form['email'].value, form['pwd'].value];
     }
@@ -70,28 +69,15 @@ const LandingPage = (props) => {
     return (
         <>
             <Grid container justify="center" className = {classes['lp-content']}>                
-
                 {user ?
                     <Home displayName={displayName} signout={signout} />
                     :
                     <LoginPage handleLogin={handleLogin} handleSignup={handleSignup} />
                 }
             </Grid>
-
             <Footer />
         </>
     )
 }
 
 export default withStyles(styles)(LandingPage);
-
-//research plaid
-//autoselect when close when success message shows
-//autofocus modal buttons
-//add calculator app
-//add notes filed in trans form
-//maybe change select to radio
-//add account options => delete, change info
-//add a timestamp for adding/updating
-//add autocomplete filled with previous entries
-//show procesing when firebase responds slow to prevent multiple transaction entries

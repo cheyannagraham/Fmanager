@@ -77,7 +77,6 @@ const TransactionList = props => {
       );
   };
 
-  //possible effect
   const updateTransaction = transaction => {
     showModal({
       show: true,
@@ -135,4 +134,3 @@ const TransactionList = props => {
 };
 
 export default withStyles(styles)(TransactionList);
-  //consider tables or lists for accessiblity.

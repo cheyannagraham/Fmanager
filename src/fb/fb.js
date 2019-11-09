@@ -3,12 +3,12 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyCTkSZgWGr0Obx7cwGqeAVbLUnWbIx5kLc",
-    authDomain: "fmanager-ba544.firebaseapp.com",
-    databaseURL: "https://fmanager-ba544.firebaseio.com",
-    projectId: "fmanager-ba544",
-    storageBucket: "fmanager-ba544.appspot.com",
-    messagingSenderId: "116993137159"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
   };
 
 firebase.initializeApp(config);

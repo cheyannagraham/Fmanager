@@ -23,9 +23,8 @@ const LoginPage = props => {
                     <Button size='medium' onClick={props.handleSignup} color="primary" variant="contained">SignUp</Button>
                 </Grid>
             </Grid>
-        </Grid>)
-
-
+        </Grid>
+    )
 }
 
 

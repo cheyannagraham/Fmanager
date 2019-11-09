@@ -5,11 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.forminputs';
 import moment from 'moment';
 
-
-//hook to add & manage input state
-
 const useInputState = (def = "") => {
-  //set initital value as default if provided
   const [value, setValue] = useState(def);
 
   const handleChange = e => {
