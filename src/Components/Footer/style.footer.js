@@ -1,5 +1,3 @@
-import palette from '../../CSS/mypalette';
-
 const styles = {
     footer : {
         padding : '30px 0',

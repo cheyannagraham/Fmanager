@@ -13,7 +13,6 @@ const Month = props => {
   const [month, setMonth] = useState(currentMonth);
   const [year, setYear] = useState(currentYear);
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
-  const { classes } = props;
   //styles empty-delete
 
   const getMonthlyTransactions = newMonth => {

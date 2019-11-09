@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from '@material-ui/core/styles';
@@ -103,7 +100,6 @@ export const TransactionTypeInput = withStyles(styles)(props => {
       select
       InputLabelProps={{
         shrink:true,
-        margin:'dense'
       }}
       id={props.id}
       label={props.label}
@@ -124,11 +120,9 @@ export const TransactionTypeInput = withStyles(styles)(props => {
 
 export const Email = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <TextField className={classes.margin}
+    <TextField 
       label="email"
       id="email"
       name="email"
@@ -145,11 +139,9 @@ export const Email = withStyles(styles)(props => {
 
 export const Password = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <TextField className={classes.margin}
+    <TextField 
       label="password"
       id="pwd"
       name="pwd"
@@ -165,11 +157,9 @@ export const Password = withStyles(styles)(props => {
 
 export const Username = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-  const {classes} = props;
-
 
   return (
-    <TextField className={classes.margin}
+    <TextField 
       label="Username"
       name="Username"
       type="text"

@@ -17,7 +17,7 @@ const Modal = props => {
 
 
   return (
-    <Dialog maxWidth='md' fullWidth={true} open={props.content.show} id="modal-dialog" >
+    <Dialog open={props.content.show} id="modal-dialog" >
 
       <Grid className={classes.digalog}>
         <DialogTitle>{props.content.title}</DialogTitle>

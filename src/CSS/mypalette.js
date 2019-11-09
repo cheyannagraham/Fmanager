@@ -5,7 +5,7 @@ const myPalatte = {
         MuiButton : {
             root : {
                 margin: '15px',
-                cursor: 'pointer'
+                cursor: 'pointer',
             }
         },
         MuiFormControl : {
@@ -15,7 +15,8 @@ const myPalatte = {
         },
         'MuiDialogContent' : {
             root: {
-                'padding': '5px'
+                'padding': '5px',
+                'margin': '5px'
             }
         },
         'MuiDialogContentText': {

@@ -1,5 +1,5 @@
 html {
-    font-size: 1em;
+    font-size: .8rem;
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
@@ -11,6 +11,6 @@ html {
 
 @media screen and (min-width: 750px) {
     html {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 }
