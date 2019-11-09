@@ -17,7 +17,7 @@ const Modal = props => {
 return (
       <Dialog maxWidth="sm" className={classes.dialog} open={props.content.show} id="modal-dialog" >
         <DialogTitle>{props.content.title}</DialogTitle>
-        <DialogContentText>{props.content.text}</DialogContentText>
+        <DialogContentText className={classes.text}>{props.content.text}</DialogContentText>
         <DialogContent>{props.content.content}</DialogContent>
         <DialogActions>{props.content.actions}</DialogActions>
       </Dialog>
