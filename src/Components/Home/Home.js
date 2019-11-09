@@ -15,7 +15,7 @@ const Home = props => {
   const { classes } = props;
 
   return (
-    <Grid>
+    <Container>
       <AppBar position="relative">
         <Toolbar variant="dense" disableGutters>
           <Grid container alignItems="center">
@@ -34,7 +34,7 @@ const Home = props => {
       <Container maxWidth='md'>
         <Main />
       </Container>
-    </Grid>
+    </Container>
   );
 };
 
