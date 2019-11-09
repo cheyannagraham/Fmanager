@@ -41,17 +41,16 @@ const Month = props => {
     let newYear;
 
     if (monthVal === 0) {
-      newYear = year - 1;
+      newYear = Number(year) - 1;
       setYear(newYear);
       newMonth = 12;
     } else if (monthVal === 13) {
-      newYear = year + 1;
+      newYear = Number(year) + 1;
       setYear(newYear);
       newMonth = 1;
     } else {
       newMonth = monthVal;
     }
-
     getMonthlyTransactions(newMonth);
   };
 
@@ -64,9 +63,7 @@ const Month = props => {
         MonthlyTransactions={monthlyTransactions}
         setTransactions={props.setTransactions}
       />
-
     </Grid>
-
   );
 };
 
