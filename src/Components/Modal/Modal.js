@@ -8,30 +8,20 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.modal";
-import Grid from "@material-ui/core/Grid";
 
 //type,status,cotent,show,callback
 
 const Modal = props => {
-  const { classes } = props;
+  const {classes} = props;
 
-
-  return (
-    <Dialog open={props.content.show} id="modal-dialog" >
-
-      <Grid className={classes.digalog}>
+return (
+      <Dialog maxWidth="sm" className={classes.dialog} open={props.content.show} id="modal-dialog" >
         <DialogTitle>{props.content.title}</DialogTitle>
-
         <DialogContentText>{props.content.text}</DialogContentText>
-        
         <DialogContent>{props.content.content}</DialogContent>
-
         <DialogActions>{props.content.actions}</DialogActions>
-      </Grid>
-    </Dialog>
+      </Dialog>
   );
-
-  
 };
 
 const CloseModalButton = props => {

@@ -1,5 +1,6 @@
 const styles = { 
     dialog : {
+        'text-align': 'center'
     }
 }
 
