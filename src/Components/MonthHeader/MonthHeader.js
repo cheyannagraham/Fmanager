@@ -13,7 +13,7 @@ const AddButton = (props) => {
 
     return (
         <Grid container justify="center" alignItems="center" className={classes["month-header"]}>
-            <IconButton color="primary" size="large" className = {classes.ibutton}
+            <IconButton color="primary" className={classes.ibutton}
             onClick={() => {
                     props.handleClick(-1);
                 }}>
@@ -24,7 +24,7 @@ const AddButton = (props) => {
                 {`${moment(props.month, "MM").format("MMMM")} ${props.year}`}
             </Typography>
 
-            <IconButton color="primary" size="large" className = {classes.ibutton}
+            <IconButton color="primary" className = {classes.ibutton}
                 onClick={() => {
                     props.handleClick(1);
                 }}>
