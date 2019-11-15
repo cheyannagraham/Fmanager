@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.forminputs';
@@ -33,7 +32,6 @@ export const DateInput = withStyles(styles)(props => {
       type="date"
       value={value|| moment().format('YYYY-MM-DD')}
       onChange={handleChange}
-      placeholder="user@fmanager.com"
       inputProps={{
         pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
       }}
@@ -56,7 +54,6 @@ export const BusinessInput = withStyles(styles)(props => {
       type="text"
       value={value}
       onChange={handleChange}
-      placeholder="Target"
       required
       autoFocus = {props.autofocus}
       variant={props.variant}
@@ -79,7 +76,6 @@ export const AmountInput = withStyles(styles)(props => {
       }}
       value={value}
       onChange={handleChange}
-      placeholder="$37.19"
       autoFocus = {props.autofocus}
       variant={props.variant}
       required
@@ -128,7 +124,6 @@ export const Email = withStyles(styles)(props => {
       type="email"
       value={value}
       onChange={handleChange}
-      placeholder="user@fmanager.com"
       autoFocus = {props.autofocus}
       required
       variant={props.variant}
@@ -166,7 +161,6 @@ export const Username = withStyles(styles)(props => {
       value={value}
       onChange={handleChange}
       autoFocus = {props.autofocus}
-      placeholder="GrayG123"
       required
       variant={props.variant}
     />
