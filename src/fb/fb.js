@@ -9,7 +9,6 @@ const config =
   databaseURL: process.env['REACT_APP_DURL'],
   projectId: `${process.env['REACT_APP_PID']}`,
 };
-console.log(process.env['REACT_APP_KEY']);
 firebase.initializeApp(config);
 const db = firebase.firestore();
 
