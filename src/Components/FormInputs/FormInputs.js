@@ -97,6 +97,9 @@ export const TransactionTypeInput = withStyles(styles)(props => {
       InputLabelProps={{
         shrink:true,
       }}
+      SelectProps={{
+        native:true
+      }}
       id={props.id}
       label={props.label}
       name="type"
@@ -105,8 +108,8 @@ export const TransactionTypeInput = withStyles(styles)(props => {
       variant={props.variant}
       required
       >
-        <MenuItem key="income" value="income">Income</MenuItem>
-        <MenuItem key="purchase" value="purchase">Purchase</MenuItem>
+        <option key="income" value="income">Income</option>
+        <option key="purchase" value="purchase">Purchase</option>
     </TextField>
   );
 });
