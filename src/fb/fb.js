@@ -7,7 +7,7 @@ const config =
 {
   apiKey: process.env['REACT_APP_KEY'],
   databaseURL: process.env['REACT_APP_DURL'],
-  projectId: process.env['REACT_APP_PID'],
+  projectId: `${process.env['REACT_APP_PID']}`,
 };
 
 firebase.initializeApp(config);
