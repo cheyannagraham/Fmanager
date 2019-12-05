@@ -9,7 +9,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.modal";
 
-//type,status,cotent,show,callback
 
 const Modal = props => {
   const {classes} = props;

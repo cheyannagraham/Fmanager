@@ -3,11 +3,7 @@ import { Email, Password, Username } from '../FormInputs/FormInputs';
 import Button from '@material-ui/core/Button';
 import { CloseModalButton } from '../Modal/Modal';
 
-
-
 const SignupForm = props => {
-    //for styling form
-    //put in .js later
 
     const handleSignup = e => {
         e.preventDefault();

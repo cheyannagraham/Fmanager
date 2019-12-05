@@ -16,9 +16,6 @@ const AddButton = (props) => {
             </Fab>
         </Grid>
     )
-
-
-
 }
 
 export default withStyles(styles)(AddButton);

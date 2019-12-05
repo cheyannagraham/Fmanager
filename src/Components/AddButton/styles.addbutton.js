@@ -1,7 +1,6 @@
 const styles = {
     'fab-container': {
         'margin': '5px'
-
     },
 };
 

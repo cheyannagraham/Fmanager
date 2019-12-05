@@ -8,7 +8,6 @@ const styles = {
         margin : '5px',
         'font-size': '.83rem',
     }
-
 }
 
 export default styles;

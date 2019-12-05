@@ -1,4 +1,4 @@
-# Fmanager
+# [Fmanager](https://my-fmanager.herokuapp.com/)
 A simple tool to help track a budget.
 
 ### About
@@ -11,9 +11,10 @@ run npm start
 
 ### Firebase
 Firebase credentials required for use.
-Add credentials to config object in the fb.js
+Add credentials to config object in the fb.js or create
+.env file with credentials
 
 ### Dependencies
-Material Ui
-Moment.js
-React
+* Material Ui
+* Moment.js
+* React

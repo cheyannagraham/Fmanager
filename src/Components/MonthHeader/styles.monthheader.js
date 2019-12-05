@@ -13,7 +13,6 @@ const styles = {
     "ibutton": {
         padding: '0'
     }
-
 };
 
 export default styles;
