@@ -24,7 +24,7 @@ const AddButton = (props) => {
                 {`${moment(props.month, "MM").format("MMMM")} ${props.year}`}
             </Typography>
 
-            <IconButton color="primary" className = {classes.ibutton}
+            <IconButton color="primary" className={classes.ibutton}
                 onClick={() => {
                     props.handleClick(1);
                 }}>
