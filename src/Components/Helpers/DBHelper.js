@@ -37,8 +37,8 @@ export const addTransaction = trans => {
 }
  
 //Update Transaction
-export const updateTransaction = trans => {
-  return db.collection(`user_trans/${user()}/transactions`).doc(trans.id).set(trans)
+export const updateTransaction = (transId, trans) => {
+  return db.collection(`user_trans/${user()}/transactions`).doc(transId).set(trans)
   .then(() => 'Transaction record has been updated.')
   .catch(err => err);
 }

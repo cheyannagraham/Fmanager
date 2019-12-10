@@ -43,7 +43,6 @@ const TransactionForm = props => {
       business: document.getElementById('transaction-business').value,
       amount: type === 'income' ? Number(amount).toFixed(2) : Number(-amount).toFixed(2),
       date: date,
-      id: (currTrans && currTrans.id) || ''
     };
 
     if (props.type === 'add') {
@@ -72,7 +71,7 @@ const TransactionForm = props => {
     }
 
     if (props.type === 'update') {
-      updateTransaction(newTrans)
+      updateTransaction(currTrans.id, newTrans)
         .then(res => {
           getTransactions()
             .then(tr => {
