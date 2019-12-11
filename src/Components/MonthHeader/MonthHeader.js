@@ -8,7 +8,7 @@ import ArrowRight from '@material-ui/icons/ArrowRight';
 import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment'
 
-const AddButton = (props) => {
+const MonthHeader = (props) => {
     const { classes } = props;
 
     return (
@@ -34,4 +34,4 @@ const AddButton = (props) => {
     )
 }
 
-export default withStyles(styles)(AddButton);
+export default withStyles(styles)(MonthHeader);
