@@ -92,11 +92,11 @@ const TransactionList = props => {
     });
   };
 
+  // Create list of sorted Transaction Items
   const displayData = () => {
     const transObj = getDates();
 
-    return (
-      sortDates(Object.keys(transObj)).map(date => (
+     const data = sortDates(Object.keys(transObj)).map(date => (
         <Paper className={classes["trans-paper"]} key={date}>
           <Typography color="primary" className={classes.date}>
             {moment(date).format("MMM DD")}
@@ -115,20 +115,21 @@ const TransactionList = props => {
               />
             );
           })}
-          {props.setMonthlyTotal(total)}
         </Paper>
-      )))
-  }
+      ));
+      props.setMonthlyTotal(total);
+      return data;
+    }
+  
 
   return (
       <Grid className={classes['trans-content']}>
-        {props.MonthlyTransactions.length > 0
-        ?
-        displayData()
-        :
-        <Typography color="primary">
-          No Transactions
-        </Typography>}
+        {displayData()}
+        {props.MonthlyTransactions.length === 0 &&
+          <Typography color="primary">
+            No Transactions
+          </Typography>
+        }
       </Grid>
     )
 };
