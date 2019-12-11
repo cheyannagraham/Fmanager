@@ -8,22 +8,23 @@ import MonthHeader from '../MonthHeader/MonthHeader'
 
 
 const Month = props => {
-  let currentMonth = moment().format("M");
-  let currentYear = moment().format("YYYY");
-  const [month, setMonth] = useState(currentMonth);
-  const [year, setYear] = useState(currentYear);
+  let current = {
+    'month': moment().format("M"),
+    'year': moment().format("YYYY")
+  }
+  const [month, setMonth] = useState(current.month);
+  const [year, setYear] = useState(current.year);
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
 
-  const getMonthlyTransactions = newMonth => {
+  const getMonthlyTransactions = (newMonth = month, newYear = year) => {
     let mt = props.transactions.filter(transaction => {
       return (
-        moment(transaction.date).format("YYYY") === String(year) &&
+        moment(transaction.date).format("YYYY") === String(newYear) &&
         moment(transaction.date).format("M") === String(newMonth)
-      );
-    });
-
+        );
+      });
+      
     setMonthlyTransactions(mt);
-    setMonth(newMonth);
   };
 
   useEffect(() => {
@@ -34,23 +35,22 @@ const Month = props => {
     getMonth(e);
   };
 
+  // Ensure months go from Dec > Jan & Jan < Dec
   const getMonth = val => {
     const monthVal = Number(month) + val;
-    let newMonth;
-    let newYear;
+    let newMonth = monthVal;
+    let newYear = year;
 
     if (monthVal === 0) {
       newYear = Number(year) - 1;
-      setYear(newYear);
       newMonth = 12;
     } else if (monthVal === 13) {
       newYear = Number(year) + 1;
-      setYear(newYear);
       newMonth = 1;
-    } else {
-      newMonth = monthVal;
-    }
-    getMonthlyTransactions(newMonth);
+    } 
+    if(year !== newYear) setYear(newYear);
+    setMonth(newMonth);
+    getMonthlyTransactions(newMonth, newYear);
   };
 
   return (
