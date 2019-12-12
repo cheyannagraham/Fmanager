@@ -17,6 +17,7 @@ return (
       <Dialog maxWidth="sm" className={classes.dialog} open={props.content.show} id="modal-dialog" >
         <DialogTitle>{props.content.title}</DialogTitle>
         <DialogContentText className={classes.text}>{props.content.text}</DialogContentText>
+        <p id="modal-help-text"></p>
         <DialogContent>{props.content.content}</DialogContent>
         <DialogActions>{props.content.actions}</DialogActions>
       </Dialog>
