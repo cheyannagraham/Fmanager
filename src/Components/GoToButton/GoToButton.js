@@ -12,13 +12,13 @@ const GoToButton = props => {
     e.preventDefault();
     const month = document.querySelector("#goto-month").value;
     const year = document.querySelector("#goto-year").value;
-    if (RegExp("[0-9]{4}").test(year)) {
+    if (RegExp("^[0-9]{4}$").test(year) && (RegExp("^[0-9]{2}$").test(month))) {
       showModal({ show: false });
       props.setMonth(month);
       props.setYear(year);
     } else {
       document.querySelector("#modal-help-text").innerHTML =
-        "Invalid Year. Correct Usage: 2015";
+      "Invalid Format. Correct Usage: MM YYYY";
     }
   };
 
