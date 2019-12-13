@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import Month from "../../Components/Month/Month";
 import { getTransactions } from "../../Components/Helpers/DBHelper";
 import { CloseModalButton } from "../../Components/Modal/Modal";
 import TransactionForm from "../../Components/Transactions/TransactionForm";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
+import MonthHeader from "../MonthHeader/MonthHeader";
+import TransactionList from "../Transactions/TransactionList";
 import { ModalContext } from "../../App";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
@@ -17,13 +18,9 @@ const Main = props => {
   const [runningTotal, setRunningTotal] = useState(0);
   const [monthlyTotal, setMonthlyTotal] = useState(0);
   const [transactions, setTransactions] = useState([]);
-  
-  const current = {
-    'month': moment().format("M"),
-    'year': moment().format("YYYY")
-  }
-  const [month, setMonth] = useState(current.month);
-  const [year, setYear] = useState(current.year);
+  const [month, setMonth] = useState(moment().format("M"));
+  const [year, setYear] = useState(moment().format("YYYY"));
+  const [monthlyTransactions, setMonthlyTransactions] = useState([]);
   
   const { classes } = props;
 
@@ -41,47 +38,58 @@ const Main = props => {
       )
     });
   };
-
-  const calcRunningTotal = () => {
-    let rt = 0;
-    transactions.forEach(trans => {
-      rt += Number(trans.amount);
-    });
-
-    setRunningTotal(rt);
-  };
-
-  // useEffect(() => {
-  //   getTransactions()
-  //     .then(r => setTransactions(r))
-  //     .catch(err =>
-  //       showModal({
-  //         show: true,
-  //         type: "error",
-  //         text: err,
-  //         title: "Error Fetching Transactions!",
-  //         content: <CloseModalButton autofocus={true} variant="contained" />
-  //       })
-  //     );
-  // }, []);
-
+  // Get user transactions from dbase
   useEffect(() => {
+      getTransactions()
+        .then(r => setTransactions(r))
+        .catch(err =>
+          showModal({
+              show: true,
+              type: "error",
+              text: err,
+              title: "Error Fetching Transactions!",
+              content: <CloseModalButton autofocus={true} variant="contained" />
+            })
+          );
+      }, []);
+     
+  // Calculate the totals of all the transactions when the list of transactions change 
+  useEffect(() => {
+    const calcRunningTotal = () => {
+      let rt = 0;
+      transactions.forEach(trans => {
+        rt += Number(trans.amount);
+      });
+      setRunningTotal(rt);
+    };
     calcRunningTotal();
   }, [transactions]);
+
+  // Filter Monthly transactions & calculate total when month, year or transactions change
+  useEffect(() => {
+    const filterMonthlyTransactions = () => {
+      const mt = transactions.filter(transaction => {
+        return (
+          moment(transaction.date).format("YYYY") === String(year) &&
+          moment(transaction.date).format("M") === String(month)
+        );
+      });
+
+      // calculate monthly total or 0 to prevent N&N(no transactions)
+      setMonthlyTotal(mt.reduce((acc, red) => Number(acc.amount) + Number(red.amount), 0) || 0);
+      return mt;
+    }
+    setMonthlyTransactions(filterMonthlyTransactions());
+  },[month, year, transactions]);
 
   return (
     <Grid component="main" container className={classes.main}>
       <Grid container className={classes.top}>
-        <Month
-          setMonthlyTotal={setMonthlyTotal}
-          setTransactions={setTransactions}
-          transactions={transactions}
-          month={month}
-          year={year}
-          setMonth={setMonth}
-          setYear={setYear}
-        />
-
+        <Grid container>
+          <MonthHeader month={month} year={year} setMonth={setMonth} setYear={setYear} />
+          <TransactionList MonthlyTransactions={monthlyTransactions} />
+        </Grid>
+        
         <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
       </Grid>
       

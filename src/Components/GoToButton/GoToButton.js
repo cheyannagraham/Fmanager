@@ -1,8 +1,5 @@
 import React, { useContext } from 'react';
 import styles from './styles.gotobutton'
-import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import { ModalContext } from "../../App";
 import { CloseModalButton } from '../Modal/Modal';
@@ -23,8 +20,6 @@ const GoToButton = (props) => {
         else{
             document.querySelector("#modal-help-text").innerHTML = "Invalid Year. Correct Usage: 2015";
         }
-
-
     }
 
     const handleClick = () => {
@@ -33,7 +28,7 @@ const GoToButton = (props) => {
             title: "Go To Date",
             content: (
                 <>
-                    <label htmlFor="goto-month">Date</label>
+                    <label htmlFor="goto-month">Month</label>
                     <input type='number' min='1' max='12' step='1' id ="goto-month" required></input>
 
                     <label htmlFor="goto-year">Year</label>
