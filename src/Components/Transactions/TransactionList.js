@@ -13,7 +13,6 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.transactionlist";
 
 const TransactionList = props => {
-  let total = 0;
   const showModal = useContext(ModalContext).setShowModal;
   const { classes } = props;
 
@@ -103,8 +102,6 @@ const TransactionList = props => {
           </Typography>
 
           {transObj[date].map(trans => {
-            //calculate monthly total
-            total += Number(trans.amount);
 
             return (
               <TransactionItem
@@ -117,7 +114,6 @@ const TransactionList = props => {
           })}
         </Paper>
       ));
-      props.setMonthlyTotal(total);
       return data;
     }
   
