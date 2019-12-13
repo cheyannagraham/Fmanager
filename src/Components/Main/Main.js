@@ -38,6 +38,8 @@ const Main = props => {
       )
     });
   };
+
+
   // Get user transactions from dbase
   useEffect(() => {
       getTransactions()
@@ -53,6 +55,7 @@ const Main = props => {
           );
       }, []);
      
+
   // Calculate the totals of all the transactions when the list of transactions change 
   useEffect(() => {
     const calcRunningTotal = () => {
@@ -64,6 +67,7 @@ const Main = props => {
     };
     calcRunningTotal();
   }, [transactions]);
+
 
   // Filter Monthly transactions & calculate total when month, year or transactions change
   useEffect(() => {
@@ -82,6 +86,7 @@ const Main = props => {
     setMonthlyTransactions(filterMonthlyTransactions());
   },[month, year, transactions]);
 
+  
   return (
     <Grid component="main" container className={classes.main}>
       <Grid container className={classes.top}>
