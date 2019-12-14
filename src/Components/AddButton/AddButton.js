@@ -9,12 +9,10 @@ const AddButton = (props) => {
     const { classes } = props;
 
     return (
-        <Grid className={classes['fab-container']}>
-            <Fab size="small" color="secondary"  aria-label="add transaction"
-                onClick={props.showAddForm}>
-                <AddIcon />
-            </Fab>
-        </Grid>
+        <Fab className={classes['fab-container']}size="small" color="primary"  title="Add New Transaction" aria-label="add transaction"
+            onClick={props.showAddForm}>
+            <AddIcon />
+        </Fab>
     )
 }
 

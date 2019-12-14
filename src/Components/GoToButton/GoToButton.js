@@ -3,6 +3,8 @@ import styles from "./styles.gotobutton";
 import { withStyles } from "@material-ui/core/styles";
 import { ModalContext } from "../../App";
 import { CloseModalButton } from "../Modal/Modal";
+import Fab  from "@material-ui/core/Fab";
+import DateRange from "@material-ui/icons/DateRange";
 
 const GoToButton = props => {
   const { classes } = props;
@@ -51,9 +53,9 @@ const GoToButton = props => {
   };
 
   return (
-    <button aria-label="go to date" onClick={handleClick}>
-      GoTo
-    </button>
+    <Fab className={classes["fab-container"]} size="small" color="primary" aria-label="goto-date" title="Go To Date" onClick={handleClick}>
+      <DateRange />
+    </Fab>
   );
 };
 
