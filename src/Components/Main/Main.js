@@ -4,6 +4,7 @@ import { CloseModalButton } from "../../Components/Modal/Modal";
 import TransactionForm from "../../Components/Transactions/TransactionForm";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import MonthHeader from "../MonthHeader/MonthHeader";
+import TodayButton from "../TodayButton/TodayButton";
 import TransactionList from "../Transactions/TransactionList";
 import { ModalContext } from "../../App";
 import Grid from "@material-ui/core/Grid";
@@ -86,7 +87,7 @@ const Main = props => {
     setMonthlyTransactions(filterMonthlyTransactions());
   },[month, year, transactions]);
 
-  
+
   return (
     <Grid component="main" container className={classes.main}>
       <Grid container className={classes.top}>
@@ -99,6 +100,7 @@ const Main = props => {
       </Grid>
       
       <Grid container justify='flex-end'>
+        <TodayButton setMonth={setMonth} setYear={setYear}>Today</TodayButton>
         <GoToButton setMonth={setMonth} setYear={setYear}>GoTo</GoToButton>
         <AddButton showAddForm={showAddForm} />
       </Grid>
