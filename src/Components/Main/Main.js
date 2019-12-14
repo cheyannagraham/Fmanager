@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { getTransactions } from "../../Components/Helpers/DBHelper";
 import { CloseModalButton } from "../../Components/Modal/Modal";
-import TransactionForm from "../../Components/Transactions/TransactionForm";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import MonthHeader from "../MonthHeader/MonthHeader";
 import TodayButton from "../TodayButton/TodayButton";
@@ -25,36 +24,20 @@ const Main = props => {
   
   const { classes } = props;
 
-  const showAddForm = () => {
-    showModal({
-      show: true,
-      type: "add",
-      title: "New Transaction",
-      content: (
-        <TransactionForm
-          saf={showAddForm}
-          setTransactions={setTransactions}
-          type="add"
-        />
-      )
-    });
-  };
-
-
   // Get user transactions from dbase
-  useEffect(() => {
-      getTransactions()
-        .then(r => setTransactions(r))
-        .catch(err =>
-          showModal({
-              show: true,
-              type: "error",
-              text: err,
-              title: "Error Fetching Transactions!",
-              content: <CloseModalButton autofocus={true} variant="contained" />
-            })
-          );
-      }, []);
+  useEffect(() => { 
+    getTransactions()
+    .then(r => setTransactions(r))
+    .catch(err =>
+      showModal({
+        show: true,
+        type: "error",
+        text: err,
+        title: "Error Fetching Transactions!",
+        content: <CloseModalButton autofocus={true} variant="contained" />
+      })
+    );
+  }, []);
      
 
   // Calculate the totals of all the transactions when the list of transactions change 
@@ -102,7 +85,7 @@ const Main = props => {
       <Grid container justify='flex-end'>
         <TodayButton setMonth={setMonth} setYear={setYear}>Today</TodayButton>
         <GoToButton setMonth={setMonth} setYear={setYear}>GoTo</GoToButton>
-        <AddButton showAddForm={showAddForm} />
+        <AddButton setTransactions={setTransactions} />
       </Grid>
         
     </Grid>
