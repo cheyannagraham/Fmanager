@@ -4,7 +4,7 @@ import { CloseModalButton } from "../../Components/Modal/Modal";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import MonthHeader from "../MonthHeader/MonthHeader";
 import TodayButton from "../TodayButton/TodayButton";
-import TransactionList from "../Transactions/TransactionList";
+import TransactionList from "../TransactionList/TransactionList";
 import { ModalContext } from "../../App";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";

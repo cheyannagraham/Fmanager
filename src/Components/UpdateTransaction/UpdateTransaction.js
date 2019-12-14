@@ -4,7 +4,7 @@ import styles from "./styles.updatetransaction";
 import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 import Grid from "@material-ui/core/Grid";
-import TransactionForm from "../Transactions/TransactionForm";
+import TransactionForm from "../TransactionForm/TransactionForm";
 import { ModalContext } from "../../App";
 
 
