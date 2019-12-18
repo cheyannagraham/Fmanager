@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
 import AddButton from "../AddButton/AddButton";
-import GoToButton from "../GoToButton/GoToButton"
+import GoToButton from "../GoToDateButton/GoToButton"
 import moment from "moment";
 
 const Main = props => {
