@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
-import { ModalContext } from "../../App";
+import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormInputs/FormInputs";
 import { auth } from "../../fb/fb";
 
 
 
-const Login = props => {
-  const { classes } = props;
+const LoginButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
 
   const showForm = () => {
@@ -31,7 +30,7 @@ const Login = props => {
     </Button>
   );
 };
-export default Login;
+export default LoginButton;
 
 export const LoginForm = props => {
   const showModal = useContext(ModalContext).setShowModal;

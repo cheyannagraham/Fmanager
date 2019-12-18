@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../../App";
+import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";

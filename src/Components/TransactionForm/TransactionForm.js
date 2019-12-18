@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { updateTransaction, getTransactions, addTransaction } from '../Helpers/DBHelper';
 import { validateDate } from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
-import { ModalContext } from '../../App';
+import { ModalContext } from '../../App/App';
 import { CloseModalButton } from '../Modal/Modal';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';

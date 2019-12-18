@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { deleteTransaction, getTransactions } from "../Helpers/DBHelper";
-import { ModalContext } from "../../App";
+import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
 import { CloseModalButton } from "../Modal/Modal";
 import Grid from "@material-ui/core/Grid";

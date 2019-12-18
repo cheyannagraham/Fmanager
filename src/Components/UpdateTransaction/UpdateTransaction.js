@@ -5,9 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 import Grid from "@material-ui/core/Grid";
 import TransactionForm from "../TransactionForm/TransactionForm";
-import { ModalContext } from "../../App";
-
-
+import { ModalContext } from "../../App/App";
 
 const UpdateTransaction = props => {
   const { classes } = props;

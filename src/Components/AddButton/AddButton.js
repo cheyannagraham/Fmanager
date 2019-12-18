@@ -3,7 +3,7 @@ import styles from './styles.addbutton'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
-import { ModalContext } from '../../App';
+import { ModalContext } from '../../App/App';
 import TransactionForm from "../TransactionForm/TransactionForm";
 
 const AddButton = (props) => {

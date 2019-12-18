@@ -5,7 +5,7 @@ import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import MonthHeader from "../MonthHeader/MonthHeader";
 import TodayButton from "../TodayButton/TodayButton";
 import TransactionList from "../TransactionList/TransactionList";
-import { ModalContext } from "../../App";
+import { ModalContext } from "../../App/App";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
