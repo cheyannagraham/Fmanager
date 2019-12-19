@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
 import AddButton from "../AddButton/AddButton";
-import GoToButton from "../GoToDateButton/GoToButton"
+import GoToDateButton from "../GoToDateButton/GoToDateButton"
 import moment from "moment";
 
 const Main = props => {
@@ -84,7 +84,7 @@ const Main = props => {
       
       <Grid container justify='flex-end'>
         <TodayButton setMonth={setMonth} setYear={setYear}>Today</TodayButton>
-        <GoToButton setMonth={setMonth} setYear={setYear}>GoTo</GoToButton>
+        <GoToDateButton setMonth={setMonth} setYear={setYear}>GoTo</GoToDateButton>
         <AddButton setTransactions={setTransactions} />
       </Grid>
         
