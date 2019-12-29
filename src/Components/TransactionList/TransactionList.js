@@ -15,9 +15,9 @@ const TransactionList = props => {
 
   // Group Transactions by Date
   const groupTransactions = () => {
-    return [...new Set(props.MonthlyTransactions.map(trans => trans.date))].map(
+    return [...new Set(props.transactions.map(trans => trans.date))].map(
       date => ({
-        items: props.MonthlyTransactions.filter(trans => trans.date === date),
+        items: props.transactions.filter(trans => trans.date === date),
         date: date
       })
     );
@@ -50,7 +50,7 @@ const TransactionList = props => {
           </Paper>
         ))
       }
-      {props.MonthlyTransactions.length === 0 && (
+      {props.transactions.length === 0 && (
         <Typography color="primary">No Transactions</Typography>
       )}
     </Grid>
