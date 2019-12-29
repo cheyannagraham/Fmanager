@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import myPalette from "../CSS/mypalette";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,44 +12,59 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.app";
 import Login from "../Components/Login/Login";
 import Signup from "../Components/Signup/Signup";
+import { getTransactions } from "../Components/Helpers/DBHelper";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
 export const UserContext = React.createContext(null);
+export const TransContext = React.createContext([]);
 const theme = createMuiTheme(myPalette);
 
 const App = props => {
   const [showModal, setShowModal] = useState({ show: false });
   const [user, setUser] = useState(null);
+  const [transactions, setTransactions] = useState([]);
   const { classes } = props;
 
   auth.onAuthStateChanged(user => {
     setUser(user);
   });
 
+  useEffect(() => {
+    user && (async () => setTransactions(await getTransactions()))();
+  }, [user]);
+
   return (
     <MuiThemeProvider theme={theme}>
-      <ModalContext.Provider value={{setShowModal}}>
+      <ModalContext.Provider value={{ setShowModal }}>
         <UserContext.Provider value={user}>
           <CssBaseline />
           <Grid container justify="center" className={classes["lp-content"]}>
-            {user ?
-              <Home /> : 
+            {user ? (
+              <TransContext.Provider value={[transactions, setTransactions]}>
+                <Home />
+              </TransContext.Provider>
+            ) : (
               <Grid>
                 <Grid component="header">
-                  <Typography className={classes.header} variant="h1" color="primary" align="center">
+                  <Typography
+                    className={classes.header}
+                    variant="h1"
+                    color="primary"
+                    align="center"
+                  >
                     FManager
                   </Typography>
                 </Grid>
 
                 <Grid component="main" className={classes.main}>
                   <Grid className={classes["button-container"]}>
-										<Login />
+                    <Login />
                     <Signup />
                   </Grid>
                 </Grid>
               </Grid>
-            }
+            )}
             {showModal.show && <Modal content={showModal} />}
           </Grid>
           <Footer />
