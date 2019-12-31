@@ -12,21 +12,19 @@ import moment from "moment";
 import { TransContext } from "../../App/App";
 
 const Main = props => {
+  const [transactions] = useContext(TransContext);
   const [month, setMonth] = useState(moment().format("M"));
   const [year, setYear] = useState(moment().format("YYYY"));
-  const [transactions] = useContext(TransContext);
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
 
-  
   const { classes } = props;
 
-  // Filter Monthly Transactions
+  // Get Monthly Transactions when year, month or transactions array changes
   useEffect(() => {
     setMonthlyTransactions(transactions.filter(trans =>
-      moment(trans.date).format("YYYY") === year &&
-      moment(trans.date).format("MM") === month));
+      moment(trans.date).format("YYYY") === String(year) &&
+      moment(trans.date).format("MM") === String(month)));
   },[month, year, transactions]);
-
 
   return (
     <Grid component="main" container className={classes.main}>
@@ -44,7 +42,6 @@ const Main = props => {
         <GoToDateButton setMonth={setMonth} setYear={setYear}>GoTo</GoToDateButton>
         <AddButton />
       </Grid>
-        
     </Grid>
   );
 };
