@@ -22,9 +22,9 @@ const Main = props => {
 
   // Filter Monthly Transactions
   useEffect(() => {
-    setMonthlyTransactions(transactions.filter(trans => 
+    setMonthlyTransactions(transactions.filter(trans =>
       moment(trans.date).format("YYYY") === year &&
-      moment(trans.date).format("M") === month));
+      moment(trans.date).format("MM") === month));
   },[month, year, transactions]);
 
 

@@ -15,7 +15,7 @@ const RunningTotal = props => {
   // Calculate Monthly Total
   useEffect(() => {
     setMonthlyTotal(props.monthlyTransactions.reduce((acc, val) => Number(acc) + Number(val.amount), 0));
-  }, [props.month, props.year, props.transactions]);
+  }, [props.month, props.year, props.monthlyTransactions]);
 
   // Calculate Running Total
   useEffect(() => {
