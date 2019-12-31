@@ -18,7 +18,6 @@ const AddButton = (props) => {
       content: (
         <TransactionForm
           saf={handleClick}
-          setTransactions={props.setTransactions}
           type="add"
         />
       )
