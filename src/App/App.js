@@ -29,47 +29,47 @@ const App = props => {
   auth.onAuthStateChanged(user => {
     setUser(user);
   });
-
+// update transactions if user changes
   useEffect(() => {
     user && (async () => setTransactions(await getTransactions()))();
   }, [user]);
 
   return (
     <MuiThemeProvider theme={theme}>
-      <ModalContext.Provider value={{ setShowModal }}>
-        <UserContext.Provider value={user}>
-          <CssBaseline />
-          <Grid container justify="center" className={classes["lp-content"]}>
-            {user ? (
-              <TransContext.Provider value={[transactions, setTransactions]}>
+      <UserContext.Provider value={user}>
+        <TransContext.Provider value={[transactions, setTransactions]}>
+          <ModalContext.Provider value={{ setShowModal }}>
+            <CssBaseline />
+            <Grid container justify="center" className={classes["lp-content"]}>
+              {user ? (
                 <Home />
-              </TransContext.Provider>
-            ) : (
-              <Grid>
-                <Grid component="header">
-                  <Typography
-                    className={classes.header}
-                    variant="h1"
-                    color="primary"
-                    align="center"
-                  >
-                    FManager
-                  </Typography>
-                </Grid>
+              ) : (
+                <Grid>
+                  <Grid component="header">
+                    <Typography
+                      className={classes.header}
+                      variant="h1"
+                      color="primary"
+                      align="center"
+                    >
+                      FManager
+                    </Typography>
+                  </Grid>
 
-                <Grid component="main" className={classes.main}>
-                  <Grid className={classes["button-container"]}>
-                    <Login />
-                    <Signup />
+                  <Grid component="main" className={classes.main}>
+                    <Grid className={classes["button-container"]}>
+                      <Login />
+                      <Signup />
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-            )}
-            {showModal.show && <Modal content={showModal} />}
-          </Grid>
-          <Footer />
-        </UserContext.Provider>
-      </ModalContext.Provider>
+              )}
+              {showModal.show && <Modal content={showModal} />}
+            </Grid>
+            <Footer />
+          </ModalContext.Provider>
+        </TransContext.Provider>
+      </UserContext.Provider>
     </MuiThemeProvider>
   );
 };
