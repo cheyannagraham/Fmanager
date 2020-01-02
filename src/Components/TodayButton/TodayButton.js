@@ -9,8 +9,8 @@ import styles from "./styles.todaybutton";
 const TodayButton = props => {
     const { classes } = props;
     const handleClick = () => {
-        props.setMonth(moment().format("M"));
-        props.setYear(moment().format("YYYY"));
+        props.setMonth(Number(moment().format("MM")));
+        props.setYear(Number(moment().format("YYYY")));
     }
 
     return (
