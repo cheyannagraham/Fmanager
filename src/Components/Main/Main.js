@@ -13,8 +13,8 @@ import { TransContext } from "../../App/App";
 
 const Main = props => {
   const [transactions] = useContext(TransContext);
-  const [month, setMonth] = useState(moment().format("M"));
-  const [year, setYear] = useState(moment().format("YYYY"));
+  const [month, setMonth] = useState(Number(moment().format("MM")));
+  const [year, setYear] = useState(Number(moment().format("YYYY")));
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
 
   const { classes } = props;
@@ -22,8 +22,8 @@ const Main = props => {
   // Get Monthly Transactions when year, month or transactions array changes
   useEffect(() => {
     setMonthlyTransactions(transactions.filter(trans =>
-      moment(trans.date).format("YYYY") === String(year) &&
-      moment(trans.date).format("MM") === String(month)));
+      Number(moment(trans.date).format("YYYY")) === Number(year) &&
+      Number(moment(trans.date).format("MM")) === Number(month)));
   },[month, year, transactions]);
 
   return (
