@@ -8,10 +8,12 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.transactionform';
+import { TransContext } from '../../App/App';
 
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
+  const [, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
   const {classes} = props;
 
@@ -48,7 +50,7 @@ const TransactionForm = props => {
     if (props.type === 'add') {
       addTransaction(newTrans)
         .then(trans => {
-          props.setTransactions(prev => [...prev, trans]);
+          setTransactions(prev => [...prev, trans]);
           showModal({
             show: true,
             title: 'Success',
@@ -75,7 +77,7 @@ const TransactionForm = props => {
         .then(res => {
           getTransactions()
             .then(tr => {
-              props.setTransactions(tr);
+              setTransactions(tr);
               showModal({
                 show: true,
                 type: 'success',              
