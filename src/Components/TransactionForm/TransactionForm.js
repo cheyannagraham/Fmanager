@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 import { updateTransaction, getTransactions, addTransaction } from '../Helpers/DBHelper';
 import { validateDate } from '../Helpers/DateHelper';
 import * as FormInputs from '../FormInputs/FormInputs';
-import { ModalContext } from '../../App';
+import { ModalContext } from '../../App/App';
 import { CloseModalButton } from '../Modal/Modal';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.transactionform';
+import { TransContext } from '../../App/App';
 
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
+  const [, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
   const {classes} = props;
 
@@ -43,13 +45,13 @@ const TransactionForm = props => {
       business: document.getElementById('transaction-business').value,
       amount: type === 'income' ? Number(amount).toFixed(2) : Number(-amount).toFixed(2),
       date: date,
-      id: (currTrans && currTrans.id) || ''
     };
 
     if (props.type === 'add') {
       addTransaction(newTrans)
+      // add new transaction to local global copy of transactions
         .then(trans => {
-          props.setTransactions(prev => [...prev, trans]);
+          setTransactions(prev => [...prev, trans]);
           showModal({
             show: true,
             title: 'Success',
@@ -72,11 +74,11 @@ const TransactionForm = props => {
     }
 
     if (props.type === 'update') {
-      updateTransaction(newTrans)
+      updateTransaction(currTrans.id, newTrans)
         .then(res => {
           getTransactions()
             .then(tr => {
-              props.setTransactions(tr);
+              setTransactions(tr);
               showModal({
                 show: true,
                 type: 'success',              

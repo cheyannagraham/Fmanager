@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './styles.addbutton'
-import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
+import { ModalContext } from '../../App/App';
+import TransactionForm from "../TransactionForm/TransactionForm";
 
 const AddButton = (props) => {
-    const { classes } = props;
+  const { classes } = props;
+  const showModal = useContext(ModalContext).setShowModal;
+
+  const handleClick = () => {
+    showModal({
+      show: true,
+      type: "add",
+      title: "New Transaction",
+      content: (
+        <TransactionForm
+          saf={handleClick}
+          type="add"
+        />
+      )
+    });
+  };
 
     return (
-        <Grid className={classes['fab-container']} container justify='flex-end'>
-            <Fab size="small" color="secondary"  aria-label="add transaction"
-                onClick={props.showAddForm}>
-                <AddIcon />
-            </Fab>
-        </Grid>
+      <Fab className={classes['fab-container']}size="small" color="primary"  title="Add New Transaction" aria-label="add transaction"
+        onClick={handleClick}>
+        <AddIcon />
+      </Fab>
     )
 }
 

@@ -8,14 +8,33 @@ import ArrowRight from '@material-ui/icons/ArrowRight';
 import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment'
 
-const AddButton = (props) => {
+const MonthHeader = (props) => {
     const { classes } = props;
+
+    // Ensure months go from Dec > Jan & Jan < Dec
+    const handleClick = eventVal => {
+        const monthVal = Number(props.month) + eventVal;
+        let newMonth = monthVal;
+        let newYear = props.year;
+
+        if (monthVal === 0) {
+            newYear = Number(props.year) - 1;
+            newMonth = 12;
+        } else if (monthVal === 13) {
+            newYear = Number(props.year) + 1;
+            newMonth = 1;
+        } 
+        if (props.year !== newYear) props.setYear(newYear);
+        
+        props.setMonth(newMonth);
+        // getMonthlyTransactions(newMonth, newYear);
+    };
 
     return (
         <Grid container justify="center" alignItems="center" className={classes["month-header"]}>
             <IconButton color="primary" className={classes.ibutton}
             onClick={() => {
-                    props.handleClick(-1);
+                    handleClick(-1);
                 }}>
                 <ArrowLeft className={classes.icon} />
             </IconButton>
@@ -26,7 +45,7 @@ const AddButton = (props) => {
 
             <IconButton color="primary" className={classes.ibutton}
                 onClick={() => {
-                    props.handleClick(1);
+                    handleClick(1);
                 }}>
                 <ArrowRight className={classes.icon} />
             </IconButton>
@@ -34,4 +53,4 @@ const AddButton = (props) => {
     )
 }
 
-export default withStyles(styles)(AddButton);
+export default withStyles(styles)(MonthHeader);

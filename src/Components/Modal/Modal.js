@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../../App";
+import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -17,6 +17,7 @@ return (
       <Dialog maxWidth="sm" className={classes.dialog} open={props.content.show} id="modal-dialog" >
         <DialogTitle>{props.content.title}</DialogTitle>
         <DialogContentText className={classes.text}>{props.content.text}</DialogContentText>
+        <p id="modal-help-text"></p>
         <DialogContent>{props.content.content}</DialogContent>
         <DialogActions>{props.content.actions}</DialogActions>
       </Dialog>

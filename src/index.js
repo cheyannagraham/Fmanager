@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import App from './App';
+import App from './App/App';
+import "./CSS/html.css";
 require('dotenv').config();
-
 
 
 ReactDOM.render(<App /> , document.getElementById('root'));

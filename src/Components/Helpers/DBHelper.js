@@ -1,44 +1,52 @@
-import db from '../../fb/fb';
-import { auth } from '../../fb/fb';
+import db from "../../fb/fb";
+import { auth } from "../../fb/fb";
 
 const user = () => auth.currentUser.uid;
 
-//Retrieve all transactions  
+//Retrieve all transactions
 export const getTransactions = () => {
-  return db.collection(`user_trans/${user()}/transactions`)
+  return db
+    .collection(`user_trans/${user()}/transactions`)
     .get()
     .then(results => {
-      let tr = [];
+      let transactions = [];
       results.forEach(doc => {
-        tr.push(Object.assign(doc.data(), { id: doc.id }));
+        transactions.push(Object.assign(doc.data(), { id: doc.id }));
       });
-      return tr;
+      return transactions;
     })
     .catch(err => err);
 };
 
 //Delete Transaction
 export const deleteTransaction = id => {
-  return db.collection(`user_trans/${user()}/transactions`).doc(id).delete()
-  .then(() => 'Transaction has been deleted from your records.')
-  .catch(err => err);
-}
+  return db
+    .collection(`user_trans/${user()}/transactions`)
+    .doc(id)
+    .delete()
+    .then(() => "Transaction has been deleted from your records.")
+    .catch(err => err);
+};
 
- //Add Transaction
+//Add Transaction
 export const addTransaction = trans => {
-  return db.collection(`user_trans/${user()}/transactions`)
-  .add(trans)
-  .then(dref => {
-    //add id to transaction object
-    trans.id = dref.id;
-    return trans;
-  })
-  .catch(err => err);
-}
- 
+  return db
+    .collection(`user_trans/${user()}/transactions`)
+    .add(trans)
+    .then(dref => {
+      //add id to transaction object
+      trans.id = dref.id;
+      return trans;
+    })
+    .catch(err => err);
+};
+
 //Update Transaction
-export const updateTransaction = trans => {
-  return db.collection(`user_trans/${user()}/transactions`).doc(trans.id).set(trans)
-  .then(() => 'Transaction record has been updated.')
-  .catch(err => err);
-}
+export const updateTransaction = (transId, trans) => {
+  return db
+    .collection(`user_trans/${user()}/transactions`)
+    .doc(transId)
+    .set(trans)
+    .then(() => "Transaction record has been updated.")
+    .catch(err => err);
+};

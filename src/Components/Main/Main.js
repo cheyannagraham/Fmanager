@@ -1,78 +1,47 @@
 import React, { useState, useEffect, useContext } from "react";
-import Month from "../../Components/Month/Month.js";
-import { getTransactions } from "../../Components/Helpers/DBHelper";
-import { CloseModalButton } from "../../Components/Modal/Modal";
-import TransactionForm from "../../Components/Transactions/TransactionForm";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
-import { ModalContext } from "../../App";
+import MonthHeader from "../MonthHeader/MonthHeader";
+import TodayButton from "../TodayButton/TodayButton";
+import TransactionList from "../TransactionList/TransactionList";
 import Grid from "@material-ui/core/Grid";
 import styles from "./style.main";
 import { withStyles } from "@material-ui/core/styles";
-import AddButton from "../AddButton/AddButton.js";
+import AddButton from "../AddButton/AddButton";
+import GoToDateButton from "../GoToDateButton/GoToDateButton"
+import moment from "moment";
+import { TransContext } from "../../App/App";
 
 const Main = props => {
-  const showModal = useContext(ModalContext).setShowModal;
-  const [runningTotal, setRunningTotal] = useState(0);
-  const [monthlyTotal, setMonthlyTotal] = useState(0);
-  const [transactions, setTransactions] = useState([]);
+  const [transactions] = useContext(TransContext);
+  const [month, setMonth] = useState(Number(moment().format("MM")));
+  const [year, setYear] = useState(Number(moment().format("YYYY")));
+  const [monthlyTransactions, setMonthlyTransactions] = useState([]);
+
   const { classes } = props;
 
-  const showAddForm = () => {
-    showModal({
-      show: true,
-      type: "add",
-      title: "New Transaction",
-      content: (
-        <TransactionForm
-          saf={showAddForm}
-          setTransactions={setTransactions}
-          type="add"
-        />
-      )
-    });
-  };
-
-  const calcRunningTotal = () => {
-    let rt = 0;
-    transactions.forEach(trans => {
-      rt += Number(trans.amount);
-    });
-
-    setRunningTotal(rt);
-  };
-
+  // Get Monthly Transactions when year, month or transactions array changes
   useEffect(() => {
-    getTransactions()
-      .then(r => setTransactions(r))
-      .catch(err =>
-        showModal({
-          show: true,
-          type: "error",
-          text: err,
-          title: "Error Fetching Transactions!",
-          content: <CloseModalButton autofocus={true} variant="contained" />
-        })
-      );
-  }, []);
-
-  useEffect(() => {
-    calcRunningTotal();
-  }, [transactions]);
+    setMonthlyTransactions(transactions.filter(trans =>
+      Number(moment(trans.date).format("YYYY")) === Number(year) &&
+      Number(moment(trans.date).format("MM")) === Number(month)));
+  },[month, year, transactions]);
 
   return (
     <Grid component="main" container className={classes.main}>
       <Grid container className={classes.top}>
-        <Month
-          setMonthlyTotal={setMonthlyTotal}
-          setTransactions={setTransactions}
-          transactions={transactions}
-        />
-
-        <RunningTotal runningTotal={runningTotal} monthlyTotal={monthlyTotal} />
-      </Grid>
-
-        <AddButton showAddForm={showAddForm} />
+        <Grid container>
+          <MonthHeader month={month} year={year} setMonth={setMonth} setYear={setYear} />
+          <TransactionList transactions={monthlyTransactions} />
+        </Grid>
         
+        <RunningTotal month={month} year={year} monthlyTransactions={monthlyTransactions} transactions={transactions} />
+      </Grid>
+      
+      <Grid container justify='flex-end'>
+        <TodayButton setMonth={setMonth} setYear={setYear}>Today</TodayButton>
+        <GoToDateButton setMonth={setMonth} setYear={setYear}>GoTo</GoToDateButton>
+        <AddButton />
+      </Grid>
     </Grid>
   );
 };
