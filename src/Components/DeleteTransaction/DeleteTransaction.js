@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { deleteTransaction, getTransactions } from "../Helpers/DBHelper";
+import { deleteTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
 import { CloseModalButton } from "../Modal/Modal";
@@ -8,9 +8,11 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles.deletetransaction";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
+import { TransContext } from "../../App/App";
 
 const DeleteTransaction = props => {
   const showModal = useContext(ModalContext).setShowModal;
+  const [transactions, setTransactions] = useContext(TransContext);
   const { classes } = props;
 
   const confirmDelete = id => {
@@ -37,6 +39,7 @@ const DeleteTransaction = props => {
   const handleDelete = id => {
     deleteTransaction(id)
       .then(res => {
+        setTransactions(transactions.filter(trans => trans.id !== id));
         showModal({
           show: true,
           title: "Delete Successful!",
@@ -44,7 +47,6 @@ const DeleteTransaction = props => {
           text: res,
           actions: <CloseModalButton autofocus={true} variant="contained" />
         });
-        getTransactions().then(results => props.setTransactions(results));
       })
       .catch(err =>
         showModal({

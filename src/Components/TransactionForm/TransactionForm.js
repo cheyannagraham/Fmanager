@@ -49,6 +49,7 @@ const TransactionForm = props => {
 
     if (props.type === 'add') {
       addTransaction(newTrans)
+      // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
           showModal({
