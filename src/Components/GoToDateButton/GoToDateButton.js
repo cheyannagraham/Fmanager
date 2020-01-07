@@ -3,8 +3,10 @@ import styles from "./styles.gotobutton";
 import { withStyles } from "@material-ui/core/styles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
-import Fab  from "@material-ui/core/Fab";
+import Fab from "@material-ui/core/Fab";
 import DateRange from "@material-ui/icons/DateRange";
+import { FormControl } from "../FormControls/FormControls";
+import { Button } from "@material-ui/core";
 
 const GoToButton = props => {
   const { classes } = props;
@@ -30,22 +32,26 @@ const GoToButton = props => {
       title: "Go To Date",
       content: (
         <form id="goto-date-form">
-          <label htmlFor="goto-month">Month</label>
-          <input
+          <FormControl
+            variant="outlined"
+            label="Month"
             type="number"
             min="1"
             max="12"
             step="1"
             id="goto-month"
-            required></input>
+            required />
 
-          <label htmlFor="goto-year">Year</label>
-          <input type="number" id="goto-year" required></input>
+          <FormControl
+            variant="outlined"
+            label="Year"
+            type="number"
+            id="goto-year" required/>
         </form>
       ),
       actions: (
         <>
-          <button type="submit" form="goto-date-form" onClick={validateDate}>Go</button>
+          <Button type="submit" variant="contained" color="primary" form="goto-date-form" onClick={validateDate}>Go</Button>
           <CloseModalButton />
         </>
       )

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
-import { Email, Password } from "../FormInputs/FormInputs";
+import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
 
 
@@ -52,7 +52,7 @@ export const LoginForm = props => {
             {err.message}
           </>
         ),
-        actions: <CloseModalButton variant="contained" autofocus={true} />
+        actions: <CloseModalButton variant="contained" autoFocus={true} />
       })
     );
     //close Modal after logging in
@@ -62,7 +62,7 @@ export const LoginForm = props => {
 
   return (
     <form id="login-form" onSubmit={handleLogin}>
-      <Email autofocus={true} variant={variant} />
+      <Email autoFocus={true} variant={variant} />
       <Password variant={variant} />
       <div>
         <Button variant="contained" color="primary" type="submit">
