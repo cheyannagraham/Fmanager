@@ -61,7 +61,7 @@ export const SignupForm = props => {
               {err.message}
             </>
           ),
-          actions: <CloseModalButton variant="contained" autofocus={true} />
+          actions: <CloseModalButton variant="contained" autoFocus={true} />
         })
       );
     showModal(false);
@@ -71,7 +71,7 @@ export const SignupForm = props => {
 
   return (
     <form id="signup-form" onSubmit={handleSignup}>
-      <Username autofocus={true} variant={variant} />
+      <Username autoFocus={true} variant={variant} />
       <Email variant={variant} />
       <Password variant={variant} />
       <div>

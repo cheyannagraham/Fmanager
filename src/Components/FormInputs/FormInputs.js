@@ -18,80 +18,65 @@ const useInputState = (def = "") => {
   };
 };
 
-// HOC
 export const FormControl = withStyles(styles)(props => {
   const { value, handleChange } = useInputState(props.value);
-
+  
   return (
-    <TextField {...props} 
+    <TextField  
     onChange={handleChange}
     value={value}
+    variant="standard"
+    {...props}
     >
     {props.children}
     </TextField>
   )
 });
 
-// -------------------- TRANSACTION  ----------------------
+/*
+-----------------------
+LOGIN & SIGNUP
+----------------------
+*/
 
-
-
-
-// -------------------- LOGIN & SIGNUP ----------------------
-
-
-export const Email = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
+// HOC
+export const Email = props => {
   return (
-    <TextField 
+    <FormControl
       label="email"
       id="email"
       name="email"
       type="email"
-      value={value}
-      onChange={handleChange}
-      autoFocus = {props.autofocus}
       required
-      variant={props.variant}
+      {...props}
     />
   );
-});
+}
 
-export const Password = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
+export const Password = props => {
   return (
-    <TextField 
+    <FormControl 
       label="password"
       id="pwd"
       name="pwd"
       type="password"
-      value={value}
-      onChange={handleChange}
       required
-      variant={props.variant}
+      {...props}
     />
   );
-});
+}
 
-
-export const Username = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
+export const Username = props => {
   return (
-    <TextField 
+    <FormControl 
       label="Username"
       name="Username"
       type="text"
       id="username"
-      value={value}
-      onChange={handleChange}
-      autoFocus = {props.autofocus}
       required
-      variant={props.variant}
+      {...props}
     />
   );
-});
+}
 
 

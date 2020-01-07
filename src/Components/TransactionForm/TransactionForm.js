@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
-import {
-  updateTransaction,
-  getTransactions,
-  addTransaction
-} from "../Helpers/DBHelper";
+import {updateTransaction, getTransactions, addTransaction } from "../Helpers/DBHelper";
 import { validateDate } from "../Helpers/DateHelper";
-import * as FormInputs from "../FormInputs/FormInputs";
+import { FormControl } from "../FormInputs/FormInputs";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import Button from "@material-ui/core/Button";
@@ -74,7 +70,7 @@ const TransactionForm = props => {
                   variant="contained"
                   onClick={props.saf}
                 >
-                  Add Another{" "}
+                  Add Another
                 </Button>
                 <CloseModalButton />
               </>
@@ -120,9 +116,9 @@ const TransactionForm = props => {
 
   return (
     <form id="transaction-form" onSubmit={handleClick}>
+      
       {/* Date Input */}
-      <FormInputs.FormControl
-        variant="standard"
+      <FormControl
         label="Date"
         name="trans-date"
         type="date"
@@ -134,10 +130,9 @@ const TransactionForm = props => {
         autoFocus
         required
       />
-
+      
       {/* Business Name Input */}
-      <FormInputs.FormControl
-        variant="standard"
+      <FormControl
         label="Business"
         id="transaction-business"
         value={currTrans && currTrans.business}
@@ -145,10 +140,9 @@ const TransactionForm = props => {
         type="text"
         name="business-name"
       />
-
+      
       {/* Amount Input */}
-      <FormInputs.FormControl
-        variant="standard"
+      <FormControl
         label="Amount"
         name="trans-amount"
         type="number"
@@ -159,9 +153,9 @@ const TransactionForm = props => {
         value={currTrans && currTrans.amount}
         required
       />
-
+      
       {/* Transaction Type  */}
-      <FormInputs.FormControl
+      <FormControl
         select
         InputLabelProps={{
           shrink: true
@@ -169,7 +163,6 @@ const TransactionForm = props => {
         SelectProps={{
           native: true
         }}
-        variant="standard"
         label="Type"
         id="transaction-type"
         name="trans-type"
@@ -184,8 +177,8 @@ const TransactionForm = props => {
             Purchase
           </option>
         </>
-      </FormInputs.FormControl>
-
+      </FormControl>
+      
       {/* Form Buttons */}
       <Grid
         container
