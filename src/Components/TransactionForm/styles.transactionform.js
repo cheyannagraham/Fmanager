@@ -3,8 +3,10 @@ const styles = {
         'padding-top' : '15px',
     }, 
     'form': {
-        'display': 'block',
-        'color': "red",
+        'display': 'grid',
+        'margin': '0 10px',
+        'padding': '0 10px',
+        'min-width': '30vw'
     }
 
 }
