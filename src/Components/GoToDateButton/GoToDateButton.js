@@ -5,7 +5,7 @@ import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import Fab from "@material-ui/core/Fab";
 import DateRange from "@material-ui/icons/DateRange";
-import { FormControl } from "../FormInputs/FormInputs";
+import { FormControl } from "../FormControls/FormControls";
 import { Button } from "@material-ui/core";
 
 const GoToButton = props => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import {updateTransaction, getTransactions, addTransaction } from "../Helpers/DBHelper";
 import { validateDate } from "../Helpers/DateHelper";
-import { FormControl } from "../FormInputs/FormInputs";
+import { FormControl } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import Button from "@material-ui/core/Button";
@@ -115,7 +115,7 @@ const TransactionForm = props => {
   };
 
   return (
-    <form id="transaction-form" onSubmit={handleClick}>
+    <form id="transaction-form" className={classes.form} onSubmit={handleClick}>
       
       {/* Date Input */}
       <FormControl
@@ -130,7 +130,7 @@ const TransactionForm = props => {
         autoFocus
         required
       />
-      
+
       {/* Business Name Input */}
       <FormControl
         label="Business"

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
-import { Email, Password, Username } from '../FormInputs/FormInputs';
+import { Email, Password, Username } from '../FormControls/FormControls';
 import { CloseModalButton } from '../Modal/Modal';
 import { auth } from "../../fb/fb";
 
