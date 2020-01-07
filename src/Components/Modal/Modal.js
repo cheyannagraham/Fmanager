@@ -24,19 +24,18 @@ return (
   );
 };
 
-const CloseModalButton = props => {
+export const CloseModalButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
   return (
     <Button
       color="secondary"
-      variant={props.variant || "contained"}
-      autoFocus = {props.autofocus}
+      variant="contained"
       onClick={() => showModal(false)}
+      {...props}
     >
       Close{" "}
     </Button>
   );
 };
 
-export { CloseModalButton };
 export default withStyles(styles)(Modal);
