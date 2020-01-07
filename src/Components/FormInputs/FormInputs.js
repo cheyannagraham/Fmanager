@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles.forminputs';
-import moment from 'moment';
 
+// Custom Hook
 const useInputState = (def = "") => {
   const [value, setValue] = useState(def);
 
@@ -18,97 +18,24 @@ const useInputState = (def = "") => {
   };
 };
 
+// HOC
+export const FormControl = withStyles(styles)(props => {
+  const { value, handleChange } = useInputState(props.value);
+
+  return (
+    <TextField {...props} 
+    onChange={handleChange}
+    value={value}
+    >
+    {props.children}
+    </TextField>
+  )
+});
+
 // -------------------- TRANSACTION  ----------------------
 
 
-export const DateInput = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
 
-  return (
-    <TextField
-      label={props.label}
-      id={props.id}
-      name="date"
-      type="date"
-      value={value|| moment().format('YYYY-MM-DD')}
-      onChange={handleChange}
-      inputProps={{
-        pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
-      }}
-      autoFocus = {props.autofocus}
-      required
-      variant={props.variant}
-    />
-  );
-});
-
-
-export const BusinessInput = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
-  return (
-    <TextField
-      label={props.label}
-      id={props.id}
-      name="business"
-      type="text"
-      value={value}
-      onChange={handleChange}
-      required
-      autoFocus = {props.autofocus}
-      variant={props.variant}
-    />
-  );
-});
-
-
-export const AmountInput = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
-  return (
-    <TextField
-      label={props.label}
-      id={props.id}
-      name="amount"
-      type="number"
-      inputProps={{
-        step: 0.01
-      }}
-      value={value}
-      onChange={handleChange}
-      autoFocus = {props.autofocus}
-      variant={props.variant}
-      required
-    />
-  );
-});
-
-
-export const TransactionTypeInput = withStyles(styles)(props => {
-  const { value, handleChange } = useInputState(props.value);
-
-  return (
-    <TextField
-      select
-      InputLabelProps={{
-        shrink:true,
-      }}
-      SelectProps={{
-        native:true
-      }}
-      id={props.id}
-      label={props.label}
-      name="type"
-      value={value}
-      onChange={handleChange}
-      variant={props.variant}
-      required
-      >
-        <option key="income" value="income">Income</option>
-        <option key="purchase" value="purchase">Purchase</option>
-    </TextField>
-  );
-});
 
 // -------------------- LOGIN & SIGNUP ----------------------
 

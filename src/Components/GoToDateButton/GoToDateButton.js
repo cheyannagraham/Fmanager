@@ -3,7 +3,7 @@ import styles from "./styles.gotobutton";
 import { withStyles } from "@material-ui/core/styles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
-import Fab  from "@material-ui/core/Fab";
+import Fab from "@material-ui/core/Fab";
 import DateRange from "@material-ui/icons/DateRange";
 
 const GoToButton = props => {

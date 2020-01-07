@@ -27,7 +27,6 @@ const MonthHeader = (props) => {
         if (props.year !== newYear) props.setYear(newYear);
         
         props.setMonth(newMonth);
-        // getMonthlyTransactions(newMonth, newYear);
     };
 
     return (
