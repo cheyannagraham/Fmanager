@@ -10,7 +10,7 @@ const LandingPage = props => {
   const { classes } = props;
 
   return (
-    <Grid className={classes.outer}>
+    <Grid>
       <Grid component="header" className={classes.header}>
         <Typography
           noWrap={true}
