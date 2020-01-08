@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import myPalette from "../CSS/mypalette";
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Modal from "../Components/Modal/Modal";
-import { auth } from "../fb/fb";
-import Home from "../Components/Home/Home";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Footer from "../Components/Footer/Footer";
-import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import myPalette from "../CSS/mypalette";
+import { auth } from "../fb/fb";
 import styles from "./styles.app";
+import Modal from "../Components/Modal/Modal";
+import Home from "../Components/Home/Home";
+import Footer from "../Components/Footer/Footer";
 import Login from "../Components/Login/Login";
 import Signup from "../Components/Signup/Signup";
 import { getTransactions } from "../Components/Helpers/DBHelper";
@@ -29,7 +32,7 @@ const App = props => {
   auth.onAuthStateChanged(user => {
     setUser(user);
   });
-// update transactions if user changes
+  // update transactions if user changes
   useEffect(() => {
     user && (async () => setTransactions(await getTransactions()))();
   }, [user]);

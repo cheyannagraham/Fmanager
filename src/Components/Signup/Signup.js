@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
-import { Email, Password, Username } from '../FormControls/FormControls';
-import { CloseModalButton } from '../Modal/Modal';
-import { auth } from "../../fb/fb";
-import { withStyles } from "@material-ui/styles";
+import withStyles from "@material-ui/styles/withStyles";
+import { CloseModalButton } from "../Modal/Modal";
+import { Email, Password, Username } from "../FormControls/FormControls";
+import { ModalContext } from "../../App/App";
+// Styles from Login styles
 import styles from "../Login/style.login";
-
+import { auth } from "../../fb/fb";
 
 const SignupButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -16,9 +16,7 @@ const SignupButton = props => {
       show: true,
       type: "signup",
       title: "Create An Account",
-      content: (
-        <SignupForm />
-      )
+      content: <SignupForm />
     });
   };
   return (
@@ -35,19 +33,24 @@ const SignupButton = props => {
 
 export default SignupButton;
 
-
 export const SignupForm = withStyles(styles)(props => {
   const showModal = useContext(ModalContext).setShowModal;
-  const { classes } = props
-
+  const { classes } = props;
 
   const handleSignup = async e => {
     e.preventDefault();
-		const form = document.querySelector("#signup-form");
-    const [username, email, pwd] = [form["username"].value, form["email"].value, form["pwd"].value];
-    const displayName = username ? (username[0].toUpperCase() + username.slice(1)).trim() : "";
+    const form = document.querySelector("#signup-form");
+    const [username, email, pwd] = [
+      form["username"].value,
+      form["email"].value,
+      form["pwd"].value
+    ];
+    const displayName = username
+      ? (username[0].toUpperCase() + username.slice(1)).trim()
+      : "";
 
-    await auth.createUserWithEmailAndPassword(email, pwd)
+    await auth
+      .createUserWithEmailAndPassword(email, pwd)
       .then(async () => {
         //add username to profile
         await auth.currentUser.updateProfile({ displayName: displayName });

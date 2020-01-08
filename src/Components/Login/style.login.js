@@ -1,7 +1,7 @@
 const styles = {
-    form : {
-        'display': 'grid',
-    }
-}
+  form: {
+    display: "grid"
+  }
+};
 
 export default styles;

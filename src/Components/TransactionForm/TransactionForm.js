@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
-import {updateTransaction, getTransactions, addTransaction } from "../Helpers/DBHelper";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import withStyles from "@material-ui/core/styles/withStyles";
+import {
+  updateTransaction,
+  getTransactions,
+  addTransaction
+} from "../Helpers/DBHelper";
 import { validateDate } from "../Helpers/DateHelper";
 import { FormControl } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles.transactionform";
 import { TransContext } from "../../App/App";
+import styles from "./styles.transactionform";
 import moment from "moment";
 
 const TransactionForm = props => {
@@ -116,7 +120,6 @@ const TransactionForm = props => {
 
   return (
     <form id="transaction-form" className={classes.form} onSubmit={handleClick}>
-      
       {/* Date Input */}
       <FormControl
         label="Date"
@@ -140,7 +143,7 @@ const TransactionForm = props => {
         type="text"
         name="business-name"
       />
-      
+
       {/* Amount Input */}
       <FormControl
         label="Amount"
@@ -153,7 +156,7 @@ const TransactionForm = props => {
         value={currTrans && currTrans.amount}
         required
       />
-      
+
       {/* Transaction Type  */}
       <FormControl
         select
@@ -178,7 +181,7 @@ const TransactionForm = props => {
           </option>
         </>
       </FormControl>
-      
+
       {/* Form Buttons */}
       <Grid
         container

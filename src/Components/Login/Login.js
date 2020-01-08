@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/styles/withStyles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
-import { withStyles } from "@material-ui/styles";
 import styles from "./style.login";
-
 
 const LoginButton = props => {
   const showModal = useContext(ModalContext).setShowModal;

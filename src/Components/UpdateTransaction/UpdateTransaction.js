@@ -1,11 +1,11 @@
-import React, { useContext }from 'react';
-import { withStyles } from "@material-ui/styles";
-import styles from "./styles.updatetransaction";
+import React, { useContext } from "react";
+import withStyles from "@material-ui/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
-import Edit from "@material-ui/icons/Edit";
 import Grid from "@material-ui/core/Grid";
+import Edit from "@material-ui/icons/Edit";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import { ModalContext } from "../../App/App";
+import styles from "./styles.updatetransaction";
 
 const UpdateTransaction = props => {
   const { classes } = props;
@@ -31,7 +31,8 @@ const UpdateTransaction = props => {
       <IconButton
         title="Edit Transaction"
         color="primary"
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         <Edit className={classes.icon} />
       </IconButton>
     </Grid>
