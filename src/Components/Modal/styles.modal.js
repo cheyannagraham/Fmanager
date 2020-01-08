@@ -2,7 +2,7 @@ const styles = {
     dialog : {
         'text-align': 'center',
     },
-    'text' :{
+    text :{
         'margin': '0 10px',
         'padding': '0 10px'
     }

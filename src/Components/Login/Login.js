@@ -4,7 +4,8 @@ import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
-
+import { withStyles } from "@material-ui/styles";
+import styles from "./style.login";
 
 
 const LoginButton = props => {
@@ -32,8 +33,9 @@ const LoginButton = props => {
 };
 export default LoginButton;
 
-export const LoginForm = props => {
+export const LoginForm = withStyles(styles)(props => {
   const showModal = useContext(ModalContext).setShowModal;
+  const { classes } = props;
 
   const handleLogin = e => {
     e.preventDefault();
@@ -61,7 +63,7 @@ export const LoginForm = props => {
   const variant = "outlined";
 
   return (
-    <form id="login-form" onSubmit={handleLogin}>
+    <form className={classes.form} id="login-form" onSubmit={handleLogin}>
       <Email autoFocus={true} variant={variant} />
       <Password variant={variant} />
       <div>
@@ -72,4 +74,4 @@ export const LoginForm = props => {
       </div>
     </form>
   );
-};
+});

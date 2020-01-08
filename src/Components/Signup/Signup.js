@@ -4,6 +4,8 @@ import Button from "@material-ui/core/Button";
 import { Email, Password, Username } from '../FormControls/FormControls';
 import { CloseModalButton } from '../Modal/Modal';
 import { auth } from "../../fb/fb";
+import { withStyles } from "@material-ui/styles";
+import styles from "../Login/style.login";
 
 
 const SignupButton = props => {
@@ -34,8 +36,10 @@ const SignupButton = props => {
 export default SignupButton;
 
 
-export const SignupForm = props => {
+export const SignupForm = withStyles(styles)(props => {
   const showModal = useContext(ModalContext).setShowModal;
+  const { classes } = props
+
 
   const handleSignup = async e => {
     e.preventDefault();
@@ -70,7 +74,7 @@ export const SignupForm = props => {
   const variant = "filled";
 
   return (
-    <form id="signup-form" onSubmit={handleSignup}>
+    <form className={classes.form} id="signup-form" onSubmit={handleSignup}>
       <Username autoFocus={true} variant={variant} />
       <Email variant={variant} />
       <Password variant={variant} />
@@ -82,4 +86,4 @@ export const SignupForm = props => {
       </div>
     </form>
   );
-};
+});
