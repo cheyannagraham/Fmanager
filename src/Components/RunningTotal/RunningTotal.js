@@ -3,8 +3,8 @@ import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./style.runningtotal";
-import { withStyles } from "@material-ui/core/styles";
 
 const RunningTotal = props => {
   const { classes } = props;
@@ -14,12 +14,22 @@ const RunningTotal = props => {
 
   // Calculate Monthly Total
   useEffect(() => {
-    setMonthlyTotal(props.monthlyTransactions.reduce((acc, val) => Number(acc) + Number(val.amount), 0));
+    setMonthlyTotal(
+      props.monthlyTransactions.reduce(
+        (acc, val) => Number(acc) + Number(val.amount),
+        0
+      )
+    );
   }, [props.month, props.year, props.monthlyTransactions]);
 
   // Calculate Running Total
   useEffect(() => {
-    setRunningTotal(props.transactions.reduce((acc, val) => Number(acc) + Number(val.amount), 0));
+    setRunningTotal(
+      props.transactions.reduce(
+        (acc, val) => Number(acc) + Number(val.amount),
+        0
+      )
+    );
   }, [props.transactions]);
 
   // Color Positive & Negative Totals
@@ -33,7 +43,6 @@ const RunningTotal = props => {
     else document.querySelector("#monthly-total").classList.remove(classes.neg);
   }, [runningTotal, monthlyTotal]);
 
-  
   return (
     <Paper className={classes.container}>
       <Grid className={classes["trans-date"]}>

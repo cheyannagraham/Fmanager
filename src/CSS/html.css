@@ -13,3 +13,8 @@ html {
         font-size: 1em;
     }
 }
+@media screen and (min-width: 950px) {
+    html {
+        font-size: 1.15em;
+    }
+}

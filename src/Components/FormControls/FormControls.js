@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import { withStyles } from '@material-ui/core/styles';
-import styles from './styles.formcontrols';
 
-// Custom Hook
 const useInputState = (def = "") => {
   const [value, setValue] = useState(def);
 
@@ -18,20 +15,20 @@ const useInputState = (def = "") => {
   };
 };
 
-export const FormControl = withStyles(styles)(props => {
+export const FormControl = props => {
   const { value, handleChange } = useInputState(props.value);
-  
+
   return (
-    <TextField  
-    onChange={handleChange}
-    value={value}
-    variant="standard"
-    {...props}
+    <TextField
+      onChange={handleChange}
+      value={value}
+      variant="standard"
+      {...props}
     >
-    {props.children}
+      {props.children}
     </TextField>
-  )
-});
+  );
+};
 
 /*
 -----------------------
@@ -39,7 +36,6 @@ LOGIN & SIGNUP
 ----------------------
 */
 
-// HOC
 export const Email = props => {
   return (
     <FormControl
@@ -51,11 +47,11 @@ export const Email = props => {
       {...props}
     />
   );
-}
+};
 
 export const Password = props => {
   return (
-    <FormControl 
+    <FormControl
       label="password"
       id="pwd"
       name="pwd"
@@ -64,11 +60,11 @@ export const Password = props => {
       {...props}
     />
   );
-}
+};
 
 export const Username = props => {
   return (
-    <FormControl 
+    <FormControl
       label="Username"
       name="Username"
       type="text"
@@ -77,6 +73,4 @@ export const Username = props => {
       {...props}
     />
   );
-}
-
-
+};

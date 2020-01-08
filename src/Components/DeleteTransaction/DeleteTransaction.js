@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { deleteTransaction } from "../Helpers/DBHelper";
-import { ModalContext } from "../../App/App";
 import Button from "@material-ui/core/Button";
-import { CloseModalButton } from "../Modal/Modal";
 import Grid from "@material-ui/core/Grid";
-import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles.deletetransaction";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles.deletetransaction";
+import { deleteTransaction } from "../Helpers/DBHelper";
+import { ModalContext } from "../../App/App";
+import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
 
 const DeleteTransaction = props => {

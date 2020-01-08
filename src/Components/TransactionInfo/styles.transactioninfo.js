@@ -1,7 +1,7 @@
 const styles = {
-    'right': {
-        'text-align':'right'
-    }
+  right: {
+    "text-align": "right"
+  }
 };
 
 export default styles;

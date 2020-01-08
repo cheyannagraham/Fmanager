@@ -1,7 +1,7 @@
 const styles = {
-    main: {
-        'margin': 'auto',
-    },
-}
+  main: {
+    margin: "auto"
+  }
+};
 
 export default styles;
