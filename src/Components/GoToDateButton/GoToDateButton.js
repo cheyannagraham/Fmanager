@@ -41,6 +41,7 @@ const GoToButton = props => {
             step="1"
             id="goto-month"
             required
+            autoFocus
           />
 
           <FormControl
