@@ -20,11 +20,11 @@ const Home = props => {
     <Container>
       <AppBar position="relative">
         <Toolbar variant="dense" disableGutters>
-          <Grid container alignItems="center">
+          <Grid wrap="nowrap" container alignItems="center">
             <Avatar className={classes.avatar}>
               <Face fontSize="large" color="secondary" />
             </Avatar>
-            <Typography variant="h6" color="secondary">
+            <Typography noWrap variant="h6" color="secondary">
               {user.displayName}
             </Typography>
           </Grid>
