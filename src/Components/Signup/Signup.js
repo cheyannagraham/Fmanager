@@ -5,7 +5,7 @@ import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password, Username } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 // Styles from Login styles
-import styles from "../Login/style.login";
+import styles from "../Login/styles.login";
 import { auth } from "../../fb/fb";
 
 const SignupButton = props => {

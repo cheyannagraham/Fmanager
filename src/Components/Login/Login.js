@@ -5,7 +5,7 @@ import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
-import styles from "./style.login";
+import styles from "./styles.login";
 
 const LoginButton = props => {
   const showModal = useContext(ModalContext).setShowModal;

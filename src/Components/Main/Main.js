@@ -8,7 +8,7 @@ import AddButton from "../AddButton/AddButton";
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
-import styles from "./style.main";
+import styles from "./styles.main";
 import moment from "moment";
 
 const Main = props => {

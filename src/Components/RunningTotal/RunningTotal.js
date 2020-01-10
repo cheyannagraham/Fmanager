@@ -4,7 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./style.runningtotal";
+import styles from "./styles.runningtotal";
 
 const RunningTotal = props => {
   const { classes } = props;
