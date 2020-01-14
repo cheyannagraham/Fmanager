@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
 import Fab from "@material-ui/core/Fab";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import FilterListRounded from "@material-ui/icons/FilterListRounded";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles.filtertransactions";
 import { TransContext } from "../../App/App";
 import { ModalContext } from "../../App/App";
 import TransactionList from "../TransactionList/TransactionList";
-import { DateControl } from "../FormControls/FormControls";
+import { FormControl } from "../FormControls/FormControls";
 import { CloseModalButton } from "../Modal/Modal";
+import moment from "moment";
 
 // Go to today
-const AllTransactionsButton = props => {
+const FilterTransactionsButton = props => {
   const { classes } = props;
   const [transactions] = useContext(TransContext);
   const showModal = useContext(ModalContext).setShowModal;
@@ -20,38 +22,73 @@ const AllTransactionsButton = props => {
   const FilterForm = () => {
     return (
       <form id="filter-form">
-        <Box>
-        From:
-        <DateControl id="filter-from"/>
+        <Box display="grid">
+          <FormControl
+            type="date"
+            name="filter-from-date"
+            id="filter-from-date"
+            label="From:"
+            value={moment().format("YYYY-MM-DD")}
+            required
+          />
 
-        To:
-        <DateControl id="filter-to"/>
+          <FormControl
+            type="date"
+            name="filter-to-date"
+            id="filter-to-date"
+            label="To:"
+            value={moment().format("YYYY-MM-DD")}
+            required
+          />
 
-        <Button variant="contained" color="primary" type="submit">Go</Button>
-        <CloseModalButton color="secondary" />
+          <Box display="flex">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={handleFilter}
+            >
+              Filter
+            </Button>
+            <CloseModalButton color="secondary" />
+          </Box>
         </Box>
       </form>
     );
   };
 
-  const handleClick = () => {
+  const showFilterForm = () => {
     showModal({
       show: true,
-      title: "All Transactions",
-      // actions: <CloseModalButton color="primary" />,
+      title: "Filter Transactions",
       content: <FilterForm />
     });
-    // showModal({
-    //   show: true,
-    //   title: "All Transactions",
-    //   actions: <CloseModalButton color="primary" />,
-    //   content:
-    //     transactions.length > 0 ? (
-    //       <TransactionList transactions={transactions} />
-    //     ) : (
-    //       <Box fontSize="1.2rem">No Transactions</Box>
-    //     )
-    // });
+  };
+
+  const handleFilter = e => {
+    e.preventDefault();
+    const fromDate = document.querySelector("#filter-from-date").value;
+    const toDate = document.querySelector("#filter-to-date").value;
+    const filteredTransactions = transactions.filter(
+      trans => trans.date >= fromDate && trans.date <= toDate
+    );
+    showModal({
+      show: true,
+      title: "Transactions",
+      text: (
+        <>
+          <Typography component="span" display="block">From {moment(fromDate).format("MMM-DD-YYYY")} </Typography>
+          <Typography component="span" display="block">To {moment(toDate).format("MMM-DD-YYYY")} </Typography>
+        </>
+      ),
+      actions: <CloseModalButton color="primary" />,
+      content:
+        filteredTransactions.length > 0 ? (
+          <TransactionList transactions={filteredTransactions} />
+        ) : (
+          <Box fontSize="1.2rem">No Transactions</Box>
+        )
+    });
   };
 
   return (
@@ -61,11 +98,11 @@ const AllTransactionsButton = props => {
       color="primary"
       aria-label="filter transactions"
       title="Filter Transactions"
-      onClick={handleClick}
+      onClick={showFilterForm}
     >
       <FilterListRounded />
     </Fab>
   );
 };
 
-export default withStyles(styles)(AllTransactionsButton);
+export default withStyles(styles)(FilterTransactionsButton);

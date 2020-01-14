@@ -10,6 +10,7 @@ import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import styles from "./styles.main";
 import moment from "moment";
+import FilterTransactions from "../FilterTransactions/FilterTransactions";
 
 const Main = props => {
   const [transactions] = useContext(TransContext);
@@ -52,6 +53,7 @@ const Main = props => {
       </Grid>
 
       <Grid container justify="flex-end">
+        <FilterTransactions />
         <TodayButton setMonth={setMonth} setYear={setYear} />
         <GoToDateButton setMonth={setMonth} setYear={setYear} />
         <AddButton />
