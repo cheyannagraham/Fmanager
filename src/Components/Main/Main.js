@@ -52,12 +52,8 @@ const Main = props => {
       </Grid>
 
       <Grid container justify="flex-end">
-        <TodayButton setMonth={setMonth} setYear={setYear}>
-          Today
-        </TodayButton>
-        <GoToDateButton setMonth={setMonth} setYear={setYear}>
-          GoTo
-        </GoToDateButton>
+        <TodayButton setMonth={setMonth} setYear={setYear} />
+        <GoToDateButton setMonth={setMonth} setYear={setYear} />
         <AddButton />
       </Grid>
     </Grid>
