@@ -2,15 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import MonthHeader from "../MonthHeader/MonthHeader";
-import TodayButton from "../TodayButton/TodayButton";
 import TransactionList from "../TransactionList/TransactionList";
-import AddButton from "../AddButton/AddButton";
-import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import styles from "./styles.monthlyview";
 import moment from "moment";
-import FilterTransactions from "../FilterTransactions/FilterTransactions";
 
 const MonthlyView = props => {
   const [transactions] = useContext(TransContext);
@@ -44,9 +40,7 @@ const MonthlyView = props => {
       </Grid>
 
       <RunningTotal
-        month={month}
-        year={year}
-        monthlyTransactions={monthlyTransactions}
+        currentTransactions={monthlyTransactions}
         transactions={transactions}
       />
     </Grid>

@@ -9,18 +9,18 @@ import styles from "./styles.runningtotal";
 const RunningTotal = props => {
   const { classes } = props;
 
-  const [monthlyTotal, setMonthlyTotal] = useState(0);
+  const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
 
-  // Calculate Monthly Total
+  // Calculate current Total
   useEffect(() => {
-    setMonthlyTotal(
-      props.monthlyTransactions.reduce(
+    setCurrentTotal(
+      props.currentTransactions.reduce(
         (acc, val) => Number(acc) + Number(val.amount),
         0
       )
     );
-  }, [props.month, props.year, props.monthlyTransactions]);
+  }, [props.currentTransactions]);
 
   // Calculate Running Total
   useEffect(() => {
@@ -38,10 +38,10 @@ const RunningTotal = props => {
       document.querySelector("#run-total").classList.add(classes.neg);
     else document.querySelector("#run-total").classList.remove(classes.neg);
 
-    if (monthlyTotal < 0)
-      document.querySelector("#monthly-total").classList.add(classes.neg);
-    else document.querySelector("#monthly-total").classList.remove(classes.neg);
-  }, [runningTotal, monthlyTotal]);
+    if (currentTotal < 0)
+      document.querySelector("#current-total").classList.add(classes.neg);
+    else document.querySelector("#current-total").classList.remove(classes.neg);
+  }, [runningTotal, currentTotal]);
 
   return (
     <Paper className={classes.container}>
@@ -53,16 +53,16 @@ const RunningTotal = props => {
 
       <Grid container spacing={1} className={classes.total}>
         <Grid item xs={9}>
-          <Typography color="primary">Monthly Total</Typography>
+          <Typography color="primary">Current Total</Typography>
         </Grid>
 
         <Grid item xs={3}>
           <Typography
-            id="monthly-total"
+            id="current-total"
             align="right"
             className={classes["total-value"]}
           >
-            ${monthlyTotal.toFixed(2)}
+            ${currentTotal.toFixed(2)}
           </Typography>
         </Grid>
       </Grid>
