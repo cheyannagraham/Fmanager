@@ -11,22 +11,17 @@ import moment from "moment";
 const MonthlyViewHeader = props => {
   const { classes } = props;
 
-  // Ensure months go from Dec > Jan & Jan < Dec
+  // Increment & Decrement Months
   const handleClick = eventVal => {
-    const monthVal = Number(props.month) + eventVal;
-    let newMonth = monthVal;
-    let newYear = props.year;
-
-    if (monthVal === 0) {
-      newYear = Number(props.year) - 1;
-      newMonth = 12;
-    } else if (monthVal === 13) {
-      newYear = Number(props.year) + 1;
-      newMonth = 1;
-    }
-    if (props.year !== newYear) props.setYear(newYear);
-
-    props.setMonth(newMonth);
+    props.setDate(
+      eventVal === 1
+        ? moment(props.date)
+            .add(1, "months")
+            .format("MMMM YYYY")
+        : moment(props.date)
+            .subtract(1, "months")
+            .format("MMMM YYYY")
+    );
   };
 
   return (
@@ -51,7 +46,7 @@ const MonthlyViewHeader = props => {
         color="primary"
         className={classes["month-title"]}
       >
-        {`${moment(props.month, "MM").format("MMMM")} ${props.year}`}
+        {moment(props.date).format('MMMM YYYY')}
       </Typography>
 
       <IconButton
