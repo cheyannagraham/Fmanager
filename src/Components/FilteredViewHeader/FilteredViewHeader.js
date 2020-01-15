@@ -1,18 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import withStyles from "@material-ui/core/styles/withStyles";
 import Box from "@material-ui/core/Box";
-// import styles from "./styles.filteredheader";
 import { FormControl } from "../FormControls/FormControls";
-
 import moment from "moment";
 
-const styles = {};
-
 const FilteredHeader = props => {
-  const { classes } = props;
-
   const handleChange = e => {
     const input = e.target.id;
     const value = e.target.value;
@@ -24,11 +17,7 @@ const FilteredHeader = props => {
   };
 
   return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-    >
+    <Grid container justify="center" alignItems="center">
       <form onChange={handleChange}>
         <Box display="flex" flexWrap="wrap" alignItems="center" py={2.5}>
           <Box display="flex" flexWrap="wrap" alignItems="center" m={1}>
@@ -66,4 +55,4 @@ const FilteredHeader = props => {
   );
 };
 
-export default withStyles(styles)(FilteredHeader);
+export default FilteredHeader;

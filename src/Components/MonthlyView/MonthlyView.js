@@ -1,41 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import MonthHeader from "../MonthHeader/MonthHeader";
+import MonthlyViewHeader from "../MonthlyViewHeader/MonthlyViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
-import styles from "./styles.monthlyview";
 import moment from "moment";
 
 const MonthlyView = props => {
   const [transactions] = useContext(TransContext);
-  const [month, setMonth] = useState(Number(moment().format("MM")));
-  const [year, setYear] = useState(Number(moment().format("YYYY")));
+  const [date, setDate] = useState(moment().format("MMMM YYYY"));
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
 
-  const { classes } = props;
-
-  // Get Monthly Transactions when year, month or transactions array changes
+  // Filter Transactions
   useEffect(() => {
     setMonthlyTransactions(
       transactions.filter(
-        trans =>
-          Number(moment(trans.date).format("YYYY")) === Number(year) &&
-          Number(moment(trans.date).format("MM")) === Number(month)
+        trans => moment(trans.date).format("MMMM YYYY") === date
       )
     );
-  }, [month, year, transactions]);
+  }, [date, transactions]);
 
   return (
     <Grid container>
       <Grid container>
-        <MonthHeader
-          month={month}
-          year={year}
-          setMonth={setMonth}
-          setYear={setYear}
-        />
+        <MonthlyViewHeader date={date} setDate={setDate} />
         <TransactionList transactions={monthlyTransactions} />
       </Grid>
 
@@ -47,4 +35,4 @@ const MonthlyView = props => {
   );
 };
 
-export default withStyles(styles)(MonthlyView);
+export default MonthlyView;

@@ -8,14 +8,16 @@ import styles from "./styles.main";
 import FilterTransactions from "../FilterTransactions/FilterTransactions";
 import MonthlyView from "../MonthlyView/MonthlyView";
 import FilteredView from "../FilteredView/FilteredView";
+import DailyView from "../DailyView/DailyView";
 
 const Main = props => {
   const { classes } = props;
 
   return (
     <Grid component="main" container className={classes.main}>
-      {/* <MonthlyView /> */}
+      <MonthlyView />
       <FilteredView />
+      <DailyView />
 
       {/* Need to adjust according to view */}
       {/* <Grid container justify="flex-end">
