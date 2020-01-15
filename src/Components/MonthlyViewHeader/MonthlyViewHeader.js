@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import styles from "./styles.monthlyviewheader";
 import moment from "moment";
 
-const MonthHeader = props => {
+const MonthlyViewHeader = props => {
   const { classes } = props;
 
   // Ensure months go from Dec > Jan & Jan < Dec
@@ -67,4 +67,4 @@ const MonthHeader = props => {
   );
 };
 
-export default withStyles(styles)(MonthHeader);
+export default withStyles(styles)(MonthlyViewHeader);
