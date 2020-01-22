@@ -17,10 +17,10 @@ const MonthlyViewHeader = props => {
       eventVal === 1
         ? moment(props.date)
             .add(1, "months")
-            .format("MMMM YYYY")
+            .format("YYYY-MM-DD")
         : moment(props.date)
             .subtract(1, "months")
-            .format("MMMM YYYY")
+            .format("YYYY-MM-DD")
     );
   };
 

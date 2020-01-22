@@ -8,14 +8,14 @@ import moment from "moment";
 
 const MonthlyView = props => {
   const [transactions] = useContext(TransContext);
-  const [date, setDate] = useState(moment().format("MMMM YYYY"));
+  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [monthlyTransactions, setMonthlyTransactions] = useState([]);
 
   // Filter Transactions
   useEffect(() => {
     setMonthlyTransactions(
       transactions.filter(
-        trans => moment(trans.date).format("MMMM YYYY") === date
+        trans => moment(trans.date).format("YYYY-MM-DD") === date
       )
     );
   }, [date, transactions]);
