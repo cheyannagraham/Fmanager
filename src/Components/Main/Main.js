@@ -9,12 +9,14 @@ import FilterTransactions from "../FilterTransactions/FilterTransactions";
 import MonthlyView from "../MonthlyView/MonthlyView";
 import FilteredView from "../FilteredView/FilteredView";
 import DailyView from "../DailyView/DailyView";
+import SideDrawer from "../SideDrawer/SideDrawer";
 
 const Main = props => {
   const { classes } = props;
 
   return (
     <Grid component="main" container className={classes.main}>
+      <SideDrawer />
       <MonthlyView />
       <FilteredView />
       <DailyView />

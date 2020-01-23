@@ -16,6 +16,7 @@ import Modal from "../Components/Modal/Modal";
 import Footer from "../Components/Footer/Footer";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import LandingPage from "../Components/LandingPage/LandingPage";
+import TopBarSpacer from "../Components/TopBarSpacer/TopBarSpacer";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
@@ -48,6 +49,7 @@ const App = props => {
                 <Container>
                   <TopBar />
                   <Container maxWidth="md">
+                    <TopBarSpacer />
                     <Main />
                   </Container>
                 </Container>

@@ -16,7 +16,7 @@ const TopBar = props => {
   const { classes } = props;
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" className={classes.top}>
       <Toolbar variant="dense" disableGutters>
         <Box width="70%">
           <Grid wrap="nowrap" container alignItems="center">
