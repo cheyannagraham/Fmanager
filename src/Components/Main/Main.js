@@ -12,10 +12,8 @@ import FilteredView from "../FilteredView/FilteredView";
 
 export const ViewContext = React.createContext();
 
-const reducer = (state, action) => {
-  switch (action) {
-    case "monthly":
-      return <MonthlyView />;
+const reducer = (state, view) => {
+  switch (view) {
     case "daily":
       return <DailyView />;
     case "filter":
@@ -27,7 +25,7 @@ const reducer = (state, action) => {
 
 const Main = props => {
   const { classes } = props;
-  const [view, dispatch] = useReducer(reducer, reducer());
+  const [view, dispatch] = useReducer(reducer, <MonthlyView />);
 
   return (
     <ViewContext.Provider value={dispatch}>
