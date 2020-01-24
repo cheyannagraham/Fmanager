@@ -18,6 +18,7 @@ import { getTransactions } from "../Components/Helpers/DBHelper";
 import LandingPage from "../Components/LandingPage/LandingPage";
 import TopBarSpacer from "../Components/TopBarSpacer/TopBarSpacer";
 
+
 // Global data & state
 export const ModalContext = React.createContext(false);
 export const UserContext = React.createContext(null);
@@ -33,6 +34,7 @@ const App = props => {
   auth.onAuthStateChanged(user => {
     setUser(user);
   });
+
   // update transactions if user changes
   useEffect(() => {
     user && (async () => setTransactions(await getTransactions()))();

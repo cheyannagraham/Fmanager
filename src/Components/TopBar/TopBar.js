@@ -9,7 +9,7 @@ import Box from "@material-ui/core/Box";
 import Face from "@material-ui/icons/Face";
 import styles from "./styles.topbar";
 import { UserContext } from "../../App/App";
-import Signout from "../Signout/Signout";
+import SideDrawerMenuButton from "../SideDrawerMenuButton/SideDrawerMenuButton";
 
 const TopBar = props => {
   const user = useContext(UserContext);
@@ -30,8 +30,8 @@ const TopBar = props => {
             </Typography>
           </Grid>
         </Box>
-        <Box width="30%" align="right">
-          <Signout />
+        <Box width="30%" align="right" m={1}>
+          <SideDrawerMenuButton />
         </Box>
       </Toolbar>
     </AppBar>
@@ -39,3 +39,4 @@ const TopBar = props => {
 };
 
 export default withStyles(styles)(TopBar);
+

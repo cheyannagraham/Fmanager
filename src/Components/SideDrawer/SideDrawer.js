@@ -1,24 +1,30 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
 import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
-import { Hidden } from "@material-ui/core";
+import Hidden from "@material-ui/core/Hidden";
+import Signout from "../Signout/Signout";
 
 const SideDrawer = props => {
+  const content = (
+    <>
+      <TopBarSpacer />
+      <Signout />
+    </>
+  );
+  
   return (
     <>
-    {/* Mobile Display */}
+      {/* Mobile Display */}
       <Hidden mdUp={true}>
-        <Drawer variant="permanent" open={true}>
-          <TopBarSpacer />
-          <p>small</p>
+        <Drawer anchor="left" variant="temporary" open={props.show}>
+          {content}
         </Drawer>
       </Hidden>
 
       {/* Not Mobile Display */}
       <Hidden smDown={true}>
-        <Drawer variant="permanent" open={true}>
-          <TopBarSpacer />
-          <p>large</p>
+        <Drawer anchor="left" variant="temporary" open={props.show}>
+        {content}
         </Drawer>
       </Hidden>
     </>
