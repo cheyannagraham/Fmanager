@@ -9,14 +9,11 @@ import Grid from "@material-ui/core/Grid";
 import myPalette from "../CSS/mypalette";
 import { auth } from "../fb/fb";
 import styles from "./styles.app";
-import Container from "@material-ui/core/Container";
-import Main from "../Components/Main/Main";
-import TopBar from "../Components/TopBar/TopBar";
 import Modal from "../Components/Modal/Modal";
 import Footer from "../Components/Footer/Footer";
 import { getTransactions } from "../Components/Helpers/DBHelper";
+import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
-import TopBarSpacer from "../Components/TopBarSpacer/TopBarSpacer";
 
 
 // Global data & state
@@ -36,9 +33,9 @@ const App = props => {
   });
 
   // update transactions if user changes
-  useEffect(() => {
-    user && (async () => setTransactions(await getTransactions()))();
-  }, [user]);
+  // useEffect(() => {
+  //   user && (async () => setTransactions(await getTransactions()))();
+  // }, [user]);
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -47,17 +44,7 @@ const App = props => {
           <ModalContext.Provider value={{ setShowModal }}>
             <CssBaseline />
             <Grid container justify="center" className={classes["lp-content"]}>
-              {user ? (
-                <Container>
-                  <TopBar />
-                  <Container maxWidth="md">
-                    <TopBarSpacer />
-                    <Main />
-                  </Container>
-                </Container>
-              ) : (
-                <LandingPage />
-              )}
+              {user ? <Main /> : <LandingPage />}
               {showModal.show && <Modal content={showModal} />}
             </Grid>
             <Footer />

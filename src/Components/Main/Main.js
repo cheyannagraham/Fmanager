@@ -1,35 +1,53 @@
-import React from "react";
+import React, { useReducer } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-// import TodayButton from "../TodayButton/TodayButton";
-// import AddButton from "../AddButton/AddButton";
-// import GoToDateButton from "../GoToDateButton/GoToDateButton";
+import Container from "@material-ui/core/Container";
+import AddButton from "../AddButton/AddButton";
 import styles from "./styles.main";
-// import FilterTransactions from "../FilterTransactions/FilterTransactions";
+import TopBar from "../TopBar/TopBar";
+import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
 import MonthlyView from "../MonthlyView/MonthlyView";
-// import FilteredView from "../FilteredView/FilteredView";
-// import DailyView from "../DailyView/DailyView";
+import DailyView from "../DailyView/DailyView";
+import FilteredView from "../FilteredView/FilteredView";
+
+export const ViewContext = React.createContext();
+
+const reducer = (state, action) => {
+  switch (action) {
+    case "monthly":
+      return <MonthlyView />;
+    case "daily":
+      return <DailyView />;
+    case "filter":
+      return <FilteredView />;
+    default:
+      return <MonthlyView />;
+  }
+};
 
 const Main = props => {
   const { classes } = props;
+  const [view, dispatch] = useReducer(reducer, reducer());
 
   return (
-    <Grid component="main" container className={classes.main}>
-      {/* {props.children} */}
-      {/* <SideDrawer /> */}
-      <MonthlyView />
-      {/* <FilteredView />
-      <DailyView /> */}
-
-      {/* Need to adjust according to view */}
-      {/* <Grid container justify="flex-end">
-        <FilterTransactions />
-        <TodayButton setMonth={setMonth} setYear={setYear} />
-        <GoToDateButton setMonth={setMonth} setYear={setYear} />
-        <AddButton />
-      </Grid> */}
-    </Grid>
+    <ViewContext.Provider value={dispatch}>
+      <Container>
+        <TopBar />
+        <Container maxWidth="md">
+          <TopBarSpacer />
+        </Container>
+        <Grid component="main" container className={classes.main}>
+          {view}
+          <Grid container justify="flex-end">
+            <AddButton />
+          </Grid>
+        </Grid>
+      </Container>
+    </ViewContext.Provider>
   );
 };
 
 export default withStyles(styles)(Main);
+
+// Header will have GO TO Date Functionality */}
+// {/* <GoToDateButton setMonth={setMonth} setYear={setYear} />
