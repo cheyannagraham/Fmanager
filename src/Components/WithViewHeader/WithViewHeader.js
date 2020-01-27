@@ -12,7 +12,7 @@ import TodayButton from "../TodayButton/TodayButton";
 const WithViewHeader = props => {
   const { classes } = props;
 
-  // Increment & Decrement Months
+  // Increment & Decrement Date values
   const handleClick = eventVal => {
     const changeType = props.view === "monthly" ? "months" : "days";
 

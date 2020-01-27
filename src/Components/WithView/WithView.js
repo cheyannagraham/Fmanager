@@ -3,19 +3,23 @@ import Grid from "@material-ui/core/Grid";
 import WithViewHeader from "../WithViewHeader/WithViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
-import RunningTotal from "../../Components/RunningTotal/RunningTotal";
+import RunningTotal from "../RunningTotal/RunningTotal";
 import moment from "moment";
 
-const MonthlyView = props => {
+const WithView = props => {
   const [transactions] = useContext(TransContext);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
-  const [monthlyTransactions, setMonthlyTransactions] = useState([]);
+  const [currentTransactions, setCurrentTransactions] = useState([]);
 
   // Filter Transactions
   useEffect(() => {
-    setMonthlyTransactions(
-      transactions.filter(
-        trans => moment(trans.date).format("YYYY-MM-DD") === date
+    setCurrentTransactions(
+      transactions.filter(trans =>
+        props.view === "monthly"
+          ? moment(trans.date).format("YYYY-MM") ===
+            moment(date).format("YYYY-MM")
+          : moment(trans.date).format("YYYY-MM-DD") ===
+            moment(date).format("YYYY-MM-DD")
       )
     );
   }, [date, transactions]);
@@ -23,16 +27,16 @@ const MonthlyView = props => {
   return (
     <Grid container>
       <Grid container>
-        <WithViewHeader view="monthly" date={date} setDate={setDate} />
-        <TransactionList transactions={monthlyTransactions} />
+        <WithViewHeader view={props.view} date={date} setDate={setDate} />
+        <TransactionList transactions={currentTransactions} />
       </Grid>
 
       <RunningTotal
-        currentTransactions={monthlyTransactions}
+        currentTransactions={currentTransactions}
         transactions={transactions}
       />
     </Grid>
   );
 };
 
-export default MonthlyView;
+export default WithView;

@@ -6,26 +6,24 @@ import AddButton from "../AddButton/AddButton";
 import styles from "./styles.main";
 import TopBar from "../TopBar/TopBar";
 import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
-import MonthlyView from "../MonthlyView/MonthlyView";
-import DailyView from "../DailyView/DailyView";
-import FilteredView from "../FilteredView/FilteredView";
+import WithView from "../WithView/WithView";
 
 export const ViewContext = React.createContext();
 
 const reducer = (state, view) => {
   switch (view) {
     case "daily":
-      return <DailyView />;
+      return "daily";
     case "filter":
-      return <FilteredView />;
+      return "filter";
     default:
-      return <MonthlyView />;
+      return "monthly";
   }
 };
 
 const Main = props => {
   const { classes } = props;
-  const [view, dispatch] = useReducer(reducer, <MonthlyView />);
+  const [view, dispatch] = useReducer(reducer, reducer());
 
   return (
     <ViewContext.Provider value={dispatch}>
@@ -35,7 +33,7 @@ const Main = props => {
           <TopBarSpacer />
         </Container>
         <Grid component="main" container className={classes.main}>
-          {view}
+          <WithView view={view} />
           <Grid container justify="flex-end">
             <AddButton />
           </Grid>
