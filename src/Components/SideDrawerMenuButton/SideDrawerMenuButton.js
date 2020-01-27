@@ -10,6 +10,7 @@ import Signout from "../Signout/Signout";
 import TodayButton from "../TodayButton/TodayButton";
 import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
+import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
@@ -37,6 +38,7 @@ export const SideDrawer = props => {
         <ListItem>Views</ListItem>
         <ListItem><TodayButton /></ListItem>
         <ListItem><FilterTransactionsButton /></ListItem>
+        <ListItem><MonthlyViewButton/></ListItem>
         <ListItem><GoToDateButton /></ListItem>
         <ListItem><Signout /></ListItem>
       </List>
