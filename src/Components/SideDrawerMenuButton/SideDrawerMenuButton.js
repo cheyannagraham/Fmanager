@@ -7,7 +7,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
 import Signout from "../Signout/Signout";
-import TodayButton from "../TodayButton/TodayButton";
 import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
@@ -38,19 +37,17 @@ export const SideDrawer = props => {
       <List>
         <ListItem>Views</ListItem>
         <ListItem>
-          <TodayButton />
-        </ListItem>
-        <ListItem>
-          <FilterTransactionsButton />
-        </ListItem>
-        <ListItem>
           <MonthlyViewButton />
         </ListItem>
         <ListItem>
           <DailyViewButton />
         </ListItem>
+        <ListItem>Options</ListItem>
         <ListItem>
           <GoToDateButton />
+        </ListItem>
+        <ListItem>
+          <FilterTransactionsButton />
         </ListItem>
         <ListItem>
           <Signout />

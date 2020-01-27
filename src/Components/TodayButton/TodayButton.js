@@ -1,24 +1,23 @@
 import React from "react";
 import TodayRounded from "@material-ui/icons/TodayRounded";
-import WithFab from "../WithFab/WithFab";
+import IconButton from "@material-ui/core/IconButton";
 import moment from "moment";
 
 // Go to today
 const TodayButton = props => {
   const handleClick = () => {
-    props.setMonth(Number(moment().format("MM")));
-    props.setYear(Number(moment().format("YYYY")));
+    props.setDate(moment().format("YYYY-MM-DD"));
   };
 
   return (
-
-    <WithFab
-      arialabel="goto-today"
+    <IconButton
+      aria-label="goto-today"
       title="Go To Today"
-      handleClick={handleClick}
+      onClick={handleClick}
+      color={props.color}
     >
       <TodayRounded />
-    </WithFab>
+    </IconButton>
   );
 };
 

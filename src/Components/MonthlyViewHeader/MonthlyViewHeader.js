@@ -7,6 +7,7 @@ import ArrowRight from "@material-ui/icons/ArrowRight";
 import IconButton from "@material-ui/core/IconButton";
 import styles from "./styles.monthlyviewheader";
 import moment from "moment";
+import TodayButton from "../TodayButton/TodayButton";
 
 const MonthlyViewHeader = props => {
   const { classes } = props;
@@ -25,6 +26,7 @@ const MonthlyViewHeader = props => {
   };
 
   return (
+    <>
     <Grid
       container
       justify="center"
@@ -46,7 +48,7 @@ const MonthlyViewHeader = props => {
         color="primary"
         className={classes["month-title"]}
       >
-        {moment(props.date).format('MMMM YYYY')}
+        {moment(props.date).format("MMMM YYYY")}
       </Typography>
 
       <IconButton
@@ -58,7 +60,9 @@ const MonthlyViewHeader = props => {
       >
         <ArrowRight className={classes.icon} />
       </IconButton>
+    <TodayButton className={[classes.ibutton, classes.icon]} color="primary" setDate={props.setDate} />
     </Grid>
+</>
   );
 };
 
