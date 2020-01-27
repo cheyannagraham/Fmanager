@@ -34,6 +34,3 @@ const Main = props => {
 };
 
 export default withStyles(styles)(Main);
-
-// Header will have GO TO Date Functionality */}
-// {/* <GoToDateButton setMonth={setMonth} setYear={setYear} />

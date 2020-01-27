@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import IconButton from "@material-ui/core/IconButton";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import styles from "./styles.withviewheader";
-import moment from "moment";
+import { ModalContext } from "../../App/App";
+import { CloseModalButton } from "../Modal/Modal";
+import { FormControl } from "../FormControls/FormControls";
 import TodayButton from "../TodayButton/TodayButton";
+import moment from "moment";
 
 const WithViewHeader = props => {
   const { classes } = props;
+  let showModal = useContext(ModalContext).setShowModal;
 
   // Increment & Decrement Date values
   const handleClick = eventVal => {
@@ -25,6 +30,31 @@ const WithViewHeader = props => {
             .subtract(1, changeType)
             .format("YYYY-MM-DD")
     );
+  };
+
+  const setDate = eventVal => {
+    props.setDate(moment(eventVal.target.value).format("YYYY-MM-DD"));
+  };
+
+  const showCalendar = () => {
+    showModal({
+      show: true,
+      title: "Go To Date",
+      content: (
+        <form id="goto-date-form" onChange={setDate}>
+          <FormControl
+            variant="outlined"
+            label="Date"
+            type="date"
+            id="goto-date"
+            value={props.date}
+            required
+            autoFocus
+          />
+        </form>
+      ),
+      actions: <CloseModalButton />
+    });
   };
 
   return (
@@ -44,13 +74,18 @@ const WithViewHeader = props => {
         <ArrowLeft className={classes.icon} />
       </IconButton>
 
-      <Typography
+      <ButtonBase onClick={showCalendar}>
+        <Typography
+        
         variant="h4"
         color="primary"
         className={classes.title}
       >
-        {props.view === "monthly" ? moment(props.date).format("MMMM YYYY") : moment(props.date).format("MMMM DD, YYYY")}
+        {props.view === "monthly"
+          ? moment(props.date).format("MMMM YYYY")
+          : moment(props.date).format("MMMM DD, YYYY")}
       </Typography>
+        </ButtonBase>
 
       <IconButton
         color="primary"
@@ -61,7 +96,11 @@ const WithViewHeader = props => {
       >
         <ArrowRight className={classes.icon} />
       </IconButton>
-    <TodayButton className={[classes.ibutton, classes.icon]} color="primary" setDate={props.setDate} />
+      <TodayButton
+        className={[classes.ibutton, classes.icon]}
+        color="primary"
+        setDate={props.setDate}
+      />
     </Grid>
   );
 };
