@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
-import Fab from "@material-ui/core/Fab";
 import Button from "@material-ui/core/Button";
 import DateRangeRounded from "@material-ui/icons/DateRangeRounded";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { FormControl } from "../FormControls/FormControls";
-import styles from "./styles.gotobutton";
+import FabHOC from "../FabHOC/FabHOC";
 
 const GoToButton = props => {
-  const { classes } = props;
   let showModal = useContext(ModalContext).setShowModal;
 
   const validateDate = e => {
@@ -71,17 +68,14 @@ const GoToButton = props => {
   };
 
   return (
-    <Fab
-      className={classes["fab-container"]}
-      size="small"
-      color="primary"
+    <FabHOC
       aria-label="goto-date"
       title="Go To Date"
-      onClick={handleClick}
+      handleClick={handleClick}
     >
       <DateRangeRounded />
-    </Fab>
+    </FabHOC>
   );
 };
 
-export default withStyles(styles)(GoToButton);
+export default GoToButton;
