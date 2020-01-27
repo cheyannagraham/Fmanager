@@ -1,9 +1,9 @@
 import React from "react";
 import Fab from "@material-ui/core/Fab";
 import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.fabhoc";
+import styles from "./styles.withfab";
 
-const FabHOC = props => {
+const WithFab = props => {
   const { classes } = props;
 
   return (
@@ -20,4 +20,4 @@ const FabHOC = props => {
   );
 };
 
-export default withStyles(styles)(FabHOC);
+export default withStyles(styles)(WithFab);
