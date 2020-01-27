@@ -7,6 +7,7 @@ import styles from "./styles.main";
 import TopBar from "../TopBar/TopBar";
 import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
 import WithView from "../WithView/WithView";
+import FilteredView from "../FilteredView/FilteredView";
 
 export const ViewContext = React.createContext();
 
@@ -22,7 +23,7 @@ const Main = props => {
           <TopBarSpacer />
         </Container>
         <Grid component="main" container className={classes.main}>
-          <WithView view={view} />
+          {view === "filter" ? <FilteredView /> : <WithView view={view} />}
           <Grid container justify="flex-end">
             <AddButton />
           </Grid>
