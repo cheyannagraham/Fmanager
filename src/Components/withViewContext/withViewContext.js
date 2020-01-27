@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { ViewContext } from "../Main/Main";
 
 const withViewContext = (WrappedComponent, vc) => {
-  const viewDispatch = useContext(ViewContext);
+  const setView = useContext(ViewContext);
   const handleClick = () => {
-    viewDispatch(vc);
+    setView(vc);
   };
 
   return props => <WrappedComponent handleClick={handleClick} {...props} />;

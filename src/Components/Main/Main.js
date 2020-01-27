@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useState } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -10,23 +10,12 @@ import WithView from "../WithView/WithView";
 
 export const ViewContext = React.createContext();
 
-const reducer = (state, view) => {
-  switch (view) {
-    case "daily":
-      return "daily";
-    case "filter":
-      return "filter";
-    default:
-      return "monthly";
-  }
-};
-
 const Main = props => {
   const { classes } = props;
-  const [view, dispatch] = useReducer(reducer, reducer());
+  const [view, setView] = useState("monthly");
 
   return (
-    <ViewContext.Provider value={dispatch}>
+    <ViewContext.Provider value={setView}>
       <Container>
         <TopBar />
         <Container maxWidth="md">
