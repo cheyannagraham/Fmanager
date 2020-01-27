@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
+import ExitToAppRounded from "@material-ui/icons/ExitToAppRounded";
 import { ModalContext } from "../../App/App";
 import { auth } from "../../fb/fb";
 import { CloseModalButton } from "../Modal/Modal";
+import WithFab from "../WithFab/WithFab";
 
 const Home = props => {
   const showModal = useContext(ModalContext);
@@ -20,9 +21,9 @@ const Home = props => {
   };
 
   return (
-    <Button onClick={signout} color="secondary">
-      Signout
-    </Button>
+    <WithFab>
+      <ExitToAppRounded onClick={signout} />
+    </WithFab>
   );
 };
 

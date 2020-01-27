@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MenuRounded from "@material-ui/icons/MenuRounded";
-import CloseRounded from "@material-ui/icons/CloseRounded";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,7 +11,6 @@ import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTran
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
 import DailyViewButton from "../DailyViewButton/DailyViewButton";
-import WithFab from "../WithFab/WithFab";
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
