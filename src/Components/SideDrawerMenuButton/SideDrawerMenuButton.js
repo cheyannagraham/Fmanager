@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MenuRounded from "@material-ui/icons/MenuRounded";
+import CloseRounded from "@material-ui/icons/CloseRounded";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,6 +12,7 @@ import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTran
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
 import DailyViewButton from "../DailyViewButton/DailyViewButton";
+import WithFab from "../WithFab/WithFab";
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
@@ -23,7 +25,7 @@ const SideDrawerMenuButton = props => {
       <IconButton onClick={toggleMenu}>
         <MenuRounded fontSize="large" color="secondary" />
       </IconButton>
-      <SideDrawer open={open} />
+      <SideDrawer open={open} toggleMenu={toggleMenu} />
     </>
   );
 };
@@ -60,14 +62,14 @@ export const SideDrawer = props => {
     <>
       {/* Mobile Display */}
       <Hidden mdUp={true}>
-        <Drawer anchor="left" variant="temporary" open={props.open}>
+        <Drawer onClick={props.toggleMenu} anchor="left" variant="temporary" open={props.open}>
           {content}
         </Drawer>
       </Hidden>
 
       {/* Not Mobile Display */}
       <Hidden smDown={true}>
-        <Drawer anchor="left" variant="temporary" open={props.open}>
+        <Drawer onClick={props.toggleMenu} anchor="left" variant="temporary" open={props.open}>
           {content}
         </Drawer>
       </Hidden>
