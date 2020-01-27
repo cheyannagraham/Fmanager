@@ -1,6 +1,6 @@
 import React from "react";
 import TodayRounded from "@material-ui/icons/TodayRounded";
-import FabHOC from "../FabHOC/FabHOC";
+import WithFab from "../WithFab/WithFab";
 import moment from "moment";
 
 // Go to today
@@ -12,13 +12,13 @@ const TodayButton = props => {
 
   return (
 
-    <FabHOC
+    <WithFab
       arialabel="goto-today"
       title="Go To Today"
       handleClick={handleClick}
     >
       <TodayRounded />
-    </FabHOC>
+    </WithFab>
   );
 };
 

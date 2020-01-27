@@ -4,7 +4,7 @@ import DateRangeRounded from "@material-ui/icons/DateRangeRounded";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { FormControl } from "../FormControls/FormControls";
-import FabHOC from "../FabHOC/FabHOC";
+import WithFab from "../WithFab/WithFab";
 
 const GoToButton = props => {
   let showModal = useContext(ModalContext).setShowModal;
@@ -68,13 +68,13 @@ const GoToButton = props => {
   };
 
   return (
-    <FabHOC
+    <WithFab
       aria-label="goto-date"
       title="Go To Date"
       handleClick={handleClick}
     >
       <DateRangeRounded />
-    </FabHOC>
+    </WithFab>
   );
 };
 

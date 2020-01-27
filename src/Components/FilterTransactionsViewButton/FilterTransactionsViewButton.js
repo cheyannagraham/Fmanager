@@ -1,31 +1,18 @@
-import React, { useContext } from "react";
-import Fab from "@material-ui/core/Fab";
+import React from "react";
 import FilterListRounded from "@material-ui/icons/FilterListRounded";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.filtertransactionsviewbutton";
-import { ViewContext } from "../Main/Main";
-
+import WithFab from "../WithFab/WithFab";
+import withViewContext from "../withViewContext/withViewContext";
 
 const FilterTransactionsButton = props => {
-  const viewDispatch = useContext(ViewContext);
-  const { classes } = props;
-
-  const handleClick = () => {
-    viewDispatch("filter");
-  };
-
+  const FabWithContext = withViewContext(WithFab, "filter");
   return (
-    <Fab
-      className={classes["fab-container"]}
-      size="small"
-      color="primary"
+    <FabWithContext
       aria-label="filter-transactions view"
       title="Filter Transactions"
-      onClick={handleClick}
     >
       <FilterListRounded />
-    </Fab>
+    </FabWithContext>
   );
 };
 
-export default withStyles(styles)(FilterTransactionsButton);
+export default FilterTransactionsButton;

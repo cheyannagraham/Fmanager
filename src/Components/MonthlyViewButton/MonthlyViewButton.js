@@ -1,23 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import CalendarTodayRounded from "@material-ui/icons/CalendarTodayRounded";
-import { ViewContext } from "../Main/Main";
-import FabHOC from "../FabHOC/FabHOC";
+import WithFab from "../WithFab/WithFab";
+import withViewContext from "../withViewContext/withViewContext";
 
 const MonthlyViewButton = props => {
-  const viewDispatch = useContext(ViewContext);
-
-  const handleClick = () => {
-    viewDispatch("monthly");
-  };
+  const FabWithContext = withViewContext(WithFab, "monthly");
 
   return (
-    <FabHOC
-      aria-label="monthly view"
-      title="Monthly View"
-      handleClick={handleClick}
-    >
+    <FabWithContext aria-label="monthly view" title="Monthly View">
       <CalendarTodayRounded />
-    </FabHOC>
+    </FabWithContext>
   );
 };
 
