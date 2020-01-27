@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Fab from "@material-ui/core/Fab";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AddIcon from "@material-ui/icons/Add";
+import AddRounded from "@material-ui/icons/AddRounded";
 import styles from "./styles.addbutton";
 import { ModalContext } from "../../App/App";
 import TransactionForm from "../TransactionForm/TransactionForm";
@@ -28,7 +28,7 @@ const AddButton = props => {
       aria-label="add transaction"
       onClick={handleClick}
     >
-      <AddIcon />
+      <AddRounded />
     </Fab>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import Fab from "@material-ui/core/Fab";
-import CalendarToday from "@material-ui/icons/CalendarToday";
+import TodayRounded from "@material-ui/icons/TodayRounded";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles.todaybutton";
 import moment from "moment";
@@ -22,7 +22,7 @@ const TodayButton = props => {
       title="Go To Today"
       onClick={handleClick}
     >
-      <CalendarToday />
+      <TodayRounded />
     </Fab>
   );
 };

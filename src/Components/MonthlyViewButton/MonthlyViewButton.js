@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Fab from "@material-ui/core/Fab";
-import CalendarViewDayRounded from "@material-ui/icons/CalendarViewDayRounded";
+import CalendarTodayRounded from "@material-ui/icons/CalendarTodayRounded";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles.monthlyviewbutton";
 import { ViewContext } from "../Main/Main";
@@ -23,7 +23,7 @@ const  MonthlyViewButton= props => {
       title="Monthly View"
       onClick={handleClick}
     >
-      <CalendarViewDayRounded />
+      <CalendarTodayRounded />
     </Fab>
   );
 };

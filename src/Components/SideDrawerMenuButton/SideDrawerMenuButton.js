@@ -11,6 +11,7 @@ import TodayButton from "../TodayButton/TodayButton";
 import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
 import GoToDateButton from "../GoToDateButton/GoToDateButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
+import DailyViewButton from "../DailyViewButton/DailyViewButton";
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
@@ -36,13 +37,25 @@ export const SideDrawer = props => {
       <TopBarSpacer />
       <List>
         <ListItem>Views</ListItem>
-        <ListItem><TodayButton /></ListItem>
-        <ListItem><FilterTransactionsButton /></ListItem>
-        <ListItem><MonthlyViewButton/></ListItem>
-        <ListItem><GoToDateButton /></ListItem>
-        <ListItem><Signout /></ListItem>
+        <ListItem>
+          <TodayButton />
+        </ListItem>
+        <ListItem>
+          <FilterTransactionsButton />
+        </ListItem>
+        <ListItem>
+          <MonthlyViewButton />
+        </ListItem>
+        <ListItem>
+          <DailyViewButton />
+        </ListItem>
+        <ListItem>
+          <GoToDateButton />
+        </ListItem>
+        <ListItem>
+          <Signout />
+        </ListItem>
       </List>
-      
     </>
   );
 

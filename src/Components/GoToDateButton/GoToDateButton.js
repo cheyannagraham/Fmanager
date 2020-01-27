@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Fab from "@material-ui/core/Fab";
 import Button from "@material-ui/core/Button";
-import DateRange from "@material-ui/icons/DateRange";
+import DateRangeRounded from "@material-ui/icons/DateRangeRounded";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
@@ -79,7 +79,7 @@ const GoToButton = props => {
       title="Go To Date"
       onClick={handleClick}
     >
-      <DateRange />
+      <DateRangeRounded />
     </Fab>
   );
 };
