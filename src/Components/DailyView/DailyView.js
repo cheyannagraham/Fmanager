@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import TransactionList from "../TransactionList/TransactionList";
+import WithViewHeader from "../WithViewHeader/WithViewHeader";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
 import moment from "moment";
-import DailyViewHeader from "../DailyViewHeader/DailyViewHeader";
+
 
 const DailyView = props => {
   const [transactions] = useContext(TransContext);
@@ -23,7 +24,7 @@ const DailyView = props => {
   return (
     <Grid container>
       <Grid container>
-        <DailyViewHeader date={date} setDate={setDate} />
+        <WithViewHeader view="daily" date={date} setDate={setDate} />
         <TransactionList transactions={dailyTransactions} />
       </Grid>
 

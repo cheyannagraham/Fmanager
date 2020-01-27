@@ -5,33 +5,34 @@ import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import IconButton from "@material-ui/core/IconButton";
-import styles from "./styles.monthlyviewheader";
+import styles from "./styles.withviewheader";
 import moment from "moment";
 import TodayButton from "../TodayButton/TodayButton";
 
-const MonthlyViewHeader = props => {
+const WithViewHeader = props => {
   const { classes } = props;
 
   // Increment & Decrement Months
   const handleClick = eventVal => {
+    const changeType = props.view === "monthly" ? "months" : "days";
+
     props.setDate(
       eventVal === 1
         ? moment(props.date)
-            .add(1, "months")
+            .add(1, changeType)
             .format("YYYY-MM-DD")
         : moment(props.date)
-            .subtract(1, "months")
+            .subtract(1, changeType)
             .format("YYYY-MM-DD")
     );
   };
 
   return (
-    <>
     <Grid
       container
       justify="center"
       alignItems="center"
-      className={classes["month-header"]}
+      className={classes.header}
     >
       <IconButton
         color="primary"
@@ -46,9 +47,9 @@ const MonthlyViewHeader = props => {
       <Typography
         variant="h4"
         color="primary"
-        className={classes["month-title"]}
+        className={classes.title}
       >
-        {moment(props.date).format("MMMM YYYY")}
+        {props.view === "monthly" ? moment(props.date).format("MMMM YYYY") : moment(props.date).format("MMMM DD, YYYY")}
       </Typography>
 
       <IconButton
@@ -62,8 +63,7 @@ const MonthlyViewHeader = props => {
       </IconButton>
     <TodayButton className={[classes.ibutton, classes.icon]} color="primary" setDate={props.setDate} />
     </Grid>
-</>
   );
 };
 
-export default withStyles(styles)(MonthlyViewHeader);
+export default withStyles(styles)(WithViewHeader);

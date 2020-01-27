@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
-import MonthlyViewHeader from "../MonthlyViewHeader/MonthlyViewHeader";
+import WithViewHeader from "../WithViewHeader/WithViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
@@ -23,7 +23,7 @@ const MonthlyView = props => {
   return (
     <Grid container>
       <Grid container>
-        <MonthlyViewHeader date={date} setDate={setDate} />
+        <WithViewHeader view="monthly" date={date} setDate={setDate} />
         <TransactionList transactions={monthlyTransactions} />
       </Grid>
 
