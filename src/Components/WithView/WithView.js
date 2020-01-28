@@ -11,7 +11,7 @@ const WithView = props => {
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [currentTransactions, setCurrentTransactions] = useState([]);
 
-  // Filter Transactions
+  // Filter Transactions by month or day
   useEffect(() => {
     setCurrentTransactions(
       transactions.filter(trans =>
@@ -22,7 +22,7 @@ const WithView = props => {
             moment(date).format("YYYY-MM-DD")
       )
     );
-  }, [date, transactions]);
+  }, [date, transactions, props.view]);
 
   return (
     <Grid container>
