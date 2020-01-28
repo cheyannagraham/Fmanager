@@ -7,7 +7,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
 import Signout from "../Signout/Signout";
 import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
@@ -33,41 +32,35 @@ const SideDrawerMenuButton = props => {
 export default SideDrawerMenuButton;
 
 export const SideDrawer = props => {
-    
+  const listItems = [
+    {
+      icon: <MonthlyViewButton />,
+      text: "Monthly View"
+    },
+    {
+      icon: <DailyViewButton />,
+      text: "Daily View",
+      divider: true
+    },
+    {
+      icon: <FilterTransactionsButton />,
+      text: "Filter Transactions"
+    },
+    {
+      icon: <Signout />,
+      text: "Signout"
+    }
+  ].map(item => (
+    <ListItem button key={item.text} divider={item.divider}>
+      <ListItemIcon>{item.icon}</ListItemIcon>
+      <ListItemText>{item.text}</ListItemText>
+    </ListItem>
+  ));
+
   const content = (
     <>
       <TopBarSpacer />
-      <List>
-        <ListItem>
-          <ListItemIcon>
-            <MonthlyViewButton />
-          </ListItemIcon>
-          <ListItemText>Monthly View</ListItemText>
-        </ListItem>
-
-        <ListItem>
-          <ListItemIcon>
-            <DailyViewButton />
-          </ListItemIcon>
-          <ListItemText>Daily View</ListItemText>
-        </ListItem>
-
-        <Divider />
-
-        <ListItem>
-          <ListItemIcon>
-            <FilterTransactionsButton />
-          </ListItemIcon>
-          <ListItemText>Filter</ListItemText>
-        </ListItem>
-
-        <ListItem>
-          <ListItemIcon>
-            <Signout />
-          </ListItemIcon>
-          <ListItemText>Signout</ListItemText>
-        </ListItem>
-      </List>
+      <List>{listItems}</List>
     </>
   );
 
