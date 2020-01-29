@@ -1,8 +1,8 @@
 const styles = {
-  "month-header": {
+  "header": {
     margin: "15px auto 10px"
   },
-  "month-title": {
+  "title": {
     "font-size": "1.5em"
   },
   icon: {

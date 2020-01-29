@@ -1,66 +1,35 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
-import MonthHeader from "../MonthHeader/MonthHeader";
-import TodayButton from "../TodayButton/TodayButton";
-import TransactionList from "../TransactionList/TransactionList";
+import Container from "@material-ui/core/Container";
 import AddButton from "../AddButton/AddButton";
-import GoToDateButton from "../GoToDateButton/GoToDateButton";
-import { TransContext } from "../../App/App";
-import RunningTotal from "../../Components/RunningTotal/RunningTotal";
-import styles from "./style.main";
-import moment from "moment";
+import styles from "./styles.main";
+import TopBar from "../TopBar/TopBar";
+import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
+import WithView from "../WithView/WithView";
+import FilteredView from "../FilteredView/FilteredView";
+
+export const ViewContext = React.createContext();
 
 const Main = props => {
-  const [transactions] = useContext(TransContext);
-  const [month, setMonth] = useState(Number(moment().format("MM")));
-  const [year, setYear] = useState(Number(moment().format("YYYY")));
-  const [monthlyTransactions, setMonthlyTransactions] = useState([]);
-
   const { classes } = props;
-
-  // Get Monthly Transactions when year, month or transactions array changes
-  useEffect(() => {
-    setMonthlyTransactions(
-      transactions.filter(
-        trans =>
-          Number(moment(trans.date).format("YYYY")) === Number(year) &&
-          Number(moment(trans.date).format("MM")) === Number(month)
-      )
-    );
-  }, [month, year, transactions]);
+  const [view, setView] = useState("monthly");
 
   return (
-    <Grid component="main" container className={classes.main}>
-      <Grid container>
-        <Grid container>
-          <MonthHeader
-            month={month}
-            year={year}
-            setMonth={setMonth}
-            setYear={setYear}
-          />
-          <TransactionList transactions={monthlyTransactions} />
+    <ViewContext.Provider value={setView}>
+      <Container>
+        <TopBar />
+        <Container maxWidth="md">
+          <TopBarSpacer />
+        </Container>
+        <Grid component="main" container className={classes.main}>
+          {view === "filter" ? <FilteredView /> : <WithView view={view} />}
+          <Grid container justify="flex-end">
+            <AddButton />
+          </Grid>
         </Grid>
-
-        <RunningTotal
-          month={month}
-          year={year}
-          monthlyTransactions={monthlyTransactions}
-          transactions={transactions}
-        />
-      </Grid>
-
-      <Grid container justify="flex-end">
-        <TodayButton setMonth={setMonth} setYear={setYear}>
-          Today
-        </TodayButton>
-        <GoToDateButton setMonth={setMonth} setYear={setYear}>
-          GoTo
-        </GoToDateButton>
-        <AddButton />
-      </Grid>
-    </Grid>
+      </Container>
+    </ViewContext.Provider>
   );
 };
 

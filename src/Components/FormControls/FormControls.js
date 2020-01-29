@@ -21,9 +21,9 @@ export const FormControl = props => {
   return (
     <TextField
       onChange={handleChange}
-      value={value}
       variant="standard"
       {...props}
+      value={value}
     >
       {props.children}
     </TextField>

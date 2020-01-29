@@ -2,6 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import withStyles from "@material-ui/core/styles/withStyles";
 import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
@@ -39,11 +40,13 @@ const TransactionList = props => {
           </Typography>
           {group.items.map(transaction => (
             <Grid key={transaction.id}>
-              <Grid container spacing={1} alignItems="center">
-                <UpdateTransaction transaction={transaction} />
-                <TransactionInfo transaction={transaction} />
-                <DeleteTransaction transaction={transaction} />
-              </Grid>
+              <Box my={1.25}>
+                <Grid container spacing={1} alignItems="center">
+                  <UpdateTransaction transaction={transaction} />
+                  <TransactionInfo transaction={transaction} />
+                  <DeleteTransaction transaction={transaction} />
+                </Grid>
+              </Box>
               <Divider />
             </Grid>
           ))}
