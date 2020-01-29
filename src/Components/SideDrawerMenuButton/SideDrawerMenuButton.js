@@ -51,10 +51,12 @@ export const SideDrawer = props => {
       text: "Signout"
     }
   ].map(item => (
-    <ListItem button key={item.text} divider={item.divider}>
-      <ListItemIcon>{item.icon}</ListItemIcon>
-      <ListItemText>{item.text}</ListItemText>
-    </ListItem>
+    <label key={item.text}>
+      <ListItem button divider={item.divider}>
+        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemText>{item.text}</ListItemText>
+      </ListItem>
+    </label>
   ));
 
   const content = (
