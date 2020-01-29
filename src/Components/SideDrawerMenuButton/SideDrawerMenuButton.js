@@ -19,12 +19,16 @@ const SideDrawerMenuButton = props => {
     setOpen(!open);
   };
 
+  const closeMenu = () => {
+    setOpen(false);
+  }
+
   return (
     <>
       <IconButton onClick={toggleMenu}>
         <MenuRounded fontSize="large" color="secondary" />
       </IconButton>
-      <SideDrawer open={open} toggleMenu={toggleMenu} />
+      <SideDrawer open={open} toggleMenu={toggleMenu} closeMenu={closeMenu} />
     </>
   );
 };
@@ -71,7 +75,7 @@ export const SideDrawer = props => {
       {/* Mobile Display */}
       <Hidden mdUp={true}>
         <Drawer
-          onClick={props.toggleMenu}
+          onClick={props.closeMenu}
           anchor="left"
           variant="temporary"
           open={props.open}
@@ -83,7 +87,7 @@ export const SideDrawer = props => {
       {/* Not Mobile Display */}
       <Hidden smDown={true}>
         <Drawer
-          onClick={props.toggleMenu}
+          onClick={props.closeMenu}
           anchor="left"
           variant="temporary"
           open={props.open}
