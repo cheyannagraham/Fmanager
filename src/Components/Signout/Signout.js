@@ -21,8 +21,8 @@ const Home = props => {
   };
 
   return (
-    <WithFab>
-      <ExitToAppRounded onClick={signout} />
+    <WithFab handleClick={signout}>
+      <ExitToAppRounded  />
     </WithFab>
   );
 };
