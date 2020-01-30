@@ -53,7 +53,7 @@ const WithViewHeader = props => {
           />
         </form>
       ),
-      actions: <CloseModalButton />
+      actions: <CloseModalButton form="goto-date-form" type="submit" />
     });
   };
 
