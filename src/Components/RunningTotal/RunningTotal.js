@@ -17,24 +17,12 @@ const RunningTotal = props => {
   // Calculate current Total
   useEffect(() => {
     setCurrentTotal(calcTotal(props.currentTransactions));
-  }, [props.currentTransactions]);
+  }, [props.currentTransactions, props.transactions]);
 
   // Calculate Running Total
   useEffect(() => {
     setRunningTotal(calcTotal(props.transactions));
   }, [props.transactions]);
-
-  // Color Positive & Negative Totals
-  // use refs!!
-  useEffect(() => {
-    if (runningTotal < 0)
-      document.querySelector("#run-total").classList.add(classes.neg);
-    else document.querySelector("#run-total").classList.remove(classes.neg);
-
-    if (currentTotal < 0)
-      document.querySelector("#current-total").classList.add(classes.neg);
-    else document.querySelector("#current-total").classList.remove(classes.neg);
-  }, [runningTotal, currentTotal]);
 
   return (
     <Box
@@ -48,7 +36,9 @@ const RunningTotal = props => {
         <Typography
           id="current-total"
           align="right"
-          className={classes["total-value"]}
+          className={`${classes["total-value"]} ${
+            currentTotal < 0 ? classes.neg : null
+          }`}
         >
           ${currentTotal.toFixed(2)}
         </Typography>
@@ -59,7 +49,9 @@ const RunningTotal = props => {
         <Typography
           id="run-total"
           align="right"
-          className={classes["total-value"]}
+          className={`${classes["total-value"]} ${
+            runningTotal < 0 ? classes.neg : null
+          }`}
         >
           ${runningTotal.toFixed(2)}
         </Typography>
