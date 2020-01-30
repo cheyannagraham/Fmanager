@@ -9,9 +9,9 @@ const BottomBar = props => {
 
   return (
     <AppBar position="fixed" className={classes.bottom}>
-      {/* <Toolbar variant="dense" disableGutters> */}
+      <Toolbar variant="dense" disableGutters>
         {props.children}
-      {/* </Toolbar> */}
+      </Toolbar>
     </AppBar>
   );
 };

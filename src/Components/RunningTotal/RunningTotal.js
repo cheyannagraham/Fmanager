@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles.runningtotal";
 
@@ -33,6 +34,7 @@ const RunningTotal = props => {
   }, [props.transactions]);
 
   // Color Positive & Negative Totals
+  // use refs!!
   useEffect(() => {
     if (runningTotal < 0)
       document.querySelector("#run-total").classList.add(classes.neg);
@@ -44,47 +46,32 @@ const RunningTotal = props => {
   }, [runningTotal, currentTotal]);
 
   return (
-    <Paper className={classes.container}>
-      <Grid className={classes["trans-date"]}>
-        <Typography color="secondary" className={classes["total-head"]}>
-          Total
+    <Box
+      display="flex"
+      justifyContent="space-around"
+      alignItems="center"
+      width="100%">
+      
+      <Box>
+        <Typography color="secondary">Current Total</Typography>
+        <Typography
+          id="current-total"
+          align="right"
+          className={classes["total-value"]}>
+          ${currentTotal.toFixed(2)}
         </Typography>
-      </Grid>
-
-      <Grid container spacing={1} className={classes.total}>
-        <Grid item xs={9}>
-          <Typography color="primary">Current Total</Typography>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Typography
-            id="current-total"
-            align="right"
-            className={classes["total-value"]}
-          >
-            ${currentTotal.toFixed(2)}
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Divider />
-
-      <Grid container spacing={1} className={classes.total}>
-        <Grid item xs={9}>
-          <Typography color="primary">Running Total</Typography>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Typography
-            id="run-total"
-            align="right"
-            className={classes["total-value"]}
-          >
-            ${runningTotal.toFixed(2)}
-          </Typography>
-        </Grid>
-      </Grid>
-    </Paper>
+      </Box>
+      
+      <Box>
+        <Typography color="secondary">Running Total</Typography>
+        <Typography
+          id="run-total"
+          align="right"
+          className={classes["total-value"]}>
+          ${runningTotal.toFixed(2)}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 
