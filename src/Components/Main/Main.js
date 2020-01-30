@@ -5,9 +5,11 @@ import Container from "@material-ui/core/Container";
 import AddButton from "../AddButton/AddButton";
 import styles from "./styles.main";
 import TopBar from "../TopBar/TopBar";
-import WithBarSpacer from "../BarSpacer/BarSpacer";
+import BarSpacer from "../BarSpacer/BarSpacer";
 import WithView from "../WithView/WithView";
 import FilteredView from "../FilteredView/FilteredView";
+
+import Box from "@material-ui/core/Box";
 
 export const ViewContext = React.createContext();
 
@@ -20,10 +22,14 @@ const Main = props => {
       <Container>
         <TopBar />
         <Container maxWidth="md">
-          <WithBarSpacer />
+          <BarSpacer />
         </Container>
         <Grid component="main" container className={classes.main}>
           {view === "filter" ? <FilteredView /> : <WithView view={view} />}
+
+          <Box position="absolute" bottom="60px" right="15px" top="auto">
+            <AddButton />
+          </Box>
         </Grid>
       </Container>
     </ViewContext.Provider>
@@ -31,7 +37,3 @@ const Main = props => {
 };
 
 export default withStyles(styles)(Main);
-
-// {/* <Grid container justify="flex-end">
-//   <AddButton />
-// </Grid> */}
