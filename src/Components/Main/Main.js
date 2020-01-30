@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import AddButton from "../AddButton/AddButton";
 import styles from "./styles.main";
 import TopBar from "../TopBar/TopBar";
-import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
+import WithBarSpacer from "../BarSpacer/BarSpacer";
 import WithView from "../WithView/WithView";
 import FilteredView from "../FilteredView/FilteredView";
 
@@ -20,13 +20,10 @@ const Main = props => {
       <Container>
         <TopBar />
         <Container maxWidth="md">
-          <TopBarSpacer />
+          <WithBarSpacer />
         </Container>
         <Grid component="main" container className={classes.main}>
           {view === "filter" ? <FilteredView /> : <WithView view={view} />}
-          <Grid container justify="flex-end">
-            <AddButton />
-          </Grid>
         </Grid>
       </Container>
     </ViewContext.Provider>
@@ -34,3 +31,7 @@ const Main = props => {
 };
 
 export default withStyles(styles)(Main);
+
+// {/* <Grid container justify="flex-end">
+//   <AddButton />
+// </Grid> */}

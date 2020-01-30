@@ -7,7 +7,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import TopBarSpacer from "../TopBarSpacer/TopBarSpacer";
+import WithBarSpacer from "../BarSpacer/BarSpacer";
 import Signout from "../Signout/Signout";
 import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
@@ -65,7 +65,7 @@ export const SideDrawer = props => {
 
   const content = (
     <>
-      <TopBarSpacer />
+      <WithBarSpacer />
       <List>{listItems}</List>
     </>
   );
