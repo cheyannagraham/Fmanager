@@ -5,6 +5,7 @@ import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../RunningTotal/RunningTotal";
 import moment from "moment";
+import BottomBar from "../BottomBar/BottomBar";
 
 const WithView = props => {
   const [transactions] = useContext(TransContext);
@@ -30,11 +31,13 @@ const WithView = props => {
         <WithViewHeader view={props.view} date={date} setDate={setDate} />
         <TransactionList transactions={currentTransactions} />
       </Grid>
-
-      <RunningTotal
-        currentTransactions={currentTransactions}
-        transactions={transactions}
-      />
+      
+      <BottomBar>
+        <RunningTotal
+          currentTransactions={currentTransactions}
+          transactions={transactions}
+        />
+      </BottomBar>
     </Grid>
   );
 };

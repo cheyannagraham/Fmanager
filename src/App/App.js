@@ -33,9 +33,9 @@ const App = props => {
   });
 
   // update transactions if user changes
-  // useEffect(() => {
-  //   user && (async () => setTransactions(await getTransactions()))();
-  // }, [user]);
+  useEffect(() => {
+    user && (async () => setTransactions(await getTransactions()))();
+  }, [user]);
 
   return (
     <MuiThemeProvider theme={theme}>
