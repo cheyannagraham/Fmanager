@@ -45,7 +45,7 @@ const DeleteTransaction = props => {
           title: "Delete Successful!",
           type: "success",
           text: res,
-          actions: <CloseModalButton autofocus={true} variant="contained" />
+          actions: <CloseModalButton autoFocus={true} variant="contained" />
         });
       })
       .catch(err =>
@@ -54,7 +54,7 @@ const DeleteTransaction = props => {
           type: "error",
           title: "Delete Error!",
           text: err,
-          actions: <CloseModalButton autofocus={true} />
+          actions: <CloseModalButton autoFocus={true} />
         })
       );
   };

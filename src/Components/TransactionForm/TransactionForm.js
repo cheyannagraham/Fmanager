@@ -35,7 +35,7 @@ const TransactionForm = props => {
         type: "error",
         text:
           "Invalid Date. please enter a date between 1-1-1900 and 12-31-2050",
-        actions: <CloseModalButton autofocus={true} />
+        actions: <CloseModalButton autoFocus={true} />
       });
     }
   };
@@ -86,7 +86,7 @@ const TransactionForm = props => {
             show: true,
             title: "Error Adding New Transaction!",
             type: "error",
-            actions: <CloseModalButton autofocus={true} />,
+            actions: <CloseModalButton autoFocus={true} />,
             text: err
           })
         );
@@ -102,7 +102,7 @@ const TransactionForm = props => {
               type: "success",
               title: "Update Successful!",
               text: res,
-              actions: <CloseModalButton autofocus={true} />
+              actions: <CloseModalButton autoFocus={true} />
             });
           });
         })
@@ -110,7 +110,7 @@ const TransactionForm = props => {
           showModal({
             show: true,
             title: "Update Failed! :( ",
-            actions: <CloseModalButton autofocus={true} />,
+            actions: <CloseModalButton autoFocus={true} />,
             text: err,
             type: "error"
           })

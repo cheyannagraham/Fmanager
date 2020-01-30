@@ -15,7 +15,7 @@ const Home = props => {
         type: "error",
         title: "Error Signing Out!",
         text: err,
-        actions: <CloseModalButton autofocus={true} variant="contained" />
+        actions: <CloseModalButton autoFocus={true} variant="contained" />
       })
     );
   };
