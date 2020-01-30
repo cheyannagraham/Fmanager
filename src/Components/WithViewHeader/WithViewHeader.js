@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -58,8 +58,9 @@ const WithViewHeader = props => {
   };
 
   return (
-    <Grid
-      container
+    <Box
+      display="flex"
+      flexWrap="no-wrap"
       justify="center"
       alignItems="center"
       className={classes.header}
@@ -77,13 +78,13 @@ const WithViewHeader = props => {
       <ButtonBase onClick={showCalendar}>
         <Typography
         
-        variant="h4"
+        variant="h6"
         color="primary"
         className={classes.title}
       >
         {props.view === "monthly"
           ? moment(props.date).format("MMMM YYYY")
-          : moment(props.date).format("MMMM DD, YYYY")}
+          : moment(props.date).format("MMM DD, YYYY")}
       </Typography>
         </ButtonBase>
 
@@ -101,7 +102,7 @@ const WithViewHeader = props => {
         color="primary"
         setDate={props.setDate}
       />
-    </Grid>
+    </Box>
   );
 };
 
