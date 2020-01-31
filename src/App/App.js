@@ -10,11 +10,9 @@ import myPalette from "../CSS/mypalette";
 import { auth } from "../fb/fb";
 import styles from "./styles.app";
 import Modal from "../Components/Modal/Modal";
-import Footer from "../Components/Footer/Footer";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
-
 
 // Global data & state
 export const ModalContext = React.createContext(false);
@@ -47,7 +45,6 @@ const App = props => {
               {user ? <Main /> : <LandingPage />}
               {showModal.show && <Modal content={showModal} />}
             </Grid>
-            <Footer />
           </ModalContext.Provider>
         </TransContext.Provider>
       </UserContext.Provider>
