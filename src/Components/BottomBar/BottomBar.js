@@ -8,7 +8,7 @@ const BottomBar = props => {
   const { classes } = props;
 
   return (
-    <AppBar position="fixed" className={classes.bottom}>
+    <AppBar position="fixed" className={classes.bottom} component="div">
       <Toolbar variant="dense" disableGutters>
         {props.children}
       </Toolbar>
