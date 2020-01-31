@@ -21,15 +21,15 @@ const Main = props => {
     <ViewContext.Provider value={setView}>
       <Container>
         <TopBar />
-        <Container maxWidth="md">
+        <Container>
           <BarSpacer />
-        </Container>
-        <Grid component="main" container className={classes.main}>
-          {view === "filter" ? <FilteredView /> : <WithView view={view} />}
-        </Grid>
+          <Grid component="main" container className={classes.main}>
+            {view === "filter" ? <FilteredView /> : <WithView view={view} />}
+          </Grid>
           <Box position="fixed" bottom="60px" right="15px" top="auto">
             <AddButton />
           </Box>
+        </Container>
       </Container>
     </ViewContext.Provider>
   );
