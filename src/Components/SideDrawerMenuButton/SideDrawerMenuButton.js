@@ -7,11 +7,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import WithBarSpacer from "../BarSpacer/BarSpacer";
+import BarSpacer from "../BarSpacer/BarSpacer";
 import Signout from "../Signout/Signout";
-import FilterTransactionsButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
+import FilterTransactionsViewButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
 import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
 import DailyViewButton from "../DailyViewButton/DailyViewButton";
+
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ const SideDrawerMenuButton = props => {
 
   const closeMenu = () => {
     setOpen(false);
-  }
+  };
 
   return (
     <>
@@ -47,7 +48,7 @@ export const SideDrawer = props => {
       divider: true
     },
     {
-      icon: <FilterTransactionsButton />,
+      icon: <FilterTransactionsViewButton />,
       text: "Filter Transactions"
     },
     {
@@ -65,7 +66,7 @@ export const SideDrawer = props => {
 
   const content = (
     <>
-      <WithBarSpacer />
+      <BarSpacer />
       <List>{listItems}</List>
     </>
   );
@@ -94,6 +95,7 @@ export const SideDrawer = props => {
         >
           {content}
         </Drawer>
+        >
       </Hidden>
     </>
   );
