@@ -4,6 +4,7 @@ import FilteredHeader from "../FilteredViewHeader/FilteredViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
+import BottomBar from "../BottomBar/BottomBar";
 import moment from "moment";
 
 const FilteredView = props => {
@@ -33,10 +34,12 @@ const FilteredView = props => {
         <TransactionList transactions={filteredTransactions} />
       </Grid>
 
-      <RunningTotal
-        currentTransactions={filteredTransactions}
-        transactions={transactions}
-      />
+      <BottomBar>
+        <RunningTotal
+          currentTransactions={filteredTransactions}
+          transactions={transactions}
+        />
+      </BottomBar>
     </Grid>
   );
 };
