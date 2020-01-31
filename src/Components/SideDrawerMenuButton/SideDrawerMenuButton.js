@@ -95,7 +95,6 @@ export const SideDrawer = props => {
         >
           {content}
         </Drawer>
-        >
       </Hidden>
     </>
   );
