@@ -1,27 +1,24 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.footer";
 
 const Footer = props => {
-  const { classes } = props;
-
   return (
-    <Grid container justify="center" color="primary" className={classes.footer}>
-      <Typography className={classes.p}>
+    <Box width="100%" textAlign="center">
+      <Typography>
         <Link
           target="_blank"
-          color="primary"
+          color="secondary"
           href="https://github.com/cheyannagraham"
           rel="noreferrer"
+          variant="subtitle2"
         >
           Developed By Cheyanna Graham
         </Link>
       </Typography>
-    </Grid>
+    </Box>
   );
 };
 
-export default withStyles(styles)(Footer);
+export default Footer;
