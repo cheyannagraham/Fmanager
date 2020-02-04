@@ -3,7 +3,6 @@ const myPalatte = {
   overrides: {
     MuiButton: {
       root: {
-        margin: "15px",
         cursor: "pointer"
       }
     },

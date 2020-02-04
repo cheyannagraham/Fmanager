@@ -14,6 +14,7 @@ import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
 import styles from "./styles.transactionform";
 import moment from "moment";
+import { withSnackbar } from "notistack";
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -27,6 +28,7 @@ const TransactionForm = props => {
     const validDate = validateDate(userInput);
 
     if (validDate) {
+      showModal({ show: false });
       createTransaction(validDate);
     } else {
       showModal({
@@ -61,35 +63,35 @@ const TransactionForm = props => {
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
-          showModal({
-            show: true,
-            title: "Success",
-            type: "success",
-            text: "New Transaction Added",
-            actions: (
-              <>
-                <Button
-                  color="primary"
-                  autoFocus
-                  variant="contained"
-                  onClick={props.saf}
-                >
-                  Add Another
-                </Button>
-                <CloseModalButton />
-              </>
-            )
+          props.enqueueSnackbar("Transaction Added!", {
+            variant: "success"
           });
+          throw new Error("me :)");
         })
         .catch(err =>
-          showModal({
-            show: true,
-            title: "Error Adding New Transaction!",
-            type: "error",
-            actions: <CloseModalButton autoFocus={true} />,
-            text: err
+        {
+          console.log(typeof err, err);
+          const sbar = props.enqueueSnackbar("Transaction Not Added!", {
+            variant: "error",
+            action: (
+              <Button
+                onClick={()=> {
+                  props.closeSnackbar(sbar);
+                  showModal({
+                  show: true,
+                  title: err.name,
+                  type: "error",
+                  actions: <CloseModalButton autoFocus={true} />,
+                  text: err.message
+                })}}
+              >
+                Info
+              </Button>
+            )
           })
-        );
+        });
+      // onClick={showModal({
+      // })}
     }
 
     if (props.type === "update") {
@@ -197,4 +199,4 @@ const TransactionForm = props => {
   );
 };
 
-export default withStyles(styles)(TransactionForm);
+export default withStyles(styles)(withSnackbar(TransactionForm));
