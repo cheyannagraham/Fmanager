@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
 import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.deletetransaction";
+import styles from "./styles.deletetransactionbutton";
 import { deleteTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
