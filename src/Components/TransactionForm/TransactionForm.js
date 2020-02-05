@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
+import TextField from "@material-ui/core/TextField";
 import {
   updateTransaction,
   getTransactions,
   addTransaction
 } from "../Helpers/DBHelper";
-import { FormControl } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
@@ -15,49 +15,44 @@ import styles from "./styles.transactionform";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 
-
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
   const { classes } = props;
 
-  const handleClick = e => {
-    e.preventDefault();
-    const userInput = document.getElementById("transaction-date").value;
-    const validDate = moment(userInput).isValid()
-      ? moment(userInput).format("YYYY-MM-DD")
-      : false;
+  // Form State
+  const [dateInput, setDateInput] = useState(
+    (currTrans && currTrans.date) || moment().format("YYYY-MM-DD")
+  );
+  const [businessInput, setBusinessInput] = useState(
+    (currTrans && currTrans.business) || ""
+  );
+  const [amountInput, setAmountInput] = useState(
+    (currTrans && currTrans.amount) || ""
+  );
+  const [typeInput, setTypeInput] = useState(
+    (currTrans && currTrans.type) || "income"
+  );
 
-    // Server side validation
-    if (validDate) {
-      showModal({ show: false });
-      createTransaction(validDate);
-    } else {
-      showModal({
-        show: true,
-        title: "Date Error!",
-        type: "error",
-        text: "Invalid Date. Please enter a valid date",
-        actions: <CloseModalButton autoFocus={true} />
-      });
-    }
+  const validateDate = evt => {
+    const userInput = evt.target.value;
+    moment(userInput).isValid() ? setDateInput(evt.target.value) : alert("err");
   };
 
-  const createTransaction = date => {
-    const type = document.getElementById("transaction-type").value;
-    const amount = Math.abs(
-      document.getElementById("transaction-amount").value
-    );
+  const createTransaction = evt => {
+    showModal({ show: false });
+    evt.preventDefault();
 
     const newTrans = {
-      type: type,
-      business: document.getElementById("transaction-business").value,
+      type: typeInput,
+      business: businessInput,
       amount:
-        type === "income"
-          ? Number(amount).toFixed(2)
-          : Number(-amount).toFixed(2),
-      date: date
+        typeInput === "income"
+          ? Number(Math.abs(amountInput)).toFixed(2)
+          : Number(-Math.abs(amountInput)).toFixed(2),
+      date: dateInput
+      //timeStamp:
     };
 
     if (props.type === "add") {
@@ -133,47 +128,58 @@ const TransactionForm = props => {
   };
 
   return (
-    <form id="transaction-form" className={classes.form} onSubmit={handleClick}>
+    <form
+      id="transaction-form"
+      className={classes.form}
+      onSubmit={createTransaction}
+    >
       {/* Date Input */}
-      <FormControl
+      <TextField
         label="Date"
         name="trans-date"
         type="date"
+        variant="standard"
         inputProps={{
           pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
         }}
         id="transaction-date"
-        value={(currTrans && currTrans.date) || moment().format("YYYY-MM-DD")}
+        value={dateInput}
         autoFocus
+        onChange={validateDate}
         required
       />
 
       {/* Business Name Input */}
-      <FormControl
+      <TextField
         label="Business"
         id="transaction-business"
-        value={currTrans && currTrans.business}
+        value={businessInput}
+        variant="standard"
+        onChange={evt => setBusinessInput(evt.target.value)}
         required
         type="text"
         name="business-name"
       />
 
       {/* Amount Input */}
-      <FormControl
+      <TextField
         label="Amount"
         name="trans-amount"
         type="number"
+        variant="standard"
         inputProps={{
           step: 0.01
         }}
         id="transaction-amount"
-        value={currTrans && currTrans.amount}
+        value={amountInput}
+        onChange={evt => setAmountInput(evt.target.value)}
         required
       />
 
       {/* Transaction Type  */}
-      <FormControl
+      <TextField
         select
+        variant="standard"
         InputLabelProps={{
           shrink: true
         }}
@@ -183,7 +189,8 @@ const TransactionForm = props => {
         label="Type"
         id="transaction-type"
         name="trans-type"
-        value={currTrans && currTrans.type}
+        value={typeInput}
+        onChange={evt => setTypeInput(evt.target.value)}
         required
       >
         <>
@@ -194,7 +201,7 @@ const TransactionForm = props => {
             Purchase
           </option>
         </>
-      </FormControl>
+      </TextField>
 
       {/* Form Buttons */}
       <Grid
