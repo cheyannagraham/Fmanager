@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Edit from "@material-ui/icons/Edit";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import { ModalContext } from "../../App/App";
-import styles from "./styles.updatetransaction";
+import styles from "./styles.updatetransactionbutton";
 
 const UpdateTransaction = props => {
   const { classes } = props;
