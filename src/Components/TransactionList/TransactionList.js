@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import withStyles from "@material-ui/core/styles/withStyles";
-import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
+import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
 import DeleteTransaction from "../DeleteTransaction/DeleteTransaction";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import styles from "./styles.transactionlist";

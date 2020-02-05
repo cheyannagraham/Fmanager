@@ -68,55 +68,66 @@ const TransactionForm = props => {
           });
           throw new Error("me :)");
         })
-        .catch(err =>
-        {
-          console.log(typeof err, err);
-          const sbar = props.enqueueSnackbar("Transaction Not Added!", {
+        .catch(err => {
+          const sbar = props.enqueueSnackbar("Transaction Error!", {
             variant: "error",
             action: (
-              <Button
-                onClick={()=> {
-                  props.closeSnackbar(sbar);
-                  showModal({
-                  show: true,
-                  title: err.name,
-                  type: "error",
-                  actions: <CloseModalButton autoFocus={true} />,
-                  text: err.message
-                })}}
-              >
-                Info
-              </Button>
+              <>
+                <Button
+                  onClick={() => {
+                    props.closeSnackbar(sbar);
+                    showModal({
+                      show: true,
+                      title: err.name,
+                      type: "error",
+                      actions: <CloseModalButton autoFocus={true} />,
+                      text: err.message
+                    });
+                  }}
+                >
+                  Info
+                </Button>
+              </>
             )
-          })
+          });
         });
-      // onClick={showModal({
-      // })}
     }
 
     if (props.type === "update") {
       updateTransaction(currTrans.id, newTrans)
-        .then(res => {
+        .then(() => {
           getTransactions().then(tr => {
             setTransactions(tr);
-            showModal({
-              show: true,
-              type: "success",
-              title: "Update Successful!",
-              text: res,
-              actions: <CloseModalButton autoFocus={true} />
+            props.enqueueSnackbar("Update Successful!", {
+              variant: "success"
             });
+            
           });
+          throw new Error("me :)");
         })
-        .catch(err =>
-          showModal({
-            show: true,
-            title: "Update Failed! :( ",
-            actions: <CloseModalButton autoFocus={true} />,
-            text: err,
-            type: "error"
-          })
-        );
+        .catch(err => {
+          const sbar = props.enqueueSnackbar("Error Updating!", {
+            variant: "error",
+            action: (
+              <>
+                <Button
+                  onClick={() => {
+                    props.closeSnackbar(sbar);
+                    showModal({
+                      show: true,
+                      title: err.name,
+                      type: "error",
+                      actions: <CloseModalButton autoFocus={true} />,
+                      text: err.message
+                    });
+                  }}
+                >
+                  Info
+                </Button>
+              </>
+            )
+          });
+        });
     }
   };
 
