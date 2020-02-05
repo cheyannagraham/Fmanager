@@ -15,6 +15,7 @@ import styles from "./styles.transactionform";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 
+
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [, setTransactions] = useContext(TransContext);
@@ -24,18 +25,20 @@ const TransactionForm = props => {
   const handleClick = e => {
     e.preventDefault();
     const userInput = document.getElementById("transaction-date").value;
-    const validDate = moment(userInput).format("YYYY-MM-DD").isValid();
+    const validDate = moment(userInput).isValid()
+      ? moment(userInput).format("YYYY-MM-DD")
+      : false;
 
+    // Server side validation
     if (validDate) {
       showModal({ show: false });
       createTransaction(validDate);
     } else {
       showModal({
         show: true,
-        title: "Validation Error!",
+        title: "Date Error!",
         type: "error",
-        text:
-          "Invalid Date. please enter a date between 1-1-1900 and 12-31-2050",
+        text: "Invalid Date. Please enter a valid date",
         actions: <CloseModalButton autoFocus={true} />
       });
     }
