@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { withSnackbar } from "notistack";
+
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
@@ -26,7 +28,10 @@ const DeleteTransaction = props => {
           <Button
             color="primary"
             variant="contained"
-            onClick={() => handleDelete(id)}
+            onClick={() => {
+              showModal({ show: false });
+              handleDelete(id);
+            }}
           >
             Confirm
           </Button>
@@ -40,23 +45,34 @@ const DeleteTransaction = props => {
     deleteTransaction(id)
       .then(res => {
         setTransactions(transactions.filter(trans => trans.id !== id));
-        showModal({
-          show: true,
-          title: "Delete Successful!",
-          type: "success",
-          text: res,
-          actions: <CloseModalButton autoFocus={true} variant="contained" />
+        props.enqueueSnackbar("Delete Sucessful!", {
+          variant: "success"
         });
+        throw new Error("me :)");
       })
-      .catch(err =>
-        showModal({
-          show: true,
-          type: "error",
-          title: "Delete Error!",
-          text: err,
-          actions: <CloseModalButton autoFocus={true} />
-        })
-      );
+      .catch(err => {
+        const sbar = props.enqueueSnackbar("Deletion Error!", {
+          variant: "error",
+          action: (
+            <>
+              <Button
+                onClick={() => {
+                  props.closeSnackbar(sbar);
+                  showModal({
+                    show: true,
+                    title: err.name,
+                    type: "error",
+                    actions: <CloseModalButton autoFocus={true} />,
+                    text: err.message
+                  });
+                }}
+              >
+                Info
+              </Button>
+            </>
+          )
+        });
+      });
   };
 
   return (
@@ -72,4 +88,4 @@ const DeleteTransaction = props => {
   );
 };
 
-export default withStyles(styles)(DeleteTransaction);
+export default withStyles(styles)(withSnackbar(DeleteTransaction));
