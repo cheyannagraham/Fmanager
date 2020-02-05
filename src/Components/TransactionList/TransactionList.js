@@ -6,10 +6,11 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import withStyles from "@material-ui/core/styles/withStyles";
 import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
-import DeleteTransaction from "../DeleteTransaction/DeleteTransaction";
+import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import styles from "./styles.transactionlist";
 import moment from "moment";
+import BarSpacer from "../BarSpacer/BarSpacer";
 
 const TransactionList = props => {
   const { classes } = props;
@@ -52,6 +53,7 @@ const TransactionList = props => {
           ))}
         </Paper>
       ))}
+      <BarSpacer />
       {props.transactions.length === 0 && (
         <Typography color="primary">No Transactions</Typography>
       )}
