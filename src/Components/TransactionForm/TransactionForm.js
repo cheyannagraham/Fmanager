@@ -7,7 +7,6 @@ import {
   getTransactions,
   addTransaction
 } from "../Helpers/DBHelper";
-import { validateDate } from "../Helpers/DateHelper";
 import { FormControl } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
@@ -25,7 +24,7 @@ const TransactionForm = props => {
   const handleClick = e => {
     e.preventDefault();
     const userInput = document.getElementById("transaction-date").value;
-    const validDate = validateDate(userInput);
+    const validDate = moment(userInput).format("YYYY-MM-DD").isValid();
 
     if (validDate) {
       showModal({ show: false });
@@ -101,7 +100,6 @@ const TransactionForm = props => {
             props.enqueueSnackbar("Update Successful!", {
               variant: "success"
             });
-            
           });
           throw new Error("me :)");
         })
