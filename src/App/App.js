@@ -42,6 +42,7 @@ const App = props => {
     <MuiThemeProvider theme={theme}>
       <SnackbarProvider
         dense
+        autoHideDuration={4000}
         ref={SnackbarRef}
         action={sbar => (
           <Button onClick={() => SnackbarRef.current.closeSnackbar(sbar)}>
