@@ -9,7 +9,7 @@ const FilteredHeader = props => {
   const handleChange = e => {
     const input = e.target.id;
     const value = e.target.value;
-    if (input === "filter-from-date") {
+    if (input === "start-date") {
       props.setFromDate(value);
     } else {
       props.setToDate(value);
@@ -17,41 +17,51 @@ const FilteredHeader = props => {
   };
 
   return (
-    <Grid container justify="center" alignItems="center">
+    <Box width="100%" mt={2}>
       <form onChange={handleChange}>
-        <Box display="flex" flexWrap="wrap" alignItems="center" py={2.5}>
-          <Box display="flex" flexWrap="wrap" alignItems="center" m={1}>
-            <Typography variant="h5" component="span">
-              From:
-            </Typography>
-            <Box mx={1}>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              mx={2}
+            >
+              <Typography variant="h5" component="span">
+                From:
+              </Typography>
               <FormControl
                 type="date"
-                name="filter-from-date"
-                id="filter-from-date"
+                name="start-date"
+                id="start-date"
                 label=""
                 value={moment().format("YYYY-MM-DD")}
                 required
               />
             </Box>
-          </Box>
-          <Box display="flex" flexWrap="wrap" alignItems="center" m={1}>
-            <Typography variant="h5" component="span">
-              To:
-            </Typography>
-            <Box mx={1}>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              mx={2}
+            >
+              <Typography variant="h5" component="span">
+                To:
+              </Typography>
               <FormControl
                 type="date"
-                name="filter-to-date"
-                id="filter-to-date"
+                name="end-date"
+                id="end-date"
                 value={moment().format("YYYY-MM-DD")}
                 required
               />
             </Box>
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
       </form>
-    </Grid>
+    </Box>
   );
 };
 
