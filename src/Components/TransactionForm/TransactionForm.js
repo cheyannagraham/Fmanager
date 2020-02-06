@@ -1,13 +1,9 @@
-import React, { useContext, useState, useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
-import {
-  updateTransaction,
-  getTransactions,
-  addTransaction
-} from "../Helpers/DBHelper";
+import { updateTransaction, addTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
@@ -24,7 +20,7 @@ const formReducer = (state, value) => {
 
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
-  const [, setTransactions] = useContext(TransContext);
+  const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
   const { classes } = props;
 
@@ -46,7 +42,10 @@ const TransactionForm = props => {
   const createTransaction = evt => {
     showModal({ show: false });
     evt.preventDefault();
-    formState.amount = formState.type  === 'income' ? Math.abs(formState.amount) : -Math.abs(formState.amount);
+    formState.amount =
+      formState.type === "income"
+        ? Math.abs(formState.amount)
+        : -Math.abs(formState.amount);
 
     if (props.type === "add") {
       addTransaction(formState)
@@ -86,14 +85,18 @@ const TransactionForm = props => {
     if (props.type === "update") {
       updateTransaction(currTrans.id, formState)
         .then(() => {
-          getTransactions().then(tr => {
-            setTransactions(tr);
-            props.enqueueSnackbar("Update Successful!", {
-              variant: "success"
-            });
+          const newTransactions = transactions;
+          const updateIndex = newTransactions.findIndex(
+            trans => trans.id === currTrans.id
+          );
+          newTransactions[updateIndex] = { ...formState, id: currTrans.id };
+          setTransactions([...newTransactions]);
+          props.enqueueSnackbar("Update Successful!", {
+            variant: "success"
           });
           throw new Error("me :)");
         })
+        //})
         .catch(err => {
           const sbar = props.enqueueSnackbar("Error Updating!", {
             variant: "error",
