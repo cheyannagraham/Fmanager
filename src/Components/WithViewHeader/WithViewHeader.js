@@ -64,6 +64,7 @@ const WithViewHeader = props => {
       justify="center"
       alignItems="center"
       className={classes.header}
+      pt={2}
     >
       <IconButton
         color="primary"
