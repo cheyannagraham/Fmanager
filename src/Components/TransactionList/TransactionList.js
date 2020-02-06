@@ -57,6 +57,10 @@ const TransactionList = props => {
       {props.transactions.length === 0 && (
         <Typography color="primary">No Transactions</Typography>
       )}
+      <BarSpacer />
+      <BarSpacer />
+      <BarSpacer />
+
     </Grid>
   );
 };

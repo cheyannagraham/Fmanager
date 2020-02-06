@@ -5,7 +5,6 @@ import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../RunningTotal/RunningTotal";
 import BottomBar from "../BottomBar/BottomBar";
-import BarSpacer from "../BarSpacer/BarSpacer";
 import moment from "moment";
 
 const WithView = props => {
@@ -31,11 +30,9 @@ const WithView = props => {
       <Grid container>
         <WithViewHeader view={props.view} date={date} setDate={setDate} />
         <TransactionList transactions={currentTransactions} />
-        <BarSpacer width="100%" />
       </Grid>
 
       <BottomBar>
-
         <RunningTotal
           currentTransactions={currentTransactions}
           transactions={transactions}
