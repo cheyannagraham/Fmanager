@@ -29,7 +29,7 @@ const FilteredHeader = props => {
                 mx={2}
               >
                 <Typography variant="h5" component="span">
-                  From:
+                  Start:
                 </Typography>
                 <FormControl
                   type="date"
@@ -51,7 +51,7 @@ const FilteredHeader = props => {
                 mx={2}
               >
                 <Typography variant="h5" component="span">
-                  To:
+                  End:
                 </Typography>
                 <FormControl
                   type="date"
