@@ -45,7 +45,7 @@ const DeleteTransaction = props => {
     deleteTransaction(id)
       .then(res => {
         setTransactions(transactions.filter(trans => trans.id !== id));
-        props.enqueueSnackbar("Delete Sucessful!", {
+        props.enqueueSnackbar("Delete Successful!", {
           variant: "success"
         });
         throw new Error("me :)");
@@ -57,7 +57,6 @@ const DeleteTransaction = props => {
             <>
               <Button
                 onClick={() => {
-                  props.closeSnackbar(sbar);
                   showModal({
                     show: true,
                     title: err.name,
@@ -69,6 +68,7 @@ const DeleteTransaction = props => {
               >
                 Info
               </Button>
+              <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
             </>
           )
         });

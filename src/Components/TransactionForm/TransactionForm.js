@@ -52,19 +52,18 @@ const TransactionForm = props => {
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
-          props.enqueueSnackbar("Transaction Added!", {
+          props.enqueueSnackbar("Add Successful!", {
             variant: "success"
           });
           throw new Error("me :)");
         })
         .catch(err => {
-          const sbar = props.enqueueSnackbar("Transaction Error!", {
+          const sbar = props.enqueueSnackbar("Add Error!", {
             variant: "error",
             action: (
               <>
                 <Button
                   onClick={() => {
-                    props.closeSnackbar(sbar);
                     showModal({
                       show: true,
                       title: err.name,
@@ -76,6 +75,7 @@ const TransactionForm = props => {
                 >
                   Info
                 </Button>
+                <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
               </>
             )
           });
@@ -93,13 +93,12 @@ const TransactionForm = props => {
         })
         //})
         .catch(err => {
-          const sbar = props.enqueueSnackbar("Error Updating!", {
+          const sbar = props.enqueueSnackbar("Update Error!", {
             variant: "error",
             action: (
               <>
                 <Button
                   onClick={() => {
-                    props.closeSnackbar(sbar);
                     showModal({
                       show: true,
                       title: err.name,
@@ -111,6 +110,8 @@ const TransactionForm = props => {
                 >
                   Info
                 </Button>
+                <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
+
               </>
             )
           });
