@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -15,6 +15,13 @@ import styles from "./styles.transactionform";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 
+const formReducer = (state, value) => {
+  return {
+    ...state,
+    [value.input]: value.value
+  };
+};
+
 const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [, setTransactions] = useContext(TransContext);
@@ -22,41 +29,27 @@ const TransactionForm = props => {
   const { classes } = props;
 
   // Form State
-  const [dateInput, setDateInput] = useState(
-    (currTrans && currTrans.date) || moment().format("YYYY-MM-DD")
-  );
-  const [businessInput, setBusinessInput] = useState(
-    (currTrans && currTrans.business) || ""
-  );
-  const [amountInput, setAmountInput] = useState(
-    (currTrans && currTrans.amount) || ""
-  );
-  const [typeInput, setTypeInput] = useState(
-    (currTrans && currTrans.type) || "income"
-  );
+  const [formState, formDispatch] = useReducer(formReducer, {
+    type: (currTrans && currTrans.type) || "income",
+    date: (currTrans && currTrans.date) || moment().format("YYYY-MM-DD"),
+    amount: (currTrans && currTrans.amount) || "",
+    business: (currTrans && currTrans.business) || ""
+  });
 
   const validateDate = evt => {
     const userInput = evt.target.value;
-    moment(userInput).isValid() ? setDateInput(evt.target.value) : alert("err");
+    moment(userInput).isValid()
+      ? formDispatch({ input: "date", value: evt.target.value })
+      : alert("err");
   };
 
   const createTransaction = evt => {
     showModal({ show: false });
     evt.preventDefault();
-
-    const newTrans = {
-      type: typeInput,
-      business: businessInput,
-      amount:
-        typeInput === "income"
-          ? Number(Math.abs(amountInput)).toFixed(2)
-          : Number(-Math.abs(amountInput)).toFixed(2),
-      date: dateInput
-      //timeStamp:
-    };
+    formState.amount = formState.type  === 'income' ? Math.abs(formState.amount) : -Math.abs(formState.amount);
 
     if (props.type === "add") {
-      addTransaction(newTrans)
+      addTransaction(formState)
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
@@ -91,7 +84,7 @@ const TransactionForm = props => {
     }
 
     if (props.type === "update") {
-      updateTransaction(currTrans.id, newTrans)
+      updateTransaction(currTrans.id, formState)
         .then(() => {
           getTransactions().then(tr => {
             setTransactions(tr);
@@ -143,7 +136,7 @@ const TransactionForm = props => {
           pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
         }}
         id="transaction-date"
-        value={dateInput}
+        value={formState.date}
         autoFocus
         onChange={validateDate}
         required
@@ -153,9 +146,11 @@ const TransactionForm = props => {
       <TextField
         label="Business"
         id="transaction-business"
-        value={businessInput}
+        value={formState.business}
         variant="standard"
-        onChange={evt => setBusinessInput(evt.target.value)}
+        onChange={evt =>
+          formDispatch({ input: "business", value: evt.target.value })
+        }
         required
         type="text"
         name="business-name"
@@ -171,8 +166,10 @@ const TransactionForm = props => {
           step: 0.01
         }}
         id="transaction-amount"
-        value={amountInput}
-        onChange={evt => setAmountInput(evt.target.value)}
+        value={formState.amount}
+        onChange={evt =>
+          formDispatch({ input: "amount", value: evt.target.value })
+        }
         required
       />
 
@@ -189,8 +186,10 @@ const TransactionForm = props => {
         label="Type"
         id="transaction-type"
         name="trans-type"
-        value={typeInput}
-        onChange={evt => setTypeInput(evt.target.value)}
+        value={formState.type}
+        onChange={evt =>
+          formDispatch({ input: "type", value: evt.target.value })
+        }
         required
       >
         <>
