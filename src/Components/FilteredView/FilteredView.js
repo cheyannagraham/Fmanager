@@ -31,7 +31,7 @@ const FilteredView = props => {
           setFromDate={setFromDate}
           setToDate={setToDate}
         />
-        <TransactionList transactions={filteredTransactions} />
+        <TransactionList transactions={filteredTransactions} fullDate={true} />
       </Grid>
 
       <BottomBar>

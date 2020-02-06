@@ -37,7 +37,9 @@ const TransactionList = props => {
       {sortGroupedTransactions().map(group => (
         <Paper className={classes["trans-paper"]} key={group.date}>
           <Typography color="primary" className={classes.date}>
-            {moment(group.date).format("MMM DD")}
+            {props.fullDate
+              ? moment(group.date).format("YYYY MMM DD")
+              : moment(group.date).format("MMM DD")}
           </Typography>
           {group.items.map(transaction => (
             <Grid key={transaction.id}>
@@ -60,7 +62,6 @@ const TransactionList = props => {
       <BarSpacer />
       <BarSpacer />
       <BarSpacer />
-
     </Grid>
   );
 };
