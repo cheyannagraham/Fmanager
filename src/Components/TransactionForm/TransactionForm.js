@@ -44,8 +44,8 @@ const TransactionForm = props => {
     evt.preventDefault();
     formState.amount =
       formState.type === "income"
-        ? Math.abs(formState.amount)
-        : -Math.abs(formState.amount);
+        ? Math.abs(formState.amount).toFixed(2)
+        : (Math.abs(formState.amount) * -1).toFixed(2);
 
     if (props.type === "add") {
       addTransaction(formState)
