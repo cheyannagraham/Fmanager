@@ -85,12 +85,7 @@ const TransactionForm = props => {
     if (props.type === "update") {
       updateTransaction(currTrans.id, formState)
         .then(() => {
-          const newTransactions = transactions;
-          const updateIndex = newTransactions.findIndex(
-            trans => trans.id === currTrans.id
-          );
-          newTransactions[updateIndex] = { ...formState, id: currTrans.id };
-          setTransactions([...newTransactions]);
+          setTransactions([...transactions.filter(trans => trans.id !== currTrans.id), { ...formState, id: currTrans.id }]);
           props.enqueueSnackbar("Update Successful!", {
             variant: "success"
           });
