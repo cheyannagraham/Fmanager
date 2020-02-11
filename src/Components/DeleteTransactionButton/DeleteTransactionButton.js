@@ -44,7 +44,7 @@ const DeleteTransaction = props => {
 
   const handleDelete = id => {
     deleteTransaction(id)
-      .then(res => {
+      .then(() => {
         setTransactions(transactions.filter(trans => trans.id !== id));
         QueueSnackbar(() =>
           props.enqueueSnackbar("Delete Successful!", {

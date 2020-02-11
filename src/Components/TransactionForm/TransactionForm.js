@@ -53,32 +53,38 @@ const TransactionForm = props => {
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
-          props.enqueueSnackbar("Add Successful!", {
-            variant: "success"
-          });
+          QueueSnackbar(() =>
+            props.enqueueSnackbar("Add Successful!", {
+              variant: "success"
+            })
+          );
           throw new Error("me :)");
         })
         .catch(err => {
-          const sbar = props.enqueueSnackbar("Add Error!", {
-            variant: "error",
-            action: (
-              <>
-                <Button
-                  onClick={() => {
-                    showModal({
-                      show: true,
-                      title: err.name,
-                      type: "error",
-                      actions: <CloseModalButton autoFocus={true} />,
-                      text: err.message
-                    });
-                  }}
-                >
-                  Info
-                </Button>
-                <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
-              </>
-            )
+          QueueSnackbar(() => {
+            const sbar = props.enqueueSnackbar("Add Error!", {
+              variant: "error",
+              action: (
+                <>
+                  <Button
+                    onClick={() => {
+                      showModal({
+                        show: true,
+                        title: err.name,
+                        type: "error",
+                        actions: <CloseModalButton autoFocus={true} />,
+                        text: err.message
+                      });
+                    }}
+                  >
+                    Info
+                  </Button>
+                  <Button onClick={() => props.closeSnackbar(sbar)}>
+                    Close
+                  </Button>
+                </>
+              )
+            });
           });
         });
     }
@@ -98,29 +104,33 @@ const TransactionForm = props => {
           throw new Error("me :)");
         })
         //})
-        .catch(err => {
-          const sbar = props.enqueueSnackbar("Update Error!", {
-            variant: "error",
-            action: (
-              <>
-                <Button
-                  onClick={() => {
-                    showModal({
-                      show: true,
-                      title: err.name,
-                      type: "error",
-                      actions: <CloseModalButton autoFocus={true} />,
-                      text: err.message
-                    });
-                  }}
-                >
-                  Info
-                </Button>
-                <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
-              </>
-            )
-          });
-        });
+        .catch(err =>
+          QueueSnackbar(() => {
+            const sbar = props.enqueueSnackbar("Update Error!", {
+              variant: "error",
+              action: (
+                <>
+                  <Button
+                    onClick={() => {
+                      showModal({
+                        show: true,
+                        title: err.name,
+                        type: "error",
+                        actions: <CloseModalButton autoFocus={true} />,
+                        text: err.message
+                      });
+                    }}
+                  >
+                    Info
+                  </Button>
+                  <Button onClick={() => props.closeSnackbar(sbar)}>
+                    Close
+                  </Button>
+                </>
+              )
+            });
+          })
+        );
     }
   };
 

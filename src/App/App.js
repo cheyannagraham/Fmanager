@@ -14,7 +14,7 @@ import Modal from "../Components/Modal/Modal";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
-import QueueSnackbar from "../Components/QueueSnackbar/QueueSnackbar";
+import { shiftQueue } from "../Components/QueueSnackbar/QueueSnackbar";
 import { SnackbarProvider } from "notistack";
 
 // Global data & state
@@ -43,7 +43,7 @@ const App = props => {
     <MuiThemeProvider theme={theme}>
       <SnackbarProvider
         dense
-        autoHideDuration={2000}
+        autoHideDuration={2500}
         ref={SnackbarRef}
         //maxSnack={2}
         action={sbar => (
@@ -51,6 +51,7 @@ const App = props => {
             Close
           </Button>
         )}
+        onExited={shiftQueue}
       >
         <UserContext.Provider value={user}>
           <TransContext.Provider value={[transactions, setTransactions]}>
