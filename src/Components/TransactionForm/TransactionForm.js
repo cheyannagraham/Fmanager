@@ -10,6 +10,7 @@ import { TransContext } from "../../App/App";
 import styles from "./styles.transactionform";
 import moment from "moment";
 import { withSnackbar } from "notistack";
+import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 
 const formReducer = (state, value) => {
   return {
@@ -85,10 +86,15 @@ const TransactionForm = props => {
     if (props.type === "update") {
       updateTransaction(currTrans.id, formState)
         .then(() => {
-          setTransactions([...transactions.filter(trans => trans.id !== currTrans.id), { ...formState, id: currTrans.id }]);
-          props.enqueueSnackbar("Update Successful!", {
-            variant: "success"
-          });
+          setTransactions([
+            ...transactions.filter(trans => trans.id !== currTrans.id),
+            { ...formState, id: currTrans.id }
+          ]);
+          QueueSnackbar(() =>
+            props.enqueueSnackbar("Update Successful!", {
+              variant: "success"
+            })
+          );
           throw new Error("me :)");
         })
         //})
@@ -111,7 +117,6 @@ const TransactionForm = props => {
                   Info
                 </Button>
                 <Button onClick={() => props.closeSnackbar(sbar)}>Close</Button>
-
               </>
             )
           });

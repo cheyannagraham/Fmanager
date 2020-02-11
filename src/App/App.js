@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import myPalette from "../CSS/mypalette";
 import { auth } from "../fb/fb";
 import styles from "./styles.app";
@@ -13,8 +14,8 @@ import Modal from "../Components/Modal/Modal";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
+import QueueSnackbar from "../Components/QueueSnackbar/QueueSnackbar";
 import { SnackbarProvider } from "notistack";
-import Button from "@material-ui/core/Button";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
@@ -42,8 +43,9 @@ const App = props => {
     <MuiThemeProvider theme={theme}>
       <SnackbarProvider
         dense
-        autoHideDuration={4000}
+        autoHideDuration={2000}
         ref={SnackbarRef}
+        //maxSnack={2}
         action={sbar => (
           <Button onClick={() => SnackbarRef.current.closeSnackbar(sbar)}>
             Close

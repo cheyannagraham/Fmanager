@@ -11,6 +11,7 @@ import { deleteTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
+import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 
 const DeleteTransaction = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -45,16 +46,19 @@ const DeleteTransaction = props => {
     deleteTransaction(id)
       .then(res => {
         setTransactions(transactions.filter(trans => trans.id !== id));
-        props.enqueueSnackbar("Delete Successful!", {
-          variant: "success"
-        });
+        QueueSnackbar(() =>
+          props.enqueueSnackbar("Delete Successful!", {
+            variant: "success"
+          })
+        );
         throw new Error("me :)");
       })
-      .catch(err => {
-        const sbar = props.enqueueSnackbar("Deletion Error!", {
-          variant: "error",
-          action: (
-            <>
+      .catch(err => 
+        QueueSnackbar(() => {
+          const sbar = props.enqueueSnackbar("Deletion Error!", {
+            variant: "error",
+            action: (
+              <>
               <Button
                 onClick={() => {
                   showModal({
@@ -72,8 +76,9 @@ const DeleteTransaction = props => {
             </>
           )
         });
-      });
-  };
+      })
+    )
+  }
 
   return (
     <Grid item xs={2} className={classes.right}>
