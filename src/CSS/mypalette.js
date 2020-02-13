@@ -30,11 +30,6 @@ const myPalatte = {
         padding: "0px"
       }
     },
-    // makeStyles: {
-    //   bottomDense: {
-    //     bottom: "0px"
-    //   }
-    // }
   },
   palette: {
     primary: {
@@ -50,9 +45,6 @@ const myPalatte = {
       darker: "#e64a19"
     }
   },
-  // typography: {
-  //   useNextVariants: true
-  // }
 };
 
 export default myPalatte;
