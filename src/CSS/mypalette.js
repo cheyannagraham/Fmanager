@@ -21,7 +21,20 @@ const myPalatte = {
       root: {
         "margin-bottom": "0"
       }
-    }
+    },
+    MuiSnackbarContent: {
+      root: {
+        padding: "0px"
+      },
+      message: {
+        padding: "0px"
+      }
+    },
+    // makeStyles: {
+    //   bottomDense: {
+    //     bottom: "0px"
+    //   }
+    // }
   },
   palette: {
     primary: {
@@ -37,9 +50,9 @@ const myPalatte = {
       darker: "#e64a19"
     }
   },
-  typography: {
-    useNextVariants: true
-  }
+  // typography: {
+  //   useNextVariants: true
+  // }
 };
 
 export default myPalatte;
