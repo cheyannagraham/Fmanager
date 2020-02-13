@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
 import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
 import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
@@ -31,12 +30,13 @@ const TransactionList = props => {
     <Box>
       {sortGroupedTransactions().map(group => (
         <Box my={2}>
-          <Typography key={group.date}>
-            {props.fullDate
-              ? moment(group.date).format("YYYY MMM DD")
-              : moment(group.date).format("MMM DD")}
-          </Typography>
-          <Divider />
+          <Box borderBottom="2px solid black">
+            <Typography key={group.date}>
+              {props.fullDate
+                ? moment(group.date).format("YYYY MMM DD")
+                : moment(group.date).format("MMM DD")}
+            </Typography>
+          </Box>
           {group.items.map(transaction => (
             <Grid
               key={transaction.id}
