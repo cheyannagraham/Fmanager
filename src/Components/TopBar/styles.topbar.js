@@ -1,9 +1,6 @@
 const styles = {
-  avatar: {
-    background: "transparent"
-  },
   top: {
-    'z-index': 5000
+    'z-index': 1350
   }
 };
 
