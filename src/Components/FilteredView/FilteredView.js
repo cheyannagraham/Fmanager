@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
-import FilteredHeader from "../FilteredViewHeader/FilteredViewHeader";
+import FilteredHeader from "./FilteredViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../../Components/RunningTotal/RunningTotal";
