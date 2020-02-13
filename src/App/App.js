@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  MuiThemeProvider,
+  ThemeProvider,
   createMuiTheme,
   withStyles
 } from "@material-ui/core/styles";
@@ -40,7 +40,7 @@ const App = props => {
   }, [user]);
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <SnackbarProvider
         dense
         autoHideDuration={2500}
@@ -69,7 +69,7 @@ const App = props => {
           </TransContext.Provider>
         </UserContext.Provider>
       </SnackbarProvider>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 
