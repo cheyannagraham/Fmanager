@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
-import WithViewHeader from "../WithViewHeader/WithViewHeader";
+import WithViewHeader from "./WithViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../RunningTotal/RunningTotal";
