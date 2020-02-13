@@ -24,12 +24,12 @@ const myPalatte = {
     },
     MuiSnackbarContent: {
       root: {
-        padding: "0px"
+        padding: "0px 5px",
       },
       message: {
         padding: "0px"
       }
-    },
+    }
   },
   palette: {
     primary: {
@@ -44,7 +44,7 @@ const myPalatte = {
       dark: "#ff7043",
       darker: "#e64a19"
     }
-  },
+  }
 };
 
 export default myPalatte;
