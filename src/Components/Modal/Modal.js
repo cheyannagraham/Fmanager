@@ -34,7 +34,6 @@ export const CloseModalButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
   return (
     <Button
-      color="secondary"
       variant="contained"
       onClick={() => showModal(false)}
       {...props}

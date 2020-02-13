@@ -23,7 +23,6 @@ const LoginButton = props => {
     <Button
       size="medium"
       onClick={showForm}
-      color="secondary"
       variant="contained"
     >
       Login
@@ -66,7 +65,7 @@ export const LoginForm = withStyles(styles)(props => {
       <Email autoFocus={true} variant={variant} />
       <Password variant={variant} />
       <div>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" type="submit">
           Login
         </Button>
         <CloseModalButton />

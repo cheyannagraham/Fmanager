@@ -27,7 +27,6 @@ const DeleteTransaction = props => {
       actions: (
         <>
           <Button
-            color="primary"
             variant="contained"
             onClick={() => {
               showModal({ show: false });
@@ -83,7 +82,6 @@ const DeleteTransaction = props => {
   return (
     <Grid item xs={2} className={classes.right}>
       <IconButton
-        color="primary"
         title="Delete Transaction"
         onClick={() => confirmDelete(props.transaction.id)}
       >

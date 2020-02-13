@@ -33,18 +33,7 @@ const Palette = createMuiTheme({
     }
   },
   palette: {
-    // primary: {
-    //   main: "#37474f",
-    //   light: "#546e7a",
-    //   lighter: "#78909c",
-    //   lightest: "#b0bec5"
-    // },
-    // secondary: {
-    //   light: "#fbe9e7",
-    //   main: "#ffccbc",
-    //   dark: "#ff7043",
-    //   darker: "#e64a19"
-    // }
+    
   }
 });
 

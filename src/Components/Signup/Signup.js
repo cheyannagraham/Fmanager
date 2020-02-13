@@ -23,7 +23,6 @@ const SignupButton = props => {
     <Button
       size="medium"
       onClick={showForm}
-      color="primary"
       variant="contained"
     >
       SignUp
@@ -82,7 +81,7 @@ export const SignupForm = withStyles(styles)(props => {
       <Email variant={variant} />
       <Password variant={variant} />
       <div>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" type="submit">
           Signup
         </Button>
         <CloseModalButton />

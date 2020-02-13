@@ -32,7 +32,7 @@ const RunningTotal = props => {
       width="100%"
     >
       <Box>
-        <Typography color="secondary">Current Total</Typography>
+        <Typography>Current Total</Typography>
         <Typography
           id="current-total"
           align="right"
@@ -45,7 +45,7 @@ const RunningTotal = props => {
       </Box>
 
       <Box>
-        <Typography color="secondary">Running Total</Typography>
+        <Typography>Running Total</Typography>
         <Typography
           id="run-total"
           align="right"

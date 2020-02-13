@@ -15,7 +15,6 @@ const LandingPage = props => {
         <Typography
           noWrap={true}
           variant="h1"
-          color="primary"
           align="center"
           className={classes["header-text"]}
         >

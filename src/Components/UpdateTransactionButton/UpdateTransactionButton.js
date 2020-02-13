@@ -30,7 +30,6 @@ const UpdateTransaction = props => {
     <Grid item xs={2}>
       <IconButton
         title="Edit Transaction"
-        color="primary"
         onClick={handleClick}
       >
         <Edit className={classes.icon} />

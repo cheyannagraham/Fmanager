@@ -9,7 +9,6 @@ const Footer = props => {
       <Typography>
         <Link
           target="_blank"
-          color="secondary"
           href="https://github.com/cheyannagraham"
           rel="noreferrer"
           variant="subtitle2"

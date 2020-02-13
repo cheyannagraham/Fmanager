@@ -28,7 +28,7 @@ const SideDrawerMenuButton = props => {
   return (
     <>
       <IconButton onClick={toggleMenu}>
-        <MenuRounded fontSize="large" color="secondary" />
+        <MenuRounded fontSize="large"/>
       </IconButton>
       <SideDrawer open={open} toggleMenu={toggleMenu} closeMenu={closeMenu} />
     </>

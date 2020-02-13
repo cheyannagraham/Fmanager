@@ -22,10 +22,10 @@ const TopBar = props => {
           <Grid wrap="nowrap" container alignItems="center">
             <Box m="0.6rem">
               <Avatar className={classes.avatar}>
-                <Face fontSize="large" color="secondary" />
+                <Face fontSize="large" />
               </Avatar>
             </Box>
-            <Typography noWrap variant="h6" color="secondary">
+            <Typography noWrap variant="h6">
               {user.displayName}
             </Typography>
           </Grid>

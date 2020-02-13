@@ -67,7 +67,6 @@ const WithViewHeader = props => {
       pt={2}
     >
       <IconButton
-        color="primary"
         className={classes.ibutton}
         onClick={() => {
           handleClick(-1);
@@ -80,7 +79,6 @@ const WithViewHeader = props => {
         <Typography
         
         variant="h6"
-        color="primary"
         className={classes.title}
       >
         {props.view === "monthly"
@@ -90,7 +88,6 @@ const WithViewHeader = props => {
         </ButtonBase>
 
       <IconButton
-        color="primary"
         className={classes.ibutton}
         onClick={() => {
           handleClick(1);
@@ -99,8 +96,6 @@ const WithViewHeader = props => {
         <ArrowRight className={classes.icon} />
       </IconButton>
       <TodayButton
-        className={[classes.ibutton, classes.icon]}
-        color="primary"
         setDate={props.setDate}
       />
     </Box>

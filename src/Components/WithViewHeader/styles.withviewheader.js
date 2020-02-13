@@ -3,14 +3,14 @@ const styles = {
     margin: "15px auto 10px"
   },
   "title": {
-    "font-size": "1.5em"
+    //"font-size": "1.5em"
   },
   icon: {
-    "font-size": "2em",
-    padding: "0"
+    // "font-size": "2em",
+    // padding: "0"
   },
   ibutton: {
-    padding: "0"
+    //padding: "0"
   }
 };
 

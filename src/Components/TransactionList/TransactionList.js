@@ -36,7 +36,7 @@ const TransactionList = props => {
     <Grid className={classes["trans-content"]}>
       {sortGroupedTransactions().map(group => (
         <Paper className={classes["trans-paper"]} key={group.date}>
-          <Typography color="primary" className={classes.date}>
+          <Typography className={classes.date}>
             {props.fullDate
               ? moment(group.date).format("YYYY MMM DD")
               : moment(group.date).format("MMM DD")}
@@ -57,7 +57,7 @@ const TransactionList = props => {
       ))}
       <BarSpacer />
       {props.transactions.length === 0 && (
-        <Typography color="primary">No Transactions</Typography>
+        <Typography>No Transactions</Typography>
       )}
       <BarSpacer />
       <BarSpacer />

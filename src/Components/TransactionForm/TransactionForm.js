@@ -222,7 +222,7 @@ const TransactionForm = props => {
         justify="flex-end"
         className={classes["button-container"]}
       >
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" type="submit">
           {props.type}
         </Button>
         <CloseModalButton />

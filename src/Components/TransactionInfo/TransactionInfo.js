@@ -10,13 +10,13 @@ const TransactionInfo = props => {
   return (
     <>
       <Grid item xs={5}>
-        <Typography color="primary" noWrap>
+        <Typography noWrap>
           {props.transaction.business}
         </Typography>
       </Grid>
 
       <Grid item xs={3} className={classes.right}>
-        <Typography color="primary">
+        <Typography>
           <small>$</small>
           {props.transaction.amount}
         </Typography>
