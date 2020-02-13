@@ -1,6 +1,6 @@
 const styles = {
   "header": {
-    margin: "15px auto 10px"
+    //margin: "15px auto 10px"
   },
   "title": {
     //"font-size": "1.5em"

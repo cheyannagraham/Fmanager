@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowRight from "@material-ui/icons/ArrowRight";
 import IconButton from "@material-ui/core/IconButton";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import styles from "./styles.withviewheader";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { FormControl } from "../FormControls/FormControls";
@@ -14,7 +12,6 @@ import TodayButton from "../TodayButton/TodayButton";
 import moment from "moment";
 
 const WithViewHeader = props => {
-  const { classes } = props;
   let showModal = useContext(ModalContext).setShowModal;
 
   // Increment & Decrement Date values
@@ -63,43 +60,34 @@ const WithViewHeader = props => {
       flexWrap="no-wrap"
       justify="center"
       alignItems="center"
-      className={classes.header}
       pt={2}
     >
       <IconButton
-        className={classes.ibutton}
         onClick={() => {
           handleClick(-1);
         }}
       >
-        <ArrowLeft className={classes.icon} />
+        <ArrowLeft />
       </IconButton>
 
       <ButtonBase onClick={showCalendar}>
-        <Typography
-        
-        variant="h6"
-        className={classes.title}
-      >
-        {props.view === "monthly"
-          ? moment(props.date).format("MMMM YYYY")
-          : moment(props.date).format("MMM DD, YYYY")}
-      </Typography>
-        </ButtonBase>
+        <Typography variant="h6">
+          {props.view === "monthly"
+            ? moment(props.date).format("MMMM YYYY")
+            : moment(props.date).format("MMM DD, YYYY")}
+        </Typography>
+      </ButtonBase>
 
       <IconButton
-        className={classes.ibutton}
         onClick={() => {
           handleClick(1);
         }}
       >
-        <ArrowRight className={classes.icon} />
+        <ArrowRight />
       </IconButton>
-      <TodayButton
-        setDate={props.setDate}
-      />
+      <TodayButton setDate={props.setDate} />
     </Box>
   );
 };
 
-export default withStyles(styles)(WithViewHeader);
+export default WithViewHeader;
