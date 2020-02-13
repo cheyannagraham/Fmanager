@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -37,7 +35,7 @@ const App = props => {
   return (
     <ThemeProvider theme={Palette}>
       <SnackbarProvider
-        TransitionProps={{direction:"up"}}
+        TransitionProps={{ direction: "up" }}
         dense
         autoHideDuration={2500}
         ref={SnackbarRef}
@@ -52,10 +50,7 @@ const App = props => {
           <TransContext.Provider value={[transactions, setTransactions]}>
             <ModalContext.Provider value={{ setShowModal }}>
               <CssBaseline />
-              <Grid
-                container
-                justify="center"
-              >
+              <Grid container justify="center">
                 {user ? <Main /> : <LandingPage />}
                 {showModal.show && <Modal content={showModal} />}
               </Grid>
