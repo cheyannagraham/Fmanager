@@ -42,10 +42,10 @@ const App = props => {
   return (
     <ThemeProvider theme={theme}>
       <SnackbarProvider
+        TransitionProps={{direction:"up"}}
         dense
         autoHideDuration={2500}
         ref={SnackbarRef}
-        //maxSnack={2}
         action={sbar => (
           <Button onClick={() => SnackbarRef.current.closeSnackbar(sbar)}>
             Close
