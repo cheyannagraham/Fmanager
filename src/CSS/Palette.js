@@ -1,6 +1,6 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
-const Palette = createMuiTheme({
+const Palette = responsiveFontSizes(createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
@@ -35,6 +35,6 @@ const Palette = createMuiTheme({
   palette: {
     
   }
-});
+}));
 
 export default Palette;
