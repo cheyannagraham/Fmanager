@@ -58,9 +58,8 @@ const WithViewHeader = props => {
     <Box
       display="flex"
       flexWrap="no-wrap"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
-      pt={2}
     >
       <IconButton
         onClick={() => {
