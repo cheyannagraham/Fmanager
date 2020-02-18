@@ -9,7 +9,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles.deletetransactionbutton";
 import { deleteTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
-import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 
@@ -35,9 +34,9 @@ const DeleteTransaction = props => {
           >
             Confirm
           </Button>
-          <CloseModalButton />
         </>
-      )
+      ),
+      closeAction: true
     });
   };
 
@@ -64,7 +63,7 @@ const DeleteTransaction = props => {
                     show: true,
                     title: err.name,
                     type: "error",
-                    actions: <CloseModalButton autoFocus={true} />,
+                    closeAction: true,
                     text: err.message
                   });
                 }}

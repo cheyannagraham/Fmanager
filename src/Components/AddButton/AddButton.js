@@ -12,7 +12,7 @@ const AddButton = props => {
       show: true,
       type: "add",
       title: "New Transaction",
-      content: <TransactionForm saf={handleClick} type="add" />
+      content: <TransactionForm saf={handleClick} type="add" />,
     });
   };
 

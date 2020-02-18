@@ -29,7 +29,7 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-     //user && (async () => setTransactions(await getTransactions()))();
+     user && (async () => setTransactions(await getTransactions()))();
   }, [user]);
 
   return (

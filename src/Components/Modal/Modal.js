@@ -24,6 +24,7 @@ const Modal = props => {
         <DialogActions>
           <Box m={1} display="flex" justifyContent="space-between">
             {props.content.actions}
+            {props.content.closeAction && <CloseModalButton />}
           </Box>
         </DialogActions>
       </Box>
