@@ -10,6 +10,7 @@ import moment from "moment";
 import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 import { Box } from "@material-ui/core";
+import Catch from "../Catch/Catch";
 
 const formReducer = (state, value) => {
   return {
@@ -65,15 +66,9 @@ const TransactionForm = props => {
               action: (
                 <>
                   <Button
-                    onClick={() => {
-                      showModal({
-                        show: true,
-                        title: err.name,
-                        type: "error",
-                        actions: <CloseModalButton autoFocus={true} />,
-                        text: err.message
-                      });
-                    }}
+                    onClick={() =>
+                      showModal(Catch({ err: err, title: "Add Error" }))
+                    }
                   >
                     Info
                   </Button>
@@ -109,15 +104,9 @@ const TransactionForm = props => {
               action: (
                 <>
                   <Button
-                    onClick={() => {
-                      showModal({
-                        show: true,
-                        title: err.name,
-                        type: "error",
-                        actions: <CloseModalButton autoFocus={true} />,
-                        text: err.message
-                      });
-                    }}
+                    onClick={() =>
+                      showModal(Catch({ err: err, title: "Update Error" }))
+                    }
                   >
                     Info
                   </Button>
