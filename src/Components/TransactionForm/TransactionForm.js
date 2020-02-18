@@ -1,16 +1,15 @@
 import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import { updateTransaction, addTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
-import styles from "./styles.transactionform";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
+import { Box } from "@material-ui/core";
 
 const formReducer = (state, value) => {
   return {
@@ -23,7 +22,6 @@ const TransactionForm = props => {
   const showModal = useContext(ModalContext).setShowModal;
   const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
-  const { classes } = props;
 
   // Form State
   const [formState, formDispatch] = useReducer(formReducer, {
@@ -135,100 +133,94 @@ const TransactionForm = props => {
   };
 
   return (
-    <form
-      id="transaction-form"
-      className={classes.form}
-      onSubmit={createTransaction}
-    >
-      {/* Date Input */}
-      <TextField
-        label="Date"
-        name="trans-date"
-        type="date"
-        variant="standard"
-        inputProps={{
-          pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
-        }}
-        id="transaction-date"
-        value={formState.date}
-        autoFocus
-        onChange={validateDate}
-        required
-      />
+    <form id="transaction-form" onSubmit={createTransaction}>
+      <Box display="grid">
+        {/* Date Input */}
+        <TextField
+          label="Date"
+          name="trans-date"
+          type="date"
+          variant="standard"
+          inputProps={{
+            pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
+          }}
+          id="transaction-date"
+          value={formState.date}
+          autoFocus
+          onChange={validateDate}
+          required
+        />
 
-      {/* Business Name Input */}
-      <TextField
-        label="Business"
-        id="transaction-business"
-        value={formState.business}
-        variant="standard"
-        onChange={evt =>
-          formDispatch({ input: "business", value: evt.target.value })
-        }
-        required
-        type="text"
-        name="business-name"
-      />
+        {/* Business Name Input */}
+        <TextField
+          label="Business"
+          id="transaction-business"
+          value={formState.business}
+          variant="standard"
+          onChange={evt =>
+            formDispatch({ input: "business", value: evt.target.value })
+          }
+          required
+          type="text"
+          name="business-name"
+        />
 
-      {/* Amount Input */}
-      <TextField
-        label="Amount"
-        name="trans-amount"
-        type="number"
-        variant="standard"
-        inputProps={{
-          step: 0.01
-        }}
-        id="transaction-amount"
-        value={formState.amount}
-        onChange={evt =>
-          formDispatch({ input: "amount", value: evt.target.value })
-        }
-        required
-      />
+        {/* Amount Input */}
+        <TextField
+          label="Amount"
+          name="trans-amount"
+          type="number"
+          variant="standard"
+          inputProps={{
+            step: 0.01
+          }}
+          id="transaction-amount"
+          value={formState.amount}
+          onChange={evt =>
+            formDispatch({ input: "amount", value: evt.target.value })
+          }
+          required
+        />
 
-      {/* Transaction Type  */}
-      <TextField
-        select
-        variant="standard"
-        InputLabelProps={{
-          shrink: true
-        }}
-        SelectProps={{
-          native: true
-        }}
-        label="Type"
-        id="transaction-type"
-        name="trans-type"
-        value={formState.type}
-        onChange={evt =>
-          formDispatch({ input: "type", value: evt.target.value })
-        }
-        required
-      >
-        <>
-          <option key="income" value="income">
-            Income
-          </option>
-          <option key="purchase" value="purchase">
-            Purchase
-          </option>
-        </>
-      </TextField>
+        {/* Transaction Type  */}
+        <TextField
+          select
+          variant="standard"
+          InputLabelProps={{
+            shrink: true
+          }}
+          SelectProps={{
+            native: true
+          }}
+          label="Type"
+          id="transaction-type"
+          name="trans-type"
+          value={formState.type}
+          onChange={evt =>
+            formDispatch({ input: "type", value: evt.target.value })
+          }
+          required
+        >
+          <>
+            <option key="income" value="income">
+              Income
+            </option>
+            <option key="purchase" value="purchase">
+              Purchase
+            </option>
+          </>
+        </TextField>
 
-      {/* Form Buttons */}
-      <Grid
-        container
-        justify="flex-end"
-        className={classes["button-container"]}
-      >
-        <Button variant="contained" type="submit">
-          {props.type}
-        </Button>
-        <CloseModalButton />
-      </Grid>
+        {/* Form Buttons */}
+        <Grid container justify="flex-end">
+          <Button variant="contained" type="submit">
+            {props.type}
+          </Button>
+          <CloseModalButton />
+        </Grid>
+      </Box>
     </form>
   );
 };
 
-export default withStyles(styles)(withSnackbar(TransactionForm));
+export default withSnackbar(TransactionForm);
