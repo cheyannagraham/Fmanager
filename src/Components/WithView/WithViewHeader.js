@@ -72,7 +72,7 @@ const WithViewHeader = props => {
       <ButtonBase onClick={showCalendar}>
         <Typography variant="h6">
           {props.view === "monthly"
-            ? moment(props.date).format("MMMM YYYY")
+            ? moment(props.date).format("MMM YYYY")
             : moment(props.date).format("MMM DD, YYYY")}
         </Typography>
       </ButtonBase>
