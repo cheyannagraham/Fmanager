@@ -1,6 +1,6 @@
 import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import { updateTransaction, addTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
@@ -11,6 +11,7 @@ import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 import { Box } from "@material-ui/core";
 import Catch from "../Catch/Catch";
+import StyledFormControl from "../StyledComponents/StyledFormControl";
 
 const formReducer = (state, value) => {
   return {
@@ -125,8 +126,8 @@ const TransactionForm = props => {
 
   return (
     <form id="transaction-form" onSubmit={validateDate}>
-      <Box display="grid">
-        {/* Date Input */}
+      {/* Date Input */}
+      <StyledFormControl>
         <TextField
           label="Date"
           name="trans-date"
@@ -138,11 +139,15 @@ const TransactionForm = props => {
           id="transaction-date"
           value={formState.date}
           autoFocus
-          onChange={evt => formDispatch({ input: "date", value: evt.target.value })}
+          onChange={evt =>
+            formDispatch({ input: "date", value: evt.target.value })
+          }
           required
         />
+      </StyledFormControl>
 
-        {/* Business Name Input */}
+      {/* Business Name Input */}
+      <StyledFormControl>
         <TextField
           label="Business"
           id="transaction-business"
@@ -155,8 +160,10 @@ const TransactionForm = props => {
           type="text"
           name="business-name"
         />
+      </StyledFormControl>
 
-        {/* Amount Input */}
+      {/* Amount Input */}
+      <StyledFormControl>
         <TextField
           label="Amount"
           name="trans-amount"
@@ -172,8 +179,10 @@ const TransactionForm = props => {
           }
           required
         />
+      </StyledFormControl>
 
-        {/* Transaction Type  */}
+      {/* Transaction Type  */}
+      <StyledFormControl>
         <TextField
           select
           variant="standard"
@@ -201,15 +210,17 @@ const TransactionForm = props => {
             </option>
           </>
         </TextField>
+      </StyledFormControl>
 
-        {/* Form Buttons */}
-        <Grid container justify="flex-end">
+      {/* Form Buttons */}
+      <StyledFormControl>
+        <DialogActions container justify="flex-end">
           <Button variant="contained" type="submit">
             {props.type}
           </Button>
           <CloseModalButton />
-        </Grid>
-      </Box>
+        </DialogActions>
+      </StyledFormControl>
     </form>
   );
 };
