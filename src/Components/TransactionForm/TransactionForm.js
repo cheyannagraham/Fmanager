@@ -36,7 +36,7 @@ const TransactionForm = props => {
     const userInput = evt.target.value;
     moment(userInput).isValid()
       ? formDispatch({ input: "date", value: evt.target.value })
-      : alert("err");
+      : alert("error");
   };
 
   const createTransaction = evt => {
@@ -59,7 +59,7 @@ const TransactionForm = props => {
           );
           throw new Error("me :)");
         })
-        .catch(err => {
+        .catch(error => {
           QueueSnackbar(() => {
             const sbar = props.enqueueSnackbar("Add Error!", {
               variant: "error",
@@ -67,7 +67,7 @@ const TransactionForm = props => {
                 <>
                   <Button
                     onClick={() =>
-                      showModal(Catch({ err: err, title: "Add Error" }))
+                      showModal(Catch({ error: error, title: "Add Error" }))
                     }
                   >
                     Info
@@ -97,7 +97,7 @@ const TransactionForm = props => {
           throw new Error("me :)");
         })
         //})
-        .catch(err =>
+        .catch(error =>
           QueueSnackbar(() => {
             const sbar = props.enqueueSnackbar("Update Error!", {
               variant: "error",
@@ -105,7 +105,7 @@ const TransactionForm = props => {
                 <>
                   <Button
                     onClick={() =>
-                      showModal(Catch({ err: err, title: "Update Error" }))
+                      showModal(Catch({ error: error, title: "Update Error" }))
                     }
                   >
                     Info

@@ -2,15 +2,17 @@ import React from "react";
 import { CloseModalButton } from "../Modal/Modal";
 
 const Catch = options => {
+  const { error } = options;
+  
   return {
     show: true,
     title:
       options && options.title !== undefined
-        ? `${options.title}:`
-        : options.err && options.err.code !== undefined
-        ? options.err.code
-        : options.err.name && options.err.name !== undefined && options.err.name,
-    text: options && options.message !== undefined && options.err.message,
+        ? options.title
+        : error && error.code !== undefined
+        ? `: ${error.code}`
+        : error.name && error.name !== undefined && error.name,
+    text: error && error.message !== undefined && (error.message || error.text),
     actions: <CloseModalButton variant="contained" autoFocus={true} />
   };
 };
