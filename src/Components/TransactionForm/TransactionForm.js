@@ -20,7 +20,7 @@ const formReducer = (state, value) => {
 };
 
 const TransactionForm = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
   const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
 
@@ -40,7 +40,7 @@ const TransactionForm = props => {
   };
 
   const createTransaction = evt => {
-    showModal({ show: false });
+    modalContent({ show: false });
     evt.preventDefault();
     formState.amount =
       formState.type === "income"
@@ -67,7 +67,7 @@ const TransactionForm = props => {
                 <>
                   <Button
                     onClick={() =>
-                      showModal(Catch({ error: error, title: "Add Error" }))
+                      modalContent(Catch({ error: error, title: "Add Error" }))
                     }
                   >
                     Info
@@ -105,7 +105,7 @@ const TransactionForm = props => {
                 <>
                   <Button
                     onClick={() =>
-                      showModal(Catch({ error: error, title: "Update Error" }))
+                      modalContent(Catch({ error: error, title: "Update Error" }))
                     }
                   >
                     Info

@@ -5,10 +5,10 @@ import TransactionForm from "../TransactionForm/TransactionForm";
 import WithFab from "../WithFab/WithFab";
 
 const AddButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
 
   const handleClick = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "add",
       title: "New Transaction",

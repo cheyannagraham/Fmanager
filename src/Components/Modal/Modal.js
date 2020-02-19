@@ -33,9 +33,9 @@ const Modal = props => {
 };
 
 export const CloseModalButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
   return (
-    <Button variant="contained" onClick={() => showModal(false)} {...props}>
+    <Button variant="contained" onClick={() => modalContent(false)} {...props}>
       Close{" "}
     </Button>
   );

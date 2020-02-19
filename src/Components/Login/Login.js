@@ -9,10 +9,10 @@ import styles from "./styles.login";
 import Catch from "../Catch/Catch";
 
 const LoginButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
 
   const showForm = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "login",
       title: "Login To Your Account",
@@ -29,7 +29,7 @@ const LoginButton = props => {
 export default LoginButton;
 
 export const LoginForm = withStyles(styles)(props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
   const { classes } = props;
 
   const handleLogin = e => {
@@ -39,9 +39,9 @@ export const LoginForm = withStyles(styles)(props => {
     auth
       .signInWithEmailAndPassword(email, pwd)
       .then(()=> {throw Error("Throw Login")})
-      .catch(error => showModal(Catch({ error: error, title: "Login Error" })));
+      .catch(error => modalContent(Catch({ error: error, title: "Login Error" })));
     //close Modal after logging in
-    showModal(false);
+    modalContent(false);
   };
   const variant = "outlined";
 

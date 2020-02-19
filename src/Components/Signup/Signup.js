@@ -10,10 +10,10 @@ import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 
 const SignupButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
 
   const showForm = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "signup",
       title: "Create An Account",
@@ -30,12 +30,12 @@ const SignupButton = props => {
 export default SignupButton;
 
 export const SignupForm = withStyles(styles)(props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
   const { classes } = props;
 
   const handleSignup = async e => {
     e.preventDefault();
-    showModal(false);
+    modalContent(false);
     const form = document.querySelector("#signup-form");
     const [username, email, pwd] = [
       form["username"].value,
@@ -56,7 +56,7 @@ export const SignupForm = withStyles(styles)(props => {
         throw Error("Throw Signup");
       })
       .catch(error =>
-        showModal(Catch({ error: error, title: "Signup Error" }))
+        modalContent(Catch({ error: error, title: "Signup Error" }))
       );
   };
 

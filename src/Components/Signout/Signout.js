@@ -6,7 +6,7 @@ import WithFab from "../WithFab/WithFab";
 import Catch from "../Catch/Catch";
 
 const Signout = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
 
   const signout = () => {
     auth
@@ -15,7 +15,7 @@ const Signout = props => {
         throw Error("Throw Signout");
       })
       .catch(error =>
-        showModal(Catch({ error: error, title: "Signout Error" }))
+        modalContent(Catch({ error: error, title: "Signout Error" }))
       );
   };
 

@@ -13,12 +13,12 @@ import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 import Catch from "../Catch/Catch";
 
 const DeleteTransaction = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext).setModalContent;
   const [transactions, setTransactions] = useContext(TransContext);
   const { classes } = props;
 
   const confirmDelete = id => {
-    showModal({
+    modalContent({
       show: true,
       title: "Confirm Delete",
       text: "Are you sure you want to delete this transaction?",
@@ -28,7 +28,7 @@ const DeleteTransaction = props => {
           <Button
             variant="contained"
             onClick={() => {
-              showModal({ show: false });
+              modalContent({ show: false });
               handleDelete(id);
             }}
           >
@@ -59,7 +59,7 @@ const DeleteTransaction = props => {
               <>
                 <Button
                   onClick={() => {
-                    showModal(Catch({ error: error }));
+                    modalContent(Catch({ error: error }));
                   }}
                 >
                   Info

@@ -19,7 +19,7 @@ export const TransContext = React.createContext([]);
 const SnackbarRef = React.createRef();
 
 const App = props => {
-  const [showModal, setShowModal] = useState({ show: false });
+  const [modalContent, setModalContent] = useState({ show: false });
   const [user, setUser] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
@@ -48,11 +48,11 @@ const App = props => {
       >
         <UserContext.Provider value={user}>
           <TransContext.Provider value={[transactions, setTransactions]}>
-            <ModalContext.Provider value={{ setShowModal }}>
+            <ModalContext.Provider value={{ setModalContent }}>
               <CssBaseline />
               <Grid container justify="center">
                 {user ? <Main /> : <LandingPage />}
-                {showModal.show && <Modal content={showModal} />}
+                <Modal content={modalContent} />
               </Grid>
             </ModalContext.Provider>
           </TransContext.Provider>
