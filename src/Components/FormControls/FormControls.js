@@ -1,30 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 
-const useInputState = (def = "") => {
-  const [value, setValue] = useState(def);
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  };
-
-  return {
-    value: value,
-    setValue: setValue,
-    handleChange: handleChange
-  };
-};
-
 export const FormControl = props => {
-  const { value, handleChange } = useInputState(props.value);
-
   return (
-    <TextField
-      onChange={handleChange}
-      variant="standard"
-      {...props}
-      value={value}
-    >
+    <TextField variant="standard" {...props}>
       {props.children}
     </TextField>
   );

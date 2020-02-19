@@ -11,13 +11,8 @@ import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 import Catch from "../Catch/Catch";
 import StyledFormControl from "../StyledComponents/StyledFormControl";
+import formReducer from "../Helpers/formReducer";
 
-const formReducer = (state, value) => {
-  return {
-    ...state,
-    [value.input]: value.value
-  };
-};
 
 const TransactionForm = props => {
   const modalContent = useContext(ModalContext);
