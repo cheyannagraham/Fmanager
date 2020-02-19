@@ -9,23 +9,24 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { ModalContext } from "../../App/App";
 
 const Modal = props => {
+  const modalContent = useContext(ModalContext);
+
   return (
     <Dialog
       maxWidth="sm"
       open={props.content.show}
       id="modal-dialog"
+      onClose={() => modalContent(false)}
+      aria-describedby={props.content.description}
+      aria-labelledby={props.content.label}
     >
       <Box textAlign="center">
         <DialogTitle>{props.content.title}</DialogTitle>
-        <DialogContentText>
-          {props.content.text}
-        </DialogContentText>
+        <DialogContentText>{props.content.text}</DialogContentText>
         <DialogContent>{props.content.content}</DialogContent>
         <DialogActions>
-          <Box m={1} display="flex" justifyContent="space-between">
-            {props.content.actions}
-            {props.content.closeAction && <CloseModalButton />}
-          </Box>
+          {props.content.actions}
+          {props.content.closeAction && <CloseModalButton />}
         </DialogActions>
       </Box>
     </Dialog>
