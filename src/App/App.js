@@ -11,6 +11,7 @@ import LandingPage from "../Components/LandingPage/LandingPage";
 import { shiftQueue } from "../Components/QueueSnackbar/QueueSnackbar";
 import { SnackbarProvider } from "notistack";
 import Palette from "../CSS/Palette.js";
+import Catch from "../Components/Catch/Catch";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
@@ -29,7 +30,14 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-    user && (async () => setTransactions(await getTransactions()))();
+    user &&
+      getTransactions()
+        .then(results => setTransactions(results))
+        .catch(error => {
+          setModalContent(
+            Catch({ error: error, title: "Error Fetching Transactions" })
+          );
+        });
   }, [user]);
 
   return (

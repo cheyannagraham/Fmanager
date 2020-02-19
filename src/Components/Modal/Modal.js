@@ -36,7 +36,7 @@ export const CloseModalButton = props => {
   const modalContent = useContext(ModalContext);
   return (
     <Button variant="contained" onClick={() => modalContent(false)} {...props}>
-      Close{" "}
+      Close
     </Button>
   );
 };

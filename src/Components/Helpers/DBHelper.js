@@ -13,9 +13,9 @@ export const getTransactions = () => {
       results.forEach(doc => {
         transactions.push(Object.assign(doc.data(), { id: doc.id }));
       });
+      // throw Error("Throw Get Transactions");
       return transactions;
     })
-    .catch(error => error);
 };
 
 //Delete Transaction
