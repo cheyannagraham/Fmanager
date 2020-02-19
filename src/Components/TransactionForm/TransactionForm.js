@@ -20,7 +20,7 @@ const formReducer = (state, value) => {
 };
 
 const TransactionForm = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
   const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
 
@@ -105,7 +105,9 @@ const TransactionForm = props => {
                 <>
                   <Button
                     onClick={() =>
-                      modalContent(Catch({ error: error, title: "Update Error" }))
+                      modalContent(
+                        Catch({ error: error, title: "Update Error" })
+                      )
                     }
                   >
                     Info

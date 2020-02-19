@@ -5,7 +5,7 @@ import TransactionForm from "../TransactionForm/TransactionForm";
 import WithFab from "../WithFab/WithFab";
 
 const AddButton = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
 
   const handleClick = () => {
     modalContent({

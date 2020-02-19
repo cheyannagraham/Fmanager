@@ -29,7 +29,7 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-     user && (async () => setTransactions(await getTransactions()))();
+    user && (async () => setTransactions(await getTransactions()))();
   }, [user]);
 
   return (
@@ -48,7 +48,7 @@ const App = props => {
       >
         <UserContext.Provider value={user}>
           <TransContext.Provider value={[transactions, setTransactions]}>
-            <ModalContext.Provider value={{ setModalContent }}>
+            <ModalContext.Provider value={setModalContent}>
               <CssBaseline />
               <Grid container justify="center">
                 {user ? <Main /> : <LandingPage />}

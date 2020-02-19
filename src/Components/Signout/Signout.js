@@ -6,7 +6,7 @@ import WithFab from "../WithFab/WithFab";
 import Catch from "../Catch/Catch";
 
 const Signout = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
 
   const signout = () => {
     auth

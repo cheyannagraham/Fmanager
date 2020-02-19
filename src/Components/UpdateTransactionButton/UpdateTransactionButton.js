@@ -9,7 +9,7 @@ import styles from "./styles.updatetransactionbutton";
 
 const UpdateTransaction = props => {
   const { classes } = props;
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
 
   const handleClick = () => {
     modalContent({

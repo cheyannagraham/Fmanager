@@ -10,7 +10,7 @@ import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 
 const SignupButton = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
 
   const showForm = () => {
     modalContent({
@@ -30,7 +30,7 @@ const SignupButton = props => {
 export default SignupButton;
 
 export const SignupForm = withStyles(styles)(props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
   const { classes } = props;
 
   const handleSignup = async e => {

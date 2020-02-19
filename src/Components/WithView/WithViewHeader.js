@@ -12,7 +12,7 @@ import TodayButton from "../TodayButton/TodayButton";
 import moment from "moment";
 
 const WithViewHeader = props => {
-  let modalContent = useContext(ModalContext).setModalContent;
+  let modalContent = useContext(ModalContext);
 
   // Increment & Decrement Date values
   const handleClick = eventVal => {

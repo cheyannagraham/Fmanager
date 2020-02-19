@@ -9,7 +9,7 @@ import styles from "./styles.login";
 import Catch from "../Catch/Catch";
 
 const LoginButton = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
 
   const showForm = () => {
     modalContent({
@@ -29,7 +29,7 @@ const LoginButton = props => {
 export default LoginButton;
 
 export const LoginForm = withStyles(styles)(props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
   const { classes } = props;
 
   const handleLogin = e => {

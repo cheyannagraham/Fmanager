@@ -13,7 +13,7 @@ import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
 import Catch from "../Catch/Catch";
 
 const DeleteTransaction = props => {
-  const modalContent = useContext(ModalContext).setModalContent;
+  const modalContent = useContext(ModalContext);
   const [transactions, setTransactions] = useContext(TransContext);
   const { classes } = props;
 
