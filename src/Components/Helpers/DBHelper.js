@@ -15,7 +15,7 @@ export const getTransactions = () => {
       });
       return transactions;
     })
-    .catch(err => err);
+    .catch(error => error);
 };
 
 //Delete Transaction
@@ -25,7 +25,7 @@ export const deleteTransaction = id => {
     .doc(id)
     .delete()
     .then(() => "Transaction has been deleted from your records.")
-    .catch(err => err);
+    .catch(error => error);
 };
 
 //Add Transaction
@@ -38,7 +38,7 @@ export const addTransaction = trans => {
       trans.id = dref.id;
       return trans;
     })
-    .catch(err => err);
+    .catch(error => error);
 };
 
 //Update Transaction
@@ -48,5 +48,5 @@ export const updateTransaction = (transId, trans) => {
     .doc(transId)
     .set(trans)
     .then(() => "Transaction record has been updated.")
-    .catch(err => err);
+    .catch(error => error);
 };
