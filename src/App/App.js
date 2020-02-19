@@ -60,7 +60,7 @@ const App = props => {
               <CssBaseline />
               <Grid container justify="center">
                 {user ? <Main /> : <LandingPage />}
-                <Modal content={modalContent} />
+                {modalContent.show && <Modal content={modalContent} />}
               </Grid>
             </ModalContext.Provider>
           </TransContext.Provider>
