@@ -2,29 +2,26 @@ import React, { useContext } from "react";
 import ExitToAppRounded from "@material-ui/icons/ExitToAppRounded";
 import { ModalContext } from "../../App/App";
 import { auth } from "../../fb/fb";
-import { CloseModalButton } from "../Modal/Modal";
 import WithFab from "../WithFab/WithFab";
+import Catch from "../Catch/Catch";
 
-const Home = props => {
-  const showModal = useContext(ModalContext);
+const Signout = props => {
+  const showModal = useContext(ModalContext).setShowModal;
 
   const signout = () => {
-    auth.signOut().catch(err =>
-      showModal({
-        show: true,
-        type: "error",
-        title: "Error Signing Out!",
-        text: err,
-        actions: <CloseModalButton autoFocus={true} variant="contained" />
-      })
-    );
+    auth
+      .signOut()
+      .then(() => {throw Error("Throw Signout")})
+      .catch(error =>
+        showModal(Catch({ error: error, title: "Signout Error" }))
+      );
   };
 
   return (
     <WithFab handleClick={signout}>
-      <ExitToAppRounded  />
+      <ExitToAppRounded />
     </WithFab>
   );
 };
 
-export default Home;
+export default Signout;
