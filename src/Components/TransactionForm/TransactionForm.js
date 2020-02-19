@@ -32,16 +32,16 @@ const TransactionForm = props => {
     business: (currTrans && currTrans.business) || ""
   });
 
+  // Date Validation
   const validateDate = evt => {
-    const userInput = evt.target.value;
-    moment(userInput).isValid()
-      ? formDispatch({ input: "date", value: evt.target.value })
-      : alert("error");
+    evt.preventDefault();
+    moment(formState.date).isValid()
+      ? createTransaction()
+      : alert("Invalid Date");
   };
 
-  const createTransaction = evt => {
+  const createTransaction = () => {
     modalContent({ show: false });
-    evt.preventDefault();
     formState.amount =
       formState.type === "income"
         ? Math.abs(formState.amount).toFixed(2)
@@ -124,7 +124,7 @@ const TransactionForm = props => {
   };
 
   return (
-    <form id="transaction-form" onSubmit={createTransaction}>
+    <form id="transaction-form" onSubmit={validateDate}>
       <Box display="grid">
         {/* Date Input */}
         <TextField
@@ -138,7 +138,7 @@ const TransactionForm = props => {
           id="transaction-date"
           value={formState.date}
           autoFocus
-          onChange={validateDate}
+          onChange={evt => formDispatch({ input: "date", value: evt.target.value })}
           required
         />
 
