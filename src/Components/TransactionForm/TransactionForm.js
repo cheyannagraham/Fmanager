@@ -9,7 +9,6 @@ import { TransContext } from "../../App/App";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
-import { Box } from "@material-ui/core";
 import Catch from "../Catch/Catch";
 import StyledFormControl from "../StyledComponents/StyledFormControl";
 
@@ -214,7 +213,7 @@ const TransactionForm = props => {
 
       {/* Form Buttons */}
       <StyledFormControl>
-        <DialogActions container justify="flex-end">
+        <DialogActions>
           <Button variant="contained" type="submit">
             {props.type}
           </Button>
