@@ -6,6 +6,7 @@ import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
 import styles from "./styles.login";
+import Catch from "../Catch/Catch";
 
 const LoginButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -20,11 +21,7 @@ const LoginButton = props => {
   };
 
   return (
-    <Button
-      size="medium"
-      onClick={showForm}
-      variant="contained"
-    >
+    <Button size="medium" onClick={showForm} variant="contained">
       Login
     </Button>
   );
@@ -39,22 +36,10 @@ export const LoginForm = withStyles(styles)(props => {
     e.preventDefault();
     const form = document.querySelector("#login-form");
     const [email, pwd] = [form["email"].value, form["pwd"].value];
-    auth.signInWithEmailAndPassword(email, pwd).catch(err =>
-      showModal({
-        show: true,
-        title: "Login Error!",
-        type: "error",
-        text: (
-          <>
-            <strong>{err.code} :</strong>
-            <br></br>
-            <br></br>
-            {err.message}
-          </>
-        ),
-        actions: <CloseModalButton variant="contained" autoFocus={true} />
-      })
-    );
+    auth
+      .signInWithEmailAndPassword(email, pwd)
+      .then(()=> {throw Error("Throw Login")})
+      .catch(error => showModal(Catch({ error: error, title: "Login Error" })));
     //close Modal after logging in
     showModal(false);
   };
