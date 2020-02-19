@@ -15,7 +15,7 @@ export const getTransactions = () => {
       });
       // throw Error("Throw Get Transactions");
       return transactions;
-    })
+    });
 };
 
 //Delete Transaction
@@ -24,8 +24,10 @@ export const deleteTransaction = id => {
     .collection(`user_trans/${user()}/transactions`)
     .doc(id)
     .delete()
-    .then(() => "Transaction has been deleted from your records.")
-    .catch(error => error);
+    .then(error => {
+      //throw Error("Throw Delete");
+      return error;
+    });
 };
 
 //Add Transaction
@@ -36,9 +38,9 @@ export const addTransaction = trans => {
     .then(dref => {
       //add id to transaction object
       trans.id = dref.id;
+      //throw Error("Throw Add");
       return trans;
-    })
-    .catch(error => error);
+    });
 };
 
 //Update Transaction
@@ -47,6 +49,8 @@ export const updateTransaction = (transId, trans) => {
     .collection(`user_trans/${user()}/transactions`)
     .doc(transId)
     .set(trans)
-    .then(() => "Transaction record has been updated.")
-    .catch(error => error);
+    .then(error => {
+      //throw Error("Throw Update");
+      return error;
+    });
 };
