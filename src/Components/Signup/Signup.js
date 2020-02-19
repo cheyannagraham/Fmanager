@@ -7,6 +7,7 @@ import { ModalContext } from "../../App/App";
 // Styles from Login styles
 import styles from "../Login/styles.login";
 import { auth } from "../../fb/fb";
+import Catch from "../Catch/Catch";
 
 const SignupButton = props => {
   const showModal = useContext(ModalContext).setShowModal;
@@ -20,11 +21,7 @@ const SignupButton = props => {
     });
   };
   return (
-    <Button
-      size="medium"
-      onClick={showForm}
-      variant="contained"
-    >
+    <Button size="medium" onClick={showForm} variant="contained">
       SignUp
     </Button>
   );
@@ -38,6 +35,7 @@ export const SignupForm = withStyles(styles)(props => {
 
   const handleSignup = async e => {
     e.preventDefault();
+    showModal(false);
     const form = document.querySelector("#signup-form");
     const [username, email, pwd] = [
       form["username"].value,
@@ -54,23 +52,12 @@ export const SignupForm = withStyles(styles)(props => {
         //add username to profile
         await auth.currentUser.updateProfile({ displayName: displayName });
       })
-      .catch(err =>
-        showModal({
-          show: true,
-          type: "error",
-          title: "Signup Error!",
-          text: (
-            <>
-              <strong>{err.code} :</strong>
-              <br></br>
-              <br></br>
-              {err.message}
-            </>
-          ),
-          actions: <CloseModalButton variant="contained" autoFocus={true} />
-        })
+      .then(() => {
+        throw Error("Throw Signup");
+      })
+      .catch(error =>
+        showModal(Catch({ error: error, title: "Signup Error" }))
       );
-    showModal(false);
   };
 
   const variant = "filled";
