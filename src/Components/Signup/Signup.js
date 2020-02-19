@@ -1,12 +1,10 @@
 import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
-import withStyles from "@material-ui/styles/withStyles";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password, Username } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 // Styles from Login styles
-import styles from "../Login/styles.login";
 import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 import formReducer from "../Helpers/formReducer";
@@ -32,7 +30,7 @@ const SignupButton = props => {
 
 export default SignupButton;
 
-export const SignupForm = withStyles(styles)(props => {
+export const SignupForm = props => {
   const modalContent = useContext(ModalContext);
   const [formState, formDispatch] = useReducer(formReducer, {
     username: "",
@@ -106,4 +104,4 @@ export const SignupForm = withStyles(styles)(props => {
       </StyledFormControl>
     </form>
   );
-});
+};
