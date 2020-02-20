@@ -6,9 +6,9 @@ import { FormControl } from "../FormControls/FormControls";
 import moment from "moment";
 
 const FilteredHeader = props => {
-  const handleChange = e => {
-    const input = e.target.id;
-    const value = e.target.value;
+  const handleChange = event => {
+    const input = event.target.id;
+    const value = event.target.value;
     if (input === "start-date") {
       props.setFromDate(value);
     } else {
@@ -36,7 +36,7 @@ const FilteredHeader = props => {
                   name="start-date"
                   id="start-date"
                   label=""
-                  value={moment().format("YYYY-MM-DD")}
+                  defaultValue={moment().format("YYYY-MM-DD")}
                   required
                 />
               </Box>
@@ -57,7 +57,7 @@ const FilteredHeader = props => {
                   type="date"
                   name="end-date"
                   id="end-date"
-                  value={moment().format("YYYY-MM-DD")}
+                  defaultValue={moment().format("YYYY-MM-DD")}
                   required
                 />
               </Box>
