@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 const StyledFormControl = props => {
 
   return (
-    <Box mb={1} display="grid">
+    <Box mb={2.5} display="grid">
         {props.children}
     </Box>
   );
