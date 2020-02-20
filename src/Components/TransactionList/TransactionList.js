@@ -29,7 +29,7 @@ const TransactionList = props => {
   return (
     <Box>
       {sortGroupedTransactions().map(group => (
-        <Box my={2}>
+        <Box my={2} key={group.date}>
           <Box borderBottom="2px solid black">
             <Typography key={group.date}>
               {props.fullDate
