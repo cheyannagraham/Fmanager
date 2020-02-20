@@ -32,7 +32,7 @@ export default LoginButton;
 export const LoginForm = props => {
   const modalContent = useContext(ModalContext);
   const [formState, formDispatch] = useReducer(formReducer, {
-    username: "",
+    email: "",
     pwd: ""
   });
 
