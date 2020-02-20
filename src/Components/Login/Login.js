@@ -7,7 +7,6 @@ import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 import formReducer from "../Helpers/formReducer";
-import StyledFormControl from "../StyledComponents/StyledFormControl";
 
 const LoginButton = props => {
   const modalContent = useContext(ModalContext);
@@ -53,35 +52,29 @@ export const LoginForm = props => {
 
   return (
     <form id="login-form" onSubmit={handleLogin}>
-      <StyledFormControl>
-        <StyledFormControl>
-          <Email
-            autoFocus={true}
-            variant={variant}
-            value={formState.email}
-            onChange={event =>
-              formDispatch({ input: "email", value: event.target.value })
-            }
-          />
-        </StyledFormControl>
+      <Email
+        autoFocus={true}
+        variant={variant}
+        value={formState.email}
+        onChange={event =>
+          formDispatch({ input: "email", value: event.target.value })
+        }
+      />
 
-        <Password
-          variant={variant}
-          value={formState.pwd}
-          onChange={event =>
-            formDispatch({ input: "pwd", value: event.target.value })
-          }
-        />
-      </StyledFormControl>
+      <Password
+        variant={variant}
+        value={formState.pwd}
+        onChange={event =>
+          formDispatch({ input: "pwd", value: event.target.value })
+        }
+      />
 
-      <StyledFormControl>
-        <DialogActions>
-          <Button variant="contained" type="submit">
-            Login
-          </Button>
-          <CloseModalButton />
-        </DialogActions>
-      </StyledFormControl>
+      <DialogActions>
+        <Button variant="contained" type="submit">
+          Login
+        </Button>
+        <CloseModalButton />
+      </DialogActions>
     </form>
   );
 };

@@ -8,7 +8,6 @@ import { ModalContext } from "../../App/App";
 import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 import formReducer from "../Helpers/formReducer";
-import StyledFormControl from "../StyledComponents/StyledFormControl";
 
 const SignupButton = props => {
   const modalContent = useContext(ModalContext);
@@ -65,43 +64,37 @@ export const SignupForm = props => {
 
   return (
     <form id="signup-form" onSubmit={handleSignup}>
-      <StyledFormControl>
-        <Username
-          value={formState.username}
-          autoFocus={true}
-          variant={variant}
-          onChange={event =>
-            formDispatch({ input: "username", value: event.target.value })
-          }
-        />
-      </StyledFormControl>
-      <StyledFormControl>
-        <Email
-          value={formState.email}
-          variant={variant}
-          onChange={event =>
-            formDispatch({ input: "email", value: event.target.value })
-          }
-        />
-      </StyledFormControl>
+      <Username
+        value={formState.username}
+        autoFocus={true}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "username", value: event.target.value })
+        }
+      />
 
-      <StyledFormControl>
-        <Password
-          value={formState.pwd}
-          variant={variant}
-          onChange={event =>
-            formDispatch({ input: "pwd", value: event.target.value })
-          }
-        />
-      </StyledFormControl>
-      <StyledFormControl>
-        <DialogActions>
-          <Button variant="contained" type="submit">
-            Signup
-          </Button>
-          <CloseModalButton />
-        </DialogActions>
-      </StyledFormControl>
+      <Email
+        value={formState.email}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "email", value: event.target.value })
+        }
+      />
+
+      <Password
+        value={formState.pwd}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "pwd", value: event.target.value })
+        }
+      />
+
+      <DialogActions>
+        <Button variant="contained" type="submit">
+          Signup
+        </Button>
+        <CloseModalButton />
+      </DialogActions>
     </form>
   );
 };

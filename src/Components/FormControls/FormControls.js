@@ -1,11 +1,14 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
 
 export const FormControl = props => {
   return (
-    <TextField variant="standard" {...props}>
-      {props.children}
-    </TextField>
+    <Box mb={2.5} display="grid">
+      <TextField variant="standard" {...props}>
+        {props.children}
+      </TextField>
+    </Box>
   );
 };
 

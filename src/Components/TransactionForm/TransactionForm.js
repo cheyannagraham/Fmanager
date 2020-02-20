@@ -1,18 +1,16 @@
 import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
-import TextField from "@material-ui/core/TextField";
 import { updateTransaction, addTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
+import Catch from "../Catch/Catch";
+import formReducer from "../Helpers/formReducer";
+import { FormControl } from "../FormControls/FormControls";
 import moment from "moment";
 import { withSnackbar } from "notistack";
 import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
-import Catch from "../Catch/Catch";
-import StyledFormControl from "../StyledComponents/StyledFormControl";
-import formReducer from "../Helpers/formReducer";
-
 
 const TransactionForm = props => {
   const modalContent = useContext(ModalContext);
@@ -121,100 +119,90 @@ const TransactionForm = props => {
   return (
     <form id="transaction-form" onSubmit={validateDate}>
       {/* Date Input */}
-      <StyledFormControl>
-        <TextField
-          label="Date"
-          name="trans-date"
-          type="date"
-          variant="standard"
-          inputProps={{
-            pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
-          }}
-          id="transaction-date"
-          value={formState.date}
-          autoFocus
-          onChange={evt =>
-            formDispatch({ input: "date", value: evt.target.value })
-          }
-          required
-        />
-      </StyledFormControl>
+      <FormControl
+        label="Date"
+        name="trans-date"
+        type="date"
+        variant="standard"
+        inputProps={{
+          pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
+        }}
+        id="transaction-date"
+        value={formState.date}
+        autoFocus
+        onChange={evt =>
+          formDispatch({ input: "date", value: evt.target.value })
+        }
+        required
+      />
 
       {/* Business Name Input */}
-      <StyledFormControl>
-        <TextField
-          label="Business"
-          id="transaction-business"
-          value={formState.business}
-          variant="standard"
-          onChange={evt =>
-            formDispatch({ input: "business", value: evt.target.value })
-          }
-          required
-          type="text"
-          name="business-name"
-        />
-      </StyledFormControl>
+      <FormControl
+        label="Business"
+        id="transaction-business"
+        value={formState.business}
+        variant="standard"
+        onChange={evt =>
+          formDispatch({ input: "business", value: evt.target.value })
+        }
+        required
+        type="text"
+        name="business-name"
+      />
 
       {/* Amount Input */}
-      <StyledFormControl>
-        <TextField
-          label="Amount"
-          name="trans-amount"
-          type="number"
-          variant="standard"
-          inputProps={{
-            step: 0.01
-          }}
-          id="transaction-amount"
-          value={formState.amount}
-          onChange={evt =>
-            formDispatch({ input: "amount", value: evt.target.value })
-          }
-          required
-        />
-      </StyledFormControl>
+      <FormControl
+        label="Amount"
+        name="trans-amount"
+        type="number"
+        variant="standard"
+        inputProps={{
+          step: 0.01
+        }}
+        id="transaction-amount"
+        value={formState.amount}
+        onChange={evt =>
+          formDispatch({ input: "amount", value: evt.target.value })
+        }
+        required
+      />
 
       {/* Transaction Type  */}
-      <StyledFormControl>
-        <TextField
-          select
-          variant="standard"
-          InputLabelProps={{
-            shrink: true
-          }}
-          SelectProps={{
-            native: true
-          }}
-          label="Type"
-          id="transaction-type"
-          name="trans-type"
-          value={formState.type}
-          onChange={evt =>
-            formDispatch({ input: "type", value: evt.target.value })
-          }
-          required
-        >
-          <>
-            <option key="income" value="income">
-              Income
-            </option>
-            <option key="purchase" value="purchase">
-              Purchase
-            </option>
-          </>
-        </TextField>
-      </StyledFormControl>
+      <FormControl
+        select
+        variant="standard"
+        InputLabelProps={{
+          shrink: true
+        }}
+        SelectProps={{
+          native: true
+        }}
+        label="Type"
+        id="transaction-type"
+        name="trans-type"
+        value={formState.type}
+        onChange={evt =>
+          formDispatch({ input: "type", value: evt.target.value })
+        }
+        required
+      >
+        <>
+          <option key="income" value="income">
+            Income
+          </option>
+          <option key="purchase" value="purchase">
+            Purchase
+          </option>
+        </>
+      </FormControl>
 
       {/* Form Buttons */}
-      <StyledFormControl>
-        <DialogActions>
-          <Button variant="contained" type="submit">
-            {props.type}
-          </Button>
-          <CloseModalButton />
-        </DialogActions>
-      </StyledFormControl>
+      <DialogActions>
+        <Button variant="contained" type="submit">
+          {props.type}
+        </Button>
+        <CloseModalButton />
+      </DialogActions>
     </form>
   );
 };
