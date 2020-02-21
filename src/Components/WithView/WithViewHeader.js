@@ -44,7 +44,7 @@ const WithViewHeader = props => {
             label="Date"
             type="date"
             id="goto-date"
-            value={props.date}
+            defaultValue={props.date}
             required
             autoFocus
           />
