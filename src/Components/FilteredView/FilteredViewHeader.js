@@ -15,7 +15,7 @@ const FilteredViewHeader = props => {
   };
 
   return (
-    <Box mt={2}>
+    <Box mt={3}>
       <form onChange={handleChange}>
         <Box
           display="flex"
