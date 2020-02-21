@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import WithViewHeader from "./WithViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
@@ -27,11 +26,9 @@ const WithView = props => {
   }, [date, transactions, props.view]);
 
   return (
-    <Grid container>
-      <Box width="100%" justifyContent="center" alignItems="center">
-        <WithViewHeader view={props.view} date={date} setDate={setDate} />
-        <TransactionList transactions={currentTransactions} />
-      </Box>
+    <Box display="grid" width="100%">
+      <WithViewHeader view={props.view} date={date} setDate={setDate} />
+      <TransactionList transactions={currentTransactions} />
 
       <BottomBar>
         <RunningTotal
@@ -39,7 +36,7 @@ const WithView = props => {
           transactions={transactions}
         />
       </BottomBar>
-    </Grid>
+    </Box>
   );
 };
 
