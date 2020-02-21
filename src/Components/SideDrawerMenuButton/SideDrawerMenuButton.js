@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import MenuRounded from "@material-ui/icons/MenuRounded";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -8,9 +8,11 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Signout from "../Signout/Signout";
-import FilterTransactionsViewButton from "../FilterTransactionsViewButton/FilterTransactionsViewButton";
-import MonthlyViewButton from "../MonthlyViewButton/MonthlyViewButton";
-import DailyViewButton from "../DailyViewButton/DailyViewButton";
+import { ViewContext } from "../Main/Main";
+import CalendarViewDayRounded from "@material-ui/icons/CalendarViewDayRounded";
+import FilterListRounded from "@material-ui/icons/FilterListRounded";
+
+import CalendarTodayRounded from "@material-ui/icons/CalendarTodayRounded";
 
 const SideDrawerMenuButton = props => {
   const [open, setOpen] = useState(false);
@@ -35,17 +37,31 @@ const SideDrawerMenuButton = props => {
 export default SideDrawerMenuButton;
 
 export const SideDrawer = props => {
+  const setView = useContext(ViewContext);
+
   const listItems = [
     {
-      icon: <MonthlyViewButton />,
+      icon: (
+        <IconButton onClick={() => setView("monthly")}>
+          <CalendarTodayRounded />
+        </IconButton>
+      ),
       text: "Monthly View"
     },
     {
-      icon: <DailyViewButton />,
-      text: "Daily View",
+      icon: (
+        <IconButton onClick={() => setView("daily")}>
+          <CalendarViewDayRounded />
+        </IconButton>
+      ),
+      text: "Daily View"
     },
     {
-      icon: <FilterTransactionsViewButton />,
+      icon: (
+        <IconButton onClick={() => setView("filter")}>
+          <FilterListRounded />
+        </IconButton>
+      ),
       text: "Filter Transactions",
       divider: true
     },
