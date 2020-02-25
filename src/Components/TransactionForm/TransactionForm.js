@@ -198,7 +198,7 @@ const TransactionForm = props => {
 
       {/* Form Buttons */}
       <DialogActions>
-        <Button variant="contained" type="submit">
+        <Button variant="contained" color="secondary" type="submit">
           {props.type}
         </Button>
         <CloseModalButton />

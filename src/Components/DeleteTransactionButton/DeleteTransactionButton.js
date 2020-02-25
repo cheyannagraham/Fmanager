@@ -27,6 +27,7 @@ const DeleteTransaction = props => {
         <>
           <Button
             variant="contained"
+            color="secondary"
             onClick={() => {
               modalContent({ show: false });
               handleDelete(id);

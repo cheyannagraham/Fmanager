@@ -33,7 +33,6 @@ const RunningTotal = props => {
         <Typography
           id="current-total"
           align="right"
-          //color={runningTotal < 0 ? "textPrimary" : ""}
         >
           ${currentTotal.toFixed(2)}
         </Typography>
@@ -44,7 +43,6 @@ const RunningTotal = props => {
         <Typography
           id="run-total"
           align="right"
-          //color={runningTotal < 0 ? "textPrimary" : ""}
         >
           ${runningTotal.toFixed(2)}
         </Typography>
