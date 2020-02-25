@@ -90,7 +90,7 @@ export const SignupForm = props => {
       />
 
       <DialogActions>
-        <Button variant="contained" type="submit">
+        <Button variant="outlined" type="submit" color="secondary">
           Signup
         </Button>
         <CloseModalButton />

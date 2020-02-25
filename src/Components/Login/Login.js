@@ -53,7 +53,7 @@ export const LoginForm = props => {
     //close Modal after logging in
     modalContent(false);
   };
-  const variant = "outlined";
+  const variant = "filled";
 
   return (
     <form id="login-form" onSubmit={handleLogin}>
@@ -75,7 +75,7 @@ export const LoginForm = props => {
       />
 
       <DialogActions>
-        <Button variant="contained" type="submit">
+        <Button variant="outlined" color="secondary" type="submit">
           Login
         </Button>
         <CloseModalButton />
