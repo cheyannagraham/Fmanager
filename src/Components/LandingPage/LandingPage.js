@@ -7,8 +7,14 @@ import Signup from "../Signup/Signup";
 const LandingPage = props => {
   return (
     <Box height="100%">
-      <Box my={2} py={1} component="header" borderBottom="2px solid black">
-        <Typography noWrap={true} variant="h1" align="center">
+      <Box
+        my={2}
+        py={1}
+        component="header"
+        color="primary.main"
+        borderBottom={2}
+      >
+        <Typography noWrap={true} variant="h1" align="center" color="primary">
           MY BUDGET
         </Typography>
       </Box>

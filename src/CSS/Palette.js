@@ -34,14 +34,11 @@ const Palette = responsiveFontSizes(
       }
     },
     palette: {
-      primary: {
-        main: "#009688"
-      },
-      secondary: {
-        main: "#dd2c00"
-      }
+      primary: { main: '#0097A7' },
+      secondary: { main: '#FF7043' }
     }
   })
 );
+console.log(Palette);
 
 export default Palette;

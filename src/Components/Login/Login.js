@@ -21,7 +21,12 @@ const LoginButton = props => {
   };
 
   return (
-    <Button size="medium" onClick={showForm} variant="contained">
+    <Button
+      size="medium"
+      onClick={showForm}
+      variant="outlined"
+      color="secondary"
+    >
       Login
     </Button>
   );

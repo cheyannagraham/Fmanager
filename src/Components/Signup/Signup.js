@@ -21,7 +21,7 @@ const SignupButton = props => {
     });
   };
   return (
-    <Button size="medium" onClick={showForm} variant="contained">
+    <Button size="medium" onClick={showForm} variant="outlined" color="primary">
       SignUp
     </Button>
   );
