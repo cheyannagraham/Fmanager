@@ -24,18 +24,16 @@ const DeleteTransaction = props => {
       text: "Are you sure you want to delete this transaction?",
       type: "confirm",
       actions: (
-        <>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => {
-              modalContent({ show: false });
-              handleDelete(id);
-            }}
-          >
-            Confirm
-          </Button>
-        </>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => {
+            modalContent({ show: false });
+            handleDelete(id);
+          }}
+        >
+          Confirm
+        </Button>
       ),
       closeAction: true
     });

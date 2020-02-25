@@ -1,5 +1,7 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
+const defaultTheme = createMuiTheme();
+
 const Palette = responsiveFontSizes(
   createMuiTheme({
     overrides: {
@@ -26,10 +28,9 @@ const Palette = responsiveFontSizes(
       },
       MuiSnackbarContent: {
         root: {
-          // padding: "0px 5px",
-        },
-        message: {
-          // padding: "0px"
+          [defaultTheme.breakpoints.only("xs")]: {
+            padding: "0px 5px"
+          }
         }
       }
     },
@@ -42,6 +43,5 @@ const Palette = responsiveFontSizes(
     }
   })
 );
-console.log(Palette);
 
 export default Palette;
