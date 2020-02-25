@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.runningtotal";
 
 const RunningTotal = props => {
-  const { classes } = props;
 
   const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
@@ -36,9 +33,7 @@ const RunningTotal = props => {
         <Typography
           id="current-total"
           align="right"
-          className={`${classes["total-value"]} ${
-            currentTotal < 0 ? classes.neg : null
-          }`}
+          //color={runningTotal < 0 ? "textPrimary" : ""}
         >
           ${currentTotal.toFixed(2)}
         </Typography>
@@ -49,9 +44,7 @@ const RunningTotal = props => {
         <Typography
           id="run-total"
           align="right"
-          className={`${classes["total-value"]} ${
-            runningTotal < 0 ? classes.neg : null
-          }`}
+          //color={runningTotal < 0 ? "textPrimary" : ""}
         >
           ${runningTotal.toFixed(2)}
         </Typography>
@@ -60,4 +53,4 @@ const RunningTotal = props => {
   );
 };
 
-export default withStyles(styles)(RunningTotal);
+export default RunningTotal;
