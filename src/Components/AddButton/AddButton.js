@@ -21,6 +21,7 @@ const AddButton = props => {
       title="Add New Transaction"
       aria-label="add transaction"
       size="small"
+      color="secondary"
       onClick={handleClick}
     >
       <AddRounded />
