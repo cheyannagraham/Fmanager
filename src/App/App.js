@@ -13,6 +13,8 @@ import { SnackbarProvider } from "notistack";
 import Palette from "../CSS/Palette.js";
 import Catch from "../Components/Catch/Catch";
 
+import CustomSnackbar from "../Components/CustomSnackbar/CustomSnackbar";
+
 // Global data & state
 export const ModalContext = React.createContext(false);
 export const UserContext = React.createContext(null);
@@ -30,14 +32,14 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-    user &&
-      getTransactions()
-        .then(results => setTransactions(results))
-        .catch(error => {
-          setModalContent(
-            Catch({ error: error, title: "Error Fetching Transactions" })
-          );
-        });
+    // user &&
+    //   getTransactions()
+    //     .then(results => setTransactions(results))
+    //     .catch(error => {
+    //       setModalContent(
+    //         Catch({ error: error, title: "Error Fetching Transactions" })
+    //       );
+    //     });
   }, [user]);
 
   return (
@@ -59,6 +61,7 @@ const App = props => {
             <ModalContext.Provider value={setModalContent}>
               <CssBaseline />
               <Grid container justify="center">
+                <CustomSnackbar />
                 {user ? <Main /> : <LandingPage />}
                 {modalContent.show && <Modal content={modalContent} />}
               </Grid>
