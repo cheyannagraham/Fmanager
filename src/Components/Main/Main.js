@@ -7,12 +7,16 @@ import TopBar from "../TopBar/TopBar";
 import BarSpacer from "../BarSpacer/BarSpacer";
 import WithView from "../WithView/WithView";
 import FilteredView from "../FilteredView/FilteredView";
+import { useSnackbar } from "../SnackbarProvider/SnackbarProvider";
 
 export const ViewContext = React.createContext();
 
 const Main = props => {
   const [view, setView] = useState("monthly");
+  const func = useSnackbar();
 
+  func({ type: "add", content: "content", actions: "actions" });
+  func({ type: "add", content: "content1", actions: "actions1" });
   return (
     <ViewContext.Provider value={setView}>
       <Container>

@@ -9,17 +9,17 @@ import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
 import { shiftQueue } from "../Components/QueueSnackbar/QueueSnackbar";
-import { SnackbarProvider } from "notistack";
+// import { SnackbarProvider } from "notistack";
 import Palette from "../CSS/Palette.js";
 import Catch from "../Components/Catch/Catch";
 
-import CustomSnackbar from "../Components/CustomSnackbar/CustomSnackbar";
+import SnackbarProvider from "../Components/SnackbarProvider/SnackbarProvider";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
 export const UserContext = React.createContext(null);
 export const TransContext = React.createContext([]);
-const SnackbarRef = React.createRef();
+//const SnackbarRef = React.createRef();
 
 const App = props => {
   const [modalContent, setModalContent] = useState({ show: false });
@@ -44,7 +44,7 @@ const App = props => {
 
   return (
     <ThemeProvider theme={Palette}>
-      <SnackbarProvider
+      {/* <SnackbarProvider
         TransitionProps={{ direction: "up" }}
         dense
         autoHideDuration={2500}
@@ -55,13 +55,13 @@ const App = props => {
           </Button>
         )}
         onExited={shiftQueue}
-      >
+      > */}
+      <SnackbarProvider>
         <UserContext.Provider value={user}>
           <TransContext.Provider value={[transactions, setTransactions]}>
             <ModalContext.Provider value={setModalContent}>
               <CssBaseline />
               <Grid container justify="center">
-                <CustomSnackbar />
                 {user ? <Main /> : <LandingPage />}
                 {modalContent.show && <Modal content={modalContent} />}
               </Grid>
