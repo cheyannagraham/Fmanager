@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import AddButton from "../AddButton/AddButton";
 import TopBar from "../TopBar/TopBar";
 import BarSpacer from "../BarSpacer/BarSpacer";
@@ -17,6 +18,7 @@ const Main = props => {
 
   func({ type: "add", content: "content", actions: "actions" });
   func({ type: "add", content: "content1", actions: "actions1" });
+
   return (
     <ViewContext.Provider value={setView}>
       <Container>
