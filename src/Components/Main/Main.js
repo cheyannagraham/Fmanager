@@ -14,10 +14,12 @@ export const ViewContext = React.createContext();
 
 const Main = props => {
   const [view, setView] = useState("monthly");
-  const func = useSnackbar();
+  const dispatch = useSnackbar();
 
-  func({ type: "add", content: "content", actions: "actions" });
-  func({ type: "add", content: "content1", actions: "actions1" });
+  dispatch({ type: "add", content: "content", actions: "actions" });
+  dispatch({ type: "add", content: "content1", actions: "actions1" });
+
+  console.log({ dispatch })
 
   return (
     <ViewContext.Provider value={setView}>
@@ -26,6 +28,18 @@ const Main = props => {
         <Container>
           <BarSpacer />
           <Grid component="main" container>
+            <Button
+              onClick={() => {
+                console.log('clicked')
+                dispatch({
+                  type: "add",
+                  content: "content3",
+                  actions3: "actions"
+                });
+              }}
+            >
+              Show SB
+            </Button>
             {view === "filter" ? <FilteredView /> : <WithView view={view} />}
           </Grid>
           <Box position="fixed" bottom="60px" right="15px" top="auto">
