@@ -1,7 +1,8 @@
-import React, { useState, useReducer, useContext, useEffect } from "react";
+import React, { useState, useReducer, useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Slide from "@material-ui/core/Slide";
 import Button from "@material-ui/core/Button";
+import SnackbarContainer from "./SnackbarContainer";
 
 export const SnackbarContext = React.createContext();
 
@@ -34,17 +35,7 @@ const SnackbarProvider = props => {
   return (
     <SnackbarContext.Provider value={snackbarDispatch}>
       {props.children}
-      <Box
-        zIndex={1400}
-        id="here"
-        width="100%"
-        position="fixed"
-        bottom={0}
-        left={0}
-      >
-      {snackbars}
-        {/* {snackbars.slice(0, 2)} */}
-      </Box>
+      <SnackbarContainer snackbars={snackbars.slice(0, 2)} />
     </SnackbarContext.Provider>
   );
 };
