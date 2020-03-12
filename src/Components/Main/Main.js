@@ -16,10 +16,18 @@ const Main = props => {
   const [view, setView] = useState("monthly");
   const dispatch = useSnackbar();
 
-  dispatch({ type: "add", content: "content", actions: "actions" });
-  dispatch({ type: "add", content: "content1", actions: "actions1" });
-
-  console.log({ dispatch })
+  dispatch({
+    type: "add",
+    content: "content",
+    actions: "actions",
+    variant: "success"
+  });
+  dispatch({
+    type: "add",
+    content: "content1",
+    actions: "actions1",
+    variant: "warning"
+  });
 
   return (
     <ViewContext.Provider value={setView}>
@@ -30,11 +38,12 @@ const Main = props => {
           <Grid component="main" container>
             <Button
               onClick={() => {
-                console.log('clicked')
+                console.log("clicked");
                 dispatch({
                   type: "add",
                   content: "content3",
-                  actions3: "actions"
+                  actions: "actions",
+                  variant: "error"
                 });
               }}
             >

@@ -14,6 +14,7 @@ const snackbarReducer = (state = [], options) => {
         <MakeSnackbar
           content={options.content}
           actions={options.actions}
+          variant={options.variant}
           id={id}
           key={id}
         />
@@ -34,7 +35,7 @@ const SnackbarProvider = props => {
   return (
     <SnackbarContext.Provider value={snackbarDispatch}>
       {props.children}
-      
+
       <Box zIndex={1400} width="100%" position="fixed" bottom={0} left={0}>
         {snackbars.slice(0, 1)}
       </Box>
@@ -51,6 +52,14 @@ const MakeSnackbar = props => {
   const [show, setShow] = useState(true);
   const dispatch = useSnackbar();
 
+  const variants = {
+    success: "#7cb342",
+    warning: "#ffb300",
+    error: "#ff7961",
+    text: "black",
+    action: "#4a148c"
+  };
+
   return (
     <Slide
       direction="up"
@@ -62,9 +71,10 @@ const MakeSnackbar = props => {
       onEntered={() => setTimeout(() => setShow(false), 4000)}
     >
       <Box
-        bgcolor="secondary.light"
+        bgcolor={variants[props.variant]}
+        color={variants.text}
         mt={1}
-        p={1}
+        p={2}
         fontSize={16}
         zIndex={1400}
         width="100%"
@@ -76,9 +86,9 @@ const MakeSnackbar = props => {
         <Box display="flex" alignContent="center">
           {props.content}
         </Box>
-        <Box>
+        <Box color={variants.action}>
           {props.actions}
-          <Button onClick={() => setShow(false)}>Close</Button>
+          {/* <Button color={variants.text} onClick={() => setShow(false)}>Close</Button> */}
         </Box>
       </Box>
     </Slide>
