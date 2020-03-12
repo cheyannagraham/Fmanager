@@ -2,7 +2,6 @@ import React, { useState, useReducer, useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Slide from "@material-ui/core/Slide";
 import Button from "@material-ui/core/Button";
-import SnackbarContainer from "./SnackbarContainer";
 
 export const SnackbarContext = React.createContext();
 
@@ -35,7 +34,10 @@ const SnackbarProvider = props => {
   return (
     <SnackbarContext.Provider value={snackbarDispatch}>
       {props.children}
-      <SnackbarContainer snackbars={snackbars.slice(0, 2)} />
+      
+      <Box zIndex={1400} width="100%" position="fixed" bottom={0} left={0}>
+        {snackbars.slice(0, 1)}
+      </Box>
     </SnackbarContext.Provider>
   );
 };
@@ -57,7 +59,7 @@ const MakeSnackbar = props => {
       onExited={() => {
         dispatch({ type: "delete", id: props.id });
       }}
-      onEntered={() => setTimeout(() => setShow(false), 3000)}
+      onEntered={() => setTimeout(() => setShow(false), 4000)}
     >
       <Box
         bgcolor="secondary.light"
