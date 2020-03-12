@@ -17,13 +17,11 @@ const Main = props => {
   const dispatch = useSnackbar();
 
   dispatch({
-    type: "add",
     content: "content",
     actions: "actions",
     variant: "success"
   });
   dispatch({
-    type: "add",
     content: "content1",
     actions: "actions1",
     variant: "warning"
@@ -40,7 +38,6 @@ const Main = props => {
               onClick={() => {
                 console.log("clicked");
                 dispatch({
-                  type: "add",
                   content: "content3",
                   actions: "actions",
                   variant: "error"

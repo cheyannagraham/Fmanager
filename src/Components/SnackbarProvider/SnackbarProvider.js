@@ -7,8 +7,13 @@ export const SnackbarContext = React.createContext();
 
 const snackbarReducer = (state = [], options) => {
   switch (options.type) {
-    case "add":
+    case "delete":
+      return state.filter(bar => bar.props.id !== options.id);
+
+    default:
       // Generate random id string
+      if(!options) return state;
+
       const id = `${Math.floor(Math.random() * 1000000)}`;
       state.push(
         <MakeSnackbar
@@ -20,13 +25,6 @@ const snackbarReducer = (state = [], options) => {
         />
       );
       return [...state];
-
-    case "delete":
-      return state.filter(bar => bar.props.id !== options.id);
-
-    default:
-      console.log("invalid parameters for dispatch");
-      return state;
   }
 };
 
