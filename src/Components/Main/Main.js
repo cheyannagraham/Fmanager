@@ -16,16 +16,6 @@ const Main = props => {
   const [view, setView] = useState("monthly");
   const snackbar = useSnackbar();
 
-  snackbar({
-    text: "text",
-    actions: "actions",
-    variant: "success"
-  });
-  snackbar({
-    text: "content1",
-    actions: "actions1",
-    variant: "warning"
-  });
   return (
     <ViewContext.Provider value={setView}>
       <Container>

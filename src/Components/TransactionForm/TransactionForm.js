@@ -9,11 +9,11 @@ import Catch from "../Catch/Catch";
 import formReducer from "../Helpers/formReducer";
 import { FormControl } from "../FormControls/FormControls";
 import moment from "moment";
-import { withSnackbar } from "notistack";
-import QueueSnackbar from "../QueueSnackbar/QueueSnackbar";
+import { useSnackbar } from "../SnackbarProvider/SnackbarProvider";
 
 const TransactionForm = props => {
   const modalContent = useContext(ModalContext);
+  const snackbar = useSnackbar();
   const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
 
@@ -45,32 +45,25 @@ const TransactionForm = props => {
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
-          QueueSnackbar(() =>
-            props.enqueueSnackbar("Add Successful!", {
-              variant: "success"
-            })
-          );
+          snackbar({
+            text: "Transaction Added!",
+            variant: "success"
+          });
           throw new Error("me :)");
         })
         .catch(error => {
-          QueueSnackbar(() => {
-            const sbar = props.enqueueSnackbar("Add Error!", {
-              variant: "error",
-              action: (
-                <>
-                  <Button
-                    onClick={() =>
-                      modalContent(Catch({ error: error, title: "Add Error" }))
-                    }
-                  >
-                    Info
-                  </Button>
-                  <Button onClick={() => props.closeSnackbar(sbar)}>
-                    Close
-                  </Button>
-                </>
-              )
-            });
+          snackbar({
+            text: "Transaction Error!",
+            variant: "error",
+            actions: (
+              <Button
+                onClick={() =>
+                  modalContent(Catch({ error: error, title: "Add Error" }))
+                }
+              >
+                Info
+              </Button>
+            )
           });
         });
     }
@@ -82,35 +75,25 @@ const TransactionForm = props => {
             ...transactions.filter(trans => trans.id !== currTrans.id),
             { ...formState, id: currTrans.id }
           ]);
-          QueueSnackbar(() =>
-            props.enqueueSnackbar("Update Successful!", {
-              variant: "success"
-            })
-          );
+          snackbar({
+            text: "Transaction Updated!",
+            variant: "success"
+          });
           throw new Error("me :)");
         })
-        //})
         .catch(error =>
-          QueueSnackbar(() => {
-            const sbar = props.enqueueSnackbar("Update Error!", {
-              variant: "error",
-              action: (
-                <>
-                  <Button
-                    onClick={() =>
-                      modalContent(
-                        Catch({ error: error, title: "Update Error" })
-                      )
-                    }
-                  >
-                    Info
-                  </Button>
-                  <Button onClick={() => props.closeSnackbar(sbar)}>
-                    Close
-                  </Button>
-                </>
-              )
-            });
+          snackbar({
+            text: "Update Failed!",
+            variant: "error",
+            action: (
+              <Button
+                onClick={() =>
+                  modalContent(Catch({ error: error, title: "Update Error" }))
+                }
+              >
+                Info
+              </Button>
+            )
           })
         );
     }
@@ -207,4 +190,4 @@ const TransactionForm = props => {
   );
 };
 
-export default withSnackbar(TransactionForm);
+export default TransactionForm;

@@ -49,21 +49,20 @@ const DeleteTransaction = props => {
         });
         throw new Error("me :)");
       })
-      .catch(
-        error =>
-          snackbar({
-            text: "Deletion Failed!",
-            variant: "error",
-            actions: (
-              <Button
-                onClick={() => {
-                  modalContent(Catch({ error: error }));
-                }}
-              >
-                Info
-              </Button>
-            )
-          })
+      .catch(error =>
+        snackbar({
+          text: "Deletion Failed!",
+          variant: "error",
+          actions: (
+            <Button
+              onClick={() => {
+                modalContent(Catch({ error: error }));
+              }}
+            >
+              Info
+            </Button>
+          )
+        })
       );
   };
 
