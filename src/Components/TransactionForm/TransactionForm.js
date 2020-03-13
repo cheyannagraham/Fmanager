@@ -85,7 +85,7 @@ const TransactionForm = props => {
           snackbar({
             text: "Update Failed!",
             variant: "error",
-            action: (
+            actions: (
               <Button
                 onClick={() =>
                   modalContent(Catch({ error: error, title: "Update Error" }))
