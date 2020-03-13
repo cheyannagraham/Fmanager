@@ -8,7 +8,7 @@ import Modal from "../Components/Modal/Modal";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
-import { shiftQueue } from "../Components/QueueSnackbar/QueueSnackbar";
+//import { shiftQueue } from "../Components/QueueSnackbar/QueueSnackbar";
 // import { SnackbarProvider } from "notistack";
 import Palette from "../CSS/Palette.js";
 import Catch from "../Components/Catch/Catch";
@@ -32,14 +32,14 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-    // user &&
-    //   getTransactions()
-    //     .then(results => setTransactions(results))
-    //     .catch(error => {
-    //       setModalContent(
-    //         Catch({ error: error, title: "Error Fetching Transactions" })
-    //       );
-    //     });
+    user &&
+      getTransactions()
+        .then(results => setTransactions(results))
+        .catch(error => {
+          setModalContent(
+            Catch({ error: error, title: "Error Fetching Transactions" })
+          );
+        });
   }, [user]);
 
   return (
