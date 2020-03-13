@@ -12,10 +12,11 @@ const snackbarReducer = (state = [], options) => {
 
     default:
       // Return if options is empty
-      if(Object.keys(options).length < 1) return state;
-      
+      if (Object.keys(options).length < 1) return state;
+
       // Generate random id string
       const id = `${Math.floor(Math.random() * 1000000)}`;
+      
       state.push(
         <MakeSnackbar
           text={options.text}
@@ -72,8 +73,7 @@ const MakeSnackbar = props => {
       <Box
         bgcolor={variants[props.variant]}
         color={variants.text}
-        mt={1}
-        p={2}
+        p={1}
         fontSize={16}
         zIndex={1400}
         width="100%"
@@ -87,7 +87,9 @@ const MakeSnackbar = props => {
         </Box>
         <Box color={variants.action}>
           {props.actions}
-          <Button color="inherit" onClick={() => setShow(false)}>Close</Button>
+          <Button color="inherit" onClick={() => setShow(false)}>
+            Close
+          </Button>
         </Box>
       </Box>
     </Slide>
