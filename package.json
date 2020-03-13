@@ -10,7 +10,6 @@
     "firebase": "^7.4.0",
     "grpc": "^1.24.2",
     "moment": "^2.24.0",
-    "notistack": "^0.9.7",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^2.1.8",
