@@ -26,7 +26,6 @@ const Main = props => {
     actions: "actions1",
     variant: "warning"
   });
-
   return (
     <ViewContext.Provider value={setView}>
       <Container>

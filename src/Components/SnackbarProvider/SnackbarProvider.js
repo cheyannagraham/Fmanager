@@ -11,9 +11,10 @@ const snackbarReducer = (state = [], options) => {
       return state.filter(bar => bar.props.id !== options.id);
 
     default:
+      // Return if options is empty
+      if(Object.keys(options).length < 1) return state;
+      
       // Generate random id string
-      if(!options) return state;
-
       const id = `${Math.floor(Math.random() * 1000000)}`;
       state.push(
         <MakeSnackbar
