@@ -18,7 +18,7 @@ const snackbarReducer = (state = [], options) => {
       const id = `${Math.floor(Math.random() * 1000000)}`;
       state.push(
         <MakeSnackbar
-          content={options.content}
+          text={options.text}
           actions={options.actions}
           variant={options.variant}
           id={id}
@@ -82,12 +82,12 @@ const MakeSnackbar = props => {
         justifyContent="space-between"
         {...props}
       >
-        <Box display="flex" alignContent="center">
-          {props.content}
+        <Box display="flex" alignItems="center">
+          {props.text}
         </Box>
         <Box color={variants.action}>
           {props.actions}
-          {/* <Button color={variants.text} onClick={() => setShow(false)}>Close</Button> */}
+          <Button color="inherit" onClick={() => setShow(false)}>Close</Button>
         </Box>
       </Box>
     </Slide>
