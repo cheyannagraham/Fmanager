@@ -57,6 +57,7 @@ const TransactionForm = props => {
             variant: "error",
             actions: (
               <Button
+                color="inherit"
                 onClick={() =>
                   modalContent(Catch({ error: error, title: "Add Error" }))
                 }
@@ -87,6 +88,7 @@ const TransactionForm = props => {
             variant: "error",
             actions: (
               <Button
+                color="inherit"
                 onClick={() =>
                   modalContent(Catch({ error: error, title: "Update Error" }))
                 }

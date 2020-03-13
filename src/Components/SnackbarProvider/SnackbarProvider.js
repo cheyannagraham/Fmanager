@@ -16,7 +16,7 @@ const snackbarReducer = (state = [], options) => {
 
       // Generate random id string
       const id = `${Math.floor(Math.random() * 1000000)}`;
-      
+
       state.push(
         <MakeSnackbar
           text={options.text}

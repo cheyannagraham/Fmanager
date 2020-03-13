@@ -55,6 +55,7 @@ const DeleteTransaction = props => {
           variant: "error",
           actions: (
             <Button
+              color="inherit"
               onClick={() => {
                 modalContent(Catch({ error: error }));
               }}
