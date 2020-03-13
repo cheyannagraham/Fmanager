@@ -4,7 +4,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password, Username } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
-// Styles from Login styles
 import { auth } from "../../fb/fb";
 import Catch from "../Catch/Catch";
 import formReducer from "../Helpers/formReducer";

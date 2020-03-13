@@ -17,7 +17,6 @@ const TransactionForm = props => {
   const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
 
-  // Form State
   const [formState, formDispatch] = useReducer(formReducer, {
     type: (currTrans && currTrans.type) || "income",
     date: (currTrans && currTrans.date) || moment().format("YYYY-MM-DD"),
@@ -25,7 +24,6 @@ const TransactionForm = props => {
     business: (currTrans && currTrans.business) || ""
   });
 
-  // Date Validation
   const validateDate = evt => {
     evt.preventDefault();
     moment(formState.date).isValid()

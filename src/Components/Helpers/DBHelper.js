@@ -13,7 +13,7 @@ export const getTransactions = () => {
       results.forEach(doc => {
         transactions.push(Object.assign(doc.data(), { id: doc.id }));
       });
-      // throw Error("Throw Get Transactions");
+      //throw Error("Throw Get Transactions");
       return transactions;
     });
 };

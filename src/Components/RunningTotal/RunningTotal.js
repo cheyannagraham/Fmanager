@@ -11,7 +11,7 @@ const RunningTotal = props => {
     return data.reduce((acc, val) => Number(acc) + Number(val.amount), 0);
   };
 
-  // Calculate current Total
+  // Calculate Current Total
   useEffect(() => {
     setCurrentTotal(calcTotal(props.currentTransactions));
   }, [props.currentTransactions, props.transactions]);

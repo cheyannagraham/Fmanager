@@ -10,22 +10,6 @@ const Palette = responsiveFontSizes(
           cursor: "pointer"
         }
       },
-      MuiFormControl: {
-        root: {
-          //margin: "10px;"
-        }
-      },
-      MuiDialogContent: {
-        root: {
-          // padding: "5px",
-          // margin: "5px"
-        }
-      },
-      MuiDialogContentText: {
-        root: {
-          // "margin-bottom": "0"
-        }
-      },
       MuiSnackbarContent: {
         root: {
           [defaultTheme.breakpoints.only("xs")]: {
