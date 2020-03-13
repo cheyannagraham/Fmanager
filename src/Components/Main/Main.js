@@ -14,14 +14,14 @@ export const ViewContext = React.createContext();
 
 const Main = props => {
   const [view, setView] = useState("monthly");
-  const dispatch = useSnackbar();
+  const snackbar = useSnackbar();
 
-  dispatch({
+  snackbar({
     text: "text",
     actions: "actions",
     variant: "success"
   });
-  dispatch({
+  snackbar({
     text: "content1",
     actions: "actions1",
     variant: "warning"
@@ -36,7 +36,7 @@ const Main = props => {
             <Button
               onClick={() => {
                 console.log("clicked");
-                dispatch({
+                snackbar({
                   text: "content3",
                   actions: "actions",
                   variant: "error"

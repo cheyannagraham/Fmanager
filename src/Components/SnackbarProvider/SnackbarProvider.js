@@ -61,7 +61,7 @@ const MakeSnackbar = props => {
 
   return (
     <Slide
-      direction="up"
+      direction={show ? "up" : "right"}
       in={show}
       timeout={250}
       onExited={() => {
