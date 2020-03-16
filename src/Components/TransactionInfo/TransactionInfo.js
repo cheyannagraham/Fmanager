@@ -10,15 +10,15 @@ const TransactionInfo = props => {
   return (
     <>
       <Grid item xs={5}>
-        <Typography noWrap>
-          {props.transaction.business}
-        </Typography>
+        <Typography noWrap>{props.transaction.business}</Typography>
       </Grid>
 
       <Grid item xs={3} className={classes.right}>
-        <Typography>
-          <small>$</small>
-          {props.transaction.amount}
+        <Typography noWrap>
+          {new Intl.NumberFormat("en", {
+            style: "currency",
+            currency: "USD"
+          }).format(props.transaction.amount)}
         </Typography>
       </Grid>
     </>
