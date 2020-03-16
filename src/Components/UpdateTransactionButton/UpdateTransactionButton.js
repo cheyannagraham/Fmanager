@@ -14,24 +14,17 @@ const UpdateTransaction = props => {
   const handleClick = () => {
     modalContent({
       show: true,
-      title: "Change Transaction",
+      title: "Update Transaction",
       type: "update",
       content: (
-        <TransactionForm
-          setTransactions={props.setTransactions}
-          currentTransaction={props.transaction}
-          type="update"
-        />
+        <TransactionForm currentTransaction={props.transaction} type="update" />
       )
     });
   };
 
   return (
     <Grid item xs={2}>
-      <IconButton
-        title="Edit Transaction"
-        onClick={handleClick}
-      >
+      <IconButton title="Edit Transaction" onClick={handleClick}>
         <Edit className={classes.icon} />
       </IconButton>
     </Grid>
