@@ -1,11 +1,8 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.transactioninfo";
 
 const TransactionInfo = props => {
-  const { classes } = props;
 
   return (
     <>
@@ -13,8 +10,8 @@ const TransactionInfo = props => {
         <Typography noWrap>{props.transaction.business}</Typography>
       </Grid>
 
-      <Grid item xs={3} className={classes.right}>
-        <Typography noWrap>
+      <Grid item xs={3} >
+        <Typography noWrap align="right">
           {new Intl.NumberFormat("en", {
             style: "currency",
             currency: "USD"
@@ -25,4 +22,4 @@ const TransactionInfo = props => {
   );
 };
 
-export default withStyles(styles)(TransactionInfo);
+export default TransactionInfo;
