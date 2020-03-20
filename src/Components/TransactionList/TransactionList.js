@@ -27,7 +27,7 @@ const TransactionList = props => {
   };
 
   return (
-    <Box maxHeight="75vh" overflowx="auto" overflow="hidden">
+    <Box maxHeight="75vh" maxWidth="80vw">
       {sortGroupedTransactions().map(group => (
         <Box my={2} key={group.date}>
           <Box borderBottom="2px solid black">
