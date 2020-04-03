@@ -68,14 +68,12 @@ const DeleteTransaction = props => {
   };
 
   return (
-    <Grid item xs={2} className={classes.right}>
       <IconButton
         title="Delete Transaction"
         onClick={() => confirmDelete(props.transaction.id)}
       >
         <Delete className={classes.icon} />
       </IconButton>
-    </Grid>
   );
 };
 

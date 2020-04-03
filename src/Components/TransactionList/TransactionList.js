@@ -2,19 +2,17 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
-import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import moment from "moment";
 import BarSpacer from "../BarSpacer/BarSpacer";
 
-const TransactionList = props => {
+const TransactionList = (props) => {
   // Group Transactions by Date
   const groupTransactions = () => {
-    return [...new Set(props.transactions.map(trans => trans.date))].map(
-      date => ({
-        items: props.transactions.filter(trans => trans.date === date),
-        date: date
+    return [...new Set(props.transactions.map((trans) => trans.date))].map(
+      (date) => ({
+        items: props.transactions.filter((trans) => trans.date === date),
+        date: date,
       })
     );
   };
@@ -28,7 +26,7 @@ const TransactionList = props => {
 
   return (
     <Box maxHeight="75vh" maxWidth="80vw">
-      {sortGroupedTransactions().map(group => (
+      {sortGroupedTransactions().map((group) => (
         <Box my={2} key={group.date}>
           <Box borderBottom="2px solid black">
             <Typography key={group.date}>
@@ -37,17 +35,8 @@ const TransactionList = props => {
                 : moment(group.date).format("MMM DD")}
             </Typography>
           </Box>
-          {group.items.map(transaction => (
-            <Grid
-              key={transaction.id}
-              container
-              spacing={1}
-              alignItems="center"
-            >
-              <UpdateTransaction transaction={transaction} />
-              <TransactionInfo transaction={transaction} />
-              <DeleteTransaction transaction={transaction} />
-            </Grid>
+          {group.items.map((transaction) => (
+            <TransactionInfo transaction={transaction} />
           ))}
         </Box>
       ))}

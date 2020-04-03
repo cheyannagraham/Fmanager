@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import withStyles from "@material-ui/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
-import Grid from "@material-ui/core/Grid";
 import Edit from "@material-ui/icons/Edit";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import { ModalContext } from "../../App/App";
@@ -23,11 +22,9 @@ const UpdateTransaction = props => {
   };
 
   return (
-    <Grid item xs={2}>
       <IconButton title="Edit Transaction" onClick={handleClick}>
         <Edit className={classes.icon} />
       </IconButton>
-    </Grid>
   );
 };
 
