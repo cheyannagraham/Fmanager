@@ -22,7 +22,7 @@ const UpdateTransaction = props => {
   };
 
   return (
-      <IconButton title="Edit Transaction" onClick={handleClick}>
+      <IconButton title="Edit Transaction" onClick={handleClick} color={props.color}>
         <Edit className={classes.icon} />
       </IconButton>
   );

@@ -27,16 +27,18 @@ const TransactionList = (props) => {
     <Box maxHeight="75vh" maxWidth="80vw">
       {sortGroupedTransactions().map((group) => (
         <Box my={2} key={group.date}>
-          <Box borderBottom="2px solid black">
+          <Box borderBottom="1px solid black">
             <Typography key={group.date}>
               {props.fullDate
                 ? moment(group.date).format("YYYY MMM DD")
                 : moment(group.date).format("MMM DD")}
             </Typography>
           </Box>
-          {group.items.map((transaction) => (
-            <TransactionInfo key={transaction.id} transaction={transaction} />
-          ))}
+          <Box mx={2}>
+            {group.items.map((transaction) => (
+              <TransactionInfo key={transaction.id} transaction={transaction} />
+            ))}
+          </Box>
         </Box>
       ))}
       <BarSpacer />

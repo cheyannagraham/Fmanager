@@ -71,7 +71,7 @@ const DeleteTransaction = (props) => {
   };
 
   return (
-    <IconButton title="Delete Transaction" onClick={handleClick}>
+    <IconButton title="Delete Transaction" onClick={handleClick} color={props.color}>
       <Delete className={classes.icon} />
     </IconButton>
   );

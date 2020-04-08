@@ -8,7 +8,7 @@ import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButto
 import Popover from "@material-ui/core/Popover";
 
 const styles = {
-  "grid": {
+  grid: {
     display: "grid",
     "grid-template-columns": "1.75fr 1fr",
   },
@@ -28,9 +28,7 @@ const TransactionInfo = (props) => {
   };
 
   const transName = (
-    <Typography noWrap>
-      <>{props.transaction.business.toUpperCase()}</>
-    </Typography>
+    <Typography noWrap>{props.transaction.business.toUpperCase()}</Typography>
   );
 
   const transAmount = (
@@ -57,8 +55,8 @@ const TransactionInfo = (props) => {
 
         {/* Mobile View */}
         <Hidden smUp={true}>
-            {transName}
-            {transAmount}
+          {transName}
+          {transAmount}
         </Hidden>
       </Box>
       <Popover
@@ -67,8 +65,8 @@ const TransactionInfo = (props) => {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <UpdateTransaction transaction={props.transaction} />
-        <DeleteTransaction transaction={props.transaction} />
+        <UpdateTransaction color="primary" transaction={props.transaction} />
+        <DeleteTransaction color="secondary" transaction={props.transaction} />
       </Popover>
     </>
   );
