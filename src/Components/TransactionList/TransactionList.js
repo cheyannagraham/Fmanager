@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import moment from "moment";
@@ -36,7 +35,7 @@ const TransactionList = (props) => {
             </Typography>
           </Box>
           {group.items.map((transaction) => (
-            <TransactionInfo transaction={transaction} />
+            <TransactionInfo key={transaction.id} transaction={transaction} />
           ))}
         </Box>
       ))}
