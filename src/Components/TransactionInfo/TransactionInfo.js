@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
 import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
-import Popover from "@material-ui/core";
+import Popover from "@material-ui/core/Popover";
 
 const styles = {
   grid: {
@@ -72,7 +72,7 @@ const TransactionInfo = (props) => {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        onClick={()=>console.log('yo')}
+        onClick={handleClose}
       >
         <UpdateTransaction transaction={props.transaction} />
         <DeleteTransaction transaction={props.transaction} />

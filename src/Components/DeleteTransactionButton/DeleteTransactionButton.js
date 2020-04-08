@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -17,8 +16,7 @@ const DeleteTransaction = (props) => {
   const [transactions, setTransactions] = useContext(TransContext);
   const { classes } = props;
 
-  const handleClick = (event) => {
-    event.stopPropagation();
+  const handleClick = () => {
     confirmDelete(props.transaction.id);
   };
 
