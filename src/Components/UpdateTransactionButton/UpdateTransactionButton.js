@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import withStyles from "@material-ui/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import { ModalContext } from "../../App/App";
-import styles from "./styles.updatetransactionbutton";
 
 const UpdateTransaction = props => {
-  const { classes } = props;
   const modalContent = useContext(ModalContext);
 
   const handleClick = event => {
@@ -23,9 +20,9 @@ const UpdateTransaction = props => {
 
   return (
       <IconButton title="Edit Transaction" onClick={handleClick} color={props.color}>
-        <Edit className={classes.icon} />
+        <Edit />
       </IconButton>
   );
 };
 
-export default withStyles(styles)(UpdateTransaction);
+export default UpdateTransaction;

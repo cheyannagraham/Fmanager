@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.deletetransactionbutton";
 import { deleteTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { TransContext } from "../../App/App";
@@ -14,7 +12,6 @@ const DeleteTransaction = (props) => {
   const modalContent = useContext(ModalContext);
   const snackbar = useSnackbar();
   const [transactions, setTransactions] = useContext(TransContext);
-  const { classes } = props;
 
   const handleClick = () => {
     confirmDelete(props.transaction.id);
@@ -72,9 +69,9 @@ const DeleteTransaction = (props) => {
 
   return (
     <IconButton title="Delete Transaction" onClick={handleClick} color={props.color}>
-      <Delete className={classes.icon} />
+      <Delete />
     </IconButton>
   );
 };
 
-export default withStyles(styles)(DeleteTransaction);
+export default DeleteTransaction;
