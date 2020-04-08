@@ -10,7 +10,8 @@ const UpdateTransaction = props => {
   const { classes } = props;
   const modalContent = useContext(ModalContext);
 
-  const handleClick = () => {
+  const handleClick = event => {
+    event.stopPropagation();
     modalContent({
       show: true,
       title: "Update Transaction",

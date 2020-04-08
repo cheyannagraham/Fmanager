@@ -11,13 +11,18 @@ import { TransContext } from "../../App/App";
 import { useSnackbar } from "../SnackbarProvider/SnackbarProvider";
 import Catch from "../Catch/Catch";
 
-const DeleteTransaction = props => {
+const DeleteTransaction = (props) => {
   const modalContent = useContext(ModalContext);
   const snackbar = useSnackbar();
   const [transactions, setTransactions] = useContext(TransContext);
   const { classes } = props;
 
-  const confirmDelete = id => {
+  const handleClick = (event) => {
+    event.stopPropagation();
+    confirmDelete(props.transaction.id);
+  };
+
+  const confirmDelete = (id) => {
     modalContent({
       show: true,
       title: "Confirm Delete",
@@ -35,21 +40,21 @@ const DeleteTransaction = props => {
           Confirm
         </Button>
       ),
-      closeAction: true
+      closeAction: true,
     });
   };
 
-  const handleDelete = id => {
+  const handleDelete = (id) => {
     deleteTransaction(id)
       .then(() => {
-        setTransactions(transactions.filter(trans => trans.id !== id));
+        setTransactions(transactions.filter((trans) => trans.id !== id));
         snackbar({
           text: "Transaction Deleted!",
-          variant: "success"
+          variant: "success",
         });
         throw new Error("me :)");
       })
-      .catch(error =>
+      .catch((error) =>
         snackbar({
           text: "Deletion Failed!",
           variant: "error",
@@ -62,18 +67,15 @@ const DeleteTransaction = props => {
             >
               Info
             </Button>
-          )
+          ),
         })
       );
   };
 
   return (
-      <IconButton
-        title="Delete Transaction"
-        onClick={() => confirmDelete(props.transaction.id)}
-      >
-        <Delete className={classes.icon} />
-      </IconButton>
+    <IconButton title="Delete Transaction" onClick={handleClick}>
+      <Delete className={classes.icon} />
+    </IconButton>
   );
 };
 
