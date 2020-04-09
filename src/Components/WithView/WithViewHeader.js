@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import ArrowRight from "@material-ui/icons/ArrowRight";
+import ArrowLeft from "@material-ui/icons/ArrowBackIosRounded";
+import ArrowRight from "@material-ui/icons/ArrowForwardIosRounded";
 import IconButton from "@material-ui/core/IconButton";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { ModalContext } from "../../App/App";
@@ -11,25 +11,21 @@ import { FormControl } from "../FormControls/FormControls";
 import TodayButton from "../TodayButton/TodayButton";
 import moment from "moment";
 
-const WithViewHeader = props => {
+const WithViewHeader = (props) => {
   let modalContent = useContext(ModalContext);
 
   // Increment & Decrement Date values
-  const handleClick = eventVal => {
+  const handleClick = (eventVal) => {
     const changeType = props.view === "monthly" ? "months" : "days";
 
     props.setDate(
       eventVal === 1
-        ? moment(props.date)
-            .add(1, changeType)
-            .format("YYYY-MM-DD")
-        : moment(props.date)
-            .subtract(1, changeType)
-            .format("YYYY-MM-DD")
+        ? moment(props.date).add(1, changeType).format("YYYY-MM-DD")
+        : moment(props.date).subtract(1, changeType).format("YYYY-MM-DD")
     );
   };
 
-  const setDate = eventVal => {
+  const setDate = (eventVal) => {
     props.setDate(moment(eventVal.target.value).format("YYYY-MM-DD"));
   };
 
@@ -50,41 +46,42 @@ const WithViewHeader = props => {
           />
         </form>
       ),
-      actions: <CloseModalButton form="goto-date-form" type="submit" />
+      actions: <CloseModalButton form="goto-date-form" type="submit" />,
     });
   };
 
   return (
-    <Box
-      display="flex"
-      flexWrap="no-wrap"
-      justifyContent="center"
-      alignItems="center"
-      mt={2}
-    >
-      <IconButton
-        onClick={() => {
-          handleClick(-1);
-        }}
+    <Box mt={2} textAlign="center">
+      <Box
+        display="flex"
+        flexWrap="no-wrap"
+        justifyContent="center"
+        alignItems="center"
       >
-        <ArrowLeft />
-      </IconButton>
+        <IconButton
+          onClick={() => {
+            handleClick(-1);
+          }}
+        >
+          <ArrowLeft />
+        </IconButton>
 
-      <ButtonBase onClick={showCalendar}>
-        <Typography variant="h6">
-          {props.view === "monthly"
-            ? moment(props.date).format("MMM YYYY")
-            : moment(props.date).format("MMM DD, YYYY")}
-        </Typography>
-      </ButtonBase>
+        <ButtonBase onClick={showCalendar}>
+          <Typography variant="h3">
+            {props.view === "monthly"
+              ? moment(props.date).format("MMM YYYY")
+              : moment(props.date).format("MMM DD, YYYY")}
+          </Typography>
+        </ButtonBase>
 
-      <IconButton
-        onClick={() => {
-          handleClick(1);
-        }}
-      >
-        <ArrowRight />
-      </IconButton>
+        <IconButton
+          onClick={() => {
+            handleClick(1);
+          }}
+        >
+          <ArrowRight />
+        </IconButton>
+      </Box>
       <TodayButton setDate={props.setDate} />
     </Box>
   );

@@ -28,7 +28,7 @@ const TransactionList = (props) => {
       {sortGroupedTransactions().map((group) => (
         <Box my={2} key={group.date}>
           <Box borderBottom="1px solid black">
-            <Typography key={group.date}>
+            <Typography key={group.date} variant="h4">
               {props.fullDate
                 ? moment(group.date).format("YYYY MMM DD")
                 : moment(group.date).format("MMM DD")}
