@@ -14,9 +14,9 @@ import FilterListRounded from "@material-ui/icons/FilterListRounded";
 
 import CalendarTodayRounded from "@material-ui/icons/CalendarTodayRounded";
 
-const SideDrawerMenuButton = props => {
+const SideDrawerMenuButton = (props) => {
   const [open, setOpen] = useState(false);
-  const toggleMenu = e => {
+  const toggleMenu = (e) => {
     setOpen(!open);
   };
 
@@ -36,7 +36,7 @@ const SideDrawerMenuButton = props => {
 
 export default SideDrawerMenuButton;
 
-export const SideDrawer = props => {
+export const SideDrawer = (props) => {
   const setView = useContext(ViewContext);
 
   const listItems = [
@@ -46,7 +46,7 @@ export const SideDrawer = props => {
           <CalendarTodayRounded />
         </IconButton>
       ),
-      text: "Monthly View"
+      text: "Monthly View",
     },
     {
       icon: (
@@ -54,7 +54,7 @@ export const SideDrawer = props => {
           <CalendarViewDayRounded />
         </IconButton>
       ),
-      text: "Daily View"
+      text: "Daily View",
     },
     {
       icon: (
@@ -63,13 +63,13 @@ export const SideDrawer = props => {
         </IconButton>
       ),
       text: "Filter Transactions",
-      divider: true
+      divider: true,
     },
     {
       icon: <Signout />,
-      text: "Signout"
-    }
-  ].map(item => (
+      text: "Signout",
+    },
+  ].map((item) => (
     <Box my={1} key={item.text}>
       <label>
         <ListItem button divider={item.divider}>

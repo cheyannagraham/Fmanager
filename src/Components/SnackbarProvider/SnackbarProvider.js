@@ -77,7 +77,7 @@ const MakeSnackbar = props => {
         fontSize={16}
         zIndex={1400}
         width="100%"
-        maxWidth="350px"
+        maxWidth="400px"
         display="flex"
         justifyContent="space-between"
         {...props}
