@@ -4,6 +4,13 @@ import Box from "@material-ui/core/Box";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import moment from "moment";
 import BarSpacer from "../BarSpacer/BarSpacer";
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@material-ui/core";
 
 const TransactionList = (props) => {
   // Group Transactions by Date
@@ -26,20 +33,27 @@ const TransactionList = (props) => {
   return (
     <Box maxHeight="75vh" maxWidth="80vw">
       {sortGroupedTransactions().map((group) => (
-        <Box my={2} key={group.date}>
-          <Box borderBottom="1px solid black">
-            <Typography key={group.date} variant="h4">
-              {props.fullDate
-                ? moment(group.date).format("YYYY MMM DD")
-                : moment(group.date).format("MMM DD")}
-            </Typography>
-          </Box>
-          <Box mx={2}>
+        <Table key={group.date}>
+          <TableHead>
+            <TableRow>
+              <TableCell colspan="2">
+                <Typography key={group.date} variant="h4">
+                  {props.fullDate
+                    ? moment(group.date).format("YYYY MMM DD")
+                    : moment(group.date).format("MMM DD")}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {group.items.map((transaction) => (
-              <TransactionInfo key={transaction.id} transaction={transaction} />
+              <TableRow key={transaction.id}>
+                <TableCell>{transaction.business}</TableCell>
+                <TableCell>{transaction.amount}</TableCell>
+              </TableRow>
             ))}
-          </Box>
-        </Box>
+          </TableBody>
+        </Table>
       ))}
       <BarSpacer />
       {props.transactions.length === 0 && (
