@@ -36,7 +36,7 @@ const TransactionList = (props) => {
         <Table key={group.date}>
           <TableHead>
             <TableRow>
-              <TableCell colspan="2">
+              <TableCell colSpan="2">
                 <Typography key={group.date} variant="h4">
                   {props.fullDate
                     ? moment(group.date).format("YYYY MMM DD")
@@ -47,10 +47,7 @@ const TransactionList = (props) => {
           </TableHead>
           <TableBody>
             {group.items.map((transaction) => (
-              <TableRow key={transaction.id}>
-                <TableCell>{transaction.business}</TableCell>
-                <TableCell>{transaction.amount}</TableCell>
-              </TableRow>
+              <TransactionInfo key={transaction.id} transaction={transaction} />
             ))}
           </TableBody>
         </Table>

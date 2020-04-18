@@ -6,17 +6,14 @@ import Hidden from "@material-ui/core/Hidden";
 import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
 import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
 import Popover from "@material-ui/core/Popover";
+import { TableRow, TableCell } from "@material-ui/core";
 
 const styles = {
-  grid: {
-    display: "grid",
-    "grid-template-columns": "1.75fr 1fr",
-  },
   item: {
     cursor: "pointer",
     "&:hover": {
-      background: "rgba(255, 105, 67,0.09)"
-    }
+      background: "rgba(255, 105, 67,0.09)",
+    },
   },
 };
 
@@ -50,21 +47,11 @@ const TransactionInfo = (props) => {
 
   return (
     <>
-      <Box py={2} onClick={handleClick} className={classes.item}>
-        {/* Large View */}
-        <Hidden only={"xs"}>
-          <Box mx={1} className={classes.grid}>
-            {transName}
-            {transAmount}
-          </Box>
-        </Hidden>
+      <TableRow onClick={handleClick} className={classes.item}>
+        <TableCell>{transName}</TableCell>
+        <TableCell>{transAmount}</TableCell>
+      </TableRow>
 
-        {/* Mobile View */}
-        <Hidden smUp={true}>
-          {transName}
-          {transAmount}
-        </Hidden>
-      </Box>
       <Popover
         open={open}
         anchorEl={anchorEl}
