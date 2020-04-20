@@ -14,7 +14,7 @@ const styles = {
     "&:hover": {
       background: "rgba(255, 105, 67,0.09)",
     },
-  },
+  }
 };
 
 const TransactionInfo = (props) => {
@@ -36,12 +36,10 @@ const TransactionInfo = (props) => {
 
   const transAmount = (
     <Typography align="right">
-      <em>
         {new Intl.NumberFormat("en", {
           style: "currency",
           currency: "USD",
         }).format(props.transaction.amount)}
-      </em>
     </Typography>
   );
 

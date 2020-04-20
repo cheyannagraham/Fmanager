@@ -11,8 +11,20 @@ import {
   TableCell,
   TableBody,
 } from "@material-ui/core";
+import withStyles from "@material-ui/styles/withStyles";
+
+const styles = {
+  table: {
+    "table-layout": "fixed",
+    width: "100%",
+  }
+};
+
 
 const TransactionList = (props) => {
+
+  const { classes } = props;
+
   // Group Transactions by Date
   const groupTransactions = () => {
     return [...new Set(props.transactions.map((trans) => trans.date))].map(
@@ -31,9 +43,9 @@ const TransactionList = (props) => {
   };
 
   return (
-    <Box maxHeight="75vh" maxWidth="80vw">
+    <Box maxHeight="75vh">
       {sortGroupedTransactions().map((group) => (
-        <Table key={group.date}>
+        <Table key={group.date} className={classes.table}>
           <TableHead>
             <TableRow>
               <TableCell colSpan="2">
@@ -63,4 +75,4 @@ const TransactionList = (props) => {
   );
 };
 
-export default TransactionList;
+export default withStyles(styles)(TransactionList);
