@@ -4,25 +4,21 @@ import Box from "@material-ui/core/Box";
 import TransactionInfo from "../TransactionInfo/TransactionInfo";
 import moment from "moment";
 import BarSpacer from "../BarSpacer/BarSpacer";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "@material-ui/core";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableBody from "@material-ui/core/TableBody";
 import withStyles from "@material-ui/styles/withStyles";
 
 const styles = {
   table: {
     "table-layout": "fixed",
     width: "100%",
-  }
+  },
 };
 
-
 const TransactionList = (props) => {
-
   const { classes } = props;
 
   // Group Transactions by Date

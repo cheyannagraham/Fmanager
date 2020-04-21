@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import withStyles from "@material-ui/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Hidden from "@material-ui/core/Hidden";
 import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
 import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
 import Popover from "@material-ui/core/Popover";
-import { TableRow, TableCell } from "@material-ui/core";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 
 const styles = {
-  item: {
+  root: {
     cursor: "pointer",
+  },
+  hover: {
     "&:hover": {
-      background: "rgba(255, 105, 67,0.09)",
-    },
-  }
+      background: "rgba(255, 105, 67,0.09) !important",
+    }
+  },
+  selected: {
+    background: "rgba(255, 105, 67,0.09) !important",
+  },
 };
 
 const TransactionInfo = (props) => {
@@ -36,16 +40,25 @@ const TransactionInfo = (props) => {
 
   const transAmount = (
     <Typography align="right">
-        {new Intl.NumberFormat("en", {
-          style: "currency",
-          currency: "USD",
-        }).format(props.transaction.amount)}
+      {new Intl.NumberFormat("en", {
+        style: "currency",
+        currency: "USD",
+      }).format(props.transaction.amount)}
     </Typography>
   );
 
   return (
     <>
-      <TableRow onClick={handleClick} className={classes.item}>
+      <TableRow
+        hover={true}
+        onClick={handleClick}
+        selected={Boolean(anchorEl)}
+        classes={{
+          root: classes.root,
+          selected: classes.selected,
+          hover: classes.hover,
+        }}
+      >
         <TableCell>{transName}</TableCell>
         <TableCell>{transAmount}</TableCell>
       </TableRow>
