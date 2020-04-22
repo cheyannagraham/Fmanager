@@ -22,7 +22,7 @@ const Main = (props) => {
           <Grid component="main" container>
             {view === "filter" ? <FilteredView /> : <WithView view={view} />}
           </Grid>
-          <Box position="fixed" bottom="60px" right="15px" top="auto">
+          <Box position="fixed" bottom="85px" right="15px" top="auto">
             <AddButton />
           </Box>
         </Container>

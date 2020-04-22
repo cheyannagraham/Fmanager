@@ -64,11 +64,11 @@ const TransactionList = (props) => {
           </TableBody>
         </Table>
       ))}
-      <BarSpacer />
       {props.transactions.length === 0 && (
         <Typography align="center">No Transactions</Typography>
       )}
       {/* Extra space after table */}
+      <BarSpacer />
       <BarSpacer />
       <BarSpacer />
     </Box>
