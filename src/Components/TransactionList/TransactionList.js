@@ -18,7 +18,7 @@ const styles = {
   },
   h2: {
     "font-size": "2rem",
-    "font-weight": 400
+    "font-weight": 400,
   },
 };
 
@@ -49,7 +49,11 @@ const TransactionList = (props) => {
           <TableHead>
             <TableRow>
               <TableCell colSpan="2">
-                <Typography key={group.date} variant="h2" className={classes.h2}>
+                <Typography
+                  key={group.date}
+                  variant="h2"
+                  className={classes.h2}
+                >
                   {props.fullDate
                     ? moment(group.date).format("YYYY MMM DD")
                     : moment(group.date).format("MMM D")}
@@ -64,6 +68,7 @@ const TransactionList = (props) => {
           </TableBody>
         </Table>
       ))}
+      <BarSpacer />
       {props.transactions.length === 0 && (
         <Typography align="center">No Transactions</Typography>
       )}
