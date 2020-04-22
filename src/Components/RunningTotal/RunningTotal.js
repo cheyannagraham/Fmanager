@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const RunningTotal = props => {
-
+const useStyles = withStyles({
+  title: {
+    "font-size": "1.1rem",
+    "font-weight": 400,
+  },
+  total: {
+    "font-size": "1.3rem",
+  },
+});
+const RunningTotal = useStyles((props) => {
+  const { classes } = props;
   const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
 
-  const calcTotal = data => {
+  const calcTotal = (data) => {
     return data.reduce((acc, val) => Number(acc) + Number(val.amount), 0);
   };
 
@@ -24,31 +34,33 @@ const RunningTotal = props => {
   return (
     <Box
       display="flex"
-      justifyContent="space-around"
-      alignItems="center"
       width="100%"
+      align="right"
+      mt={1}
+      mr={1}
+      mb={0.5}
     >
-      <Box>
-        <Typography>Current Total</Typography>
-        <Typography
-          id="current-total"
-          align="right"
-        >
-          ${currentTotal.toFixed(2)}
+      <Box width="50%">
+        <Typography className={classes.total}>
+          {new Intl.NumberFormat("en", {
+            style: "currency",
+            currency: "USD",
+          }).format(currentTotal)}
         </Typography>
+        <Typography className={classes.title}>Current Total</Typography>
       </Box>
 
-      <Box>
-        <Typography>Running Total</Typography>
-        <Typography
-          id="run-total"
-          align="right"
-        >
-          ${runningTotal.toFixed(2)}
+      <Box width="50%">
+        <Typography className={classes.total}>
+          {new Intl.NumberFormat("en", {
+            style: "currency",
+            currency: "USD",
+          }).format(runningTotal)}
         </Typography>
+        <Typography className={classes.title}>Running Total</Typography>
       </Box>
     </Box>
   );
-};
+});
 
 export default RunningTotal;
