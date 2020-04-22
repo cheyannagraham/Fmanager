@@ -6,7 +6,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 const useStyles = withStyles({
   title: {
     "font-size": "1.1rem",
-    "font-weight": 400,
+    "font-weight": "500",
   },
   total: {
     "font-size": "1.3rem",
@@ -32,14 +32,7 @@ const RunningTotal = useStyles((props) => {
   }, [props.transactions]);
 
   return (
-    <Box
-      display="flex"
-      width="100%"
-      align="right"
-      mt={1}
-      mr={1}
-      mb={0.5}
-    >
+    <Box display="flex" width="100%" align="right" mt={1} mr={1} mb={0.5}>
       <Box width="50%">
         <Typography className={classes.total}>
           {new Intl.NumberFormat("en", {

@@ -16,6 +16,10 @@ const styles = {
     "table-layout": "fixed",
     width: "100%",
   },
+  h2: {
+    "font-size": "2rem",
+    "font-weight": 400
+  },
 };
 
 const TransactionList = (props) => {
@@ -45,10 +49,10 @@ const TransactionList = (props) => {
           <TableHead>
             <TableRow>
               <TableCell colSpan="2">
-                <Typography key={group.date} variant="h4">
+                <Typography key={group.date} variant="h2" className={classes.h2}>
                   {props.fullDate
                     ? moment(group.date).format("YYYY MMM DD")
-                    : moment(group.date).format("MMM DD")}
+                    : moment(group.date).format("MMM D")}
                 </Typography>
               </TableCell>
             </TableRow>

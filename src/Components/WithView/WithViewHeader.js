@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowLeft from "@material-ui/icons/ArrowBackIosRounded";
 import ArrowRight from "@material-ui/icons/ArrowForwardIosRounded";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +12,14 @@ import { FormControl } from "../FormControls/FormControls";
 import TodayButton from "../TodayButton/TodayButton";
 import moment from "moment";
 
-const WithViewHeader = (props) => {
+const useStyles = withStyles({
+  h1 : {
+    "font-size": "2.5rem",
+  }
+})
+
+const WithViewHeader = useStyles((props) => {
+  const { classes } = props;
   let modalContent = useContext(ModalContext);
 
   // Increment & Decrement Date values
@@ -67,7 +75,7 @@ const WithViewHeader = (props) => {
         </IconButton>
 
         <ButtonBase onClick={showCalendar}>
-          <Typography variant="h3">
+          <Typography variant="h1" className={classes.h1}>
             {props.view === "monthly"
               ? moment(props.date).format("MMM YYYY")
               : moment(props.date).format("MMM DD, YYYY")}
@@ -85,6 +93,6 @@ const WithViewHeader = (props) => {
       <TodayButton setDate={props.setDate} />
     </Box>
   );
-};
+});
 
 export default WithViewHeader;
