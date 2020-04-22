@@ -14,7 +14,7 @@ const styles = {
   hover: {
     "&:hover": {
       background: "rgba(255, 105, 67,0.09) !important",
-    }
+    },
   },
   selected: {
     background: "rgba(255, 105, 67,0.09) !important",
