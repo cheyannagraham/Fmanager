@@ -8,7 +8,7 @@ export const SnackbarContext = React.createContext();
 const snackbarReducer = (state = [], options) => {
   switch (options.type) {
     case "delete":
-      return state.filter(bar => bar.props.id !== options.id);
+      return state.filter((bar) => bar.props.id !== options.id);
 
     default:
       // Return if options is empty
@@ -30,7 +30,7 @@ const snackbarReducer = (state = [], options) => {
   }
 };
 
-const SnackbarProvider = props => {
+const SnackbarProvider = (props) => {
   const [snackbars, snackbarDispatch] = useReducer(snackbarReducer, []);
   return (
     <SnackbarContext.Provider value={snackbarDispatch}>
@@ -44,20 +44,30 @@ const SnackbarProvider = props => {
 };
 export default SnackbarProvider;
 
-export const useSnackbar = options => {
+export const useSnackbar = (options) => {
   return useContext(SnackbarContext);
 };
 
-const MakeSnackbar = props => {
+const MakeSnackbar = (props) => {
   const [show, setShow] = useState(true);
   const dispatch = useSnackbar();
+  const opacity = 0.9;
 
   const variants = {
-    success: "#7cb342",
-    warning: "#ffb300",
-    error: "#ff7961",
+    success: {
+      bgcolor: `rgba(42, 163, 50, ${opacity})`,
+      text: "black",
+    },
+    warning: {
+      bgcolor: `rgba(255, 179, 0, ${opacity})`,
+      text: "black",
+    },
+    error: {
+      bgcolor: `rgba(201, 18, 33, ${opacity})`,
+      text: "white",
+    },
+    
     text: "black",
-    action: "#4a148c"
   };
 
   return (
@@ -71,10 +81,9 @@ const MakeSnackbar = props => {
       onEntered={() => setTimeout(() => setShow(false), 4000)}
     >
       <Box
-        bgcolor={variants[props.variant]}
-        color={variants.text}
+        bgcolor={variants[props.variant].bgcolor}
+        color={variants[props.variant].text}
         p={1}
-        fontSize={16}
         zIndex={1400}
         width="100%"
         maxWidth="400px"
@@ -83,9 +92,9 @@ const MakeSnackbar = props => {
         {...props}
       >
         <Box display="flex" alignItems="center">
-          {props.text}
+          {props.text.toUpperCase()}
         </Box>
-        <Box color={variants.action}>
+        <Box color={variants[props.variant].text}>
           {props.actions}
           <Button color="inherit" onClick={() => setShow(false)}>
             Close
