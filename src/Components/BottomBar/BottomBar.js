@@ -3,11 +3,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
-const useStyles = withStyles(theme => ({
+const useStyles = withStyles((theme) => ({
   bottom: {
     top: "auto",
     bottom: 0,
-    background: theme.palette.primary.dark
+    background: theme.palette.primary.dark,
   },
 }));
 

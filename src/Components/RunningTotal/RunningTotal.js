@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import withStyles from "@material-ui/core/styles/withStyles";
 
-const useStyles = withStyles((theme) => ({
-  title: {
-    "font-size": "1.2rem",
-  },
-  total: {
-    "font-size": "1.1rem",
-  },
-}));
-
-const RunningTotal = useStyles((props) => {
+const RunningTotal = (props) => {
   const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
 
@@ -37,10 +27,10 @@ const RunningTotal = useStyles((props) => {
       flexWrap="wrap"
       alignItems="center"
       justifyContent="space-between"
-      className={props.classes.outer}
+      mb="5px"
     >
-      <Typography className={props.classes.title}>{props.title}</Typography>
-      <Typography className={props.classes.total}>
+      <Typography>{props.title}</Typography>
+      <Typography>
         {new Intl.NumberFormat("en", {
           style: "currency",
           currency: "USD",
@@ -56,6 +46,6 @@ const RunningTotal = useStyles((props) => {
       <Total title="Running Total" value={runningTotal} {...props} />
     </Box>
   );
-});
+};
 
 export default RunningTotal;
