@@ -19,7 +19,6 @@ const useStyles = withStyles({
 })
 
 const WithViewHeader = useStyles((props) => {
-  const { classes } = props;
   let modalContent = useContext(ModalContext);
 
   // Increment & Decrement Date values
@@ -75,7 +74,7 @@ const WithViewHeader = useStyles((props) => {
         </IconButton>
 
         <ButtonBase onClick={showCalendar}>
-          <Typography variant="h1" className={classes.h1}>
+          <Typography variant="h1" className={props.classes.h1}>
             {props.view === "monthly"
               ? moment(props.date).format("MMM YYYY")
               : moment(props.date).format("MMM DD, YYYY")}

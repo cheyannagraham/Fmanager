@@ -7,7 +7,7 @@ import Popover from "@material-ui/core/Popover";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-const styles = {
+const useStyles = withStyles({
   root: {
     cursor: "pointer",
   },
@@ -19,10 +19,9 @@ const styles = {
   selected: {
     background: "rgba(255, 105, 67,0.09) !important",
   },
-};
+});
 
-const TransactionInfo = (props) => {
-  const { classes } = props;
+const TransactionInfo = useStyles((props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -54,9 +53,9 @@ const TransactionInfo = (props) => {
         onClick={handleClick}
         selected={Boolean(anchorEl)}
         classes={{
-          root: classes.root,
-          selected: classes.selected,
-          hover: classes.hover,
+          root: props.classes.root,
+          selected: props.classes.selected,
+          hover: props.classes.hover,
         }}
       >
         <TableCell>{transName}</TableCell>
@@ -74,6 +73,6 @@ const TransactionInfo = (props) => {
       </Popover>
     </>
   );
-};
+});
 
-export default withStyles(styles)(TransactionInfo);
+export default TransactionInfo;

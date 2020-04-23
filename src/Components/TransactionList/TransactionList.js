@@ -11,7 +11,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import withStyles from "@material-ui/styles/withStyles";
 
-const styles = {
+const useStyles = withStyles({
   table: {
     "table-layout": "fixed",
     width: "100%",
@@ -20,10 +20,9 @@ const styles = {
     "font-size": "2rem",
     "font-weight": 400,
   },
-};
+});
 
-const TransactionList = (props) => {
-  const { classes } = props;
+const TransactionList = useStyles((props) => {
 
   // Group Transactions by Date
   const groupTransactions = () => {
@@ -45,14 +44,14 @@ const TransactionList = (props) => {
   return (
     <Box maxHeight="75vh">
       {sortGroupedTransactions().map((group) => (
-        <Table key={group.date} className={classes.table}>
+        <Table key={group.date} className={props.classes.table}>
           <TableHead>
             <TableRow>
               <TableCell colSpan="2">
                 <Typography
                   key={group.date}
                   variant="h2"
-                  className={classes.h2}
+                  className={props.classes.h2}
                 >
                   {props.fullDate
                     ? moment(group.date).format("YYYY MMM DD")
@@ -78,6 +77,6 @@ const TransactionList = (props) => {
       <BarSpacer />
     </Box>
   );
-};
+});
 
-export default withStyles(styles)(TransactionList);
+export default TransactionList;

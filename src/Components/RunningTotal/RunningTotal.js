@@ -13,7 +13,6 @@ const useStyles = withStyles({
   },
 });
 const RunningTotal = useStyles((props) => {
-  const { classes } = props;
   const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
 
@@ -39,8 +38,8 @@ const RunningTotal = useStyles((props) => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Typography className={classes.title}>{props.title}</Typography>
-      <Typography className={classes.total}>
+      <Typography className={props.classes.title}>{props.title}</Typography>
+      <Typography className={props.classes.total}>
         {new Intl.NumberFormat("en", {
           style: "currency",
           currency: "USD",
@@ -52,8 +51,8 @@ const RunningTotal = useStyles((props) => {
 
   return (
     <Box display="flex" flexWrap="wrap" width="100%" m={1}>
-      <Total title="Current Total" value={currentTotal} />
-      <Total title="Running Total" value={runningTotal} />
+      <Total title="Current Total" value={currentTotal} {...props} />
+      <Total title="Running Total" value={runningTotal} {...props}/>
     </Box>
   );
 });

@@ -14,7 +14,6 @@ const useStyles = withStyles({
 });
 
 const FilteredViewHeader = useStyles((props) => {
-  const { classes } = props;
   const handleChange = (event) => {
     const input = event.target.id;
     const value = event.target.value;
@@ -31,8 +30,8 @@ const FilteredViewHeader = useStyles((props) => {
         <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
           <FormControl
             label="Start Date"
-            InputLabelProps={{ className: classes.label }}
-            inputProps={{ className: classes.input }}
+            InputLabelProps={{ className: props.classes.label }}
+            inputProps={{ className: props.classes.input }}
             type="date"
             name="start-date"
             id="start-date"
@@ -41,8 +40,8 @@ const FilteredViewHeader = useStyles((props) => {
           />
           <FormControl
             label="End Date"
-            InputLabelProps={{ className: classes.label }}
-            inputProps={{ className: classes.input }}
+            InputLabelProps={{ className: props.classes.label }}
+            inputProps={{ className: props.classes.input }}
             type="date"
             name="end-date"
             id="end-date"
