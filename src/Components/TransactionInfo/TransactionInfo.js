@@ -38,7 +38,7 @@ const TransactionInfo = useStyles((props) => {
   );
 
   const transAmount = (
-    <Typography align="right">
+    <Typography align="right" noWrap>
       {new Intl.NumberFormat("en", {
         style: "currency",
         currency: "USD",
