@@ -17,7 +17,7 @@ const useStyles = withStyles({
     width: "100%",
   },
   h2: {
-    "font-size": "2rem",
+    "font-size": "1.5rem",
     "font-weight": 400,
   },
 });

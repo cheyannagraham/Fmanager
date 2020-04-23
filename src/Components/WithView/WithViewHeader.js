@@ -14,7 +14,7 @@ import moment from "moment";
 
 const useStyles = withStyles({
   h1 : {
-    "font-size": "2.5rem",
+    "font-size": "2.2rem",
   }
 })
 
