@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
+import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
-import withStyles from "@material-ui/styles/withStyles";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password } from "../FormControls/FormControls";
 import { auth } from "../../fb/fb";
-import styles from "./styles.login";
+import Catch from "../Catch/Catch";
+import formReducer from "../Helpers/formReducer";
 
 const LoginButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext);
 
   const showForm = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "login",
       title: "Login To Your Account",
@@ -23,8 +24,8 @@ const LoginButton = props => {
     <Button
       size="medium"
       onClick={showForm}
+      variant="outlined"
       color="secondary"
-      variant="contained"
     >
       Login
     </Button>
@@ -32,45 +33,53 @@ const LoginButton = props => {
 };
 export default LoginButton;
 
-export const LoginForm = withStyles(styles)(props => {
-  const showModal = useContext(ModalContext).setShowModal;
-  const { classes } = props;
+export const LoginForm = props => {
+  const modalContent = useContext(ModalContext);
+  const [formState, formDispatch] = useReducer(formReducer, {
+    email: "",
+    pwd: ""
+  });
 
-  const handleLogin = e => {
-    e.preventDefault();
-    const form = document.querySelector("#login-form");
-    const [email, pwd] = [form["email"].value, form["pwd"].value];
-    auth.signInWithEmailAndPassword(email, pwd).catch(err =>
-      showModal({
-        show: true,
-        title: "Login Error!",
-        type: "error",
-        text: (
-          <>
-            <strong>{err.code} :</strong>
-            <br></br>
-            <br></br>
-            {err.message}
-          </>
-        ),
-        actions: <CloseModalButton variant="contained" autoFocus={true} />
+  const handleLogin = event => {
+    event.preventDefault();
+    auth
+      .signInWithEmailAndPassword(formState.email, formState.pwd)
+      .then(() => {
+        throw Error("Throw Login");
       })
-    );
+      .catch(error =>
+        modalContent(Catch({ error: error, title: "Login Error" }))
+      );
     //close Modal after logging in
-    showModal(false);
+    modalContent(false);
   };
-  const variant = "outlined";
+  const variant = "filled";
 
   return (
-    <form className={classes.form} id="login-form" onSubmit={handleLogin}>
-      <Email autoFocus={true} variant={variant} />
-      <Password variant={variant} />
-      <div>
-        <Button variant="contained" color="primary" type="submit">
+    <form id="login-form" onSubmit={handleLogin}>
+      <Email
+        autoFocus={true}
+        variant={variant}
+        value={formState.email}
+        onChange={event =>
+          formDispatch({ input: "email", value: event.target.value })
+        }
+      />
+
+      <Password
+        variant={variant}
+        value={formState.pwd}
+        onChange={event =>
+          formDispatch({ input: "pwd", value: event.target.value })
+        }
+      />
+
+      <DialogActions>
+        <Button variant="outlined" color="secondary" type="submit">
           Login
         </Button>
         <CloseModalButton />
-      </div>
+      </DialogActions>
     </form>
   );
-});
+};

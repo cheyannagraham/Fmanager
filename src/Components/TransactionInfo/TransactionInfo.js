@@ -1,28 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import withStyles from "@material-ui/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.transactioninfo";
+import UpdateTransaction from "../UpdateTransactionButton/UpdateTransactionButton";
+import DeleteTransaction from "../DeleteTransactionButton/DeleteTransactionButton";
+import Popover from "@material-ui/core/Popover";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 
-const TransactionInfo = props => {
-  const { classes } = props;
+const useStyles = withStyles({
+  root: {
+    cursor: "pointer",
+  },
+  hover: {
+    "&:hover": {
+      background: "rgba(255, 105, 67,0.09) !important",
+    },
+  },
+  selected: {
+    background: "rgba(255, 105, 67,0.09) !important",
+  },
+});
+
+const TransactionInfo = useStyles((props) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const transName = (
+    <Typography noWrap>{props.transaction.business.toUpperCase()}</Typography>
+  );
+
+  const transAmount = (
+    <Typography align="right" noWrap>
+      {new Intl.NumberFormat("en", {
+        style: "currency",
+        currency: "USD",
+      }).format(props.transaction.amount)}
+    </Typography>
+  );
 
   return (
     <>
-      <Grid item xs={5}>
-        <Typography color="primary" noWrap>
-          {props.transaction.business}
-        </Typography>
-      </Grid>
+      <TableRow
+        hover={true}
+        onClick={handleClick}
+        selected={Boolean(anchorEl)}
+        classes={{
+          root: props.classes.root,
+          selected: props.classes.selected,
+          hover: props.classes.hover,
+        }}
+      >
+        <TableCell>{transName}</TableCell>
+        <TableCell>{transAmount}</TableCell>
+      </TableRow>
 
-      <Grid item xs={3} className={classes.right}>
-        <Typography color="primary">
-          <small>$</small>
-          {props.transaction.amount}
-        </Typography>
-      </Grid>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        onClick={handleClose}
+      >
+        <UpdateTransaction color="primary" transaction={props.transaction} />
+        <DeleteTransaction color="secondary" transaction={props.transaction} />
+      </Popover>
     </>
   );
-};
+});
 
-export default withStyles(styles)(TransactionInfo);
+export default TransactionInfo;

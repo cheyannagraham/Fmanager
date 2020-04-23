@@ -1,136 +1,125 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {
-  updateTransaction,
-  getTransactions,
-  addTransaction
-} from "../Helpers/DBHelper";
-import { validateDate } from "../Helpers/DateHelper";
-import { FormControl } from "../FormControls/FormControls";
+import DialogActions from "@material-ui/core/DialogActions";
+import { updateTransaction, addTransaction } from "../Helpers/DBHelper";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { TransContext } from "../../App/App";
-import styles from "./styles.transactionform";
+import Catch from "../Catch/Catch";
+import formReducer from "../Helpers/formReducer";
+import { FormControl } from "../FormControls/FormControls";
 import moment from "moment";
+import { useSnackbar } from "../SnackbarProvider/SnackbarProvider";
 
 const TransactionForm = props => {
-  const showModal = useContext(ModalContext).setShowModal;
-  const [, setTransactions] = useContext(TransContext);
+  const modalContent = useContext(ModalContext);
+  const snackbar = useSnackbar();
+  const [transactions, setTransactions] = useContext(TransContext);
   const currTrans = props.currentTransaction;
-  const { classes } = props;
 
-  const handleClick = e => {
-    e.preventDefault();
-    const userInput = document.getElementById("transaction-date").value;
-    const validDate = validateDate(userInput);
+  const [formState, formDispatch] = useReducer(formReducer, {
+    type: (currTrans && currTrans.type) || "income",
+    date: (currTrans && currTrans.date) || moment().format("YYYY-MM-DD"),
+    amount: (currTrans && currTrans.amount) || "",
+    business: (currTrans && currTrans.business) || ""
+  });
 
-    if (validDate) {
-      createTransaction(validDate);
-    } else {
-      showModal({
-        show: true,
-        title: "Validation Error!",
-        type: "error",
-        text:
-          "Invalid Date. please enter a date between 1-1-1900 and 12-31-2050",
-        actions: <CloseModalButton autofocus={true} />
-      });
-    }
+  const validateDate = evt => {
+    evt.preventDefault();
+    moment(formState.date).isValid()
+      ? createTransaction()
+      : alert("Invalid Date");
   };
 
-  const createTransaction = date => {
-    const type = document.getElementById("transaction-type").value;
-    const amount = Math.abs(
-      document.getElementById("transaction-amount").value
-    );
-
-    const newTrans = {
-      type: type,
-      business: document.getElementById("transaction-business").value,
-      amount:
-        type === "income"
-          ? Number(amount).toFixed(2)
-          : Number(-amount).toFixed(2),
-      date: date
-    };
+  const createTransaction = () => {
+    modalContent({ show: false });
+    formState.amount =
+      formState.type === "income"
+        ? Math.abs(formState.amount).toFixed(2)
+        : (Math.abs(formState.amount) * -1).toFixed(2);
 
     if (props.type === "add") {
-      addTransaction(newTrans)
+      addTransaction(formState)
         // add new transaction to local global copy of transactions
         .then(trans => {
           setTransactions(prev => [...prev, trans]);
-          showModal({
-            show: true,
-            title: "Success",
-            type: "success",
-            text: "New Transaction Added",
+          snackbar({
+            text: "Transaction Added!",
+            variant: "success"
+          });
+          snackbar({
+            text: "Transaction warning!",
+            variant: "warning"
+          });
+          throw new Error("me :)");
+        })
+        .catch(error => {
+          snackbar({
+            text: "Transaction Error!",
+            variant: "error",
             actions: (
-              <>
-                <Button
-                  color="primary"
-                  autoFocus
-                  variant="contained"
-                  onClick={props.saf}
-                >
-                  Add Another
-                </Button>
-                <CloseModalButton />
-              </>
+              <Button
+                color="inherit"
+                onClick={() =>
+                  modalContent(Catch({ error: error, title: "Add Error" }))
+                }
+              >
+                Info
+              </Button>
             )
           });
-        })
-        .catch(err =>
-          showModal({
-            show: true,
-            title: "Error Adding New Transaction!",
-            type: "error",
-            actions: <CloseModalButton autofocus={true} />,
-            text: err
-          })
-        );
+        });
     }
 
     if (props.type === "update") {
-      updateTransaction(currTrans.id, newTrans)
-        .then(res => {
-          getTransactions().then(tr => {
-            setTransactions(tr);
-            showModal({
-              show: true,
-              type: "success",
-              title: "Update Successful!",
-              text: res,
-              actions: <CloseModalButton autofocus={true} />
-            });
+      updateTransaction(currTrans.id, formState)
+        .then(() => {
+          setTransactions([
+            ...transactions.filter(trans => trans.id !== currTrans.id),
+            { ...formState, id: currTrans.id }
+          ]);
+          snackbar({
+            text: "Transaction Updated!",
+            variant: "success"
           });
+          throw new Error("me :)");
         })
-        .catch(err =>
-          showModal({
-            show: true,
-            title: "Update Failed! :( ",
-            actions: <CloseModalButton autofocus={true} />,
-            text: err,
-            type: "error"
+        .catch(error =>
+          snackbar({
+            text: "Update Failed!",
+            variant: "error",
+            actions: (
+              <Button
+                color="inherit"
+                onClick={() =>
+                  modalContent(Catch({ error: error, title: "Update Error" }))
+                }
+              >
+                Info
+              </Button>
+            )
           })
         );
     }
   };
 
   return (
-    <form id="transaction-form" className={classes.form} onSubmit={handleClick}>
+    <form id="transaction-form" onSubmit={validateDate}>
       {/* Date Input */}
       <FormControl
         label="Date"
         name="trans-date"
         type="date"
+        variant="standard"
         inputProps={{
           pattern: "[0-9]{2}/[0-9]{2}/[0-9]{4}"
         }}
         id="transaction-date"
-        value={(currTrans && currTrans.date) || moment().format("YYYY-MM-DD")}
+        value={formState.date}
         autoFocus
+        onChange={evt =>
+          formDispatch({ input: "date", value: evt.target.value })
+        }
         required
       />
 
@@ -138,7 +127,11 @@ const TransactionForm = props => {
       <FormControl
         label="Business"
         id="transaction-business"
-        value={currTrans && currTrans.business}
+        value={formState.business}
+        variant="standard"
+        onChange={evt =>
+          formDispatch({ input: "business", value: evt.target.value })
+        }
         required
         type="text"
         name="business-name"
@@ -149,17 +142,22 @@ const TransactionForm = props => {
         label="Amount"
         name="trans-amount"
         type="number"
+        variant="standard"
         inputProps={{
           step: 0.01
         }}
         id="transaction-amount"
-        value={currTrans && currTrans.amount}
+        value={formState.amount}
+        onChange={evt =>
+          formDispatch({ input: "amount", value: evt.target.value })
+        }
         required
       />
 
       {/* Transaction Type  */}
       <FormControl
         select
+        variant="standard"
         InputLabelProps={{
           shrink: true
         }}
@@ -169,7 +167,10 @@ const TransactionForm = props => {
         label="Type"
         id="transaction-type"
         name="trans-type"
-        value={currTrans && currTrans.type}
+        value={formState.type}
+        onChange={evt =>
+          formDispatch({ input: "type", value: evt.target.value })
+        }
         required
       >
         <>
@@ -183,18 +184,14 @@ const TransactionForm = props => {
       </FormControl>
 
       {/* Form Buttons */}
-      <Grid
-        container
-        justify="flex-end"
-        className={classes["button-container"]}
-      >
-        <Button variant="contained" color="primary" type="submit">
+      <DialogActions>
+        <Button variant="contained" color="secondary" type="submit">
           {props.type}
         </Button>
         <CloseModalButton />
-      </Grid>
+      </DialogActions>
     </form>
   );
 };
 
-export default withStyles(styles)(TransactionForm);
+export default TransactionForm;

@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
 import Button from "@material-ui/core/Button";
-import withStyles from "@material-ui/styles/withStyles";
+import DialogActions from "@material-ui/core/DialogActions";
 import { CloseModalButton } from "../Modal/Modal";
 import { Email, Password, Username } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
-// Styles from Login styles
-import styles from "../Login/styles.login";
 import { auth } from "../../fb/fb";
+import Catch from "../Catch/Catch";
+import formReducer from "../Helpers/formReducer";
 
 const SignupButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext);
 
   const showForm = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "signup",
       title: "Create An Account",
@@ -20,12 +20,7 @@ const SignupButton = props => {
     });
   };
   return (
-    <Button
-      size="medium"
-      onClick={showForm}
-      color="primary"
-      variant="contained"
-    >
+    <Button size="medium" onClick={showForm} variant="outlined" color="primary">
       SignUp
     </Button>
   );
@@ -33,60 +28,72 @@ const SignupButton = props => {
 
 export default SignupButton;
 
-export const SignupForm = withStyles(styles)(props => {
-  const showModal = useContext(ModalContext).setShowModal;
-  const { classes } = props;
+export const SignupForm = props => {
+  const modalContent = useContext(ModalContext);
+  const [formState, formDispatch] = useReducer(formReducer, {
+    username: "",
+    email: "",
+    pwd: ""
+  });
 
-  const handleSignup = async e => {
-    e.preventDefault();
-    const form = document.querySelector("#signup-form");
-    const [username, email, pwd] = [
-      form["username"].value,
-      form["email"].value,
-      form["pwd"].value
-    ];
-    const displayName = username
-      ? (username[0].toUpperCase() + username.slice(1)).trim()
+  const handleSignup = async event => {
+    event.preventDefault();
+    modalContent(false);
+    const displayName = formState.username
+      ? (
+          formState.username[0].toUpperCase() + formState.username.slice(1)
+        ).trim()
       : "";
 
     await auth
-      .createUserWithEmailAndPassword(email, pwd)
+      .createUserWithEmailAndPassword(formState.email, formState.pwd)
       .then(async () => {
         //add username to profile
         await auth.currentUser.updateProfile({ displayName: displayName });
       })
-      .catch(err =>
-        showModal({
-          show: true,
-          type: "error",
-          title: "Signup Error!",
-          text: (
-            <>
-              <strong>{err.code} :</strong>
-              <br></br>
-              <br></br>
-              {err.message}
-            </>
-          ),
-          actions: <CloseModalButton variant="contained" autoFocus={true} />
-        })
+      .then(() => {
+        throw Error("Throw Signup");
+      })
+      .catch(error =>
+        modalContent(Catch({ error: error, title: "Signup Error" }))
       );
-    showModal(false);
   };
 
   const variant = "filled";
 
   return (
-    <form className={classes.form} id="signup-form" onSubmit={handleSignup}>
-      <Username autoFocus={true} variant={variant} />
-      <Email variant={variant} />
-      <Password variant={variant} />
-      <div>
-        <Button variant="contained" color="primary" type="submit">
+    <form id="signup-form" onSubmit={handleSignup}>
+      <Username
+        value={formState.username}
+        autoFocus={true}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "username", value: event.target.value })
+        }
+      />
+
+      <Email
+        value={formState.email}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "email", value: event.target.value })
+        }
+      />
+
+      <Password
+        value={formState.pwd}
+        variant={variant}
+        onChange={event =>
+          formDispatch({ input: "pwd", value: event.target.value })
+        }
+      />
+
+      <DialogActions>
+        <Button variant="outlined" type="submit" color="secondary">
           Signup
         </Button>
         <CloseModalButton />
-      </div>
+      </DialogActions>
     </form>
   );
-});
+};

@@ -1,32 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
-
-const useInputState = (def = "") => {
-  const [value, setValue] = useState(def);
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  };
-
-  return {
-    value: value,
-    setValue: setValue,
-    handleChange: handleChange
-  };
-};
+import Box from "@material-ui/core/Box";
 
 export const FormControl = props => {
-  const { value, handleChange } = useInputState(props.value);
-
   return (
-    <TextField
-      onChange={handleChange}
-      variant="standard"
-      {...props}
-      value={value}
-    >
-      {props.children}
-    </TextField>
+    <Box mb={2.5} display="grid">
+      <TextField variant="standard" {...props}>
+        {props.children}
+      </TextField>
+    </Box>
   );
 };
 

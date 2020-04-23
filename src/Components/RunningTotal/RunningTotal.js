@@ -2,70 +2,59 @@ import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles.runningtotal";
 
-const RunningTotal = props => {
-  const { classes } = props;
-
+const useStyles = withStyles({
+  title: {
+    "font-size": "1.2rem",
+    "font-weight": "500",
+  },
+  total: {
+    "font-size": "1.1rem",
+  },
+});
+const RunningTotal = useStyles((props) => {
   const [currentTotal, setCurrentTotal] = useState(0);
   const [runningTotal, setRunningTotal] = useState(0);
 
-  const calcTotal = data => {
+  const calcTotal = (data) => {
     return data.reduce((acc, val) => Number(acc) + Number(val.amount), 0);
   };
 
-  // Calculate current Total
+  // Calculate Current Total
   useEffect(() => {
     setCurrentTotal(calcTotal(props.currentTransactions));
-  }, [props.currentTransactions]);
+  }, [props.currentTransactions, props.transactions]);
 
   // Calculate Running Total
   useEffect(() => {
     setRunningTotal(calcTotal(props.transactions));
   }, [props.transactions]);
 
-  // Color Positive & Negative Totals
-  // use refs!!
-  useEffect(() => {
-    if (runningTotal < 0)
-      document.querySelector("#run-total").classList.add(classes.neg);
-    else document.querySelector("#run-total").classList.remove(classes.neg);
-
-    if (currentTotal < 0)
-      document.querySelector("#current-total").classList.add(classes.neg);
-    else document.querySelector("#current-total").classList.remove(classes.neg);
-  }, [runningTotal, currentTotal]);
-
-  return (
+  const Total = (props) => (
     <Box
-      display="flex"
-      justifyContent="space-around"
-      alignItems="center"
       width="100%"
+      display="flex"
+      flexWrap="wrap"
+      alignItems="center"
+      justifyContent="space-between"
     >
-      <Box>
-        <Typography color="secondary">Current Total</Typography>
-        <Typography
-          id="current-total"
-          align="right"
-          className={classes["total-value"]}
-        >
-          ${currentTotal.toFixed(2)}
-        </Typography>
-      </Box>
-
-      <Box>
-        <Typography color="secondary">Running Total</Typography>
-        <Typography
-          id="run-total"
-          align="right"
-          className={classes["total-value"]}
-        >
-          ${runningTotal.toFixed(2)}
-        </Typography>
-      </Box>
+      <Typography className={props.classes.title}>{props.title}</Typography>
+      <Typography className={props.classes.total}>
+        {new Intl.NumberFormat("en", {
+          style: "currency",
+          currency: "USD",
+        }).format(props.value)}
+      </Typography>
+      {props.children}
     </Box>
   );
-};
 
-export default withStyles(styles)(RunningTotal);
+  return (
+    <Box display="flex" flexWrap="wrap" width="100%" m={1}>
+      <Total title="Current Total" value={currentTotal} {...props} />
+      <Total title="Running Total" value={runningTotal} {...props}/>
+    </Box>
+  );
+});
+
+export default RunningTotal;

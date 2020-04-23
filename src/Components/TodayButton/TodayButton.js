@@ -14,7 +14,6 @@ const TodayButton = props => {
       aria-label="goto-today"
       title="Go To Today"
       onClick={handleClick}
-      color={props.color}
     >
       <TodayRounded />
     </IconButton>

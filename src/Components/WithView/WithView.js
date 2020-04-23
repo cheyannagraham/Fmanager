@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import Grid from "@material-ui/core/Grid";
-import WithViewHeader from "../WithViewHeader/WithViewHeader";
+import Box from "@material-ui/core/Box";
+import WithViewHeader from "./WithViewHeader";
 import TransactionList from "../TransactionList/TransactionList";
 import { TransContext } from "../../App/App";
 import RunningTotal from "../RunningTotal/RunningTotal";
-import moment from "moment";
 import BottomBar from "../BottomBar/BottomBar";
+import moment from "moment";
 
 const WithView = props => {
   const [transactions] = useContext(TransContext);
@@ -26,19 +26,17 @@ const WithView = props => {
   }, [date, transactions, props.view]);
 
   return (
-    <Grid container>
-      <Grid container>
-        <WithViewHeader view={props.view} date={date} setDate={setDate} />
-        <TransactionList transactions={currentTransactions} />
-      </Grid>
-      
+    <Box display="grid" width="100%">
+      <WithViewHeader view={props.view} date={date} setDate={setDate} />
+      <TransactionList transactions={currentTransactions} />
+
       <BottomBar>
         <RunningTotal
           currentTransactions={currentTransactions}
           transactions={transactions}
         />
       </BottomBar>
-    </Grid>
+    </Box>
   );
 };
 

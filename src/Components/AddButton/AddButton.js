@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import AddRounded from "@material-ui/icons/AddRounded";
 import { ModalContext } from "../../App/App";
 import TransactionForm from "../TransactionForm/TransactionForm";
-import WithFab from "../WithFab/WithFab";
+import Fab from "@material-ui/core/Fab";
 
 const AddButton = props => {
-  const showModal = useContext(ModalContext).setShowModal;
+  const modalContent = useContext(ModalContext);
 
   const handleClick = () => {
-    showModal({
+    modalContent({
       show: true,
       type: "add",
       title: "New Transaction",
@@ -17,13 +17,15 @@ const AddButton = props => {
   };
 
   return (
-    <WithFab
+    <Fab
       title="Add New Transaction"
       aria-label="add transaction"
-      handleClick={handleClick}
+      size="small"
+      color="secondary"
+      onClick={handleClick}
     >
       <AddRounded />
-    </WithFab>
+    </Fab>
   );
 };
 

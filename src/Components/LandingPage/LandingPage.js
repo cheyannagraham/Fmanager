@@ -1,40 +1,36 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import withStyles from "@material-ui/styles/withStyles";
+import Box from "@material-ui/core/Box";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
-import styles from "./styles.landingpage";
 
 const LandingPage = props => {
-  const { classes } = props;
-
   return (
-    <Grid>
-      <Grid component="header" className={classes.header}>
-        <Typography
-          noWrap={true}
-          variant="h1"
-          color="primary"
-          align="center"
-          className={classes["header-text"]}
-        >
+    <Box height="100%">
+      <Box
+        my={2}
+        py={1}
+        component="header"
+        color="primary.main"
+        borderBottom={2}
+      >
+        <Typography noWrap={true} variant="h1" align="center" color="primary">
           MY BUDGET
         </Typography>
-      </Grid>
+      </Box>
 
-      <Grid
-        container
+      <Box
         component="main"
-        className={classes.main}
-        justify="center"
+        display="flex"
+        minHeight="30vh"
+        justifyContent="space-evenly"
         alignItems="center"
       >
         <Login />
         <Signup />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 
-export default withStyles(styles)(LandingPage);
+export default LandingPage;

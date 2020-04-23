@@ -1,20 +1,5 @@
 html {
-    font-size: .8rem;
     box-sizing: border-box;
-    padding: 5px 0;
     width: 100%;
     height: 100%;
-    margin: auto;
-}
-
-
-@media screen and (min-width: 750px) {
-    html {
-        font-size: 1em;
-    }
-}
-@media screen and (min-width: 950px) {
-    html {
-        font-size: 1.15em;
-    }
 }

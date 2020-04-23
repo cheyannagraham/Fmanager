@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react";
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import myPalette from "../CSS/mypalette";
 import { auth } from "../fb/fb";
-import styles from "./styles.app";
 import Modal from "../Components/Modal/Modal";
-import Footer from "../Components/Footer/Footer";
 import { getTransactions } from "../Components/Helpers/DBHelper";
 import Main from "../Components/Main/Main";
 import LandingPage from "../Components/LandingPage/LandingPage";
-
+import Catch from "../Components/Catch/Catch";
+import SnackbarProvider from "../Components/SnackbarProvider/SnackbarProvider";
+import Palette from "../CSS/Palette.js";
 
 // Global data & state
 export const ModalContext = React.createContext(false);
 export const UserContext = React.createContext(null);
 export const TransContext = React.createContext([]);
-const theme = createMuiTheme(myPalette);
 
 const App = props => {
-  const [showModal, setShowModal] = useState({ show: false });
+  const [modalContent, setModalContent] = useState({ show: false });
   const [user, setUser] = useState(null);
   const [transactions, setTransactions] = useState([]);
-  const { classes } = props;
 
   auth.onAuthStateChanged(user => {
     setUser(user);
@@ -34,25 +27,33 @@ const App = props => {
 
   // update transactions if user changes
   useEffect(() => {
-    user && (async () => setTransactions(await getTransactions()))();
+    user &&
+      getTransactions()
+        .then(results => setTransactions(results))
+        .catch(error => {
+          setModalContent(
+            Catch({ error: error, title: "Error Fetching Transactions" })
+          );
+        });
   }, [user]);
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <UserContext.Provider value={user}>
-        <TransContext.Provider value={[transactions, setTransactions]}>
-          <ModalContext.Provider value={{ setShowModal }}>
-            <CssBaseline />
-            <Grid container justify="center" className={classes["lp-content"]}>
-              {user ? <Main /> : <LandingPage />}
-              {showModal.show && <Modal content={showModal} />}
-            </Grid>
-            <Footer />
-          </ModalContext.Provider>
-        </TransContext.Provider>
-      </UserContext.Provider>
-    </MuiThemeProvider>
+    <ThemeProvider theme={Palette}>
+      <SnackbarProvider>
+        <UserContext.Provider value={user}>
+          <TransContext.Provider value={[transactions, setTransactions]}>
+            <ModalContext.Provider value={setModalContent}>
+              <CssBaseline />
+              <Grid container justify="center">
+                {user ? <Main /> : <LandingPage />}
+                {modalContent.show && <Modal content={modalContent} />}
+              </Grid>
+            </ModalContext.Provider>
+          </TransContext.Provider>
+        </UserContext.Provider>
+      </SnackbarProvider>
+    </ThemeProvider>
   );
 };
 
-export default withStyles(styles)(App);
+export default App;
