@@ -13,11 +13,11 @@ const useStyles = withStyles((theme) => ({
   },
   hover: {
     "&:hover": {
-      background: `${theme.palette.secondary.main}b4 !important`,
+      background: `${theme.palette.secondary.main}80 !important`,
     },
   },
   selected: {
-    background: `${theme.palette.secondary.main}b4 !important`,
+    background: `${theme.palette.secondary.main}80 !important`,
   },
 }));
 
