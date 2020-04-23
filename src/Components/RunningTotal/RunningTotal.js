@@ -5,11 +5,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const useStyles = withStyles({
   title: {
-    "font-size": "1.1rem",
+    "font-size": "1.2rem",
     "font-weight": "500",
   },
   total: {
-    "font-size": "1.3rem",
+    "font-size": "1.1rem",
   },
 });
 const RunningTotal = useStyles((props) => {
@@ -31,27 +31,29 @@ const RunningTotal = useStyles((props) => {
     setRunningTotal(calcTotal(props.transactions));
   }, [props.transactions]);
 
-  return (
-    <Box display="flex" width="100%" align="right" mt={1} mr={1} mb={0.5}>
-      <Box width="50%">
-        <Typography className={classes.total}>
-          {new Intl.NumberFormat("en", {
-            style: "currency",
-            currency: "USD",
-          }).format(currentTotal)}
-        </Typography>
-        <Typography className={classes.title}>Current Total</Typography>
-      </Box>
+  const Total = (props) => (
+    <Box
+      width="100%"
+      display="flex"
+      flexWrap="wrap"
+      alignItems="center"
+      justifyContent="space-between"
+    >
+      <Typography className={classes.title}>{props.title}</Typography>
+      <Typography className={classes.total}>
+        {new Intl.NumberFormat("en", {
+          style: "currency",
+          currency: "USD",
+        }).format(props.value)}
+      </Typography>
+      {props.children}
+    </Box>
+  );
 
-      <Box width="50%">
-        <Typography className={classes.total}>
-          {new Intl.NumberFormat("en", {
-            style: "currency",
-            currency: "USD",
-          }).format(runningTotal)}
-        </Typography>
-        <Typography className={classes.title}>Running Total</Typography>
-      </Box>
+  return (
+    <Box display="flex" flexWrap="wrap" width="100%" m={1}>
+      <Total title="Current Total" value={currentTotal} />
+      <Total title="Running Total" value={runningTotal} />
     </Box>
   );
 });
