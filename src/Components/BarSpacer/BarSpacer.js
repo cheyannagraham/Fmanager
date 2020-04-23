@@ -7,7 +7,7 @@ const useStyles = withStyles(theme => ({
 }));
 
 const BarSpacer = useStyles(props => {
-  return <Box className={props.classes.spacer} {...props} />;
+  return <Box className={props.classes.spacer} />;
 });
 
 export default BarSpacer;
