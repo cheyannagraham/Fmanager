@@ -1,10 +1,21 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
 import { FormControl } from "../FormControls/FormControls";
 import moment from "moment";
 
-const FilteredViewHeader = props => {
-  const handleChange = event => {
+const useStyles = withStyles({
+  input: {
+    "font-size": "1.2rem",
+  },
+  label: {
+    "font-size": "1.7rem",
+  },
+});
+
+const FilteredViewHeader = useStyles((props) => {
+  const { classes } = props;
+  const handleChange = (event) => {
     const input = event.target.id;
     const value = event.target.value;
     if (input === "start-date") {
@@ -17,13 +28,11 @@ const FilteredViewHeader = props => {
   return (
     <Box mt={3}>
       <form onChange={handleChange}>
-        <Box
-          display="flex"
-          flexWrap="wrap"
-          justifyContent="space-evenly"
-        >
+        <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
           <FormControl
-            label="Start"
+            label="Start Date"
+            InputLabelProps={{ className: classes.label }}
+            inputProps={{ className: classes.input }}
             type="date"
             name="start-date"
             id="start-date"
@@ -31,7 +40,9 @@ const FilteredViewHeader = props => {
             required
           />
           <FormControl
-            label="End"
+            label="End Date"
+            InputLabelProps={{ className: classes.label }}
+            inputProps={{ className: classes.input }}
             type="date"
             name="end-date"
             id="end-date"
@@ -42,6 +53,6 @@ const FilteredViewHeader = props => {
       </form>
     </Box>
   );
-};
+});
 
 export default FilteredViewHeader;
