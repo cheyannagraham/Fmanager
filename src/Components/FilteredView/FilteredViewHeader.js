@@ -1,55 +1,98 @@
-import React from "react";
+import React, { useContext } from "react";
 import Box from "@material-ui/core/Box";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { FormControl } from "../FormControls/FormControls";
+import { ModalContext } from "../../App/App";
+import { CloseModalButton } from "../Modal/Modal";
 import moment from "moment";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Typography from "@material-ui/core/Typography";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = withStyles({
-  input: {
-    "font-size": "1.2rem",
-  },
   label: {
-    "font-size": "1.7rem",
+    "font-size": "1.3em",
+    "font-weight": "500"
+  },
+  h1: {
+    "font-size": "1.3rem",
   },
 });
 
 const FilteredViewHeader = useStyles((props) => {
-  const handleChange = (event) => {
-    const input = event.target.id;
+  let modalContent = useContext(ModalContext);
+
+  const getDate = (input) => {
+    modalContent({
+      show: true,
+      title: `Set ${input.label}`,
+      content: (
+        <form id={`${input.label}-form`} onChange={setDate}>
+          <FormControl
+            variant="outlined"
+            label={input.label}
+            type="date"
+            id={`${input.id}-input`}
+            defaultValue={input.date}
+            required
+            autoFocus
+          />
+        </form>
+      ),
+      actions: <CloseModalButton form={`${input.label}-form`} type="submit" />,
+    });
+  };
+
+  const setDate = (event) => {
     const value = event.target.value;
-    if (input === "start-date") {
-      props.setFromDate(value);
+    // search for the word start in id to determine which value to set
+    if (event.target.id.toLowerCase().search("start") === -1) {
+      props.setEndDate(value);
     } else {
-      props.setToDate(value);
+      props.setStartDate(value);
     }
   };
 
+  const DisplayButton = (props) => {
+    const id = props.label.split(" ").join("-").toLowerCase();
+    return (
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        flexWrap="wrap"
+        width="100%"
+        alignItems="center"
+        my={1}
+      >
+        <FormLabel className={props.classes.label} htmlFor={id}>
+          {props.label}:{" "}
+        </FormLabel>
+        <ButtonBase
+          onClick={() =>
+            getDate({ label: props.label, id: id, date: props.date })
+          }
+          id={id}
+        >
+          <Typography variant="h1" className={props.classes.h1}>
+            {moment(props.date).format("MMM D, YYYY")}
+          </Typography>
+        </ButtonBase>
+      </Box>
+    );
+  };
+
   return (
-    <Box mt={3}>
-      <form onChange={handleChange}>
-        <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
-          <FormControl
-            label="Start Date"
-            InputLabelProps={{ className: props.classes.label }}
-            inputProps={{ className: props.classes.input }}
-            type="date"
-            name="start-date"
-            id="start-date"
-            defaultValue={moment().format("YYYY-MM-DD")}
-            required
-          />
-          <FormControl
-            label="End Date"
-            InputLabelProps={{ className: props.classes.label }}
-            inputProps={{ className: props.classes.input }}
-            type="date"
-            name="end-date"
-            id="end-date"
-            defaultValue={moment().format("YYYY-MM-DD")}
-            required
-          />
-        </Box>
-      </form>
+    <Box my={3} display="flex" flexWrap="wrap" width="100%" justifyContent="center">
+      <DisplayButton
+        label="Start Date"
+        classes={props.classes}
+        date={props.startDate}
+      />
+      <DisplayButton
+        label="End Date"
+        classes={props.classes}
+        date={props.endDate}
+      />
     </Box>
   );
 });
