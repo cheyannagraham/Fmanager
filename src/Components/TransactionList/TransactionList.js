@@ -17,7 +17,7 @@ const useStyles = withStyles((theme) => ({
     width: "100%",
   },
   h2: {
-    "font-size": "1.5rem",
+    "font-size": "1.4rem",
     "font-weight": 400,
   },
   header: {
