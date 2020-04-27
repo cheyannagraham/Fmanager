@@ -5,7 +5,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowLeft from "@material-ui/icons/ArrowBackIosRounded";
 import ArrowRight from "@material-ui/icons/ArrowForwardIosRounded";
 import IconButton from "@material-ui/core/IconButton";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import Button from "@material-ui/core/Button";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import { FormControl } from "../FormControls/FormControls";
@@ -15,6 +15,7 @@ import moment from "moment";
 const useStyles = withStyles({
   h1 : {
     "font-size": "1.7rem",
+    "text-transform": "capitalize"
   }
 })
 
@@ -69,22 +70,24 @@ const WithViewHeader = useStyles((props) => {
           onClick={() => {
             handleClick(-1);
           }}
+          aria-label="previous day or month"
         >
           <ArrowLeft />
         </IconButton>
 
-        <ButtonBase onClick={showCalendar}>
+        <Button onClick={showCalendar} aria-label="Enter Date">
           <Typography variant="h1" className={props.classes.h1}>
             {props.view === "monthly"
               ? moment(props.date).format("MMM YYYY")
               : moment(props.date).format("MMM DD, YYYY")}
           </Typography>
-        </ButtonBase>
+        </Button>
 
         <IconButton
           onClick={() => {
             handleClick(1);
           }}
+          aria-label="next day or month"
         >
           <ArrowRight />
         </IconButton>
