@@ -5,7 +5,7 @@ import { FormControl } from "../FormControls/FormControls";
 import { ModalContext } from "../../App/App";
 import { CloseModalButton } from "../Modal/Modal";
 import moment from "moment";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import FormLabel from "@material-ui/core/FormLabel";
 
@@ -16,6 +16,7 @@ const useStyles = withStyles({
   },
   h1: {
     "font-size": "1.3rem",
+    "text-transform": "capitalize"
   },
 });
 
@@ -67,7 +68,7 @@ const FilteredViewHeader = useStyles((props) => {
         <FormLabel className={props.classes.label} htmlFor={id}>
           {props.label}:{" "}
         </FormLabel>
-        <ButtonBase
+        <Button
           onClick={() =>
             getDate({ label: props.label, id: id, date: props.date })
           }
@@ -76,7 +77,7 @@ const FilteredViewHeader = useStyles((props) => {
           <Typography variant="h1" className={props.classes.h1}>
             {moment(props.date).format("MMM D, YYYY")}
           </Typography>
-        </ButtonBase>
+        </Button>
       </Box>
     );
   };
