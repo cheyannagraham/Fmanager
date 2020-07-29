@@ -11,19 +11,21 @@ import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import withStyles from "@material-ui/styles/withStyles";
 
-const useStyles = withStyles({
+const useStyles = withStyles((theme) => ({
   table: {
     "table-layout": "fixed",
     width: "100%",
   },
   h2: {
-    "font-size": "1.5rem",
+    "font-size": "1.4rem",
     "font-weight": 400,
   },
-});
+  header: {
+    "border-bottom": `2px solid ${theme.palette.primary.dark}`,
+  },
+}));
 
 const TransactionList = useStyles((props) => {
-
   // Group Transactions by Date
   const groupTransactions = () => {
     return [...new Set(props.transactions.map((trans) => trans.date))].map(
@@ -44,32 +46,39 @@ const TransactionList = useStyles((props) => {
   return (
     <Box maxHeight="75vh">
       {sortGroupedTransactions().map((group) => (
-        <Table key={group.date} className={props.classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell colSpan="2">
-                <Typography
-                  key={group.date}
-                  variant="h2"
-                  className={props.classes.h2}
-                >
-                  {props.fullDate
-                    ? moment(group.date).format("YYYY MMM DD")
-                    : moment(group.date).format("MMM D")}
-                </Typography>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {group.items.map((transaction) => (
-              <TransactionInfo key={transaction.id} transaction={transaction} />
-            ))}
-          </TableBody>
-        </Table>
+        <Box mb={2.5}>
+          <Table key={group.date} className={props.classes.table}>
+            <TableHead>
+              <TableRow className={props.classes.header}>
+                <TableCell colSpan="2">
+                  <Typography
+                    key={group.date}
+                    variant="h2"
+                    className={props.classes.h2}
+                  >
+                    {props.fullDate
+                      ? moment(group.date).format("YYYY MMM DD")
+                      : moment(group.date).format("MMM D")}
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {group.items.map((transaction) => (
+                <TransactionInfo
+                  key={transaction.id}
+                  transaction={transaction}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
       ))}
-      <BarSpacer />
       {props.transactions.length === 0 && (
-        <Typography align="center">No Transactions</Typography>
+        <>
+          <BarSpacer />
+          <Typography align="center">No Transactions</Typography>
+        </>
       )}
       {/* Extra space after table */}
       <BarSpacer />

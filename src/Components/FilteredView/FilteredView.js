@@ -9,26 +9,26 @@ import moment from "moment";
 
 const FilteredView = props => {
   const [transactions] = useContext(TransContext);
-  const [fromDate, setFromDate] = useState(moment().format("YYYY-MM-DD"));
-  const [toDate, setToDate] = useState(moment().format("YYYY-MM-DD"));
+  const [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD"));
+  const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
   const [filteredTransactions, setfilteredTransactions] = useState([]);
 
   // Filter Transactions
   useEffect(() => {
     setfilteredTransactions(
       transactions.filter(
-        trans => trans.date >= fromDate && trans.date <= toDate
+        trans => trans.date >= startDate && trans.date <= endDate
       )
     );
-  }, [fromDate, toDate, transactions]);
+  }, [startDate, endDate, transactions]);
 
   return (
     <Box display="grid" width="100%">
       <FilteredViewHeader
-        fromDate={fromDate}
-        toDate={toDate}
-        setFromDate={setFromDate}
-        setToDate={setToDate}
+        startDate={startDate}
+        endDate={endDate}
+        setStartDate={setStartDate}
+        setEndDate={setEndDate}
       />
       <TransactionList transactions={filteredTransactions} fullDate={true} />
 

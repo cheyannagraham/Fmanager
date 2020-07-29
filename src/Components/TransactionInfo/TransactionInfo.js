@@ -7,19 +7,19 @@ import Popover from "@material-ui/core/Popover";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-const useStyles = withStyles({
+const useStyles = withStyles((theme) => ({
   root: {
     cursor: "pointer",
   },
   hover: {
     "&:hover": {
-      background: "rgba(255, 105, 67,0.09) !important",
+      background: `${theme.palette.secondary.main}80 !important`,
     },
   },
   selected: {
-    background: "rgba(255, 105, 67,0.09) !important",
+    background: `${theme.palette.secondary.main}80 !important`,
   },
-});
+}));
 
 const TransactionInfo = useStyles((props) => {
   const [anchorEl, setAnchorEl] = useState(null);

@@ -1,14 +1,13 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import makeStyles from "@material-ui/styles/makeStyles";
+import withStyles from "@material-ui/styles/withStyles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = withStyles(theme => ({
   spacer: theme.mixins.toolbar
 }));
 
-const BarSpacer = props => {
-  const classes = useStyles();
-  return <Box className={classes.spacer} {...props} />;
-};
+const BarSpacer = useStyles(props => {
+  return <Box className={props.classes.spacer} />;
+});
 
 export default BarSpacer;
