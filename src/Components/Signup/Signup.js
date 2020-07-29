@@ -51,9 +51,6 @@ export const SignupForm = props => {
         //add username to profile
         await auth.currentUser.updateProfile({ displayName: displayName });
       })
-      .then(() => {
-        throw Error("Throw Signup");
-      })
       .catch(error =>
         modalContent(Catch({ error: error, title: "Signup Error" }))
       );

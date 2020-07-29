@@ -47,11 +47,6 @@ const TransactionForm = props => {
             text: "Transaction Added!",
             variant: "success"
           });
-          snackbar({
-            text: "Transaction warning!",
-            variant: "warning"
-          });
-          throw new Error("me :)");
         })
         .catch(error => {
           snackbar({
@@ -82,7 +77,6 @@ const TransactionForm = props => {
             text: "Transaction Updated!",
             variant: "success"
           });
-          throw new Error("me :)");
         })
         .catch(error =>
           snackbar({

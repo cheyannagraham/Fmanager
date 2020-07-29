@@ -20,7 +20,7 @@ const Modal = props => {
       aria-describedby={props.content.description}
       aria-labelledby={props.content.label}
     >
-      <Box textAlign="center">
+      <Box textAlign="center" p={2} m={1}>
         <DialogTitle>{props.content.title}</DialogTitle>
         <DialogContentText>{props.content.text}</DialogContentText>
         <DialogContent>{props.content.content}</DialogContent>

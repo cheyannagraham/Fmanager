@@ -44,9 +44,6 @@ export const LoginForm = props => {
     event.preventDefault();
     auth
       .signInWithEmailAndPassword(formState.email, formState.pwd)
-      .then(() => {
-        throw Error("Throw Login");
-      })
       .catch(error =>
         modalContent(Catch({ error: error, title: "Login Error" }))
       );

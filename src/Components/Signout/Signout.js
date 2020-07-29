@@ -11,9 +11,6 @@ const Signout = props => {
   const signout = () => {
     auth
       .signOut()
-      .then(() => {
-        throw Error("Throw Signout");
-      })
       .catch(error =>
         modalContent(Catch({ error: error, title: "Signout Error" }))
       );

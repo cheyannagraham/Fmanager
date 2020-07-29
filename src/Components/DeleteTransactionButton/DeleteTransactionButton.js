@@ -47,7 +47,6 @@ const DeleteTransaction = (props) => {
           text: "Transaction Deleted!",
           variant: "success",
         });
-        throw new Error("me :)");
       })
       .catch((error) =>
         snackbar({

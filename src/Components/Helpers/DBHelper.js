@@ -13,7 +13,6 @@ export const getTransactions = () => {
       results.forEach(doc => {
         transactions.push(Object.assign(doc.data(), { id: doc.id }));
       });
-      //throw Error("Throw Get Transactions");
       return transactions;
     });
 };
@@ -25,7 +24,6 @@ export const deleteTransaction = id => {
     .doc(id)
     .delete()
     .then(error => {
-      //throw Error("Throw Delete");
       return error;
     });
 };
@@ -38,7 +36,6 @@ export const addTransaction = trans => {
     .then(dref => {
       //add id to transaction object
       trans.id = dref.id;
-      //throw Error("Throw Add");
       return trans;
     });
 };
@@ -50,7 +47,6 @@ export const updateTransaction = (transId, trans) => {
     .doc(transId)
     .set(trans)
     .then(error => {
-      //throw Error("Throw Update");
       return error;
     });
 };
